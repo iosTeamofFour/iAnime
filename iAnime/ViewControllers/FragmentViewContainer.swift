@@ -12,16 +12,24 @@ enum PresentNewFragmentAnimationType {
     case FadeInOut
 }
 
+open class FragmentViewController : UIViewController {
+    private(set) var fragmentContainer : FragmentViewContainer?
+    func OnRegistered(_ fragmentContainer : FragmentViewContainer) -> Void {
+        self.fragmentContainer = fragmentContainer
+    }
+}
+
 class FragmentViewContainer: UIView {
     
-    private(set) var fragments : [UIViewController] = []
+    private(set) var fragments : [FragmentViewController] = []
     
     private(set) var CurrentPresentViewController : Int = 0
     
     private var CurrentPresentView : UIView? = nil
     
-    func AddViewController(_ controller : UIViewController) {
+    func AddViewController(_ controller : FragmentViewController) {
         fragments.append(controller)
+        controller.OnRegistered(self)
     }
     
     func RemoveViewControllerAt(_ index : Int) {

@@ -52,6 +52,18 @@ public extension UIStackView {
     }
 }
 
+public extension UITextField {
+    public func ChangeBorder(_ borderStyle : BorderStyle, _ cornerRadius : CGFloat, _ borderColor : CGColor, _ borderWidth : CGFloat ) {
+        self.borderStyle = borderStyle
+        self.layer.cornerRadius = cornerRadius
+        self.layer.borderColor = borderColor
+        self.layer.borderWidth = borderWidth
+    }
+    
+    public func ChangePlaceHolderTextColor( _ color : CGColor) {
+         self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor: color])
+    }
+}
 
 public extension Array {
     public func InRange(_ index : Int) -> Bool {

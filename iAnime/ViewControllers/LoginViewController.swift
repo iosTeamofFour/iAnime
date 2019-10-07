@@ -8,12 +8,12 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: FragmentViewController, UITextFieldDelegate {
 
     
     @IBOutlet weak var UserNameField: UITextField!
     @IBOutlet weak var PasswordField: UITextField!
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ChangeTextFieldStyle()
+        BindTextFieldDelegate()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -41,11 +42,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         [UserNameField,PasswordField].forEach {
             view in
             if let uview = view {
-                uview.borderStyle = .roundedRect
-                uview.layer.cornerRadius = 4
-                uview.layer.borderColor = UIColor.white.cgColor
-                uview.layer.borderWidth = 1.5
-                uview.attributedPlaceholder = NSAttributedString(string: uview.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.cgColor])
+                uview.ChangeBorder(.roundedRect,4,UIColor.white.cgColor,1.5)
+                uview.ChangePlaceHolderTextColor(UIColor.white.cgColor)
             }
         }
     }
@@ -55,6 +53,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             field in field?.delegate = self
         }
     }
+    
+    
+    @IBAction func JumpToRegister(_ sender: UIButton) {
+        fragmentContainer?.PresentNewViewControllerWithAnimation(1)
+    }
+    
     /*
     // MARK: - Navigation
 
