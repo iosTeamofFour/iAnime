@@ -8,43 +8,53 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var HomeBackgroundImage: UIImageView!
     @IBOutlet weak var UserAvatarImage: UIImageView!
+    
+    @IBOutlet weak var SignTextField: UITextField!
+    @IBOutlet weak var UserNickName: UILabel!
+    @IBOutlet weak var UserLevel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        SignTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillLayoutSubviews() {
-        
-        UserAvatarImage.SetCircleBorder()
-        AdjustHomepageBackgroundImage()
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIUtils.DetectStatusBarColor(view, HomeBackgroundImage) ? .lightContent : .default
+    }
+    
+    override func viewWillLayoutSubviews() {
+        UserAvatarImage.SetCircleBorder()
+        AdjustHomepageBackgroundImage()
+//        AdjustLabelTextColor()
+    }
+    
+    
     private func AdjustHomepageBackgroundImage() {
-        
-        
-        
         // 按屏幕的高等比缩放
         let ViewHeight = view.frame.height
         HomeBackgroundImage.addConstraint(NSLayoutConstraint(item: HomeBackgroundImage, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: ViewHeight / 3))
         
         HomeBackgroundImage.contentMode = .scaleAspectFill
         HomeBackgroundImage.clipsToBounds = true
-        print("设置图片高为 \(ViewHeight/3)")
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
+    private func AdjustLabelTextColor() {
+        
+    }
 }

@@ -63,7 +63,7 @@
                                 <rect key="frame" x="0.0" y="204" width="375" height="413"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaW-P7-D5k" customClass="RightImageButton" customModule="iAnime" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="16" width="375" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="zyg-MO-ExG"/>
@@ -78,7 +78,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAM-0I-WCD" customClass="RightImageButton" customModule="iAnime" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="93" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="85" width="375" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="dea-Il-iH8"/>
@@ -93,7 +93,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ach-V3-kah" customClass="RightImageButton" customModule="iAnime" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="162" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="154" width="375" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="RYk-Eq-Ini"/>
@@ -108,7 +108,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Sb-FG-URX" customClass="RightImageButton" customModule="iAnime" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="208" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="200" width="375" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="ZN2-NB-ltQ"/>
@@ -123,7 +123,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWe-XQ-Utr" customClass="RightImageButton" customModule="iAnime" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="323" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="315" width="375" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="wFR-8S-ycy"/>
@@ -138,7 +138,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ORl-T3-WLm">
-                                        <rect key="frame" x="0.0" y="277" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="269" width="375" height="45"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="夜间模式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2p-4O-P75">
                                                 <rect key="frame" x="24" y="12" width="73.5" height="21.5"/>
@@ -162,7 +162,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="gaW-P7-D5k" secondAttribute="trailing" id="2uP-0d-IjP"/>
-                                    <constraint firstItem="gaW-P7-D5k" firstAttribute="top" secondItem="W9A-sp-QZi" secondAttribute="top" constant="24" id="7cR-KL-fzM"/>
+                                    <constraint firstItem="gaW-P7-D5k" firstAttribute="top" secondItem="W9A-sp-QZi" secondAttribute="top" constant="16" id="7cR-KL-fzM"/>
                                     <constraint firstAttribute="bottom" secondItem="gaW-P7-D5k" secondAttribute="bottom" constant="349" id="7vq-Gi-Qd3"/>
                                     <constraint firstItem="ORl-T3-WLm" firstAttribute="leading" secondItem="W9A-sp-QZi" secondAttribute="leading" id="Gj1-x8-q4F"/>
                                     <constraint firstItem="PWe-XQ-Utr" firstAttribute="leading" secondItem="W9A-sp-QZi" secondAttribute="leading" id="H2o-qm-TNi"/>
@@ -235,7 +235,10 @@
                     <tabBarItem key="tabBarItem" title="个人中心" id="eZv-Ya-NE6"/>
                     <connections>
                         <outlet property="HomeBackgroundImage" destination="zjD-fG-YDZ" id="WMR-iB-daz"/>
+                        <outlet property="SignTextField" destination="Pnt-HV-6d7" id="USO-Bb-77w"/>
                         <outlet property="UserAvatarImage" destination="CHZ-Qg-hTF" id="qjP-2F-fDD"/>
+                        <outlet property="UserLevel" destination="2uw-RZ-q7T" id="5aC-yT-ZFw"/>
+                        <outlet property="UserNickName" destination="Lhh-yh-OAe" id="8MJ-Y9-Io9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vlh-Gt-PNr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -264,7 +267,7 @@
                                     <string>Title</string>
                                 </scopeButtonTitles>
                             </searchBar>
-                            <scrollView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sn-qz-liY" customClass="GridView" customModule="iAnime" customModuleProvider="target">
+                            <scrollView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sn-qz-liY" customClass="GridView" customModule="iAnime" customModuleProvider="target">
                                 <rect key="frame" x="32" y="181" width="311" height="437"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rowSpacing">
@@ -278,16 +281,26 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hid-h1-Rfe">
+                                <rect key="frame" x="295" y="538" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="QH6-rh-Ned"/>
+                                    <constraint firstAttribute="height" constant="64" id="Wrt-eH-Jdb"/>
+                                </constraints>
+                                <state key="normal" image="Add"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="FIe-9E-e7F" firstAttribute="trailing" secondItem="6sn-qz-liY" secondAttribute="trailing" constant="32" id="G74-fN-lQW"/>
                             <constraint firstAttribute="trailing" secondItem="2eE-qT-yFL" secondAttribute="trailing" constant="24" id="Hu2-xW-kaI"/>
+                            <constraint firstItem="FIe-9E-e7F" firstAttribute="trailing" secondItem="hid-h1-Rfe" secondAttribute="trailing" constant="16" id="Mfk-kF-rtk"/>
                             <constraint firstItem="6sn-qz-liY" firstAttribute="top" secondItem="2eE-qT-yFL" secondAttribute="bottom" constant="16" id="ShS-CU-Ran"/>
                             <constraint firstItem="2eE-qT-yFL" firstAttribute="leading" secondItem="88I-nc-czd" secondAttribute="leading" constant="24" id="bAy-Om-4Te"/>
                             <constraint firstItem="6sn-qz-liY" firstAttribute="leading" secondItem="FIe-9E-e7F" secondAttribute="leading" constant="32" id="dcC-kk-uuv"/>
                             <constraint firstItem="9nn-UM-xma" firstAttribute="top" secondItem="FIe-9E-e7F" secondAttribute="top" constant="30" id="pQp-O4-lrF"/>
                             <constraint firstItem="9nn-UM-xma" firstAttribute="leading" secondItem="FIe-9E-e7F" secondAttribute="leading" constant="30" id="q2n-ap-rJv"/>
+                            <constraint firstItem="FIe-9E-e7F" firstAttribute="bottom" secondItem="hid-h1-Rfe" secondAttribute="bottom" constant="16" id="qE1-V0-4ru"/>
                             <constraint firstItem="2eE-qT-yFL" firstAttribute="top" secondItem="9nn-UM-xma" secondAttribute="bottom" constant="16" id="uGM-3s-qFk"/>
                             <constraint firstItem="6sn-qz-liY" firstAttribute="bottom" secondItem="FIe-9E-e7F" secondAttribute="bottom" id="xeh-7n-Pwu"/>
                         </constraints>
@@ -295,6 +308,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="我的作品" id="Q6H-tP-yBu"/>
                     <connections>
+                        <outlet property="CreateDrawButton" destination="hid-h1-Rfe" id="drg-F8-gB2"/>
                         <outlet property="MyIlluGrid" destination="6sn-qz-liY" id="m8n-n5-Xp2"/>
                         <outlet property="searchDisplayController" destination="GGB-f6-7Jj" id="0lB-qJ-Xwi"/>
                     </connections>
@@ -313,6 +327,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Add" width="64" height="64"/>
         <image name="Left-4" width="2429" height="1515"/>
         <image name="Sample Avatar" width="700" height="700"/>
         <image name="arrowblack" width="32" height="32"/>
