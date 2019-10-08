@@ -113,33 +113,5 @@
             </objects>
             <point key="canvasLocation" x="513" y="-834"/>
         </scene>
-        <!--Demo View Controller-->
-        <scene sceneID="ZRZ-fg-Q0o">
-            <objects>
-                <viewController id="uMz-oQ-RxU" customClass="DemoViewController" customModule="iAnime" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pwG-sr-zNh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="OiJ-8a-pon">
-                                <rect key="frame" x="36" y="170" width="342" height="110"/>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="OiJ-8a-pon" firstAttribute="leading" secondItem="i3W-PW-Dmw" secondAttribute="leading" constant="36" id="Nuf-pn-Qy8"/>
-                            <constraint firstItem="OiJ-8a-pon" firstAttribute="top" secondItem="i3W-PW-Dmw" secondAttribute="top" constant="40" id="rZD-La-mCm"/>
-                            <constraint firstItem="i3W-PW-Dmw" firstAttribute="trailing" secondItem="OiJ-8a-pon" secondAttribute="trailing" constant="36" id="zBb-Nw-Z2z"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="i3W-PW-Dmw"/>
-                    </view>
-                    <connections>
-                        <outlet property="horizontalSV" destination="OiJ-8a-pon" id="iVi-Wy-jHK"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="B4s-ee-iRz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1412" y="-112"/>
-        </scene>
     </scenes>
 </document>

@@ -21,9 +21,9 @@
 		DF2DC41A234B5DED009E52B0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2DC419234B5DED009E52B0 /* RegisterViewController.swift */; };
 		E60692E1234B7EE50012E534 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E60692E0234B7EE50012E534 /* Index.storyboard */; };
 		E60692E3234B9F4F0012E534 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60692E2234B9F4F0012E534 /* IndexViewController.swift */; };
+		E67B6EC8234CD4DD008EBBC0 /* my.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E67B6EC7234CD4DD008EBBC0 /* my.storyboard */; };
 		E6828ADA234BA20800BAFB31 /* Illustration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6828AD9234BA20800BAFB31 /* Illustration.swift */; };
 		E6828ADC234BA29A00BAFB31 /* IllustrationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6828ADB234BA29A00BAFB31 /* IllustrationItemView.swift */; };
-		E6828ADE234BA79E00BAFB31 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6828ADD234BA79E00BAFB31 /* DemoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,9 +43,9 @@
 		DF2DC419234B5DED009E52B0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E60692E0234B7EE50012E534 /* Index.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Index.storyboard; sourceTree = "<group>"; };
 		E60692E2234B9F4F0012E534 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
+		E67B6EC7234CD4DD008EBBC0 /* my.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = my.storyboard; sourceTree = "<group>"; };
 		E6828AD9234BA20800BAFB31 /* Illustration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Illustration.swift; sourceTree = "<group>"; };
 		E6828ADB234BA29A00BAFB31 /* IllustrationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IllustrationItemView.swift; sourceTree = "<group>"; };
-		E6828ADD234BA79E00BAFB31 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +107,6 @@
 				DF2DC417234B5DE6009E52B0 /* LoginViewController.swift */,
 				DF2DC419234B5DED009E52B0 /* RegisterViewController.swift */,
 				E60692E2234B9F4F0012E534 /* IndexViewController.swift */,
-				E6828ADD234BA79E00BAFB31 /* DemoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -128,6 +127,7 @@
 				DF2DC3F8234ADCE2009E52B0 /* Welcome.storyboard */,
 				DF2DC3FD234ADCE3009E52B0 /* LaunchScreen.storyboard */,
 				E60692E0234B7EE50012E534 /* Index.storyboard */,
+				E67B6EC7234CD4DD008EBBC0 /* my.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -202,6 +202,7 @@
 				DF2DC3FC234ADCE3009E52B0 /* Assets.xcassets in Resources */,
 				DF2DC3FA234ADCE2009E52B0 /* Welcome.storyboard in Resources */,
 				E60692E1234B7EE50012E534 /* Index.storyboard in Resources */,
+				E67B6EC8234CD4DD008EBBC0 /* my.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +217,6 @@
 				DF2DC416234B591A009E52B0 /* FragmentViewContainer.swift in Sources */,
 				E60692E3234B9F4F0012E534 /* IndexViewController.swift in Sources */,
 				A4203DB0234C88F8008C3632 /* GridView.swift in Sources */,
-				E6828ADE234BA79E00BAFB31 /* DemoViewController.swift in Sources */,
 				E6828ADA234BA20800BAFB31 /* Illustration.swift in Sources */,
 				DF2DC40C234AE69F009E52B0 /* ScrollStackContainerView.swift in Sources */,
 				DF2DC41A234B5DED009E52B0 /* RegisterViewController.swift in Sources */,
