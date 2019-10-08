@@ -10,25 +10,31 @@ import UIKit
 
 class IndexViewController: UIViewController {
    
+    @IBOutlet weak var MyIlluGrid: GridView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-//        LeftIv.layer.masksToBounds = false
-       
+        MyIlluGrid.OnPlacedGrid = {
+            grid in
+            self.LoadFakeIllustration()
+            self.LoadFakeIllustration()
+            self.LoadFakeIllustration()
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func LoadFakeIllustration() {
+        let illu1 = Illustration(Image: UIImage(named: "Left-2")!, Name: "Zhengzeming", UploadDate: Date())
+        
+        let illu2 = Illustration(Image: UIImage(named: "Left-3")!, Name: "Huangpixuan", UploadDate: Date())
+        
+        let item1 = IllustrationItemView()
+        item1.illustration = illu1
+        
+        let item2 = IllustrationItemView()
+        item2.illustration = illu2
+        
+        MyIlluGrid.AddItem(item1)
+        MyIlluGrid.AddItem(item2)
     }
-    */
 
 }
