@@ -31,13 +31,13 @@ class IllustrationItemView: UIStackView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         axis = .vertical
-        spacing = 12
+        spacing = 8
     }
     
     required init(coder: NSCoder) {
         super.init(coder : coder)
         axis = .vertical
-        spacing = 12
+        spacing = 8
     }
     
     private func InitSubViews() {
@@ -50,7 +50,11 @@ class IllustrationItemView: UIStackView {
         
         
         name = UILabel()
+        
         dateStr = UILabel()
+        
+        dateStr.font.withSize(12.0)
+        dateStr.textColor = UIColor(red: 140/255, green: 140/255, blue: 140/255, alpha: 1.0)
         
         addArrangedSubview(image)
         addArrangedSubview(name)

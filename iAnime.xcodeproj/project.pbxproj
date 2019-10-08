@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A4203DB0234C88F8008C3632 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203DAF234C88F8008C3632 /* GridView.swift */; };
+		DF14EB94234CFB0B0017D4E4 /* RightImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF14EB93234CFB0B0017D4E4 /* RightImageButton.swift */; };
+		DF14EB96234CFFA50017D4E4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF14EB95234CFFA50017D4E4 /* HomeViewController.swift */; };
 		DF2DC3F5234ADCE2009E52B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2DC3F4234ADCE2009E52B0 /* AppDelegate.swift */; };
 		DF2DC3F7234ADCE2009E52B0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2DC3F6234ADCE2009E52B0 /* WelcomeViewController.swift */; };
 		DF2DC3FA234ADCE2009E52B0 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2DC3F8234ADCE2009E52B0 /* Welcome.storyboard */; };
@@ -21,13 +23,14 @@
 		DF2DC41A234B5DED009E52B0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2DC419234B5DED009E52B0 /* RegisterViewController.swift */; };
 		E60692E1234B7EE50012E534 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E60692E0234B7EE50012E534 /* Index.storyboard */; };
 		E60692E3234B9F4F0012E534 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60692E2234B9F4F0012E534 /* IndexViewController.swift */; };
-		E67B6EC8234CD4DD008EBBC0 /* my.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E67B6EC7234CD4DD008EBBC0 /* my.storyboard */; };
 		E6828ADA234BA20800BAFB31 /* Illustration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6828AD9234BA20800BAFB31 /* Illustration.swift */; };
 		E6828ADC234BA29A00BAFB31 /* IllustrationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6828ADB234BA29A00BAFB31 /* IllustrationItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A4203DAF234C88F8008C3632 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		DF14EB93234CFB0B0017D4E4 /* RightImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightImageButton.swift; sourceTree = "<group>"; };
+		DF14EB95234CFFA50017D4E4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DF2DC3F1234ADCE2009E52B0 /* iAnime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iAnime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2DC3F4234ADCE2009E52B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF2DC3F6234ADCE2009E52B0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -43,7 +46,6 @@
 		DF2DC419234B5DED009E52B0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E60692E0234B7EE50012E534 /* Index.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Index.storyboard; sourceTree = "<group>"; };
 		E60692E2234B9F4F0012E534 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
-		E67B6EC7234CD4DD008EBBC0 /* my.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = my.storyboard; sourceTree = "<group>"; };
 		E6828AD9234BA20800BAFB31 /* Illustration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Illustration.swift; sourceTree = "<group>"; };
 		E6828ADB234BA29A00BAFB31 /* IllustrationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IllustrationItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +104,7 @@
 		DF2DC409234AE514009E52B0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DF14EB95234CFFA50017D4E4 /* HomeViewController.swift */,
 				DF2DC3F6234ADCE2009E52B0 /* WelcomeViewController.swift */,
 				DF2DC415234B591A009E52B0 /* FragmentViewContainer.swift */,
 				DF2DC417234B5DE6009E52B0 /* LoginViewController.swift */,
@@ -117,6 +120,7 @@
 				A4203DAF234C88F8008C3632 /* GridView.swift */,
 				DF2DC40B234AE69F009E52B0 /* ScrollStackContainerView.swift */,
 				E6828ADB234BA29A00BAFB31 /* IllustrationItemView.swift */,
+				DF14EB93234CFB0B0017D4E4 /* RightImageButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -127,7 +131,6 @@
 				DF2DC3F8234ADCE2009E52B0 /* Welcome.storyboard */,
 				DF2DC3FD234ADCE3009E52B0 /* LaunchScreen.storyboard */,
 				E60692E0234B7EE50012E534 /* Index.storyboard */,
-				E67B6EC7234CD4DD008EBBC0 /* my.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -202,7 +205,6 @@
 				DF2DC3FC234ADCE3009E52B0 /* Assets.xcassets in Resources */,
 				DF2DC3FA234ADCE2009E52B0 /* Welcome.storyboard in Resources */,
 				E60692E1234B7EE50012E534 /* Index.storyboard in Resources */,
-				E67B6EC8234CD4DD008EBBC0 /* my.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +220,7 @@
 				E60692E3234B9F4F0012E534 /* IndexViewController.swift in Sources */,
 				A4203DB0234C88F8008C3632 /* GridView.swift in Sources */,
 				E6828ADA234BA20800BAFB31 /* Illustration.swift in Sources */,
+				DF14EB96234CFFA50017D4E4 /* HomeViewController.swift in Sources */,
 				DF2DC40C234AE69F009E52B0 /* ScrollStackContainerView.swift in Sources */,
 				DF2DC41A234B5DED009E52B0 /* RegisterViewController.swift in Sources */,
 				DF2DC408234AE4DB009E52B0 /* UIUtils.swift in Sources */,
@@ -225,6 +228,7 @@
 				DF2DC410234B429B009E52B0 /* InorderAnimation.swift in Sources */,
 				E6828ADC234BA29A00BAFB31 /* IllustrationItemView.swift in Sources */,
 				DF2DC3F5234ADCE2009E52B0 /* AppDelegate.swift in Sources */,
+				DF14EB94234CFB0B0017D4E4 /* RightImageButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

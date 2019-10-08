@@ -70,3 +70,11 @@ public extension Array {
         return 0 <= index && index < self.count
     }
 }
+
+public extension UIImageView {
+    public func SetCircleBorder() {
+        
+        self.layer.cornerRadius = self.frame.size.width / 2;
+        self.clipsToBounds = true;
+    }
+}
