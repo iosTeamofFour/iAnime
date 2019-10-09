@@ -33,6 +33,19 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
     }
     
+    // Hide navigation bar.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ToggleVisibleForNavigationItem(false)
+        ToggleVisibleForTabBarItem(true)
+    }
+    
+    // Reset navigation bar.
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        ToggleVisibleForNavigationItem(true)
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIUtils.DetectStatusBarColor(view, HomeBackgroundImage) ? .lightContent : .default
     }
@@ -40,7 +53,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     override func viewWillLayoutSubviews() {
         UserAvatarImage.SetCircleBorder()
         AdjustHomepageBackgroundImage()
-//        AdjustLabelTextColor()
     }
     
     
@@ -48,13 +60,12 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         // 按屏幕的高等比缩放
         let ViewHeight = view.frame.height
         HomeBackgroundImage.addConstraint(NSLayoutConstraint(item: HomeBackgroundImage, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: ViewHeight / 3))
-        
         HomeBackgroundImage.contentMode = .scaleAspectFill
         HomeBackgroundImage.clipsToBounds = true
     }
     
     
-    private func AdjustLabelTextColor() {
-        
+    @IBAction func GoToSettings(_ sender: RightImageButton) {
+        GoToExternalStoryboardWithInitialVC("Settings", "返回")?.ToggleVisibleForTabBarItem(false)
     }
 }

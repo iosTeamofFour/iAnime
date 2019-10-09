@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A4203DB0234C88F8008C3632 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203DAF234C88F8008C3632 /* GridView.swift */; };
+		A4CBA67C234DB07E00308392 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBA67B234DB07E00308392 /* AboutViewController.swift */; };
+		A4CBA67F234DB09600308392 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4CBA67E234DB09600308392 /* Settings.storyboard */; };
+		A4D5757B234DDC070013B68D /* ViewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D5757A234DDC070013B68D /* ViewControllerHelper.swift */; };
 		DF14EB94234CFB0B0017D4E4 /* RightImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF14EB93234CFB0B0017D4E4 /* RightImageButton.swift */; };
 		DF14EB96234CFFA50017D4E4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF14EB95234CFFA50017D4E4 /* HomeViewController.swift */; };
 		DF2DC3F5234ADCE2009E52B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2DC3F4234ADCE2009E52B0 /* AppDelegate.swift */; };
@@ -29,6 +32,9 @@
 
 /* Begin PBXFileReference section */
 		A4203DAF234C88F8008C3632 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		A4CBA67B234DB07E00308392 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		A4CBA67E234DB09600308392 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		A4D5757A234DDC070013B68D /* ViewControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerHelper.swift; sourceTree = "<group>"; };
 		DF14EB93234CFB0B0017D4E4 /* RightImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightImageButton.swift; sourceTree = "<group>"; };
 		DF14EB95234CFFA50017D4E4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DF2DC3F1234ADCE2009E52B0 /* iAnime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iAnime.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +67,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A4CBA67A234DB05700308392 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A4CBA67E234DB09600308392 /* Settings.storyboard */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A4CBA67D234DB08800308392 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A4CBA67B234DB07E00308392 /* AboutViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		DF2DC3E8234ADCE2009E52B0 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +119,7 @@
 			children = (
 				DF2DC407234AE4DB009E52B0 /* UIUtils.swift */,
 				DF2DC40F234B429B009E52B0 /* InorderAnimation.swift */,
+				A4D5757A234DDC070013B68D /* ViewControllerHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -104,6 +127,7 @@
 		DF2DC409234AE514009E52B0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A4CBA67D234DB08800308392 /* Settings */,
 				DF14EB95234CFFA50017D4E4 /* HomeViewController.swift */,
 				DF2DC3F6234ADCE2009E52B0 /* WelcomeViewController.swift */,
 				DF2DC415234B591A009E52B0 /* FragmentViewContainer.swift */,
@@ -128,6 +152,7 @@
 		DF2DC40D234AEB5D009E52B0 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				A4CBA67A234DB05700308392 /* Settings */,
 				DF2DC3F8234ADCE2009E52B0 /* Welcome.storyboard */,
 				DF2DC3FD234ADCE3009E52B0 /* LaunchScreen.storyboard */,
 				E60692E0234B7EE50012E534 /* Index.storyboard */,
@@ -205,6 +230,7 @@
 				DF2DC3FC234ADCE3009E52B0 /* Assets.xcassets in Resources */,
 				DF2DC3FA234ADCE2009E52B0 /* Welcome.storyboard in Resources */,
 				E60692E1234B7EE50012E534 /* Index.storyboard in Resources */,
+				A4CBA67F234DB09600308392 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +244,8 @@
 				DF2DC418234B5DE6009E52B0 /* LoginViewController.swift in Sources */,
 				DF2DC416234B591A009E52B0 /* FragmentViewContainer.swift in Sources */,
 				E60692E3234B9F4F0012E534 /* IndexViewController.swift in Sources */,
+				A4CBA67C234DB07E00308392 /* AboutViewController.swift in Sources */,
+				A4D5757B234DDC070013B68D /* ViewControllerHelper.swift in Sources */,
 				A4203DB0234C88F8008C3632 /* GridView.swift in Sources */,
 				E6828ADA234BA20800BAFB31 /* Illustration.swift in Sources */,
 				DF14EB96234CFFA50017D4E4 /* HomeViewController.swift in Sources */,
