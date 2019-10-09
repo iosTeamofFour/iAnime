@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A4203DB0234C88F8008C3632 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203DAF234C88F8008C3632 /* GridView.swift */; };
+		A4683DF2234E02E800D50D04 /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DF1234E02E800D50D04 /* DiscoveryViewController.swift */; };
+		A4683DF8234E0C1700D50D04 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DF7234E0C1700D50D04 /* RankingViewController.swift */; };
+		A4683DFB234E0D9300D50D04 /* CollapsedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DFA234E0D9300D50D04 /* CollapsedViewController.swift */; };
+		A4683DFD234E0DA200D50D04 /* CollapsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DFC234E0DA200D50D04 /* CollapsedView.swift */; };
 		A4CBA67C234DB07E00308392 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBA67B234DB07E00308392 /* AboutViewController.swift */; };
 		A4CBA67F234DB09600308392 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4CBA67E234DB09600308392 /* Settings.storyboard */; };
 		A4D5757B234DDC070013B68D /* ViewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D5757A234DDC070013B68D /* ViewControllerHelper.swift */; };
@@ -32,6 +36,10 @@
 
 /* Begin PBXFileReference section */
 		A4203DAF234C88F8008C3632 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		A4683DF1234E02E800D50D04 /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
+		A4683DF7234E0C1700D50D04 /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
+		A4683DFA234E0D9300D50D04 /* CollapsedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedViewController.swift; sourceTree = "<group>"; };
+		A4683DFC234E0DA200D50D04 /* CollapsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedView.swift; sourceTree = "<group>"; };
 		A4CBA67B234DB07E00308392 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		A4CBA67E234DB09600308392 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		A4D5757A234DDC070013B68D /* ViewControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerHelper.swift; sourceTree = "<group>"; };
@@ -67,6 +75,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A4683DF3234E02F300D50D04 /* Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				A4683DF1234E02E800D50D04 /* DiscoveryViewController.swift */,
+				A4683DF7234E0C1700D50D04 /* RankingViewController.swift */,
+			);
+			path = Discovery;
+			sourceTree = "<group>";
+		};
+		A4683DF4234E02FD00D50D04 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DF14EB95234CFFA50017D4E4 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A4683DF5234E030600D50D04 /* Index */ = {
+			isa = PBXGroup;
+			children = (
+				E60692E2234B9F4F0012E534 /* IndexViewController.swift */,
+			);
+			path = Index;
+			sourceTree = "<group>";
+		};
+		A4683DF6234E030E00D50D04 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				DF2DC3F6234ADCE2009E52B0 /* WelcomeViewController.swift */,
+				DF2DC417234B5DE6009E52B0 /* LoginViewController.swift */,
+				DF2DC419234B5DED009E52B0 /* RegisterViewController.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		A4683DF9234E0D8300D50D04 /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+				A4683DFA234E0D9300D50D04 /* CollapsedViewController.swift */,
+			);
+			path = Ranking;
+			sourceTree = "<group>";
+		};
 		A4CBA67A234DB05700308392 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,13 +178,13 @@
 		DF2DC409234AE514009E52B0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A4683DF9234E0D8300D50D04 /* Ranking */,
+				A4683DF6234E030E00D50D04 /* Welcome */,
+				A4683DF5234E030600D50D04 /* Index */,
+				A4683DF4234E02FD00D50D04 /* Home */,
+				A4683DF3234E02F300D50D04 /* Discovery */,
 				A4CBA67D234DB08800308392 /* Settings */,
-				DF14EB95234CFFA50017D4E4 /* HomeViewController.swift */,
-				DF2DC3F6234ADCE2009E52B0 /* WelcomeViewController.swift */,
 				DF2DC415234B591A009E52B0 /* FragmentViewContainer.swift */,
-				DF2DC417234B5DE6009E52B0 /* LoginViewController.swift */,
-				DF2DC419234B5DED009E52B0 /* RegisterViewController.swift */,
-				E60692E2234B9F4F0012E534 /* IndexViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -145,6 +196,7 @@
 				DF2DC40B234AE69F009E52B0 /* ScrollStackContainerView.swift */,
 				E6828ADB234BA29A00BAFB31 /* IllustrationItemView.swift */,
 				DF14EB93234CFB0B0017D4E4 /* RightImageButton.swift */,
+				A4683DFC234E0DA200D50D04 /* CollapsedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -245,9 +297,11 @@
 				DF2DC416234B591A009E52B0 /* FragmentViewContainer.swift in Sources */,
 				E60692E3234B9F4F0012E534 /* IndexViewController.swift in Sources */,
 				A4CBA67C234DB07E00308392 /* AboutViewController.swift in Sources */,
+				A4683DF2234E02E800D50D04 /* DiscoveryViewController.swift in Sources */,
 				A4D5757B234DDC070013B68D /* ViewControllerHelper.swift in Sources */,
 				A4203DB0234C88F8008C3632 /* GridView.swift in Sources */,
 				E6828ADA234BA20800BAFB31 /* Illustration.swift in Sources */,
+				A4683DFD234E0DA200D50D04 /* CollapsedView.swift in Sources */,
 				DF14EB96234CFFA50017D4E4 /* HomeViewController.swift in Sources */,
 				DF2DC40C234AE69F009E52B0 /* ScrollStackContainerView.swift in Sources */,
 				DF2DC41A234B5DED009E52B0 /* RegisterViewController.swift in Sources */,
@@ -257,6 +311,8 @@
 				E6828ADC234BA29A00BAFB31 /* IllustrationItemView.swift in Sources */,
 				DF2DC3F5234ADCE2009E52B0 /* AppDelegate.swift in Sources */,
 				DF14EB94234CFB0B0017D4E4 /* RightImageButton.swift in Sources */,
+				A4683DFB234E0D9300D50D04 /* CollapsedViewController.swift in Sources */,
+				A4683DF8234E0C1700D50D04 /* RankingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

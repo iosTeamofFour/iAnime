@@ -212,7 +212,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBE-YE-aWL" userLabel="login">
                                         <rect key="frame" x="107" y="452" width="200" height="200"/>
-                                        <state key="normal" image="Image"/>
+                                        <state key="normal" image="arrowWhite"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vm3-kd-YHD">
                                         <rect key="frame" x="176" y="722" width="62" height="30"/>
@@ -305,7 +305,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Image" width="200" height="200"/>
         <image name="WelcomeLogo0" width="600" height="300"/>
+        <image name="arrowWhite" width="200" height="200"/>
     </resources>
 </document>

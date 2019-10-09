@@ -32,18 +32,159 @@
         <!--Discovery-->
         <scene sceneID="lNr-rV-eWf">
             <objects>
-                <viewController id="Zm5-CF-6hs" userLabel="Discovery" sceneMemberID="viewController">
+                <viewController id="Zm5-CF-6hs" userLabel="Discovery" customClass="DiscoveryViewController" customModule="iAnime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rpp-6C-sOW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发现" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEm-a6-7lC">
+                                <rect key="frame" x="30" y="50" width="73" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gWg-rk-0wV">
+                                <rect key="frame" x="48" y="109" width="318" height="29"/>
+                                <segments>
+                                    <segment title="推荐"/>
+                                    <segment title="排行"/>
+                                    <segment title="检索"/>
+                                </segments>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Xx-XC-Rk0" customClass="FragmentViewContainer" customModule="iAnime" customModuleProvider="target">
+                                <rect key="frame" x="16" y="153" width="382" height="534"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pEm-a6-7lC" firstAttribute="top" secondItem="Rcy-Z2-6sl" secondAttribute="top" constant="30" id="4pv-Hm-mk0"/>
+                            <constraint firstItem="Rcy-Z2-6sl" firstAttribute="trailing" secondItem="0Xx-XC-Rk0" secondAttribute="trailing" constant="16" id="Fzp-cL-EEL"/>
+                            <constraint firstItem="Rcy-Z2-6sl" firstAttribute="trailing" secondItem="gWg-rk-0wV" secondAttribute="trailing" constant="48" id="H4E-Qf-Zqh"/>
+                            <constraint firstItem="0Xx-XC-Rk0" firstAttribute="leading" secondItem="Rcy-Z2-6sl" secondAttribute="leading" constant="16" id="J4K-bl-qTz"/>
+                            <constraint firstItem="pEm-a6-7lC" firstAttribute="leading" secondItem="Rcy-Z2-6sl" secondAttribute="leading" constant="30" id="M84-5W-nEQ"/>
+                            <constraint firstItem="gWg-rk-0wV" firstAttribute="leading" secondItem="Rcy-Z2-6sl" secondAttribute="leading" constant="48" id="MsE-l6-xMp"/>
+                            <constraint firstItem="gWg-rk-0wV" firstAttribute="top" secondItem="pEm-a6-7lC" secondAttribute="bottom" constant="16" id="WiW-4c-3i4"/>
+                            <constraint firstItem="Rcy-Z2-6sl" firstAttribute="bottom" secondItem="0Xx-XC-Rk0" secondAttribute="bottom" id="buQ-iL-vrK"/>
+                            <constraint firstItem="0Xx-XC-Rk0" firstAttribute="top" secondItem="gWg-rk-0wV" secondAttribute="bottom" constant="16" id="ipx-xl-rjA"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Rcy-Z2-6sl"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="发现" id="i25-gb-6dz"/>
+                    <connections>
+                        <outlet property="fragments" destination="0Xx-XC-Rk0" id="JKg-Rf-e3b"/>
+                        <outlet property="segments" destination="gWg-rk-0wV" id="Osn-a2-jeO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oOK-sf-Ebx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1243" y="-85"/>
+            <point key="canvasLocation" x="1122" y="-64"/>
+        </scene>
+        <!--排行-->
+        <scene sceneID="M3C-rM-MGf">
+            <objects>
+                <viewController storyboardIdentifier="Ranking" title="排行" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VJU-nW-d9N" customClass="RankingViewController" customModule="iAnime" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DTd-vM-j9y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YHZ-kD-fMP">
+                                <rect key="frame" x="16" y="28" width="227" height="54"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最受欢迎的作品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ntf-sT-c75">
+                                        <rect key="frame" x="8" y="12.666666666666664" width="171" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Eu-hI-Rft">
+                                        <rect key="frame" x="183" y="16" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="22" id="GU1-y2-M8q"/>
+                                            <constraint firstAttribute="height" constant="22" id="aBg-en-7HN"/>
+                                        </constraints>
+                                        <state key="normal" image="ArrowDown"/>
+                                        <connections>
+                                            <action selector="ExpandContent:" destination="VJU-nW-d9N" eventType="touchUpInside" id="T3N-qW-ayO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="7Eu-hI-Rft" firstAttribute="centerY" secondItem="Ntf-sT-c75" secondAttribute="centerY" id="4fj-S7-gKR"/>
+                                    <constraint firstItem="Ntf-sT-c75" firstAttribute="centerY" secondItem="YHZ-kD-fMP" secondAttribute="centerY" id="C9h-LW-IUa"/>
+                                    <constraint firstItem="Ntf-sT-c75" firstAttribute="leading" secondItem="YHZ-kD-fMP" secondAttribute="leading" constant="8" id="VmU-aX-0HT"/>
+                                    <constraint firstAttribute="height" constant="54" id="ZcX-xY-vo8"/>
+                                    <constraint firstItem="7Eu-hI-Rft" firstAttribute="leading" secondItem="Ntf-sT-c75" secondAttribute="trailing" constant="4" id="d1d-SH-qC9"/>
+                                    <constraint firstAttribute="width" constant="227" id="rfM-eS-gpY"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YHZ-kD-fMP" firstAttribute="leading" secondItem="x1b-bZ-psz" secondAttribute="leading" constant="16" id="CEB-mA-IKt"/>
+                            <constraint firstItem="YHZ-kD-fMP" firstAttribute="top" secondItem="x1b-bZ-psz" secondAttribute="top" constant="8" id="KpL-Xa-K3a"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="x1b-bZ-psz"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3hb-cK-sDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2147.826086956522" y="58.695652173913047"/>
+        </scene>
+        <!--检索-->
+        <scene sceneID="yoB-v9-0NK">
+            <objects>
+                <viewController storyboardIdentifier="Search" title="检索" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1ok-7v-83V" customClass="FragmentViewController" customModule="iAnime" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lhs-wC-45y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这里按道理是搜索界面" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJz-bU-ome">
+                                <rect key="frame" x="80" y="353" width="254" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jJz-bU-ome" firstAttribute="centerY" secondItem="lhs-wC-45y" secondAttribute="centerY" id="XrI-nL-pPT"/>
+                            <constraint firstItem="jJz-bU-ome" firstAttribute="centerX" secondItem="lhs-wC-45y" secondAttribute="centerX" id="eo3-ZW-QMS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8Xv-1p-R7G"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lhW-Pb-OS8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2159" y="788"/>
+        </scene>
+        <!--推荐-->
+        <scene sceneID="r4J-oe-Pu4">
+            <objects>
+                <viewController storyboardIdentifier="Recommendation" title="推荐" useStoryboardIdentifierAsRestorationIdentifier="YES" id="v6s-jT-n5P" customClass="FragmentViewController" customModule="iAnime" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ULG-Bp-f6f">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="都不知道推荐些什么好" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3x-zI-DZD">
+                                <rect key="frame" x="75.333333333333343" y="352.33333333333331" width="263.66666666666663" height="31.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="I3x-zI-DZD" firstAttribute="centerX" secondItem="ULG-Bp-f6f" secondAttribute="centerX" id="cR1-D8-1n5"/>
+                            <constraint firstItem="I3x-zI-DZD" firstAttribute="centerY" secondItem="ULG-Bp-f6f" secondAttribute="centerY" id="wEW-za-1wv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="h6G-yl-0lK"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sum-fN-hE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2148" y="-612"/>
         </scene>
         <!--个人中心-->
         <scene sceneID="iyy-AY-JWt">
@@ -348,6 +489,7 @@
     </scenes>
     <resources>
         <image name="Add" width="32" height="32"/>
+        <image name="ArrowDown" width="64" height="64"/>
         <image name="Left-2" width="240" height="407.760009765625"/>
         <image name="Sample Avatar" width="700" height="700"/>
         <image name="arrowblack" width="64" height="64"/>

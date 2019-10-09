@@ -18,22 +18,27 @@ public extension UIViewController {
     public func ToggleVisibleForTabBarItem(_ visible : Bool) {
         self.tabBarController?.tabBar.isHidden = !visible
     }
-    public func GoToExternalStoryboardWithInitialVC(_ storyboardIdentifier : String, _ backKey : String) -> UIViewController? {
+    public func GoToExternalStoryboardWithInitialVC(_ storyboardIdentifier : String, _ backKey : String?) -> UIViewController? {
         let next = UIStoryboard(name: storyboardIdentifier, bundle: nil)
         let vc = next.instantiateInitialViewController()
-        if let _vc = vc {
-            navigationController?.pushViewController(_vc, animated: true)
-            _vc.navigationController?.navigationBar.topItem?.backBarButtonItem?.title = backKey
-            return _vc
+        guard let _vc = vc else {
+            print("View Controller with identifier \(storyboardIdentifier) not found!")
+            return nil
         }
-        return nil
+        navigationController?.pushViewController(_vc, animated: true)
+        if let _backKey = backKey {
+            _vc.navigationController?.navigationBar.topItem?.backBarButtonItem =  UIBarButtonItem(title: _backKey, style: .plain , target: nil, action: nil)
+        }
+        return vc
     }
     
-    public func GoToExternalStoryboardWithVCSpecified(_ storyboardIdentifier : String, vcIdentifier : String, _ backKey : String) -> UIViewController {
+    public func GoToExternalStoryboardWithVCSpecified(_ storyboardIdentifier : String, vcIdentifier : String, _ backKey : String?) -> UIViewController {
         let next = UIStoryboard(name: storyboardIdentifier, bundle: nil)
         let vc = next.instantiateViewController(withIdentifier: vcIdentifier)
         navigationController?.pushViewController(vc, animated: true)
-        vc.navigationController?.navigationBar.topItem?.backBarButtonItem?.title = backKey
+        if let _backKey = backKey {
+            vc.navigationController?.navigationBar.topItem?.backBarButtonItem =  UIBarButtonItem(title: _backKey, style: .plain , target: nil, action: nil)
+        }
         return vc
     }
 }

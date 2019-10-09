@@ -66,6 +66,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func GoToSettings(_ sender: RightImageButton) {
-        GoToExternalStoryboardWithInitialVC("Settings", "返回")?.ToggleVisibleForTabBarItem(false)
+        GoToExternalStoryboardWithInitialVC("Settings",nil)?.ToggleVisibleForTabBarItem(false)
     }
 }

@@ -43,6 +43,8 @@ class FragmentViewContainer: UIView {
         CurrentPresentView?.removeFromSuperview()
         if fragments.InRange(index) {
             let vcView = fragments[index].view!
+            // Remember that views generated from code must disable ↓ !
+            vcView.translatesAutoresizingMaskIntoConstraints = false
             if setAlphaToZero {
                 vcView.alpha = 0
             }
