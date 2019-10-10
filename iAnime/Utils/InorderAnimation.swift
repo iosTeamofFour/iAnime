@@ -38,6 +38,9 @@ class InorderAnimation {
         }
         AnimationList.remove(at: index)
     }
+    func RemoveAllAnimation() {
+        AnimationList.removeAll()
+    }
     
     func Begin() {
         Current = -1

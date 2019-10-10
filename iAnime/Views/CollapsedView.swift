@@ -60,6 +60,7 @@ class CollapsedView: UIView {
         print("Begin to layout collapse header.")
         label = UILabel()
         button = UIButton(type: .custom)
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         button.translatesAutoresizingMaskIntoConstraints = false
         
@@ -69,6 +70,7 @@ class CollapsedView: UIView {
         button.setImage(img, for: .normal)
         addSubview(label)
         addSubview(button)
+        
         // 摆正Label的位置，约束当前Label距离外层View左边和上面的间隔
         label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: labelPaddingLeft).isActive = true
         label.topAnchor.constraint(equalTo: topAnchor, constant: labelPaddingTop).isActive = true
