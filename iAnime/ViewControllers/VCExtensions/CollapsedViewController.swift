@@ -32,13 +32,12 @@ class CollapsedViewController: FragmentViewController {
     
     func AddContent(_ content : CollapsedContent) {
         
-        LayoutContent(content, Contents.count == 0)
-        
+        LayoutContent(content)
         Contents.append(content)
     }
     
-    private func LayoutContent(_ content : CollapsedContent, _ isAtTop : Bool) {
-        
+    
+    private func AddContentToContainer(_ content : CollapsedContent) {
         let header = content.CollapsedViewHeader
         let ctn = content.CollapsedViewContent
         
@@ -52,11 +51,28 @@ class CollapsedViewController: FragmentViewController {
         view.addSubview(ctnView)
         header.layoutSubviews()
         
-        LayoutItemInCollapsedMode(isAtTop, content)
+    }
+    
+    private func RemoveContentFromContainer(_ item : CollapsedContent) {
+        // 将当前展示的View移除管理容器
+        item.CollapsedViewHeader.removeFromSuperview()
+        item.CollapsedViewContent.view.removeFromSuperview()
     }
     
     
-    private func LayoutItemInCollapsedMode(_ isAtTop : Bool, _ content : CollapsedContent) {
+    private func LayoutContent(_ content : CollapsedContent) {
+        
+        AddContentToContainer(content)
+        LayoutItemInCollapsedMode(content, Contents.last)
+    }
+
+    private func LayoutContent(_ content : CollapsedContent, lastContent : CollapsedContent?) {
+        
+        AddContentToContainer(content)
+        LayoutItemInCollapsedMode(content, lastContent)
+    }
+    
+    private func LayoutItemInCollapsedMode(_ content : CollapsedContent, _ lastContent : CollapsedContent?) {
         
         let header = content.CollapsedViewHeader
         let ctn = content.CollapsedViewContent
@@ -65,12 +81,12 @@ class CollapsedViewController: FragmentViewController {
         var consts = CollapsedContentConstraints(HeaderConstraints: [], ContentConstraints: [])
         
         // 判断当前加载的是不是第一个
-        if isAtTop {
+        if lastContent == nil {
             // 如果是, 那么只能与Superview进行约束
             consts.HeaderConstraints.append(header.topAnchor.constraint(equalTo: view.topAnchor, constant: ContentSpacing).Activate())
         }
         else {
-            consts.HeaderConstraints.append(header.topAnchor.constraint(equalTo: Contents.last!.CollapsedViewContent.view.bottomAnchor, constant: ContentSpacing).Activate())
+            consts.HeaderConstraints.append(header.topAnchor.constraint(equalTo: lastContent!.CollapsedViewContent.view.bottomAnchor, constant: ContentSpacing).Activate())
         }
         consts.HeaderConstraints.append(header.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ContentHeaderPaddingLeft).Activate())
         
@@ -86,6 +102,8 @@ class CollapsedViewController: FragmentViewController {
         ContentsConstraints.append(consts)
         
         header.OnExpandedToggled = HandleComponentToggleExpand
+        header.layoutIfNeeded()
+        ctnView.layoutIfNeeded()
         view.layoutIfNeeded()
     }
     
@@ -106,30 +124,34 @@ class CollapsedViewController: FragmentViewController {
     }
     
     private func RemoveAllConstraintsForManagedItem(_ itemIndex: Int) {
-        let item = Contents[itemIndex]
+        
         let itemConstraints = ContentsConstraints[itemIndex]
+        RemoveAllConstraintsForManagedItem(itemIndex, itemConstraints)
+        
+    }
+    
+    private func RemoveAllConstraintsForManagedItem(_ itemIndex: Int, _ constraints : CollapsedContentConstraints) {
+        let item = Contents[itemIndex]
+        let itemConstraints = constraints
         item.CollapsedViewHeader.removeConstraints(itemConstraints.HeaderConstraints)
         item.CollapsedViewContent.view.removeConstraints(itemConstraints.ContentConstraints)
         
     }
     
-    
+
     private func RecoverFromExpanded() {
         
         //去除当前正在展示的Item的全部约束。
-        let item = Contents[CurrentExpandedItemIndex]
-        let itemConstraints = CurrentExpandItemConstraints
-        item.CollapsedViewHeader.removeConstraints(itemConstraints.HeaderConstraints)
-        item.CollapsedViewContent.view.removeConstraints(itemConstraints.ContentConstraints)
-        item.CollapsedViewHeader.removeFromSuperview()
-        item.CollapsedViewContent.view.removeFromSuperview()
+        
+        RemoveAllConstraintsForManagedItem(CurrentExpandedItemIndex, CurrentExpandItemConstraints)
+        RemoveContentFromContainer(Contents[CurrentExpandedItemIndex])
         
         //添加回原来的约束。
         for i in 0..<Contents.count {
             
             // 修复显示
             let content = Contents[i]
-            LayoutContent(content, i == 0)
+            LayoutContent(content,lastContent: i == 0 ? nil : Contents[i-1])
         }
         
         //清除掉上次保存的展示约束。
