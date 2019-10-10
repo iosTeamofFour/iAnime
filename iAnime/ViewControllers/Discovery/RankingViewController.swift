@@ -9,9 +9,25 @@
 import UIKit
 
 class RankingViewController: CollapsedViewController {
+    
+    @IBOutlet weak var scroll: UIScrollView!
+ 
+    @IBOutlet weak var container: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         LoadFakeData()
+    }
+    
+    override var rootView: UIView {
+        return container
+    }
+    
+    override func AfterContainerItemChanged() {
+        container.layoutIfNeeded()
+        let size = container.SubviewsContentSize()
+        print(size.size)
+        scroll.contentSize = size.size
     }
     
     private func LoadFakeData() {
@@ -25,9 +41,15 @@ class RankingViewController: CollapsedViewController {
             let content2Controller = storyboard.instantiateViewController(withIdentifier: "MostFavoriteDraft")
             let content2 = CollapsedContent(CollapsedViewHeader: content2View, CollapsedViewContent: content2Controller)
             
+            // MostFork
+            
+            let content3View = CollapsedView("最受欢迎的创意")
+            let content3Controller = storyboard.instantiateViewController(withIdentifier: "MostFork")
+            let content3 = CollapsedContent(CollapsedViewHeader: content3View, CollapsedViewContent: content3Controller)
             
             AddContent(content1)
             AddContent(content2)
+            AddContent(content3)
         }
     }
 }

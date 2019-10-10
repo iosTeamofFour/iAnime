@@ -34,10 +34,21 @@ class CollapsedViewController: FragmentViewController {
         // Do any additional setup after loading the view.
     }
     
+    var rootView : UIView {
+        get {
+            print("当前获取的是此默认滚动控制器的根view, 如非预期请确认是否正确overridev此变量.")
+            return view
+        }
+    }
+    
+    func AfterContainerItemChanged()  {
+        print("当前回调的是默认滚动控制器的AfterContainerItemChanged，此方法什么都没实现，如果需要手动计算滚动区域高度，请确认师傅正确override此函数.")
+    }
+    
     func AddContent(_ content : CollapsedContent) {
-        
         LayoutContent(content)
         Contents.append(content)
+        
     }
     
     
@@ -49,10 +60,11 @@ class CollapsedViewController: FragmentViewController {
         ctnView.alpha = 1
         header.translatesAutoresizingMaskIntoConstraints = false
         ctnView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(header)
-        view.addSubview(ctnView)
+        rootView.addSubview(header)
+        rootView.addSubview(ctnView)
         header.layoutSubviews()
-        
+        ctnView.layoutIfNeeded()
+        AfterContainerItemChanged()
     }
     
     private func RemoveContentFromContainer(_ item : CollapsedContent) {
@@ -85,18 +97,18 @@ class CollapsedViewController: FragmentViewController {
         // 判断当前加载的是不是第一个
         if lastContent == nil {
             // 如果是, 那么只能与Superview进行约束
-            consts.HeaderConstraints.append(header.topAnchor.constraint(equalTo: view.topAnchor, constant: ContentSpacing).Activate())
+            consts.HeaderConstraints.append(header.topAnchor.constraint(equalTo: rootView.topAnchor, constant: ContentSpacing).Activate())
         }
         else {
             consts.HeaderConstraints.append(header.topAnchor.constraint(equalTo: lastContent!.CollapsedViewContent.view.bottomAnchor, constant: ContentSpacing).Activate())
         }
-        consts.HeaderConstraints.append(header.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ContentHeaderPaddingLeft).Activate())
+        consts.HeaderConstraints.append(header.leadingAnchor.constraint(equalTo: rootView.leadingAnchor, constant: ContentHeaderPaddingLeft).Activate())
         
         consts.ContentConstraints.append(ctnView.topAnchor.constraint(equalTo: header.bottomAnchor, constant: ContentAndHeaderSpacing).Activate())
         
-        consts.ContentConstraints.append(ctnView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ContentDetailPaddingLeading).Activate())
+        consts.ContentConstraints.append(ctnView.leadingAnchor.constraint(equalTo: rootView.leadingAnchor, constant: ContentDetailPaddingLeading).Activate())
         
-        consts.ContentConstraints.append(ctnView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ContentDetailPaddingTrailing).Activate())
+        consts.ContentConstraints.append(ctnView.trailingAnchor.constraint(equalTo: rootView.trailingAnchor, constant: -ContentDetailPaddingTrailing).Activate())
         
         consts.ContentConstraints.append(ctnView.heightAnchor.constraint(equalToConstant: ContentHeightInCollapsedMode).Activate())
         
@@ -107,6 +119,7 @@ class CollapsedViewController: FragmentViewController {
         
         header.layoutIfNeeded()
         ctnView.layoutIfNeeded()
+        rootView.layoutIfNeeded()
         view.layoutIfNeeded()
     }
     
@@ -121,6 +134,7 @@ class CollapsedViewController: FragmentViewController {
         currConsts.ContentConstraints.append(ctnView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ContentDetailPaddingLeading).Activate())
         currConsts.ContentConstraints.append(ctnView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ContentDetailPaddingTrailing).Activate())
         currConsts.ContentConstraints.append(ctnView.bottomAnchor.constraint(equalTo: view.bottomAnchor).Activate())
+        AfterContainerItemChanged()
     }
     
     private func RemoveAllConstraintsForManagedItem(_ itemIndex: Int) {
@@ -180,7 +194,6 @@ class CollapsedViewController: FragmentViewController {
     }
     
     private func HandleComponentToggleExpand(_ isExpand : Bool, _ collapsedView : CollapsedView) {
-        print("当前控件 \(collapsedView) 展开状况 \(isExpand)")
         if isExpand {
             let index = IndexOfContents(collapsedView)
             
@@ -228,8 +241,6 @@ class CollapsedViewController: FragmentViewController {
         else {
             RecoverFromExpanded()
         }
-        
-        // 记录当前正被展开的Item index
         
         view.layoutIfNeeded()
     }

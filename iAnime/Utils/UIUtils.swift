@@ -60,6 +60,10 @@ public extension UIView {
             bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
     }
+    
+    public func SubviewsContentSize() -> CGRect {
+        return subviews.map { v in v.frame }.reduce(CGRect.zero, { a, b in a.union(b)} )
+    }
 }
 
 public extension UIStackView {
@@ -77,6 +81,10 @@ public extension UIStackView {
         view.translatesAutoresizingMaskIntoConstraints = false
         self.insertSubview(view, at: 0)
         view.pin(to: self)
+    }
+    
+    public func StackViewSubviewsContentSize() -> CGRect {
+        return arrangedSubviews.map { v in v.frame }.reduce(CGRect.zero, { a, b in a.union(b)} )
     }
 }
 
