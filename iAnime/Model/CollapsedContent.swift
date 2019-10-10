@@ -14,3 +14,10 @@ struct CollapsedContent {
     var CollapsedViewHeader : CollapsedView
     var CollapsedViewContent : UIViewController
 }
+
+
+struct CollapsedContentConstraints {
+    var HeaderConstraints : [NSLayoutConstraint]
+    var ContentConstraints: [NSLayoutConstraint]
+}
+

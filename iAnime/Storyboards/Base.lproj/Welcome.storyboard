@@ -68,7 +68,7 @@
                     <connections>
                         <outlet property="LoginAndRegisterContainer" destination="oW9-Sm-vOV" id="nwc-M1-uaN"/>
                         <outlet property="dimBackgroundView" destination="B6V-gQ-gp1" id="wZ9-GR-1e8"/>
-                        <outlet property="iAnimeLogo" destination="7js-hq-GkY" id="Oim-RK-sLj"/>
+                        <outlet property="iAnimeLogo" destination="7js-hq-GkY" id="r6o-Kz-0OV"/>
                         <outlet property="stackViewsContainer" destination="Yhu-rj-jEQ" id="j2o-tO-IU9"/>
                     </connections>
                 </viewController>
@@ -211,11 +211,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBE-YE-aWL" userLabel="login">
-                                        <rect key="frame" x="107" y="452" width="200" height="200"/>
+                                        <rect key="frame" x="157" y="452" width="100" height="100"/>
                                         <state key="normal" image="arrowWhite"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vm3-kd-YHD">
-                                        <rect key="frame" x="176" y="722" width="62" height="30"/>
+                                        <rect key="frame" x="176" y="622" width="62" height="30"/>
                                         <state key="normal" title="访客使用">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -244,7 +244,7 @@
                                         <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kh4-Rt-WEc">
-                                        <rect key="frame" x="168.5" y="672" width="77" height="30"/>
+                                        <rect key="frame" x="168.5" y="572" width="77" height="30"/>
                                         <state key="normal" title="新用户注册">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -306,6 +306,6 @@
     </scenes>
     <resources>
         <image name="WelcomeLogo0" width="600" height="300"/>
-        <image name="arrowWhite" width="200" height="200"/>
+        <image name="arrowWhite" width="100" height="100"/>
     </resources>
 </document>

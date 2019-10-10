@@ -13,6 +13,7 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var stackViewsContainer: ScrollStackContainerView!
     private var stackViews : [UIStackView] = []
     @IBOutlet weak var dimBackgroundView: UIView!
+    
     @IBOutlet weak var iAnimeLogo: UIImageView!
     
     @IBOutlet weak var LoginAndRegisterContainer: FragmentViewContainer!

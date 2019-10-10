@@ -145,4 +145,9 @@ public extension CGImage {
     }
 }
 
-
+public extension NSLayoutConstraint {
+    public func Activate() -> NSLayoutConstraint {
+        self.isActive = true
+        return self
+    }
+}

@@ -22,7 +22,7 @@ class DiscoveryViewController: UIViewController {
     
     
     private func LoadFragmentsToContainer() {
-        if let storyboard = self.storyboard {
+        let storyboard = UIStoryboard(name: "Discovery", bundle: nil)
             let recommendation = storyboard.instantiateViewController(withIdentifier: "Recommendation") as! FragmentViewController // 推荐
             let ranking = storyboard.instantiateViewController(withIdentifier: "Ranking") as! FragmentViewController// 排行
             let search = storyboard.instantiateViewController(withIdentifier: "Search") as! FragmentViewController
@@ -32,7 +32,7 @@ class DiscoveryViewController: UIViewController {
             fragments.AddViewController(search)
             
             fragments.PresentNewViewController(0)
-        }
+        
     }
     
     @objc private func OnSegmentSelectedValueChanged(_ sender: UISegmentedControl) {

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--推荐-->
+        <scene sceneID="8kt-GL-AcM">
+            <objects>
+                <viewController storyboardIdentifier="Recommendation" title="推荐" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nLX-OA-goU" customClass="RecommendationViewController" customModule="iAnime" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SnY-N0-Lut">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="都不知道推荐什么好" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxp-fm-yFB">
+                                <rect key="frame" x="68.5" y="317.5" width="238" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Lxp-fm-yFB" firstAttribute="centerX" secondItem="SnY-N0-Lut" secondAttribute="centerX" id="cDY-Bu-2Ne"/>
+                            <constraint firstItem="Lxp-fm-yFB" firstAttribute="centerY" secondItem="SnY-N0-Lut" secondAttribute="centerY" id="dyO-r8-CWa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ydh-kX-rxm"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HLV-L8-5Px" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-505" y="-1394"/>
+        </scene>
+        <!--排行-->
+        <scene sceneID="IJZ-hx-MWK">
+            <objects>
+                <viewController storyboardIdentifier="Ranking" title="排行" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2Cm-gj-OB9" customClass="RankingViewController" customModule="iAnime" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F8D-58-pUe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="aYw-a2-8ys"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OZX-n0-MDu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="-1393"/>
+        </scene>
+        <!--检索-->
+        <scene sceneID="GOI-Me-WtI">
+            <objects>
+                <viewController storyboardIdentifier="Search" title="检索" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vWH-Cc-Jve" customClass="SearchViewController" customModule="iAnime" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TFZ-Xz-ORW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这里本来也应该是搜索框" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8JG-q9-EnJ">
+                                <rect key="frame" x="31" y="316.5" width="313" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8JG-q9-EnJ" firstAttribute="centerX" secondItem="TFZ-Xz-ORW" secondAttribute="centerX" id="C7J-fB-iNJ"/>
+                            <constraint firstItem="8JG-q9-EnJ" firstAttribute="centerY" secondItem="TFZ-Xz-ORW" secondAttribute="centerY" id="GV0-5c-CFU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xGL-ak-NsJ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ggj-g2-Dl3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1114" y="-1395"/>
+        </scene>
+        <!--最受欢迎的上色-->
+        <scene sceneID="mAv-5Y-N0q">
+            <objects>
+                <viewController storyboardIdentifier="MostFavoriteIllustration" title="最受欢迎的上色" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3yD-lP-YVo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mqo-u9-F0o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我是最受欢迎的上色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H28-xy-KlA">
+                                <rect key="frame" x="95.5" y="321.5" width="184" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.88274056439422188" green="1" blue="0.44727456704117186" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="H28-xy-KlA" firstAttribute="centerY" secondItem="mqo-u9-F0o" secondAttribute="centerY" id="NT3-lJ-GRF"/>
+                            <constraint firstItem="H28-xy-KlA" firstAttribute="centerX" secondItem="mqo-u9-F0o" secondAttribute="centerX" id="gjN-4w-XV1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gac-5I-leF"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ez6-Ec-K3W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-244" y="-495"/>
+        </scene>
+        <!--最受欢迎的线稿-->
+        <scene sceneID="Wh6-Xo-ttr">
+            <objects>
+                <viewController storyboardIdentifier="MostFavoriteDraft" title="最受欢迎的线稿" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nKh-8O-Pd7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tMd-2E-Ekk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我是最受欢迎的线稿" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qq0-u5-fnF">
+                                <rect key="frame" x="95.5" y="321.5" width="184" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.74644691032805199" blue="0.85152693060892193" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Qq0-u5-fnF" firstAttribute="centerY" secondItem="tMd-2E-Ekk" secondAttribute="centerY" id="Qzg-93-36b"/>
+                            <constraint firstItem="Qq0-u5-fnF" firstAttribute="centerX" secondItem="tMd-2E-Ekk" secondAttribute="centerX" id="VDq-93-fiB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1UR-O9-kzr"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c2p-fJ-OGD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="642" y="-495"/>
+        </scene>
+        <!--最受欢迎的创意-->
+        <scene sceneID="JC3-BA-rPm">
+            <objects>
+                <viewController storyboardIdentifier="MostFork" title="最受欢迎的创意" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vGn-rZ-Ie9" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OmN-gP-F8r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我是最多Fork" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mjx-7z-Gdm">
+                                <rect key="frame" x="127.5" y="321.5" width="120" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Mjx-7z-Gdm" firstAttribute="centerY" secondItem="OmN-gP-F8r" secondAttribute="centerY" id="rWi-nU-cHl"/>
+                            <constraint firstItem="Mjx-7z-Gdm" firstAttribute="centerX" secondItem="OmN-gP-F8r" secondAttribute="centerX" id="vCb-Fw-crb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZTk-Nk-SEG"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tJQ-b8-fiu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1450" y="-495"/>
+        </scene>
+    </scenes>
+</document>

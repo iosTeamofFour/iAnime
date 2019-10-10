@@ -11,7 +11,7 @@ import UIKit
 class CollapsedView: UIView {
 
     @IBInspectable var arrowResourceName : String = "ArrowDown"
-    @IBInspectable var labelPaddingLeft : CGFloat = 8.0
+    @IBInspectable var labelPaddingLeft : CGFloat = 0
     @IBInspectable var labelPaddingTop : CGFloat = 4.0
     @IBInspectable var buttonPaddingLabelLeft : CGFloat = 4.0
     
@@ -22,12 +22,14 @@ class CollapsedView: UIView {
         didSet {
             if oldValue != IsExpanded {
                 ToggleExpandAndCollapsed()
+                OnExpandedToggled?(IsExpanded,self)
             }
         }
     }
     private(set) var label : UILabel!
     private(set) var button : UIButton!
     
+    var OnExpandedToggled : ((Bool, CollapsedView) -> Void)?
     
     
     convenience init(_ Name : String) {
