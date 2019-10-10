@@ -88,36 +88,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YHZ-kD-fMP">
-                                <rect key="frame" x="16" y="28" width="227" height="54"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最受欢迎的作品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ntf-sT-c75">
-                                        <rect key="frame" x="8" y="12.666666666666664" width="171" height="29"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Eu-hI-Rft">
-                                        <rect key="frame" x="183" y="16" width="22" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="22" id="GU1-y2-M8q"/>
-                                            <constraint firstAttribute="height" constant="22" id="aBg-en-7HN"/>
-                                        </constraints>
-                                        <state key="normal" image="ArrowDown"/>
-                                        <connections>
-                                            <action selector="ExpandContent:" destination="VJU-nW-d9N" eventType="touchUpInside" id="T3N-qW-ayO"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YHZ-kD-fMP" customClass="CollapsedView" customModule="iAnime" customModuleProvider="target">
+                                <rect key="frame" x="16" y="28" width="218" height="54"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="7Eu-hI-Rft" firstAttribute="centerY" secondItem="Ntf-sT-c75" secondAttribute="centerY" id="4fj-S7-gKR"/>
-                                    <constraint firstItem="Ntf-sT-c75" firstAttribute="centerY" secondItem="YHZ-kD-fMP" secondAttribute="centerY" id="C9h-LW-IUa"/>
-                                    <constraint firstItem="Ntf-sT-c75" firstAttribute="leading" secondItem="YHZ-kD-fMP" secondAttribute="leading" constant="8" id="VmU-aX-0HT"/>
-                                    <constraint firstAttribute="height" constant="54" id="ZcX-xY-vo8"/>
-                                    <constraint firstItem="7Eu-hI-Rft" firstAttribute="leading" secondItem="Ntf-sT-c75" secondAttribute="trailing" constant="4" id="d1d-SH-qC9"/>
-                                    <constraint firstAttribute="width" constant="227" id="rfM-eS-gpY"/>
+                                    <constraint firstAttribute="height" constant="54" placeholder="YES" id="ZcX-xY-vo8"/>
+                                    <constraint firstAttribute="width" constant="218" placeholder="YES" id="rfM-eS-gpY"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="arrowResourceName" value="ArrowDown"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="labelPaddingLeft">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="labelPaddingTop">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="buttonPaddingLabelLeft">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="ViewName" value="最受欢迎的作品"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="ButtonImageWidth">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -127,10 +120,24 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x1b-bZ-psz"/>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="ContentHeaderPaddingLeft">
+                            <real key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="ContentSpacing">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="ContentDetailPaddingLeading">
+                            <real key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="ContentDetailPaddingTrailing">
+                            <real key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hb-cK-sDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2147.826086956522" y="58.695652173913047"/>
+            <point key="canvasLocation" x="2148" y="104"/>
         </scene>
         <!--检索-->
         <scene sceneID="yoB-v9-0NK">
@@ -157,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lhW-Pb-OS8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2159" y="788"/>
+            <point key="canvasLocation" x="2148" y="754"/>
         </scene>
         <!--推荐-->
         <scene sceneID="r4J-oe-Pu4">
@@ -488,10 +495,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Add" width="32" height="32"/>
-        <image name="ArrowDown" width="64" height="64"/>
-        <image name="Left-2" width="240" height="407.760009765625"/>
+        <image name="Add" width="64" height="64"/>
+        <image name="Left-2" width="1000" height="1699"/>
         <image name="Sample Avatar" width="700" height="700"/>
-        <image name="arrowblack" width="64" height="64"/>
+        <image name="arrowblack" width="21" height="21"/>
     </resources>
 </document>

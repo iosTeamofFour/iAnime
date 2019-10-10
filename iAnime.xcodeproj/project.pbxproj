@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		A4203DB0234C88F8008C3632 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203DAF234C88F8008C3632 /* GridView.swift */; };
 		A4683DF2234E02E800D50D04 /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DF1234E02E800D50D04 /* DiscoveryViewController.swift */; };
-		A4683DF8234E0C1700D50D04 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DF7234E0C1700D50D04 /* RankingViewController.swift */; };
-		A4683DFB234E0D9300D50D04 /* CollapsedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DFA234E0D9300D50D04 /* CollapsedViewController.swift */; };
+		A4683DFB234E0D9300D50D04 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DFA234E0D9300D50D04 /* RankingViewController.swift */; };
 		A4683DFD234E0DA200D50D04 /* CollapsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DFC234E0DA200D50D04 /* CollapsedView.swift */; };
 		A4CBA67C234DB07E00308392 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBA67B234DB07E00308392 /* AboutViewController.swift */; };
 		A4CBA67F234DB09600308392 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4CBA67E234DB09600308392 /* Settings.storyboard */; };
@@ -28,6 +27,7 @@
 		DF2DC416234B591A009E52B0 /* FragmentViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2DC415234B591A009E52B0 /* FragmentViewContainer.swift */; };
 		DF2DC418234B5DE6009E52B0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2DC417234B5DE6009E52B0 /* LoginViewController.swift */; };
 		DF2DC41A234B5DED009E52B0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2DC419234B5DED009E52B0 /* RegisterViewController.swift */; };
+		DFA2C830234E2EDF00BFCB01 /* CollapsedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA2C82F234E2EDF00BFCB01 /* CollapsedContent.swift */; };
 		E60692E1234B7EE50012E534 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E60692E0234B7EE50012E534 /* Index.storyboard */; };
 		E60692E3234B9F4F0012E534 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60692E2234B9F4F0012E534 /* IndexViewController.swift */; };
 		E6828ADA234BA20800BAFB31 /* Illustration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6828AD9234BA20800BAFB31 /* Illustration.swift */; };
@@ -37,8 +37,7 @@
 /* Begin PBXFileReference section */
 		A4203DAF234C88F8008C3632 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		A4683DF1234E02E800D50D04 /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
-		A4683DF7234E0C1700D50D04 /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
-		A4683DFA234E0D9300D50D04 /* CollapsedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedViewController.swift; sourceTree = "<group>"; };
+		A4683DFA234E0D9300D50D04 /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		A4683DFC234E0DA200D50D04 /* CollapsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedView.swift; sourceTree = "<group>"; };
 		A4CBA67B234DB07E00308392 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		A4CBA67E234DB09600308392 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -58,6 +57,7 @@
 		DF2DC415234B591A009E52B0 /* FragmentViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FragmentViewContainer.swift; sourceTree = "<group>"; };
 		DF2DC417234B5DE6009E52B0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DF2DC419234B5DED009E52B0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		DFA2C82F234E2EDF00BFCB01 /* CollapsedContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedContent.swift; sourceTree = "<group>"; };
 		E60692E0234B7EE50012E534 /* Index.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Index.storyboard; sourceTree = "<group>"; };
 		E60692E2234B9F4F0012E534 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		E6828AD9234BA20800BAFB31 /* Illustration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Illustration.swift; sourceTree = "<group>"; };
@@ -79,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				A4683DF1234E02E800D50D04 /* DiscoveryViewController.swift */,
-				A4683DF7234E0C1700D50D04 /* RankingViewController.swift */,
 			);
 			path = Discovery;
 			sourceTree = "<group>";
@@ -113,7 +112,7 @@
 		A4683DF9234E0D8300D50D04 /* Ranking */ = {
 			isa = PBXGroup;
 			children = (
-				A4683DFA234E0D9300D50D04 /* CollapsedViewController.swift */,
+				A4683DFA234E0D9300D50D04 /* RankingViewController.swift */,
 			);
 			path = Ranking;
 			sourceTree = "<group>";
@@ -216,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				E6828AD9234BA20800BAFB31 /* Illustration.swift */,
+				DFA2C82F234E2EDF00BFCB01 /* CollapsedContent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -308,11 +308,11 @@
 				DF2DC408234AE4DB009E52B0 /* UIUtils.swift in Sources */,
 				DF2DC3F7234ADCE2009E52B0 /* WelcomeViewController.swift in Sources */,
 				DF2DC410234B429B009E52B0 /* InorderAnimation.swift in Sources */,
+				DFA2C830234E2EDF00BFCB01 /* CollapsedContent.swift in Sources */,
 				E6828ADC234BA29A00BAFB31 /* IllustrationItemView.swift in Sources */,
 				DF2DC3F5234ADCE2009E52B0 /* AppDelegate.swift in Sources */,
 				DF14EB94234CFB0B0017D4E4 /* RightImageButton.swift in Sources */,
-				A4683DFB234E0D9300D50D04 /* CollapsedViewController.swift in Sources */,
-				A4683DF8234E0C1700D50D04 /* RankingViewController.swift in Sources */,
+				A4683DFB234E0D9300D50D04 /* RankingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
