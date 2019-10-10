@@ -45,6 +45,9 @@
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gWg-rk-0wV">
                                 <rect key="frame" x="48" y="109" width="318" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="ZJ8-Ci-onB"/>
+                                </constraints>
                                 <segments>
                                     <segment title="推荐"/>
                                     <segment title="排行"/>
@@ -382,9 +385,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Add" width="64" height="64"/>
-        <image name="Left-2" width="1000" height="1699"/>
+        <image name="Add" width="32" height="32"/>
+        <image name="Left-2" width="240" height="407.760009765625"/>
         <image name="Sample Avatar" width="700" height="700"/>
-        <image name="arrowblack" width="21" height="21"/>
+        <image name="arrowblack" width="64" height="64"/>
     </resources>
 </document>

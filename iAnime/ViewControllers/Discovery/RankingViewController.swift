@@ -16,7 +16,7 @@ class RankingViewController: CollapsedViewController {
     
     private func LoadFakeData() {
         if let storyboard = self.storyboard {
-            let content1View = CollapsedView("最受欢迎的作品")
+            let content1View = CollapsedView("最受欢迎的上色")
             let content1Controller = storyboard.instantiateViewController(withIdentifier: "MostFavoriteIllustration")
             let content1 = CollapsedContent(CollapsedViewHeader: content1View, CollapsedViewContent: content1Controller)
             
