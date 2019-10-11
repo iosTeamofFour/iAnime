@@ -23,17 +23,18 @@ class RankingViewController: CollapsedViewController {
     override var rootView: UIView {
         return container
     }
-    override func AfterContainerItemChanged() {
-        container.layoutIfNeeded()
-        var size = container.SubviewsContentSize().size
-        size.height += 16
-        scroller.contentSize = size
-        scroller.layoutIfNeeded()
+    override func AfterContainerItemChanged(_ isExpanded : Bool) {
+        if !isExpanded {
+            scroller.setContentOffset(CGPoint(x: 0.0, y: parentScrollerOffset), animated: false)
+        }
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        AfterContainerItemChanged()
+        container.layoutIfNeeded()
+        var size = container.SubviewsContentSize().size
+        size.height += ContentSpacing
+        scroller.contentSize = size
     }
     private func LoadFakeData() {
         if let storyboard = self.storyboard {
