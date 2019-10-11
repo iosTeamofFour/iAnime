@@ -10,9 +10,10 @@ import UIKit
 
 class RankingViewController: CollapsedViewController {
     
-    @IBOutlet weak var scroll: UIScrollView!
- 
+    @IBOutlet weak var scroller: UIScrollView!
+    
     @IBOutlet weak var container: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,14 +23,18 @@ class RankingViewController: CollapsedViewController {
     override var rootView: UIView {
         return container
     }
-    
     override func AfterContainerItemChanged() {
         container.layoutIfNeeded()
-        let size = container.SubviewsContentSize()
-        print(size.size)
-        scroll.contentSize = size.size
+        var size = container.SubviewsContentSize().size
+        size.height += 16
+        scroller.contentSize = size
+        scroller.layoutIfNeeded()
     }
-    
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        AfterContainerItemChanged()
+    }
     private func LoadFakeData() {
         if let storyboard = self.storyboard {
             let content1View = CollapsedView("最受欢迎的上色")

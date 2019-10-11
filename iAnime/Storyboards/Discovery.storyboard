@@ -41,40 +41,41 @@
         <scene sceneID="IJZ-hx-MWK">
             <objects>
                 <viewController storyboardIdentifier="Ranking" title="排行" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2Cm-gj-OB9" customClass="RankingViewController" customModule="iAnime" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" userInteractionEnabled="NO" contentMode="scaleToFill" id="F8D-58-pUe">
+                    <view key="view" contentMode="scaleToFill" id="F8D-58-pUe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z95-Vf-T0c">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2N-Ex-54I">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <view autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l3N-eW-Vef">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2R6-2h-9yK">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="l3N-eW-Vef" firstAttribute="leading" secondItem="z95-Vf-T0c" secondAttribute="leading" id="BgR-u3-277"/>
-                                    <constraint firstAttribute="trailing" secondItem="l3N-eW-Vef" secondAttribute="trailing" id="CO7-1J-gwm"/>
-                                    <constraint firstItem="l3N-eW-Vef" firstAttribute="centerX" secondItem="z95-Vf-T0c" secondAttribute="centerX" id="Kfz-0D-r5I"/>
-                                    <constraint firstAttribute="bottom" secondItem="l3N-eW-Vef" secondAttribute="bottom" id="Nhl-KD-88L"/>
-                                    <constraint firstItem="l3N-eW-Vef" firstAttribute="top" secondItem="z95-Vf-T0c" secondAttribute="top" id="Sr6-lc-DMX"/>
-                                    <constraint firstItem="l3N-eW-Vef" firstAttribute="centerY" secondItem="z95-Vf-T0c" secondAttribute="centerY" id="uiX-HN-5zc"/>
+                                    <constraint firstAttribute="trailing" secondItem="2R6-2h-9yK" secondAttribute="trailing" id="J4y-nH-Iag"/>
+                                    <constraint firstItem="2R6-2h-9yK" firstAttribute="leading" secondItem="N2N-Ex-54I" secondAttribute="leading" id="SUX-TX-m8m"/>
+                                    <constraint firstItem="2R6-2h-9yK" firstAttribute="centerY" secondItem="N2N-Ex-54I" secondAttribute="centerY" id="WvW-bz-s5T"/>
+                                    <constraint firstAttribute="bottom" secondItem="2R6-2h-9yK" secondAttribute="bottom" id="Xlg-s2-6so"/>
+                                    <constraint firstItem="2R6-2h-9yK" firstAttribute="top" secondItem="N2N-Ex-54I" secondAttribute="top" id="abw-ea-c5G"/>
+                                    <constraint firstItem="2R6-2h-9yK" firstAttribute="width" secondItem="N2N-Ex-54I" secondAttribute="width" id="zjR-S8-HWn"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="z95-Vf-T0c" firstAttribute="top" secondItem="aYw-a2-8ys" secondAttribute="top" id="0d5-wL-df2"/>
-                            <constraint firstItem="z95-Vf-T0c" firstAttribute="trailing" secondItem="aYw-a2-8ys" secondAttribute="trailing" id="Vc1-gm-R47"/>
-                            <constraint firstItem="z95-Vf-T0c" firstAttribute="bottom" secondItem="aYw-a2-8ys" secondAttribute="bottom" id="cSh-xK-9AT"/>
-                            <constraint firstItem="z95-Vf-T0c" firstAttribute="leading" secondItem="aYw-a2-8ys" secondAttribute="leading" id="nWd-Np-MKI"/>
+                            <constraint firstItem="N2N-Ex-54I" firstAttribute="top" secondItem="aYw-a2-8ys" secondAttribute="top" id="HeF-s5-YxS"/>
+                            <constraint firstItem="N2N-Ex-54I" firstAttribute="leading" secondItem="aYw-a2-8ys" secondAttribute="leading" id="Jml-gX-rue"/>
+                            <constraint firstItem="aYw-a2-8ys" firstAttribute="bottom" secondItem="N2N-Ex-54I" secondAttribute="bottom" id="etR-yg-nfu"/>
+                            <constraint firstItem="aYw-a2-8ys" firstAttribute="trailing" secondItem="N2N-Ex-54I" secondAttribute="trailing" id="g2V-yy-pJK"/>
+                            <constraint firstItem="N2N-Ex-54I" firstAttribute="width" secondItem="F8D-58-pUe" secondAttribute="width" id="zij-kA-Ugs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aYw-a2-8ys"/>
                     </view>
                     <connections>
-                        <outlet property="container" destination="l3N-eW-Vef" id="Mgb-HO-zeB"/>
-                        <outlet property="scroll" destination="z95-Vf-T0c" id="86l-sY-vRc"/>
+                        <outlet property="container" destination="2R6-2h-9yK" id="o8C-WY-e1h"/>
+                        <outlet property="scroller" destination="N2N-Ex-54I" id="rlZ-nt-zpw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OZX-n0-MDu" userLabel="First Responder" sceneMemberID="firstResponder"/>

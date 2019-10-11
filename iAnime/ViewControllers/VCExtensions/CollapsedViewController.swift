@@ -64,7 +64,7 @@ class CollapsedViewController: FragmentViewController {
         rootView.addSubview(ctnView)
         header.layoutSubviews()
         ctnView.layoutIfNeeded()
-        AfterContainerItemChanged()
+
     }
     
     private func RemoveContentFromContainer(_ item : CollapsedContent) {
@@ -119,8 +119,7 @@ class CollapsedViewController: FragmentViewController {
         
         header.layoutIfNeeded()
         ctnView.layoutIfNeeded()
-        rootView.layoutIfNeeded()
-        view.layoutIfNeeded()
+        AfterContainerItemChanged()
     }
     
     private func LayoutItemInExpandedMode(_ expandedContent : CollapsedContent) {
@@ -194,7 +193,13 @@ class CollapsedViewController: FragmentViewController {
     }
     
     private func HandleComponentToggleExpand(_ isExpand : Bool, _ collapsedView : CollapsedView) {
+        
+        if let scroller = rootView.superview as? UIScrollView {
+            scroller.isScrollEnabled = !isExpand
+        }
+        
         if isExpand {
+            
             let index = IndexOfContents(collapsedView)
             
             if index == -1 {
