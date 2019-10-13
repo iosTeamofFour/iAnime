@@ -10,6 +10,7 @@ import UIKit
 @IBDesignable
 class GridView: UIScrollView {
     
+    @IBInspectable var ignoreIBWidth : CGFloat = 0
     @IBInspectable var rowSpacing : CGFloat = 8
     @IBInspectable var columnSpacing : CGFloat = 8
     @IBInspectable var columnCount : Int = 2
@@ -17,21 +18,54 @@ class GridView: UIScrollView {
     private(set) var EachColWidth : CGFloat = 0
     
     private var ColStackViews : [UIStackView] = []
+    private var ColStackViewsConstraints : [(NSLayoutConstraint,NSLayoutConstraint)] = []
+    
+    private var WidthFromIB : CGFloat = -1
     
     var OnPlacedGrid : ((GridView) -> Void)?
     
     private var FinishPlaceColStackView = false
+    private var FinishResizeContainer = false
     override func layoutSubviews() {
         super.layoutSubviews()
-        if ColStackViews.count == 0 && !FinishPlaceColStackView {
+        delaysContentTouches = false
+        if !FinishPlaceColStackView {
             LayoutVerticalStackView()
         }
+//        else if !FinishResizeContainer {
+//            // Update width
+//            let newColWidth = UpdateEachColWidth()
+//
+//            for i in 0..<ColStackViewsConstraints.count {
+//                let sv = ColStackViews[i]
+//                let (leading, width) = ColStackViewsConstraints[i]
+//
+//                leading.constant = CGFloat(i) * (columnSpacing + EachColWidth)
+//                width.constant = newColWidth
+//                sv.updateConstraints()
+//            }
+//            UpdateContentSize()
+//            FinishResizeContainer = true
+//        }
+    }
+    
+    
+    func UpdateEachColWidth() -> CGFloat {
+        let frameSize = frame.size.width
+        var CurrentContainerWidth : CGFloat = 0.0
+        CurrentContainerWidth = frameSize
+        
+        EachColWidth = (CurrentContainerWidth - columnSpacing * CGFloat((columnCount - 1))) / CGFloat(columnCount)
+        return EachColWidth
+    }
+    
+    func SingleItemSize() -> CGSize? {
+        let fi = ColStackViews.first(where: { sv in sv.arrangedSubviews.count > 0 })?.arrangedSubviews.first
+        return fi?.frame.size
     }
     
     private func LayoutVerticalStackView() {
-        
-        let CurrentContainerWidth = frame.size.width
-        EachColWidth = (CurrentContainerWidth - columnSpacing * CGFloat((columnCount - 1))) / CGFloat(columnCount)
+        EachColWidth = UpdateEachColWidth()
         for i in 0..<columnCount {
             let stv = UIStackView()
             stv.axis = .vertical
@@ -42,9 +76,11 @@ class GridView: UIScrollView {
             addSubview(stv)
             
             stv.topAnchor.constraint(equalTo: topAnchor).isActive = true
-            stv.leadingAnchor.constraint(equalTo: leadingAnchor, constant: offset).isActive = true
-            stv.addConstraint(NSLayoutConstraint(item: stv, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: EachColWidth))
+            let leadingConstraint = stv.leadingAnchor.constraint(equalTo: leadingAnchor, constant: offset).Activate()
+            let widthConstraint = NSLayoutConstraint(item: stv, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: EachColWidth)
+            stv.addConstraint(widthConstraint)
             
+            ColStackViewsConstraints.append((leadingConstraint,widthConstraint))
             ColStackViews.append(stv)
         }
         FinishPlaceColStackView = true
@@ -63,6 +99,7 @@ class GridView: UIScrollView {
             return
         }
         ColStackViews[index].addArrangedSubview(item)
+        ColStackViews[index].layoutIfNeeded()
         UpdateContentSize()
     }
     

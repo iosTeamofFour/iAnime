@@ -13,9 +13,15 @@ enum PresentNewFragmentAnimationType {
 }
 
 open class FragmentViewController : UIViewController {
+    private(set) var FirstInsertedToContainer = true
     private(set) var fragmentContainer : FragmentViewContainer?
     func OnRegistered(_ fragmentContainer : FragmentViewContainer) -> Void {
         self.fragmentContainer = fragmentContainer
+    }
+    
+    func OnLoadFrameInfoFromContainer() {
+        FirstInsertedToContainer = false
+        return
     }
 }
 
@@ -27,6 +33,7 @@ class FragmentViewContainer: UIView {
     private(set) var CurrentPresentViewController : Int = 0
     
     private var CurrentPresentView : UIView? = nil
+    
     
     func AddViewController(_ controller : FragmentViewController) {
         fragments.append(controller)
@@ -44,13 +51,16 @@ class FragmentViewContainer: UIView {
         CurrentPresentView?.removeFromSuperview()
         if fragments.InRange(index) {
             let vcView = fragments[index].view!
-            // Remember that views generated from code must disable ↓ !
             vcView.translatesAutoresizingMaskIntoConstraints = false
+            vcView.frame.size = frame.size
             if setAlphaToZero {
                 vcView.alpha = 0
             }
-            self.addSubview(vcView)
+            addSubview(vcView)
             vcView.pin(to: self)
+            layoutIfNeeded()
+            fragments[index].OnLoadFrameInfoFromContainer()
+            
             CurrentPresentView = vcView
             CurrentPresentViewController = index
         }

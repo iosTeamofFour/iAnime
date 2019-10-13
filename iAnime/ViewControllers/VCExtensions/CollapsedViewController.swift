@@ -17,8 +17,10 @@ class CollapsedViewController: FragmentViewController {
     
     @IBInspectable var ContentHeaderPaddingLeft : CGFloat = 16.0
     @IBInspectable var ContentSpacing : CGFloat = 8.0
-    @IBInspectable var ContentDetailPaddingLeading : CGFloat = 16.0
-    @IBInspectable var ContentDetailPaddingTrailing : CGFloat = 16.0
+    
+    @IBInspectable var ContentDetailPaddingLeading : CGFloat = 4.0
+    @IBInspectable var ContentDetailPaddingTrailing : CGFloat = 4.0
+    
     @IBInspectable var ContentAndHeaderSpacing : CGFloat = 8.0
     @IBInspectable var ContentHeightInCollapsedMode : CGFloat = 150.0
     
@@ -46,26 +48,41 @@ class CollapsedViewController: FragmentViewController {
         print("当前回调的是默认滚动控制器的AfterContainerItemChanged，此方法什么都没实现，如果需要手动计算滚动区域高度，请确认师傅正确override此函数.")
     }
     
+    var itemSize : CGSize {
+        get {
+            var rootSize = rootView.frame.size
+            rootSize.width -= ContentDetailPaddingLeading + ContentDetailPaddingTrailing
+            return rootSize
+        }
+    }
+    
+    func OnCollpased() {
+        // stub
+    }
+    
+    func OnExpanded() {
+        // stub
+    }
+    
     func AddContent(_ content : CollapsedContent) {
         LayoutContent(content)
         Contents.append(content)
-        
     }
     
     
     private func AddContentToContainer(_ content : CollapsedContent) {
         let header = content.CollapsedViewHeader
-        let ctn = content.CollapsedViewContent
         header.alpha = 1
-        let ctnView = ctn.view!
-        ctnView.alpha = 1
         header.translatesAutoresizingMaskIntoConstraints = false
+        header.layoutSubviews()
+        
+        let ctn = content.CollapsedViewContent
+        let ctnView = ctn.view!
         ctnView.translatesAutoresizingMaskIntoConstraints = false
+        ctnView.alpha = 1
+
         rootView.addSubview(header)
         rootView.addSubview(ctnView)
-        header.layoutSubviews()
-        ctnView.layoutIfNeeded()
-        rootView.layoutIfNeeded()
     }
     
     private func RemoveContentFromContainer(_ item : CollapsedContent) {
@@ -92,7 +109,13 @@ class CollapsedViewController: FragmentViewController {
         let header = content.CollapsedViewHeader
         let ctn = content.CollapsedViewContent
         let ctnView = ctn.view!
+        var heightConstraint : CGFloat = ContentHeightInCollapsedMode
         
+        if let grid = ctnView.subviews.first as? GridView,let singleSize = grid.SingleItemSize() {
+            print(singleSize)
+            heightConstraint = singleSize.height
+        }
+        print("最终HeightConstraint: \(heightConstraint)")
         var consts = CollapsedContentConstraints(HeaderConstraints: [], ContentConstraints: [])
         
         // 判断当前加载的是不是第一个
@@ -111,15 +134,15 @@ class CollapsedViewController: FragmentViewController {
         
         consts.ContentConstraints.append(ctnView.trailingAnchor.constraint(equalTo: rootView.trailingAnchor, constant: -ContentDetailPaddingTrailing).Activate())
         
-        consts.ContentConstraints.append(ctnView.heightAnchor.constraint(equalToConstant: ContentHeightInCollapsedMode).Activate())
+        consts.ContentConstraints.append(ctnView.heightAnchor.constraint(equalToConstant: heightConstraint).Activate())
         
         // 将当前视图的全部约束添加到数组中管理.
         ContentsConstraints.append(consts)
         
         header.OnExpandedToggled = HandleComponentToggleExpand
-        header.layoutIfNeeded()
-        ctnView.layoutIfNeeded()
-        rootView.layoutIfNeeded()
+//        header.layoutIfNeeded()
+//        ctnView.layoutIfNeeded()
+//        rootView.layoutIfNeeded()
         AfterContainerItemChanged(IsExpanded)
     }
     
@@ -158,19 +181,23 @@ class CollapsedViewController: FragmentViewController {
         RemoveAllConstraintsForManagedItem(CurrentExpandedItemIndex, CurrentExpandItemConstraints)
         RemoveContentFromContainer(Contents[CurrentExpandedItemIndex])
         
-        
+        self.CurrentExpandItemConstraints.ContentConstraints.removeAll()
+        self.CurrentExpandItemConstraints.HeaderConstraints.removeAll()
         //添加回原来的约束。
         if WithAnimation {
+
+            
             CollapseAnimation.AddAnimation(animation: ExecuteAnimation.init(Duration: 0.25, Delay: 0, Options: .curveEaseInOut, WhenComplete: {
                 _ in
-                self.CurrentExpandItemConstraints.ContentConstraints.removeAll()
-                self.CurrentExpandItemConstraints.HeaderConstraints.removeAll()
+
                 self.CurrentExpandedItemIndex = -1
                 self.CollapseAnimation.RemoveAllAnimation()
+                self.OnCollpased()
             }, DoAnimation: {
                 for i in 0..<self.Contents.count {
                     // 修复显示
                     self.LayoutContent(self.Contents[i],lastContent: i == 0 ? nil : self.Contents[i-1])
+                    self.rootView.layoutIfNeeded()
                 }
             }))
             
@@ -179,14 +206,13 @@ class CollapsedViewController: FragmentViewController {
         }
         
         // 没有动画直接执行普通结果
-        for i in 0..<self.Contents.count {
+        for i in 0..<Contents.count {
             // 修复显示
-            self.LayoutContent(self.Contents[i],lastContent: i == 0 ? nil : self.Contents[i-1])
+            LayoutContent(Contents[i],lastContent: i == 0 ? nil : Contents[i-1])
         }
         // 清除掉上次保存的展示约束。
-        CurrentExpandItemConstraints.ContentConstraints.removeAll()
-        CurrentExpandItemConstraints.HeaderConstraints.removeAll()
         CurrentExpandedItemIndex = -1
+        OnCollpased()
     }
     
     private func HideContentsActualAction(_ contents: [(Int, CollapsedContent)]) {
@@ -239,6 +265,7 @@ class CollapsedViewController: FragmentViewController {
                     self.HideContentsActualAction(ShouldHideContents)
                     self.ContentsConstraints.removeAll()
                     self.CollapseAnimation.RemoveAllAnimation()
+                    self.OnExpanded()
                 }, DoAnimation: {
                     self.LayoutItemInExpandedMode(self.Contents[index])
                     // 强制触发视图层更新动画
@@ -254,6 +281,7 @@ class CollapsedViewController: FragmentViewController {
             HideContentsActualAction(ShouldHideContents)
             ContentsConstraints.removeAll()
             LayoutItemInExpandedMode(Contents[index])
+            OnExpanded()
         }
         
         else {

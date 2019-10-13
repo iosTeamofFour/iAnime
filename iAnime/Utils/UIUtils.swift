@@ -22,32 +22,56 @@ class UIUtils {
         return (ScreenSize.width, ScreenSize.height)
     }
     
+    static var ScreenScale : CGFloat {
+        get {
+            return UIScreen.main.scale
+        }
+    }
+    
     
     public static func DetectStatusBarColor(_ view : UIView, _ backgroundImageView : UIImageView) -> Bool {
-        let safeAreaHeight = Int(view.safeAreaInsets.top)
+        let safeAreaHeight = Int(20)
         let safeAreaWidth = Int(view.frame.width)
         var points : [CGPoint] = []
-        let pointCount = Int(safeAreaWidth) * Int(safeAreaHeight)
         for i in 0..<safeAreaHeight {
             for j in 0..<safeAreaWidth {
                 points.append(CGPoint(x: j, y: i))
             }
         }
         
-        let colors = backgroundImageView.image?.cgImage?.colors(at: points)
+        let colors = backgroundImageView.PixelOfRawImage(at: points)
+        let rgb = CalcRGBAvg(colors!)
+        
+        return (rgb[0] + rgb[1] + rgb[2]) < 1.3
+    }
+    
+    public static func DetectTextColorWithBG(_ viewWithText : UIView, _ backgroundView : UIImageView) -> Bool {
+        
+        let rect = viewWithText.convert(viewWithText.bounds, to: backgroundView)
+        var points : [CGPoint] = []
+        let minX = Int(rect.minX), minY = Int(rect.minY), maxX = Int(rect.maxX), maxY = Int(rect.maxY)
+        for i in minY..<maxY {
+            for j in minX..<maxX {
+                points.append(CGPoint(x: j, y: i))
+            }
+        }
+        
+        let colors = backgroundView.PixelOfRawImage(at: points)
+        let rgb = CalcRGBAvg(colors!)
+        return (rgb[0] + rgb[1] + rgb[2]) < 1.3
+    }
+    
+    public static func CalcRGBAvg(_ colors: [[CGFloat]]) -> [CGFloat] {
         var r : CGFloat = 0, g : CGFloat = 0, b : CGFloat = 0
-        colors?.forEach{ c in
+        colors.forEach{ c in
             r += c[0]
             g += c[1]
             b += c[2]
         }
-        r /= CGFloat(pointCount)
-        g /= CGFloat(pointCount)
-        b /= CGFloat(pointCount)
-        
-        print("\(r)  \(g)  \(b)")
-        
-        return (r + g + b) < 1
+        r /= CGFloat(colors.count)
+        g /= CGFloat(colors.count)
+        b /= CGFloat(colors.count)
+        return [r,g,b]
     }
 }
 
@@ -63,6 +87,12 @@ public extension UIView {
     
     public func SubviewsContentSize() -> CGRect {
         return subviews.map { v in v.frame }.reduce(CGRect.zero, { a, b in a.union(b)} )
+    }
+    
+    public func ConvertPointToWindowCoord(_ point: CGPoint) -> CGPoint {
+        let window = UIApplication.shared.delegate?.window!
+        let coord =  convert(point, to: window)
+        return coord
     }
 }
 
@@ -109,9 +139,59 @@ public extension Array {
 
 public extension UIImageView {
     public func SetCircleBorder() {
-        
         self.layer.cornerRadius = self.frame.size.width / 2;
         self.clipsToBounds = true;
+    }
+    
+//    public func PixelColorAt(_ point : CGPoint) -> [CGFloat] {
+//        let pixel = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: 4)
+//        let colorSpace = CGColorSpaceCreateDeviceRGB()
+//        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+//        let context = CGContext(data: pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)
+//
+//        context!.translateBy(x: -point.x, y: -point.y)
+//        layer.render(in: context!)
+//        let result = [CGFloat(pixel[0])/255.0, CGFloat(pixel[1])/255.0, CGFloat(pixel[2])/255.0]
+//        pixel.deallocate()
+//        return result
+//    }
+    
+    public func PixelOfRawImage(at: [CGPoint]) -> [[CGFloat]]? {
+        
+//        let pixel = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: 4)
+//        let colorSpace = CGColorSpaceCreateDeviceRGB()
+//        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+//        let context = CGContext(data: pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)
+//
+//        var results : [[CGFloat]] = []
+//
+//        for point in at {
+//            context!.translateBy(x: -point.x, y: -point.y)
+//            layer.render(in: context!)
+//            let result = [CGFloat(pixel[0])/255.0, CGFloat(pixel[1])/255.0, CGFloat(pixel[2])/255.0]
+//            context!.translateBy(x: point.x, y: point.y)
+//            results.append(result)
+//        }
+//
+//        pixel.deallocate()
+//        return results
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let bytesPerPixel = 4
+        let bytesPerRow = bytesPerPixel * Int(bounds.width)
+        let bitsPerComponent = 8
+        let bitmapInfo: UInt32 = CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue
+        
+        guard let context = CGContext(data: nil, width: Int(bounds.width), height: Int(bounds.height), bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo),
+            let ptr = context.data?.assumingMemoryBound(to: UInt8.self) else {
+                return nil
+        }
+        layer.render(in: context)
+        return at.map( {
+            px in
+            let index = bytesPerRow + Int(px.y) + bytesPerPixel * Int(px.x)
+            return [CGFloat(ptr[index]), CGFloat(ptr[index+1]), CGFloat(ptr[index+2])]
+        })
+        
     }
 }
 
@@ -122,34 +202,6 @@ public extension UIButton {
         self.layer.shadowOpacity = 1.0
         self.layer.shadowRadius = 4
         self.layer.masksToBounds = false
-    }
-}
-
-public extension CGImage {
-    func colors(at: [CGPoint]) -> [[CGFloat]]? {
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bytesPerPixel = 4
-        let bytesPerRow = bytesPerPixel * width
-        let bitsPerComponent = 8
-        let bitmapInfo: UInt32 = CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue
-        
-        guard let context = CGContext(data: nil, width: width, height: height, bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo),
-            let ptr = context.data?.assumingMemoryBound(to: UInt8.self) else {
-                return nil
-        }
-        
-        context.draw(self, in: CGRect(x: 0, y: 0, width: width, height: height))
-        
-        return at.map { p in
-            let i = bytesPerRow * Int(p.y) + bytesPerPixel * Int(p.x)
-            
-            let a = CGFloat(ptr[i + 3]) / 255.0
-            let r = (CGFloat(ptr[i]) / a) / 255.0
-            let g = (CGFloat(ptr[i + 1]) / a) / 255.0
-            let b = (CGFloat(ptr[i + 2]) / a) / 255.0
-            
-            return [r,g,b,a]
-        }
     }
 }
 

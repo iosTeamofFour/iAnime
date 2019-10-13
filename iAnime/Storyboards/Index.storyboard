@@ -39,6 +39,10 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发现" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEm-a6-7lC">
                                 <rect key="frame" x="30" y="50" width="73" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="73" id="6lN-QC-V0Z"/>
+                                    <constraint firstAttribute="height" constant="43" id="XAq-6Z-OY0"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -55,16 +59,16 @@
                                 </segments>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Xx-XC-Rk0" customClass="FragmentViewContainer" customModule="iAnime" customModuleProvider="target">
-                                <rect key="frame" x="16" y="153" width="382" height="534"/>
+                                <rect key="frame" x="24" y="153" width="366" height="534"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="pEm-a6-7lC" firstAttribute="top" secondItem="Rcy-Z2-6sl" secondAttribute="top" constant="30" id="4pv-Hm-mk0"/>
-                            <constraint firstItem="Rcy-Z2-6sl" firstAttribute="trailing" secondItem="0Xx-XC-Rk0" secondAttribute="trailing" constant="16" id="Fzp-cL-EEL"/>
+                            <constraint firstItem="Rcy-Z2-6sl" firstAttribute="trailing" secondItem="0Xx-XC-Rk0" secondAttribute="trailing" constant="24" id="Fzp-cL-EEL"/>
                             <constraint firstItem="Rcy-Z2-6sl" firstAttribute="trailing" secondItem="gWg-rk-0wV" secondAttribute="trailing" constant="48" id="H4E-Qf-Zqh"/>
-                            <constraint firstItem="0Xx-XC-Rk0" firstAttribute="leading" secondItem="Rcy-Z2-6sl" secondAttribute="leading" constant="16" id="J4K-bl-qTz"/>
+                            <constraint firstItem="0Xx-XC-Rk0" firstAttribute="leading" secondItem="Rcy-Z2-6sl" secondAttribute="leading" constant="24" id="J4K-bl-qTz"/>
                             <constraint firstItem="pEm-a6-7lC" firstAttribute="leading" secondItem="Rcy-Z2-6sl" secondAttribute="leading" constant="30" id="M84-5W-nEQ"/>
                             <constraint firstItem="gWg-rk-0wV" firstAttribute="leading" secondItem="Rcy-Z2-6sl" secondAttribute="leading" constant="48" id="MsE-l6-xMp"/>
                             <constraint firstItem="gWg-rk-0wV" firstAttribute="top" secondItem="pEm-a6-7lC" secondAttribute="bottom" constant="16" id="WiW-4c-3i4"/>
@@ -336,6 +340,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="columnCount">
                                         <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="ignoreIBWidth">
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </scrollView>
