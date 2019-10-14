@@ -44,7 +44,9 @@ class PersonViewController: UIViewController {
         signature.textColor = colorForSignature ? UIColor.white : UIColor.black
     }
     
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIUtils.DetectStatusBarColor(view, backgroundbackView) ? .lightContent : .default
+    }
     /*
     // MARK: - Navigation
 

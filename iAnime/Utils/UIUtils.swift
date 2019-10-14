@@ -28,26 +28,23 @@ class UIUtils {
         }
     }
     
-    
     public static func DetectStatusBarColor(_ view : UIView, _ backgroundImageView : UIImageView) -> Bool {
         let safeAreaHeight = Int(20)
         let safeAreaWidth = Int(view.frame.width)
-        var points : [CGPoint] = []
-        for i in 0..<safeAreaHeight {
-            for j in 0..<safeAreaWidth {
-                points.append(CGPoint(x: j, y: i))
-            }
-        }
-        
-        let colors = backgroundImageView.PixelOfRawImage(at: points)
-        let rgb = CalcRGBAvg(colors!)
-        
-        return (rgb[0] + rgb[1] + rgb[2]) < 1.3
+        let rect = CGRect(x: 0, y: 0, width: safeAreaWidth, height: safeAreaHeight)
+        let result = GetRectAvgRGB(rect,backgroundImageView)
+        return (result[0] + result[1] + result[2]) < 1.3
     }
     
     public static func DetectTextColorWithBG(_ viewWithText : UIView, _ backgroundView : UIImageView) -> Bool {
         
         let rect = viewWithText.convert(viewWithText.bounds, to: backgroundView)
+        let result = GetRectAvgRGB(rect,backgroundView)
+        
+        return (result[0] + result[1] + result[2]) < 1.3
+    }
+    
+    private static func GetRectAvgRGB(_ rect : CGRect, _ imageView : UIImageView) -> [CGFloat] {
         var points : [CGPoint] = []
         let minX = Int(rect.minX), minY = Int(rect.minY), maxX = Int(rect.maxX), maxY = Int(rect.maxY)
         for i in minY..<maxY {
@@ -56,17 +53,26 @@ class UIUtils {
             }
         }
         
-        let colors = backgroundView.PixelOfRawImage(at: points)
-        let rgb = CalcRGBAvg(colors!)
-        return (rgb[0] + rgb[1] + rgb[2]) < 1.3
+        let pixels = imageView.pixels ?? []
+        
+        let colors = points.map({
+            p -> [CGFloat] in
+            let pixelIndex = imageView.pixelIndex(for: p) ?? 0
+            let pixelColor = pixels[pixelIndex]
+            let rgb = imageView.extraColor(for: pixelColor)
+            return [CGFloat(rgb[0]), CGFloat(rgb[1]), CGFloat(rgb[2])]
+        })
+        // 此时传出来的RGB是0-255区间的，需要在AVG函数中除以255.0
+        let result = CalcRGBAvg(colors)
+        return result
     }
     
     public static func CalcRGBAvg(_ colors: [[CGFloat]]) -> [CGFloat] {
         var r : CGFloat = 0, g : CGFloat = 0, b : CGFloat = 0
         colors.forEach{ c in
-            r += c[0]
-            g += c[1]
-            b += c[2]
+            r += c[0] / 255.0
+            g += c[1] / 255.0
+            b += c[2] / 255.0
         }
         r /= CGFloat(colors.count)
         g /= CGFloat(colors.count)
@@ -74,6 +80,40 @@ class UIUtils {
         return [r,g,b]
     }
 }
+
+public extension UIImage {
+
+    public func extraPixels(in size: CGSize) -> [UInt32]? {
+        
+        guard let cgImage = cgImage else {
+            return nil
+        }
+        // 这里传进来的size是imageview的bounds
+        
+        let width = Int(size.width)
+        let height = Int(size.height)
+        
+        // 一个像素 4 个字节，则一行共 4 * width 个字节
+        let bytesPerRow = 4 * width
+        // 每个像素元素位数为 8 bit，即 rgba 每位各 1 个字节
+        let bitsPerComponent = 8
+        // 颜色空间为 RGB，这决定了输出颜色的编码是 RGB 还是其他（比如 YUV）
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        // 设置位图颜色分布为 RGBA
+        let bitmapInfo = CGImageAlphaInfo.premultipliedLast.rawValue
+        
+        var pixelsData = [UInt32](repeatElement(0, count: width * height))
+        print("图片真实长宽: \(width), \(height)")
+        guard let content = CGContext(data: &pixelsData, width: width, height: height, bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo) else {
+            return nil
+        }
+        // 在这里完成真实长宽到bounds的映射。
+        content.draw(cgImage, in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        
+        return pixelsData
+    }
+}
+
 
 public extension UIView {
     public func pin(to view: UIView) {
@@ -142,56 +182,35 @@ public extension UIImageView {
         self.layer.cornerRadius = self.frame.size.width / 2;
         self.clipsToBounds = true;
     }
+    public var pixels: [UInt32]? {
+        return image?.extraPixels(in: bounds.size)
+    }
     
-//    public func PixelColorAt(_ point : CGPoint) -> [CGFloat] {
-//        let pixel = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: 4)
-//        let colorSpace = CGColorSpaceCreateDeviceRGB()
-//        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
-//        let context = CGContext(data: pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)
-//
-//        context!.translateBy(x: -point.x, y: -point.y)
-//        layer.render(in: context!)
-//        let result = [CGFloat(pixel[0])/255.0, CGFloat(pixel[1])/255.0, CGFloat(pixel[2])/255.0]
-//        pixel.deallocate()
-//        return result
-//    }
-    
-    public func PixelOfRawImage(at: [CGPoint]) -> [[CGFloat]]? {
-        
-//        let pixel = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: 4)
-//        let colorSpace = CGColorSpaceCreateDeviceRGB()
-//        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
-//        let context = CGContext(data: pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)
-//
-//        var results : [[CGFloat]] = []
-//
-//        for point in at {
-//            context!.translateBy(x: -point.x, y: -point.y)
-//            layer.render(in: context!)
-//            let result = [CGFloat(pixel[0])/255.0, CGFloat(pixel[1])/255.0, CGFloat(pixel[2])/255.0]
-//            context!.translateBy(x: point.x, y: point.y)
-//            results.append(result)
-//        }
-//
-//        pixel.deallocate()
-//        return results
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bytesPerPixel = 4
-        let bytesPerRow = bytesPerPixel * Int(bounds.width)
-        let bitsPerComponent = 8
-        let bitmapInfo: UInt32 = CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue
-        
-        guard let context = CGContext(data: nil, width: Int(bounds.width), height: Int(bounds.height), bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo),
-            let ptr = context.data?.assumingMemoryBound(to: UInt8.self) else {
+    /// 将位置转换为像素索引
+    ///
+    /// - parameter point: 位置
+    ///
+    /// - returns: 像素索引
+    public func pixelIndex(for point: CGPoint) -> Int? {
+        let size = bounds.size
+        guard point.x > 0 && point.x <= size.width
+            && point.y > 0 && point.y <= size.height else {
                 return nil
         }
-        layer.render(in: context)
-        return at.map( {
-            px in
-            let index = bytesPerRow + Int(px.y) + bytesPerPixel * Int(px.x)
-            return [CGFloat(ptr[index]), CGFloat(ptr[index+1]), CGFloat(ptr[index+2])]
-        })
-        
+        return (Int(point.y) * Int(size.width) + Int(point.x))
+    }
+    
+    /// 将像素值转换为颜色
+    ///
+    /// - parameter pixel: 像素值
+    ///
+    /// - returns: 颜色
+    public func extraColor(for pixel: UInt32) -> [Int] {
+        let r = Int((pixel >> 0) & 0xff)
+        let g = Int((pixel >> 8) & 0xff)
+        let b = Int((pixel >> 16) & 0xff)
+        let a = Int((pixel >> 24) & 0xff)
+        return [r,g,b]
     }
 }
 
