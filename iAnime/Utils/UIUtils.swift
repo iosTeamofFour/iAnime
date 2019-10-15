@@ -182,6 +182,7 @@ public extension UIImageView {
         self.layer.cornerRadius = self.frame.size.width / 2;
         self.clipsToBounds = true;
     }
+    // 获取UIImageView中的全部像素值
     public var pixels: [UInt32]? {
         return image?.extraPixels(in: bounds.size)
     }
