@@ -31,8 +31,6 @@ class WelcomeViewController: UIViewController {
 
         }
         
-        
-        
         stackViewsContainer.OnPlacedStackView = {
             views in
             self.stackViews = views

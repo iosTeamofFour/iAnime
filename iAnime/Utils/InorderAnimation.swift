@@ -14,7 +14,6 @@ struct ExecuteAnimation {
     var Options : UIView.AnimationOptions
     var WhenComplete : ((Bool) -> Void)?
     var DoAnimation : () -> Void
-    
 }
 
 class InorderAnimation {
@@ -46,6 +45,7 @@ class InorderAnimation {
         Current = -1
         Next()
     }
+    
     private func Next() {
         Current += 1
         if Current < AnimationList.count {

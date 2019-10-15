@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A4203DB0234C88F8008C3632 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203DAF234C88F8008C3632 /* GridView.swift */; };
+		A43255942355DA6800C42429 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43255932355DA6800C42429 /* SettingTableViewController.swift */; };
+		A43255962355DF1000C42429 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43255952355DF1000C42429 /* SettingTableViewCell.swift */; };
 		A4683DF2234E02E800D50D04 /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DF1234E02E800D50D04 /* DiscoveryViewController.swift */; };
 		A4683DFB234E0D9300D50D04 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DFA234E0D9300D50D04 /* RankingViewController.swift */; };
 		A4683DFD234E0DA200D50D04 /* CollapsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DFC234E0DA200D50D04 /* CollapsedView.swift */; };
@@ -44,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		A4203DAF234C88F8008C3632 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		A43255932355DA6800C42429 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		A43255952355DF1000C42429 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		A4683DF1234E02E800D50D04 /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
 		A4683DFA234E0D9300D50D04 /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		A4683DFC234E0DA200D50D04 /* CollapsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedView.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				DF14EB95234CFFA50017D4E4 /* HomeViewController.swift */,
+				A43255932355DA6800C42429 /* SettingTableViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -217,6 +222,7 @@
 				DF14EB93234CFB0B0017D4E4 /* RightImageButton.swift */,
 				A4683DFC234E0DA200D50D04 /* CollapsedView.swift */,
 				DF4776742350ABBA00D8A084 /* OverhitView.swift */,
+				A43255952355DF1000C42429 /* SettingTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -329,6 +335,7 @@
 			files = (
 				DF4776752350ABBA00D8A084 /* OverhitView.swift in Sources */,
 				DF2DC418234B5DE6009E52B0 /* LoginViewController.swift in Sources */,
+				A43255962355DF1000C42429 /* SettingTableViewCell.swift in Sources */,
 				DF2DC416234B591A009E52B0 /* FragmentViewContainer.swift in Sources */,
 				E60692E3234B9F4F0012E534 /* IndexViewController.swift in Sources */,
 				A4CBA67C234DB07E00308392 /* AboutViewController.swift in Sources */,
@@ -342,6 +349,7 @@
 				DF2DC40C234AE69F009E52B0 /* ScrollStackContainerView.swift in Sources */,
 				DF2DC41A234B5DED009E52B0 /* RegisterViewController.swift in Sources */,
 				DFA2C83A234F1BDA00BFCB01 /* SearchViewController.swift in Sources */,
+				A43255942355DA6800C42429 /* SettingTableViewController.swift in Sources */,
 				DF2DC408234AE4DB009E52B0 /* UIUtils.swift in Sources */,
 				DFA2C832234F156B00BFCB01 /* CollapsedViewController.swift in Sources */,
 				DF2DC3F7234ADCE2009E52B0 /* WelcomeViewController.swift in Sources */,

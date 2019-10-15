@@ -103,7 +103,6 @@ public extension UIImage {
         let bitmapInfo = CGImageAlphaInfo.premultipliedLast.rawValue
         
         var pixelsData = [UInt32](repeatElement(0, count: width * height))
-        print("图片真实长宽: \(width), \(height)")
         guard let content = CGContext(data: &pixelsData, width: width, height: height, bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo) else {
             return nil
         }

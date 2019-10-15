@@ -58,8 +58,8 @@
                                     <constraint firstItem="hYa-k5-GEz" firstAttribute="centerY" secondItem="N2N-Ex-54I" secondAttribute="centerY" id="Kqp-sn-tFt"/>
                                     <constraint firstItem="hYa-k5-GEz" firstAttribute="leading" secondItem="N2N-Ex-54I" secondAttribute="leading" id="LEL-Bf-8z4"/>
                                     <constraint firstAttribute="trailing" secondItem="hYa-k5-GEz" secondAttribute="trailing" id="Pn1-3S-OfJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="hYa-k5-GEz" secondAttribute="bottom" id="mVG-Yd-hIB"/>
                                     <constraint firstItem="hYa-k5-GEz" firstAttribute="top" secondItem="N2N-Ex-54I" secondAttribute="top" id="oZQ-fa-IEE"/>
-                                    <constraint firstAttribute="bottom" secondItem="hYa-k5-GEz" secondAttribute="bottom" id="og7-lF-sSt"/>
                                 </constraints>
                             </scrollView>
                         </subviews>

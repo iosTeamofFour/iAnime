@@ -62,7 +62,6 @@ class RankingViewController: CollapsedViewController {
                 
                 // 立刻修正从故事版new出来的Controller的frame异常
                 grid.frame.size = itemSize
-                
                 let illu1 = Illustration(Image: UIImage(named: "Left-2")!, Name: "Zhengzeming", UploadDate: Date())
                 let item1 = IllustrationItemView()
                 item1.illustration = illu1
