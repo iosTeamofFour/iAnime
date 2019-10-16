@@ -62,10 +62,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         HomeBackgroundImage.addConstraint(NSLayoutConstraint(item: HomeBackgroundImage, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: ViewHeight / 3))
         HomeBackgroundImage.contentMode = .scaleAspectFill
         HomeBackgroundImage.clipsToBounds = true
-    }
-    
-    
-    @IBAction func GoToSettings(_ sender: RightImageButton) {
-        GoToExternalStoryboardWithInitialVC("Settings",nil)?.ToggleVisibleForTabBarItem(false)
-    }
+        
+	    }
 }

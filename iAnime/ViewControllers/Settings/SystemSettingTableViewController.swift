@@ -1,31 +1,19 @@
 //
-//  SettingTableViewController.swift
+//  SystemSettingTableViewController.swift
 //  iAnime
 //
-//  Created by NemesissLin on 2019/10/15.
+//  Created by NemesissLin on 2019/10/17.
 //  Copyright © 2019 NemesissLin. All rights reserved.
 //
 
 import UIKit
 
-class SettingTableViewController: UITableViewController {
+class SystemSettingTableViewController: UITableViewController {
 
-    @IBInspectable var TargetStoryboard : String = ""
     @IBInspectable var ReuseCellIdentifier : String = "SettingTableViewCell"
     
-    private(set)var  SettingItems : [ (String, [(String,String)])] = [
-        ("个人信息",[
-            ("个人资料","PersonalInfo")
-        ]),
-        ("社交",[
-            ("我喜欢的作品","MyFavIllu"),
-            ("我关注的人","Following"),
-            ("关注我的人","Follower")
-        ]),
-        ("系统",[
-            ("夜间模式","NightMode"),
-            ("设置","Settings")
-        ])
+    private var SettingItem : [[String]] = [
+        ["About iAnime","AboutiAnime"]
     ]
     
     override func viewDidLoad() {
@@ -36,46 +24,34 @@ class SettingTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return SettingItems.count
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        let (_, mapping) = SettingItems[section]
-        return mapping.count
+        return SettingItem.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReuseCellIdentifier, for: indexPath) as? SettingTableViewCell else {
-            print("Cannit load cell \(ReuseCellIdentifier) at \(indexPath.section), \(indexPath.row)")
-            return SettingTableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReuseCellIdentifier, for: indexPath)
+
+        if let settingCell = cell as? SettingTableViewCell {
+            settingCell.SettingName.text = SettingItem[indexPath.row][0]
         }
-        
-        // 正常加载Setting
-        let(_,mapping) = SettingItems[indexPath.section]
-        cell.SettingName.text = mapping[indexPath.row].0
         return cell
     }
- 
+
+    
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Do onclick action
-        let (_,mapping) = SettingItems[indexPath.section]
-        let (shownName, executeVC) = mapping[indexPath.row]
-        print("点击了\(shownName), 即将跳转到\(executeVC)")
+        let selectedSettingItem = SettingItem[indexPath.row]
+        print("即将进入: \(selectedSettingItem[0])")
+        
+        PushVCToCurrentNC(vcName: selectedSettingItem[1], backItem: "返回")
+        
     }
-    
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let v = view as! UITableViewHeaderFooterView
-        v.textLabel?.font = v.textLabel?.font.withSize(14)
-        v.textLabel?.textColor = UIColor.lightGray
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return SettingItems[section].0
-    }
-    
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -111,12 +87,14 @@ class SettingTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
+    // MARK: - Navigation
+
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
- 
+    */
 
 }

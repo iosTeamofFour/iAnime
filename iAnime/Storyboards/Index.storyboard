@@ -186,14 +186,19 @@
             </objects>
             <point key="canvasLocation" x="307" y="477"/>
         </scene>
-        <!--Setting Table View Controller-->
+        <!--Home Table View Controller-->
         <scene sceneID="LwR-lP-fQy">
             <objects>
-                <tableViewController id="39o-Er-VHh" customClass="SettingTableViewController" customModule="iAnime" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="z6a-Ta-UfN">
+                <tableViewController id="39o-Er-VHh" customClass="HomeTableViewController" customModule="iAnime" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="z6a-Ta-UfN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="BRc-uo-xQb">
+                            <rect key="frame" x="0.0" y="74" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingTableViewCell" rowHeight="46" id="qSH-E3-a6n" customClass="SettingTableViewCell" customModule="iAnime" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="46"/>
@@ -225,6 +230,10 @@
                             <outlet property="delegate" destination="39o-Er-VHh" id="vkq-H7-Qn3"/>
                         </connections>
                     </tableView>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="ReuseCellIdentifier" value="SettingTableViewCell"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="TargetStoryboard" value="Settings"/>
+                    </userDefinedRuntimeAttributes>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5R-M3-WKN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -315,8 +324,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Add" width="32" height="32"/>
-        <image name="Left-2" width="240" height="407.760009765625"/>
+        <image name="Add" width="64" height="64"/>
+        <image name="Left-2" width="1000" height="1699"/>
         <image name="SampleAvatar" width="700" height="700"/>
     </resources>
 </document>
