@@ -37,19 +37,33 @@ public extension UIImageView {
         
         var FinalWidth : CGFloat = 0
         var FinalHeight : CGFloat = 0
-        
-        if ImageSize.width >= ImageSize.height {
+        // 涵盖两种情况, 一种是原图width > height, 另一种是虽然原图width < height, 但是如果按照div的frame.size.height缩放得到的width又会大过frame.size.width
+        if ImageSize.width >= ImageSize.height || IvFrameSize.width < IvFrameSize.height * (ImageWHRatio)  {
             FinalWidth = IvFrameSize.width
             FinalHeight = FinalWidth * (1 / ImageWHRatio)
             return CGSize(width: FinalWidth, height: FinalHeight)
         }
         else {
-            if IvFrameSize.width < IvFrameSize.height * (ImageWHRatio) {
-                // 还是按照width来缩放
-            }
-            else {
-                
-            }
+            FinalHeight = IvFrameSize.height
+            FinalWidth = FinalHeight * (ImageWHRatio)
+            return CGSize(width: FinalWidth, height: FinalHeight)
         }
+    }
+    
+    
+    public func GetCGSizeInAspectFill() -> CGSize? {
+        // 这种情况下直接按照短边放大即可
+        if image == nil {
+            return nil
+        }
+        let IvFrameSize = frame.size
+        let ImageSize = image!.size
+        let ImageWHRatio = ImageSize.width / ImageSize.height
+        
+        if ImageSize.width >= ImageSize.height || IvFrameSize.width < IvFrameSize.height * (ImageWHRatio) {
+            return CGSize(width: IvFrameSize.height * (ImageWHRatio), height: IvFrameSize.height)
+        }
+        
+        return IvFrameSize
     }
 }
