@@ -12,11 +12,15 @@ import UIKit
 
 public extension UIAlertController {
     
-    public func MakeAlertDialog() {
-        
+    public static func MakeAlertDialog(_ controllerTitle : String, _ controllerMsg : String?,_ actions : [UIAlertAction]) -> UIAlertController {
+        let alertController = UIAlertController(title: controllerTitle, message: controllerMsg, preferredStyle: .alert)
+        actions.forEach { action in alertController.addAction(action) }
+        return alertController
     }
     
-    public func MakeAlertSheet() {
-        
+    public static func MakeAlertSheet(_ controllerTitle : String, _ controllerMsg : String?,_ actions : [UIAlertAction]) -> UIAlertController {
+        let alertController = UIAlertController(title: controllerTitle, message: controllerMsg, preferredStyle: .actionSheet)
+        actions.forEach { action in alertController.addAction(action) }
+        return alertController
     }
 }

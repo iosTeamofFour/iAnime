@@ -113,17 +113,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Left-2" translatesAutoresizingMaskIntoConstraints="NO" id="zjD-fG-YDZ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="227.66666666666666"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" placeholder="YES" id="evy-6L-OQd"/>
+                                    <constraint firstAttribute="width" secondItem="zjD-fG-YDZ" secondAttribute="height" multiplier="2:1.1" id="g3z-U2-6r9"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="ane-yh-lOG" appends="YES" id="M1z-Tq-zyO"/>
                                 </connections>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SampleAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="CHZ-Qg-hTF">
-                                <rect key="frame" x="24" y="80" width="96" height="96"/>
+                                <rect key="frame" x="24" y="107.66666666666669" width="96" height="96"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="96" id="3JA-z5-R5S"/>
@@ -135,26 +135,26 @@
                                 </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nemesiss.Lin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhh-yh-OAe">
-                                <rect key="frame" x="136" y="96" width="129" height="27"/>
+                                <rect key="frame" x="136" y="123.66666666666669" width="129" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="这是一条很弱智的签名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pnt-HV-6d7">
-                                <rect key="frame" x="136" y="156" width="258" height="17"/>
+                                <rect key="frame" x="136" y="183.66666666666666" width="258" height="17"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="初级触手" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uw-RZ-q7T">
-                                <rect key="frame" x="136" y="127" width="58" height="17"/>
+                                <rect key="frame" x="136" y="154.66666666666666" width="58" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l91-mz-Xrq">
-                                <rect key="frame" x="0.0" y="200" width="414" height="487"/>
+                                <rect key="frame" x="0.0" y="227.66666666666666" width="414" height="459.33333333333337"/>
                                 <connections>
                                     <segue destination="39o-Er-VHh" kind="embed" identifier="Settings" id="akN-jj-ykh"/>
                                 </connections>
@@ -209,7 +209,7 @@
             <objects>
                 <tableViewController id="39o-Er-VHh" customClass="HomeTableViewController" customModule="iAnime" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="z6a-Ta-UfN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="487"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="459.33333333333337"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="BRc-uo-xQb">
@@ -372,8 +372,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Add" width="32" height="32"/>
-        <image name="Left-2" width="240" height="407.760009765625"/>
+        <image name="Add" width="64" height="64"/>
+        <image name="Left-2" width="1000" height="1699"/>
         <image name="SampleAvatar" width="700" height="700"/>
     </resources>
 </document>

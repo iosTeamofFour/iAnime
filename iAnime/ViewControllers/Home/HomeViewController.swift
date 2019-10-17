@@ -38,30 +38,47 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillLayoutSubviews() {
         UserAvatarImage.SetCircleBorder()
-        AdjustHomepageBackgroundImage()
     }
     
-    
-    private func AdjustHomepageBackgroundImage() {
-        // 按屏幕的高等比缩放
-        let ViewHeight = view.frame.height
-        HomeBackgroundImage.addConstraint(NSLayoutConstraint(item: HomeBackgroundImage, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: ViewHeight / 3))
-        HomeBackgroundImage.contentMode = .scaleAspectFill
-        HomeBackgroundImage.clipsToBounds = true
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ToggleVisibleForNavigationItem(false)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        ToggleVisibleForNavigationItem(true)
+    }
+    
     
     
     @IBAction func ChangeBackgroundImage(_ sender: UITapGestureRecognizer) {
-        let alertController = UIAlertController(title: "主页背景", message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController.MakeAlertSheet("主页背景", nil, [
+            UIAlertAction(title: "更改个人主页背景", style: .default, handler: {
+                _ in
+                self.present(
+                    UIAlertController.MakeAlertDialog("提示", "此功能仍未完成!", [
+                        UIAlertAction(title: "好", style: .cancel, handler: nil)
+                        ]), animated: true, completion: nil)
+            }),
+            UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            ])
         
-        let changeBackgroundAction = UIAlertAction(title: "更改主页背景", style: .default, handler: {
-            
-        })
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func ChangeAvatar(_ sender: UITapGestureRecognizer) {
+        let alert = UIAlertController.MakeAlertSheet("头像", nil,[
+            UIAlertAction(title: "预览", style: .default, handler: {
+                _ in
+                print("Preview")
+            }),
+            UIAlertAction(title: "修改个人头像", style: .default, handler: {
+                _ in
+                print("点击修改Avatar")
+            }),
+            UIAlertAction(title: "取消", style: .cancel, handler: nil)])
         
-        
+        present(alert, animated: true, completion: nil)
     }
-    
 }
