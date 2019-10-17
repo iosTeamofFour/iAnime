@@ -121,21 +121,6 @@
             </objects>
             <point key="canvasLocation" x="2745" y="-295"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="ANf-Cn-IHG">
-            <objects>
-                <viewController storyboardIdentifier="NightMode" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HwX-Mc-vD8" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="BFq-PG-D5t">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="cLR-wf-OOH"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eBg-Ng-aij" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3570" y="-296"/>
-        </scene>
         <!--关于 iAnime-->
         <scene sceneID="D3O-1I-8Wo">
             <objects>

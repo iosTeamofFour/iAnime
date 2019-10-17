@@ -13,6 +13,9 @@
 		A4683DF2234E02E800D50D04 /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DF1234E02E800D50D04 /* DiscoveryViewController.swift */; };
 		A4683DFB234E0D9300D50D04 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DFA234E0D9300D50D04 /* RankingViewController.swift */; };
 		A4683DFD234E0DA200D50D04 /* CollapsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DFC234E0DA200D50D04 /* CollapsedView.swift */; };
+		A4CB24BD23580B6C00807BE8 /* SettingWithSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CB24BC23580B6C00807BE8 /* SettingWithSwitchTableViewCell.swift */; };
+		A4CB24BF23580DEA00807BE8 /* NightModeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CB24BE23580DEA00807BE8 /* NightModeTableViewCell.swift */; };
+		A4CB24C12358213800807BE8 /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CB24C02358213800807BE8 /* AppUtils.swift */; };
 		A4CBA67F234DB09600308392 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4CBA67E234DB09600308392 /* Settings.storyboard */; };
 		A4D5757B234DDC070013B68D /* ViewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D5757A234DDC070013B68D /* ViewControllerHelper.swift */; };
 		DF0A1A4923535C0E00CB6698 /* Person.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF0A1A4823535C0E00CB6698 /* Person.storyboard */; };
@@ -51,6 +54,9 @@
 		A4683DF1234E02E800D50D04 /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
 		A4683DFA234E0D9300D50D04 /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		A4683DFC234E0DA200D50D04 /* CollapsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedView.swift; sourceTree = "<group>"; };
+		A4CB24BC23580B6C00807BE8 /* SettingWithSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWithSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		A4CB24BE23580DEA00807BE8 /* NightModeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightModeTableViewCell.swift; sourceTree = "<group>"; };
+		A4CB24C02358213800807BE8 /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
 		A4CBA67E234DB09600308392 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		A4D5757A234DDC070013B68D /* ViewControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerHelper.swift; sourceTree = "<group>"; };
 		DF0A1A4823535C0E00CB6698 /* Person.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Person.storyboard; sourceTree = "<group>"; };
@@ -133,6 +139,16 @@
 			path = Welcome;
 			sourceTree = "<group>";
 		};
+		A4CB24BB23580B3F00807BE8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A43255952355DF1000C42429 /* SettingTableViewCell.swift */,
+				A4CB24BC23580B6C00807BE8 /* SettingWithSwitchTableViewCell.swift */,
+				A4CB24BE23580DEA00807BE8 /* NightModeTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		A4CBA67A234DB05700308392 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +160,7 @@
 		A4CBA67D234DB08800308392 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				A4CB24BB23580B3F00807BE8 /* Cells */,
 				DF3F617023577B1B00D4EBB3 /* SystemSettingTableViewController.swift */,
 			);
 			path = Settings;
@@ -194,6 +211,7 @@
 				DF2DC407234AE4DB009E52B0 /* UIUtils.swift */,
 				DF2DC40F234B429B009E52B0 /* InorderAnimation.swift */,
 				A4D5757A234DDC070013B68D /* ViewControllerHelper.swift */,
+				A4CB24C02358213800807BE8 /* AppUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -222,7 +240,6 @@
 				DF14EB93234CFB0B0017D4E4 /* RightImageButton.swift */,
 				A4683DFC234E0DA200D50D04 /* CollapsedView.swift */,
 				DF4776742350ABBA00D8A084 /* OverhitView.swift */,
-				A43255952355DF1000C42429 /* SettingTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -334,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF4776752350ABBA00D8A084 /* OverhitView.swift in Sources */,
+				A4CB24BF23580DEA00807BE8 /* NightModeTableViewCell.swift in Sources */,
 				DF2DC418234B5DE6009E52B0 /* LoginViewController.swift in Sources */,
 				A43255962355DF1000C42429 /* SettingTableViewCell.swift in Sources */,
 				DF2DC416234B591A009E52B0 /* FragmentViewContainer.swift in Sources */,
@@ -343,6 +361,7 @@
 				A4D5757B234DDC070013B68D /* ViewControllerHelper.swift in Sources */,
 				A4203DB0234C88F8008C3632 /* GridView.swift in Sources */,
 				E6828ADA234BA20800BAFB31 /* Illustration.swift in Sources */,
+				A4CB24BD23580B6C00807BE8 /* SettingWithSwitchTableViewCell.swift in Sources */,
 				A4683DFD234E0DA200D50D04 /* CollapsedView.swift in Sources */,
 				DF14EB96234CFFA50017D4E4 /* HomeViewController.swift in Sources */,
 				DF2DC40C234AE69F009E52B0 /* ScrollStackContainerView.swift in Sources */,
@@ -356,6 +375,7 @@
 				DF2DC410234B429B009E52B0 /* InorderAnimation.swift in Sources */,
 				DF0A1A4C23536C3200CB6698 /* PersonViewController.swift in Sources */,
 				E6828ADC234BA29A00BAFB31 /* IllustrationItemView.swift in Sources */,
+				A4CB24C12358213800807BE8 /* AppUtils.swift in Sources */,
 				DF2DC3F5234ADCE2009E52B0 /* AppDelegate.swift in Sources */,
 				DF0A1A4E2353771C00CB6698 /* person.swift in Sources */,
 				DF14EB94234CFB0B0017D4E4 /* RightImageButton.swift in Sources */,

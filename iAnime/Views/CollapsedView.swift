@@ -31,6 +31,7 @@ class CollapsedView: UIView {
     
     var OnExpandedToggled : ((Bool, CollapsedView) -> Void)?
     
+    private var IsExpanding = false
     
     convenience init(_ Name : String) {
         self.init(frame: CGRect.zero)
@@ -53,7 +54,6 @@ class CollapsedView: UIView {
             button.transform = button.transform.rotated(by: CGFloat.pi)
         }
     }
-    
     
     private func LayoutCollapseHeader() {
         // Layout toggle expand/collapsed switch and title label.
@@ -98,13 +98,23 @@ class CollapsedView: UIView {
     }
     
     private func ToggleExpandAndCollapsed() {
-        print("当前页面展开情况: \(IsExpanded)")
+        if IsExpanding {
+            return
+        }
+        
+        IsExpanding = true
+        button.isUserInteractionEnabled = false
         RotateExpandArrow()
     }
     
     private func RotateExpandArrow() {
         UIView.animate(withDuration: 0.25, animations: {
             self.button.transform = self.button.transform.rotated(by: CGFloat.pi)
+        })
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+             self.IsExpanding = false
+            self.button.isUserInteractionEnabled = true
         })
     }
 }

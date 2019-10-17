@@ -112,19 +112,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Left-2" translatesAutoresizingMaskIntoConstraints="NO" id="zjD-fG-YDZ">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Left-2" translatesAutoresizingMaskIntoConstraints="NO" id="zjD-fG-YDZ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" placeholder="YES" id="evy-6L-OQd"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ane-yh-lOG" appends="YES" id="M1z-Tq-zyO"/>
+                                </connections>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SampleAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="CHZ-Qg-hTF">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SampleAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="CHZ-Qg-hTF">
                                 <rect key="frame" x="24" y="80" width="96" height="96"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="96" id="3JA-z5-R5S"/>
                                     <constraint firstAttribute="height" constant="96" id="Rq3-Jg-Bgh"/>
                                     <constraint firstAttribute="width" secondItem="CHZ-Qg-hTF" secondAttribute="height" multiplier="1:1" id="blS-uW-TLP"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ptC-K4-GRY" appends="YES" id="flV-rS-FXM"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nemesiss.Lin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhh-yh-OAe">
                                 <rect key="frame" x="136" y="96" width="129" height="27"/>
@@ -183,6 +191,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vlh-Gt-PNr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ane-yh-lOG">
+                    <connections>
+                        <action selector="ChangeBackgroundImage:" destination="NZG-WK-VD2" id="TwJ-JB-Wsn"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="ptC-K4-GRY">
+                    <connections>
+                        <action selector="ChangeAvatar:" destination="NZG-WK-VD2" id="Dfc-Za-ehR"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="307" y="477"/>
         </scene>
@@ -194,8 +212,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="BRc-uo-xQb">
-                            <rect key="frame" x="0.0" y="74" width="414" height="44"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="BRc-uo-xQb">
+                            <rect key="frame" x="0.0" y="120" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -222,6 +240,36 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="SettingName" destination="JZz-et-HkH" id="Zvv-i8-rUQ"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NightModeTableViewCell" rowHeight="46" id="3Fj-cS-Das" customClass="NightModeTableViewCell" customModule="iAnime" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="74" width="414" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Fj-cS-Das" id="cDm-Da-gXi">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="45.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qP-yK-59Q">
+                                            <rect key="frame" x="24" y="13" width="310" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gIf-KQ-Wli">
+                                            <rect key="frame" x="357" y="7.3333333333333321" width="51" height="30.999999999999996"/>
+                                        </switch>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="3qP-yK-59Q" firstAttribute="centerY" secondItem="cDm-Da-gXi" secondAttribute="centerY" id="AjV-EK-vVx"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="3qP-yK-59Q" secondAttribute="trailing" constant="60" id="D4y-KH-u0r"/>
+                                        <constraint firstItem="3qP-yK-59Q" firstAttribute="leading" secondItem="cDm-Da-gXi" secondAttribute="leadingMargin" constant="4" id="TBe-x0-ojQ"/>
+                                        <constraint firstItem="gIf-KQ-Wli" firstAttribute="centerY" secondItem="cDm-Da-gXi" secondAttribute="centerY" id="cCB-u2-NJc"/>
+                                        <constraint firstAttribute="trailing" secondItem="gIf-KQ-Wli" secondAttribute="trailing" constant="8" id="kd1-SI-4vz"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="SettingName" destination="3qP-yK-59Q" id="wE9-gX-Vcx"/>
+                                    <outlet property="SwitchButton" destination="gIf-KQ-Wli" id="qPv-uh-wfd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -324,8 +372,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Add" width="64" height="64"/>
-        <image name="Left-2" width="1000" height="1699"/>
+        <image name="Add" width="32" height="32"/>
+        <image name="Left-2" width="240" height="407.760009765625"/>
         <image name="SampleAvatar" width="700" height="700"/>
     </resources>
 </document>

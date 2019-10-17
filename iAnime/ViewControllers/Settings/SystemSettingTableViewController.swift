@@ -12,7 +12,7 @@ class SystemSettingTableViewController: UITableViewController {
 
     @IBInspectable var ReuseCellIdentifier : String = "SettingTableViewCell"
     
-    private var SettingItem : [[String]] = [
+    private var SettingItems : [[String]] = [
         ["About iAnime","AboutiAnime"]
     ]
     
@@ -29,7 +29,7 @@ class SystemSettingTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return SettingItem.count
+        return SettingItems.count
     }
 
     
@@ -37,19 +37,15 @@ class SystemSettingTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: ReuseCellIdentifier, for: indexPath)
 
         if let settingCell = cell as? SettingTableViewCell {
-            settingCell.SettingName.text = SettingItem[indexPath.row][0]
+            settingCell.SettingName.text = SettingItems[indexPath.row][0]
         }
         return cell
     }
 
     
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedSettingItem = SettingItem[indexPath.row]
-        print("即将进入: \(selectedSettingItem[0])")
-        
+        let selectedSettingItem = SettingItems[indexPath.row]
         PushVCToCurrentNC(vcName: selectedSettingItem[1], backItem: "返回")
-        
     }
 
     /*

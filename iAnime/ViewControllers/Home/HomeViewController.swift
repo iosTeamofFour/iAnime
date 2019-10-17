@@ -16,8 +16,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var SignTextField: UITextField!
     @IBOutlet weak var UserNickName: UILabel!
     @IBOutlet weak var UserLevel: UILabel!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         SignTextField.delegate = self
@@ -31,19 +30,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
-    }
-    
-    // Hide navigation bar.
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        ToggleVisibleForNavigationItem(false)
-        ToggleVisibleForTabBarItem(true)
-    }
-    
-    // Reset navigation bar.
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        ToggleVisibleForNavigationItem(true)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -62,6 +48,20 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         HomeBackgroundImage.addConstraint(NSLayoutConstraint(item: HomeBackgroundImage, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: ViewHeight / 3))
         HomeBackgroundImage.contentMode = .scaleAspectFill
         HomeBackgroundImage.clipsToBounds = true
+    }
+    
+    
+    @IBAction func ChangeBackgroundImage(_ sender: UITapGestureRecognizer) {
+        let alertController = UIAlertController(title: "主页背景", message: nil, preferredStyle: .actionSheet)
         
-	    }
+        let changeBackgroundAction = UIAlertAction(title: "更改主页背景", style: .default, handler: {
+            
+        })
+    }
+    
+    @IBAction func ChangeAvatar(_ sender: UITapGestureRecognizer) {
+        
+        
+    }
+    
 }
