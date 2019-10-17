@@ -45,7 +45,7 @@ class CollapsedViewController: FragmentViewController {
     }
     
     func AfterContainerItemChanged(_ isExpanded : Bool)  {
-        print("当前回调的是默认滚动控制器的AfterContainerItemChanged，此方法什么都没实现，如果需要手动计算滚动区域高度，请确认师傅正确override此函数.")
+        print("当前回调的是默认滚动控制器的AfterContainerItemChanged，此方法什么都没实现，如果需要手动计算滚动区域高度，请确认是否正确override此函数.")
     }
     
     var itemSize : CGSize {

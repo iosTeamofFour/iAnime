@@ -41,6 +41,7 @@
 		DFA2C836234F17B800BFCB01 /* Discovery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA2C835234F17B800BFCB01 /* Discovery.storyboard */; };
 		DFA2C838234F1BBF00BFCB01 /* RecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA2C837234F1BBF00BFCB01 /* RecommendationViewController.swift */; };
 		DFA2C83A234F1BDA00BFCB01 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA2C839234F1BDA00BFCB01 /* SearchViewController.swift */; };
+		DFFDE2EE23586071007F2ECB /* PinchImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFDE2ED23586071007F2ECB /* PinchImageViewController.swift */; };
 		E60692E1234B7EE50012E534 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E60692E0234B7EE50012E534 /* Index.storyboard */; };
 		E60692E3234B9F4F0012E534 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60692E2234B9F4F0012E534 /* IndexViewController.swift */; };
 		E6828ADA234BA20800BAFB31 /* Illustration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6828AD9234BA20800BAFB31 /* Illustration.swift */; };
@@ -84,6 +85,7 @@
 		DFA2C835234F17B800BFCB01 /* Discovery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discovery.storyboard; sourceTree = "<group>"; };
 		DFA2C837234F1BBF00BFCB01 /* RecommendationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewController.swift; sourceTree = "<group>"; };
 		DFA2C839234F1BDA00BFCB01 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		DFFDE2ED23586071007F2ECB /* PinchImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchImageViewController.swift; sourceTree = "<group>"; };
 		E60692E0234B7EE50012E534 /* Index.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Index.storyboard; sourceTree = "<group>"; };
 		E60692E2234B9F4F0012E534 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		E6828AD9234BA20800BAFB31 /* Illustration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Illustration.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				DFA2C831234F156B00BFCB01 /* CollapsedViewController.swift */,
+				DFFDE2ED23586071007F2ECB /* PinchImageViewController.swift */,
 			);
 			path = VCExtensions;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				E6828ADA234BA20800BAFB31 /* Illustration.swift in Sources */,
 				A4CB24BD23580B6C00807BE8 /* SettingWithSwitchTableViewCell.swift in Sources */,
 				A4683DFD234E0DA200D50D04 /* CollapsedView.swift in Sources */,
+				DFFDE2EE23586071007F2ECB /* PinchImageViewController.swift in Sources */,
 				DF14EB96234CFFA50017D4E4 /* HomeViewController.swift in Sources */,
 				DF2DC40C234AE69F009E52B0 /* ScrollStackContainerView.swift in Sources */,
 				DF2DC41A234B5DED009E52B0 /* RegisterViewController.swift in Sources */,
@@ -526,6 +530,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X63KRZ63Y2;
 				INFOPLIST_FILE = iAnime/Info.plist;
@@ -536,6 +541,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Nemesiss.Studio.iAnime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -545,6 +551,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X63KRZ63Y2;
 				INFOPLIST_FILE = iAnime/Info.plist;
@@ -555,6 +562,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Nemesiss.Studio.iAnime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
