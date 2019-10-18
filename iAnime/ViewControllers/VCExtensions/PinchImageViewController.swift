@@ -14,6 +14,12 @@ class PinchImageViewController: UIViewController {
     
     private var imageViewOriginalSize : CGSize?
     
+    private var PinchBeganOrigin : CGPoint = CGPoint.zero
+    private var ScaleBeginRatio : CGFloat = 0
+    
+    private var TotalOffsetX : CGFloat = 0
+    private var TotalOffsetY : CGFloat = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,38 +32,45 @@ class PinchImageViewController: UIViewController {
         print("图片本体应该存在的大小: \(imageViewOriginalSize!)")
     }
     @IBAction func OnImageViewPinch(_ sender: UIPinchGestureRecognizer) {
-        if sender.state == .began || sender.state == .changed {
-            imageView.transform = imageView.transform.scaledBy(x: sender.scale, y: sender.scale)
-            sender.scale = 1
+        
+        if sender.state == .began {
+            PinchBeganOrigin = sender.location(in: imageView)
+            print("初始位置:\(PinchBeganOrigin)")
         }
-        else if sender.state == .ended {
-            var scaleX = imageView.transform.a
-            var scaleY = imageView.transform.d
+        
+        if sender.state == .changed {
             
-            if scaleX > 3 {
-                scaleX = 3
-                scaleY = 3
-            }
-            else if scaleX < 0.4 {
-                scaleX = 1
-                scaleY = 1
-            }
+            // 获取双指缩放中心点:
             
-            var matrix = imageView.transform
-            matrix.a = scaleX
-            matrix.d = scaleY
             if sender.numberOfTouches == 2 {
-                let first = sender.location(ofTouch: 0, in: view)
-                let second = sender.location(ofTouch: 1, in: view)
-                let center = CGPoint(x: (first.x + second.x)/2, y: (first.y+second.y)/2)
-                let offset = CGPoint(x: view.center.x - center.x, y: view.center.y - center.y)
-                matrix = matrix.translatedBy(x: offset.x, y: offset.y)
+                let first = sender.location(ofTouch: 0, in: imageView)
+                let second = sender.location(ofTouch: 1, in: imageView)
+                
+                let ratioX = PinchBeganOrigin.x / imageView.bounds.size.width
+                let ratioY = PinchBeganOrigin.y / imageView.bounds.size.height
+                
+                let newWidth = imageView.frame.width * sender.scale
+                let newHeight = imageView.frame.height * sender.scale
+                
+                let offsetX = (newWidth - imageView.frame.width) * (0.5 - ratioX)
+                let offsetY = (newHeight - imageView.frame.height) * (0.5 - ratioY)
+                
+                TotalOffsetX += offsetX
+                TotalOffsetY += offsetY
+                
+                imageView.transform = imageView.transform.scaledBy(x: sender.scale, y: sender.scale)
+                imageView.transform = imageView.transform.translatedBy(x: offsetX, y: offsetY)
             }
             
-            UIView.animate(withDuration: 0.25, animations: {
-                self.imageView.transform = matrix
-            })
+
         }
+        
+        if sender.state == .ended {
+            print("\(TotalOffsetX)   \(TotalOffsetY)")
+            TotalOffsetY = 0
+            TotalOffsetX = 0
+        }
+        sender.scale = 1
     }
     
     

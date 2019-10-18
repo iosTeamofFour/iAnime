@@ -95,8 +95,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Left-7" translatesAutoresizingMaskIntoConstraints="NO" id="pcb-qd-NkF">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Left-4" translatesAutoresizingMaskIntoConstraints="NO" id="pcb-qd-NkF">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="KUs-vi-7hr" appends="YES" id="6vb-Ba-PDt"/>
@@ -106,10 +106,10 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="pcb-qd-NkF" firstAttribute="leading" secondItem="ppF-qH-vjk" secondAttribute="leading" id="65Z-eR-2im"/>
-                            <constraint firstItem="ppF-qH-vjk" firstAttribute="bottom" secondItem="pcb-qd-NkF" secondAttribute="bottom" id="AWD-gk-xyp"/>
-                            <constraint firstItem="ppF-qH-vjk" firstAttribute="trailing" secondItem="pcb-qd-NkF" secondAttribute="trailing" id="iZs-xL-srO"/>
-                            <constraint firstItem="pcb-qd-NkF" firstAttribute="top" secondItem="ppF-qH-vjk" secondAttribute="top" id="pB1-dI-oRR"/>
+                            <constraint firstAttribute="trailing" secondItem="pcb-qd-NkF" secondAttribute="trailing" id="3yk-Yw-WCv"/>
+                            <constraint firstAttribute="bottom" secondItem="pcb-qd-NkF" secondAttribute="bottom" id="N5O-MO-D3g"/>
+                            <constraint firstItem="pcb-qd-NkF" firstAttribute="leading" secondItem="3Zn-9t-V9o" secondAttribute="leading" id="UmZ-PQ-Ooh"/>
+                            <constraint firstItem="pcb-qd-NkF" firstAttribute="top" secondItem="3Zn-9t-V9o" secondAttribute="top" id="oWx-RA-TEz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ppF-qH-vjk"/>
                     </view>
@@ -416,9 +416,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Add" width="32" height="32"/>
-        <image name="Left-2" width="240" height="407.760009765625"/>
-        <image name="Left-7" width="2500" height="1926"/>
+        <image name="Add" width="64" height="64"/>
+        <image name="Left-2" width="1000" height="1699"/>
+        <image name="Left-4" width="2429" height="1515"/>
         <image name="SampleAvatar" width="700" height="700"/>
     </resources>
 </document>
