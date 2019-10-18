@@ -95,39 +95,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Left-4" translatesAutoresizingMaskIntoConstraints="NO" id="pcb-qd-NkF">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ic-eT-ajn">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="KUs-vi-7hr" appends="YES" id="6vb-Ba-PDt"/>
-                                    <outletCollection property="gestureRecognizers" destination="76p-9U-uOL" appends="YES" id="hwW-IF-zeS"/>
-                                </connections>
-                            </imageView>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="pcb-qd-NkF" secondAttribute="trailing" id="3yk-Yw-WCv"/>
-                            <constraint firstAttribute="bottom" secondItem="pcb-qd-NkF" secondAttribute="bottom" id="N5O-MO-D3g"/>
-                            <constraint firstItem="pcb-qd-NkF" firstAttribute="leading" secondItem="3Zn-9t-V9o" secondAttribute="leading" id="UmZ-PQ-Ooh"/>
-                            <constraint firstItem="pcb-qd-NkF" firstAttribute="top" secondItem="3Zn-9t-V9o" secondAttribute="top" id="oWx-RA-TEz"/>
+                            <constraint firstItem="1Ic-eT-ajn" firstAttribute="leading" secondItem="ppF-qH-vjk" secondAttribute="leading" id="8ll-ik-iIJ"/>
+                            <constraint firstItem="1Ic-eT-ajn" firstAttribute="top" secondItem="3Zn-9t-V9o" secondAttribute="top" id="N6o-Bv-nJy"/>
+                            <constraint firstItem="ppF-qH-vjk" firstAttribute="bottom" secondItem="1Ic-eT-ajn" secondAttribute="bottom" id="bTc-wN-RWa"/>
+                            <constraint firstItem="ppF-qH-vjk" firstAttribute="trailing" secondItem="1Ic-eT-ajn" secondAttribute="trailing" id="w7E-kl-0EW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ppF-qH-vjk"/>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="pcb-qd-NkF" id="26J-F5-H56"/>
+                        <outlet property="scroller" destination="1Ic-eT-ajn" id="r8H-q2-mo9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7bH-hw-SG2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pinchGestureRecognizer id="KUs-vi-7hr">
-                    <connections>
-                        <action selector="OnImageViewPinch:" destination="JIS-aS-zds" id="moF-GI-0al"/>
-                    </connections>
-                </pinchGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="76p-9U-uOL">
-                    <connections>
-                        <action selector="OnImageViewPan:" destination="JIS-aS-zds" id="fPb-lI-WZ8"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2413" y="-253"/>
         </scene>
@@ -416,9 +401,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Add" width="64" height="64"/>
-        <image name="Left-2" width="1000" height="1699"/>
-        <image name="Left-4" width="2429" height="1515"/>
+        <image name="Add" width="32" height="32"/>
+        <image name="Left-2" width="240" height="407.760009765625"/>
         <image name="SampleAvatar" width="700" height="700"/>
     </resources>
 </document>

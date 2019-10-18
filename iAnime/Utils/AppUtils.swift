@@ -26,11 +26,11 @@ public extension UIAlertController {
 }
 
 public extension UIImageView {
-    public func GetCGSizeInAspectFit() -> CGSize? {
+    public func GetCGSizeInAspectFit(_ parentViewSize : CGSize) -> CGSize? {
         if image == nil {
             return nil
         }
-        let IvFrameSize = frame.size
+        let IvFrameSize = parentViewSize
         let ImageSize = image!.size
         
         let ImageWHRatio = ImageSize.width / ImageSize.height
@@ -51,12 +51,12 @@ public extension UIImageView {
     }
     
     
-    public func GetCGSizeInAspectFill() -> CGSize? {
+    public func GetCGSizeInAspectFill(_ parentViewSize : CGSize) -> CGSize? {
         // 这种情况下直接按照短边放大即可
         if image == nil {
             return nil
         }
-        let IvFrameSize = frame.size
+        let IvFrameSize = parentViewSize
         let ImageSize = image!.size
         let ImageWHRatio = ImageSize.width / ImageSize.height
         
