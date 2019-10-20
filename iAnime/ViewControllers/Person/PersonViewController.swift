@@ -61,7 +61,7 @@ class PersonViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         TimelineCollectionViewFlow.scrollDirection = .vertical
         TimelineCollectionViewFlow.minimumInteritemSpacing = 8
-        TimelineCollectionViewFlow.minimumLineSpacing = 12
+        TimelineCollectionViewFlow.minimumLineSpacing = 8
         
         let ContainerWidth = TimelineContainer.frame.width
         // One line 4 item
@@ -69,17 +69,6 @@ class PersonViewController: UIViewController, UICollectionViewDelegate, UICollec
         TimelineCollectionViewFlow.itemSize = CGSize(width: ItemWidth, height: ItemWidth)
         TimelineCollectionViewFlow.sectionInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         TimelineCollectionViewFlow.headerReferenceSize = CGSize(width: TimelineContainer.frame.width - 20, height: 45)
-        
-        
-//        defaultLayout.scrollDirection = UICollectionViewScrollDirection.vertical//设置垂直显示
-//        defaultLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)//设置边距
-//        defaultLayout.itemSize = CGSize(width: kScreenWidth/2, height: 50)
-//        defaultLayout.minimumLineSpacing = 0.0 //每个相邻的layout的上下间隔
-//        defaultLayout.minimumInteritemSpacing = 0.0 //每个相邻layout的左右间隔
-//        defaultLayout.headerReferenceSize = CGSize(width: 0, height: 0)
-//        defaultLayout.footerReferenceSize = CGSize(width: 0, height: 15)
-        
-        
         TimelineCollectionView = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: TimelineCollectionViewFlow)
         
         
@@ -128,10 +117,12 @@ class PersonViewController: UIViewController, UICollectionViewDelegate, UICollec
         let ItemWidth = (ContainerWidth - (4-1) * 8)/4
         return CGSize(width: ItemWidth, height: ItemWidth)
     }
+
+//    如果需要特判Header的高度, 就需要override这个函数了。
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: TimelineContainer.frame.width - 20, height: 45)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        return CGSize(width: TimelineContainer.frame.width - 20, height: 45)
+//    }
     
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,

@@ -41,6 +41,7 @@
 		DF7B8AB2235C0FEB006C93EF /* RoundCornerUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B8AB1235C0FEB006C93EF /* RoundCornerUIImageView.swift */; };
 		DF7B8AB4235C18C4006C93EF /* Pair.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B8AB3235C18C4006C93EF /* Pair.swift */; };
 		DF7B8AB6235C2722006C93EF /* TimelineHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B8AB5235C2722006C93EF /* TimelineHeader.swift */; };
+		DF7B8AB8235C4E21006C93EF /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B8AB7235C4E21006C93EF /* DateUtils.swift */; };
 		DFA2C832234F156B00BFCB01 /* CollapsedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA2C831234F156B00BFCB01 /* CollapsedViewController.swift */; };
 		DFA2C834234F16DB00BFCB01 /* CollapsedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA2C82F234E2EDF00BFCB01 /* CollapsedContent.swift */; };
 		DFA2C836234F17B800BFCB01 /* Discovery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA2C835234F17B800BFCB01 /* Discovery.storyboard */; };
@@ -90,6 +91,7 @@
 		DF7B8AB1235C0FEB006C93EF /* RoundCornerUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCornerUIImageView.swift; sourceTree = "<group>"; };
 		DF7B8AB3235C18C4006C93EF /* Pair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pair.swift; sourceTree = "<group>"; };
 		DF7B8AB5235C2722006C93EF /* TimelineHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineHeader.swift; sourceTree = "<group>"; };
+		DF7B8AB7235C4E21006C93EF /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		DFA2C82F234E2EDF00BFCB01 /* CollapsedContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedContent.swift; sourceTree = "<group>"; };
 		DFA2C831234F156B00BFCB01 /* CollapsedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedViewController.swift; sourceTree = "<group>"; };
 		DFA2C835234F17B800BFCB01 /* Discovery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discovery.storyboard; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				DF2DC40F234B429B009E52B0 /* InorderAnimation.swift */,
 				A4D5757A234DDC070013B68D /* ViewControllerHelper.swift */,
 				A4CB24C02358213800807BE8 /* AppUtils.swift */,
+				DF7B8AB7235C4E21006C93EF /* DateUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				DF2DC41A234B5DED009E52B0 /* RegisterViewController.swift in Sources */,
 				DF7B8AAD235B6611006C93EF /* LeftAlignedImageButton.swift in Sources */,
 				DFA2C83A234F1BDA00BFCB01 /* SearchViewController.swift in Sources */,
+				DF7B8AB8235C4E21006C93EF /* DateUtils.swift in Sources */,
 				DF7B8AB2235C0FEB006C93EF /* RoundCornerUIImageView.swift in Sources */,
 				A43255942355DA6800C42429 /* HomeTableViewController.swift in Sources */,
 				DF2DC408234AE4DB009E52B0 /* UIUtils.swift in Sources */,
