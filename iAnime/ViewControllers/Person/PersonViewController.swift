@@ -8,10 +8,10 @@
 
 import UIKit
 
-class PersonViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class PersonViewController: ReturnArrowViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     
-    
+
     @IBOutlet weak var BackgroundImage: UIImageView!
     @IBOutlet weak var AvatarImage: UIImageView!
     @IBOutlet weak var UserName: UILabel!
@@ -25,6 +25,9 @@ class PersonViewController: UIViewController, UICollectionViewDelegate, UICollec
     private var TimelineCollectionViewFlow : UICollectionViewFlowLayout!
     
     private var TimelineCollectionViewHeightConstraint : NSLayoutConstraint?
+    
+    @IBOutlet weak var FollowUserButton: MultistateButton!
+    
     private var FakeData : [Pair<String,[String]>] = [
         Pair("2019-09", [
             "Left-0",
@@ -45,7 +48,6 @@ class PersonViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // 关闭自动计算安全区域大小的功能
         if #available(iOS 11.0, *) {
             Scroller.contentInsetAdjustmentBehavior = .never
@@ -53,12 +55,56 @@ class PersonViewController: UIViewController, UICollectionViewDelegate, UICollec
         automaticallyAdjustsScrollViewInsets = false
         AvatarImage.SetCircleBorder()
         InitTimelineCollectionView()
+        InitFollowButton()
     }
+    
+    private func InitFollowButton() {
+        let states : [ButtonState] = [
+            ButtonState("关注", UIImage(named: "AddNoCircle"),nil,UIColor.init(red: 0, green: 118/255, blue: 1, alpha: 1), OnClickFollowUser),
+            ButtonState("已关注",UIImage(named: "Checkmark"), nil, UIColor.gray, OnClickFollowUser)
+        ]
+        
+        FollowUserButton.AddStates(states)
+    }
+    
+    private func OnClickFollowUser(_ sender: MultistateButton) {
+        // Do something here
+        sender.NextState((sender.CurrentState + 1) % sender.ButtonState.count)
+    }
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // 控制时间线CollectionView显示
+    
     
     private func InitTimelineCollectionView() {
         
         TimelineCollectionViewFlow = UICollectionViewFlowLayout()
-        
         TimelineCollectionViewFlow.scrollDirection = .vertical
         TimelineCollectionViewFlow.minimumInteritemSpacing = 8
         TimelineCollectionViewFlow.minimumLineSpacing = 8
@@ -85,13 +131,13 @@ class PersonViewController: UIViewController, UICollectionViewDelegate, UICollec
         TimelineCollectionViewHeightConstraint = TimelineCollectionView.heightAnchor.constraint(equalToConstant: 1).Activate()
     }
     
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return FakeData.count
     }
     
     // 展示Timeline的CollectionView逻辑
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
         return FakeData[section].value.count
     }
 
@@ -108,6 +154,14 @@ class PersonViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        let cell = collectionView.cellForItem(at: indexPath) as! TimelineItemCell
+        
+        let sb = UIStoryboard(name: "Index", bundle: nil)
+        let imageViewer = sb.instantiateViewController(withIdentifier: "ImageViewer") as! PinchImageViewController
+        
+        imageViewer.Images.append(cell.imageView.image!)
+        present(imageViewer, animated: true, completion: nil)
         
     }
     
@@ -144,14 +198,12 @@ class PersonViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     private func UpdateTimelineCollectionViewHeight() {
-        
         if let constraint = TimelineCollectionViewHeightConstraint {
             constraint.isActive = false
             TimelineCollectionView.removeConstraint(constraint)
         }
         
         let contentSize = TimelineCollectionView.collectionViewLayout.collectionViewContentSize.height
-        print("Correct height:\(contentSize)")
         TimelineCollectionViewHeightConstraint = TimelineCollectionView.heightAnchor.constraint(equalToConstant: contentSize).Activate()
     }
 }

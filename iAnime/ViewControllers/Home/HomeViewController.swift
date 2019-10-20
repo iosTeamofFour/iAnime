@@ -40,17 +40,15 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         UserAvatarImage.SetCircleBorder()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        ToggleVisibleForNavigationItem(true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ToggleVisibleForNavigationItem(false)
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        ToggleVisibleForNavigationItem(true)
-    }
-    
-    
     
     @IBAction func ChangeBackgroundImage(_ sender: UITapGestureRecognizer) {
         let alert = UIAlertController.MakeAlertSheet("主页背景", nil, [

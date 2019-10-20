@@ -13,6 +13,9 @@ import UIKit
 public extension UIViewController {
     public func ToggleVisibleForNavigationItem(_ visible : Bool) {
         self.navigationController?.setNavigationBarHidden(!visible, animated: false)
+        if !visible {
+            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        }
     }
     
     public func ToggleVisibleForTabBarItem(_ visible : Bool) {
@@ -41,7 +44,7 @@ public extension UIViewController {
         vc.hidesBottomBarWhenPushed = true // 隐藏上一个View的TabBar（如果有）
         navigationController?.pushViewController(vc, animated: true)
         if let _backKey = backKey {
-            vc.navigationController?.navigationBar.topItem?.backBarButtonItem =  UIBarButtonItem(title: _backKey, style: .plain , target: nil, action: nil)
+            vc.navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: _backKey, style: .plain , target: nil, action: nil)
         }
         return vc
     }

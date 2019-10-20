@@ -90,7 +90,7 @@
         <!--Pinch Image View Controller-->
         <scene sceneID="R5N-jH-CS4">
             <objects>
-                <viewController id="JIS-aS-zds" customClass="PinchImageViewController" customModule="iAnime" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImageViewer" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JIS-aS-zds" customClass="PinchImageViewController" customModule="iAnime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Zn-9t-V9o">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

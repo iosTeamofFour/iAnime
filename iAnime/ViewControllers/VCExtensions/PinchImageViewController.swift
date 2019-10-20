@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PinchImageViewController: UIViewController {
+class PinchImageViewController: ReturnArrowViewController {
     
     // 当前显示的imageView
     var imageView: UIImageView!
@@ -27,7 +27,7 @@ class PinchImageViewController: UIViewController {
     private var LastScaleCenterPoint : CGPoint = CGPoint.zero
     
     // 待加载的Images
-    var Images : [String] = ["Left-1"]
+    var Images : [UIImage] = []
 
     
     // 加载完毕的ImageViews
@@ -67,8 +67,7 @@ class PinchImageViewController: UIViewController {
             iv = _iv
         }
         else {
-            
-            let image = UIImage(named: Images[index])!
+            let image = Images[index]
             let _iv = UIImageView()
             _iv.image = image
             _iv.isUserInteractionEnabled = true
