@@ -25,10 +25,10 @@ class TimelineItemCell: UICollectionViewCell {
     }
     
     private func InitSubview() {
-        imageView = RoundCornerUIImageView(4)
-        imageView.topAnchor.constraint(equalTo: topAnchor).Activate()
-        imageView.leadingAnchor.constraint(equalTo: leadingAnchor).Activate()
-        imageView.bottomAnchor.constraint(equalTo: bottomAnchor).Activate()
-        imageView.trailingAnchor.constraint(equalTo: trailingAnchor).Activate()
+        imageView = RoundCornerUIImageView(6)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(imageView)
+        imageView.widthAnchor.constraint(equalTo: widthAnchor).Activate()
+        imageView.heightAnchor.constraint(equalTo: heightAnchor).Activate()
     }
 }
