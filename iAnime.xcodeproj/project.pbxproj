@@ -36,6 +36,9 @@
 		DF2DC41A234B5DED009E52B0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2DC419234B5DED009E52B0 /* RegisterViewController.swift */; };
 		DF3F617123577B1B00D4EBB3 /* SystemSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3F617023577B1B00D4EBB3 /* SystemSettingTableViewController.swift */; };
 		DF4776752350ABBA00D8A084 /* OverhitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4776742350ABBA00D8A084 /* OverhitView.swift */; };
+		DF7B8AAD235B6611006C93EF /* LeftAlignedImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B8AAC235B6611006C93EF /* LeftAlignedImageButton.swift */; };
+		DF7B8AB0235C0B0D006C93EF /* TimelineItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B8AAF235C0B0D006C93EF /* TimelineItemCell.swift */; };
+		DF7B8AB2235C0FEB006C93EF /* RoundCornerUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B8AB1235C0FEB006C93EF /* RoundCornerUIImageView.swift */; };
 		DFA2C832234F156B00BFCB01 /* CollapsedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA2C831234F156B00BFCB01 /* CollapsedViewController.swift */; };
 		DFA2C834234F16DB00BFCB01 /* CollapsedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA2C82F234E2EDF00BFCB01 /* CollapsedContent.swift */; };
 		DFA2C836234F17B800BFCB01 /* Discovery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA2C835234F17B800BFCB01 /* Discovery.storyboard */; };
@@ -80,6 +83,9 @@
 		DF2DC419234B5DED009E52B0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		DF3F617023577B1B00D4EBB3 /* SystemSettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingTableViewController.swift; sourceTree = "<group>"; };
 		DF4776742350ABBA00D8A084 /* OverhitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverhitView.swift; sourceTree = "<group>"; };
+		DF7B8AAC235B6611006C93EF /* LeftAlignedImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedImageButton.swift; sourceTree = "<group>"; };
+		DF7B8AAF235C0B0D006C93EF /* TimelineItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineItemCell.swift; sourceTree = "<group>"; };
+		DF7B8AB1235C0FEB006C93EF /* RoundCornerUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCornerUIImageView.swift; sourceTree = "<group>"; };
 		DFA2C82F234E2EDF00BFCB01 /* CollapsedContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedContent.swift; sourceTree = "<group>"; };
 		DFA2C831234F156B00BFCB01 /* CollapsedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedViewController.swift; sourceTree = "<group>"; };
 		DFA2C835234F17B800BFCB01 /* Discovery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discovery.storyboard; sourceTree = "<group>"; };
@@ -171,6 +177,7 @@
 		DF0A1A4A23536C0E00CB6698 /* Person */ = {
 			isa = PBXGroup;
 			children = (
+				DF7B8AAE235C0AF8006C93EF /* Cells */,
 				DF0A1A4B23536C3200CB6698 /* PersonViewController.swift */,
 			);
 			path = Person;
@@ -242,6 +249,8 @@
 				DF14EB93234CFB0B0017D4E4 /* RightImageButton.swift */,
 				A4683DFC234E0DA200D50D04 /* CollapsedView.swift */,
 				DF4776742350ABBA00D8A084 /* OverhitView.swift */,
+				DF7B8AAC235B6611006C93EF /* LeftAlignedImageButton.swift */,
+				DF7B8AB1235C0FEB006C93EF /* RoundCornerUIImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -257,6 +266,14 @@
 				DF0A1A4823535C0E00CB6698 /* Person.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		DF7B8AAE235C0AF8006C93EF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DF7B8AAF235C0B0D006C93EF /* TimelineItemCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		DFA2C833234F157100BFCB01 /* VCExtensions */ = {
@@ -370,7 +387,9 @@
 				DF14EB96234CFFA50017D4E4 /* HomeViewController.swift in Sources */,
 				DF2DC40C234AE69F009E52B0 /* ScrollStackContainerView.swift in Sources */,
 				DF2DC41A234B5DED009E52B0 /* RegisterViewController.swift in Sources */,
+				DF7B8AAD235B6611006C93EF /* LeftAlignedImageButton.swift in Sources */,
 				DFA2C83A234F1BDA00BFCB01 /* SearchViewController.swift in Sources */,
+				DF7B8AB2235C0FEB006C93EF /* RoundCornerUIImageView.swift in Sources */,
 				A43255942355DA6800C42429 /* HomeTableViewController.swift in Sources */,
 				DF2DC408234AE4DB009E52B0 /* UIUtils.swift in Sources */,
 				DFA2C832234F156B00BFCB01 /* CollapsedViewController.swift in Sources */,
@@ -385,6 +404,7 @@
 				DF14EB94234CFB0B0017D4E4 /* RightImageButton.swift in Sources */,
 				A4683DFB234E0D9300D50D04 /* RankingViewController.swift in Sources */,
 				DF3F617123577B1B00D4EBB3 /* SystemSettingTableViewController.swift in Sources */,
+				DF7B8AB0235C0B0D006C93EF /* TimelineItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,7 +27,7 @@ class PinchImageViewController: UIViewController {
     private var LastScaleCenterPoint : CGPoint = CGPoint.zero
     
     // 待加载的Images
-    var Images : [String] = ["Left-1","Left-2","Left-3"]
+    var Images : [String] = ["Left-1"]
 
     
     // 加载完毕的ImageViews

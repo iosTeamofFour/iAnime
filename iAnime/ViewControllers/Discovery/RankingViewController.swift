@@ -70,7 +70,7 @@ class RankingViewController: CollapsedViewController {
                 let illu2 = Illustration(Image: UIImage(named: "Left-3")!, Name: "Huangpixuan", UploadDate: Date())
                 let item2 = IllustrationItemView()
                 item2.illustration = illu2
-               
+                
                 
                 let illu3 = Illustration(Image: UIImage(named: "Left-0")!, Name: "郑泽帅明", UploadDate: Date())
                 let item3 = IllustrationItemView()
@@ -90,7 +90,7 @@ class RankingViewController: CollapsedViewController {
                 grid.AddItem(item4)
             }
             
-           AddContent(content1)
+            AddContent(content1)
             
             let content2View = CollapsedView("最受欢迎的线稿")
             let content2Controller = storyboard.instantiateViewController(withIdentifier: "MostFavoriteDraft")

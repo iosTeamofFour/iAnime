@@ -18,3 +18,6 @@ struct Person{
     var followingNum:Int
 }
 
+struct PersonTimeline {
+    var Illustrations : Dictionary<Int,[String]>
+}

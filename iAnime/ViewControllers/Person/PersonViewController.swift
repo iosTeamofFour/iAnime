@@ -1,4 +1,4 @@
-//
+
 //  PersonViewController.swift
 //  iAnime
 //
@@ -8,53 +8,66 @@
 
 import UIKit
 
-class PersonViewController: UIViewController {
+class PersonViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    @IBOutlet weak var backgroundbackView: UIImageView!
-    @IBOutlet weak var avatar: UIImageView!
-    @IBOutlet weak var nickName: UILabel!
-    @IBOutlet weak var signature: UILabel!
-    @IBOutlet weak var followerNum: UILabel!
-    @IBOutlet weak var followingNum: UILabel!
-    @IBOutlet weak var attention: UIButton!
+    
+
+    @IBOutlet weak var BackgroundImage: UIImageView!
+    @IBOutlet weak var AvatarImage: UIImageView!
+    @IBOutlet weak var UserName: UILabel!
+    @IBOutlet weak var FollowerCount: UILabel!
+    @IBOutlet weak var FollowingCount: UILabel!
+    @IBOutlet weak var Signature: UILabel!
+    
+    @IBOutlet weak var TimelineContainer: UIStackView!
+    private var TimelineCollectionView : UICollectionView!
+    private var TimelineCollectionViewFlow : UICollectionViewFlowLayout!
+    
+    
+    private var FakeData : Dictionary<String,[String]> = [
+        "2019-9":[
+            "Left-0",
+            "Left-1",
+            "Left-2"
+        ],
+        "2019-7":[
+            "Left-3",
+            "Left-4",
+            "Left-5"
+        ]
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let person1=Person(backgroundImage: UIImage(named: "Left-7")!,avatar:UIImage(named:"SampleAvatar")!,nickName:"zoom",signature:"天天打码",followerNum:2,followingNum:22)
-        
-        
-        initInfo(person1)
-        avatar.SetCircleBorder()
-    }
-    func initInfo(_ person:Person){
-        backgroundbackView.image=person.backgroundImage
-        avatar.image=person.avatar
-        nickName.text=person.nickName
-        signature.text=person.signature
-        followerNum.text=String(person.followerNum)
-        followingNum.text=String(person.followingNum)
-        
-        AdjustTextColor()
     }
     
-    func AdjustTextColor() {
-        let colorForNickName = UIUtils.DetectTextColorWithBG(nickName, backgroundbackView)
-        let colorForSignature = UIUtils.DetectTextColorWithBG(signature, backgroundbackView)
+    private func InitTimelineCollectionView() {
+        TimelineCollectionViewFlow = UICollectionViewFlowLayout()
         
-        nickName.textColor = colorForNickName ? UIColor.white : UIColor.black
-        signature.textColor = colorForSignature ? UIColor.white : UIColor.black
+        TimelineCollectionViewFlow.scrollDirection = .vertical
+        TimelineCollectionViewFlow.minimumInteritemSpacing = 8
+        TimelineCollectionViewFlow.minimumLineSpacing = 12
+        
+        let ContainerWidth = TimelineContainer.frame.width
+        // One line 4 item
+        let ItemWidth = (ContainerWidth - (4-1) * 8)/4
+        TimelineCollectionViewFlow.itemSize = CGSize(width: ItemWidth, height: ItemWidth)
+        
+        
+        TimelineCollectionView = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: TimelineCollectionViewFlow)
+        TimelineCollectionView.delegate = self
+        TimelineCollectionView.dataSource = self
+        TimelineCollectionView.register(TimelineItemCell.self, forCellWithReuseIdentifier: "TimelineItemCell")
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return UIUtils.DetectStatusBarColor(view, backgroundbackView) ? .lightContent : .default
+    
+    
+    // 展示Timeline的CollectionView逻辑
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
     }
-    */
-
 }

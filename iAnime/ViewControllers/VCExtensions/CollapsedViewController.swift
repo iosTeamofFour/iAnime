@@ -9,7 +9,7 @@
 import UIKit
 
 class CollapsedViewController: FragmentViewController {
-
+    
     
     private var Contents : [CollapsedContent] = []
     private var ContentsConstraints : [CollapsedContentConstraints] = []
@@ -33,7 +33,7 @@ class CollapsedViewController: FragmentViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -45,7 +45,7 @@ class CollapsedViewController: FragmentViewController {
     }
     
     func AfterContainerItemChanged(_ isExpanded : Bool)  {
-        print("当前回调的是默认滚动控制器的AfterContainerItemChanged，此方法什么都没实现，如果需要手动计算滚动区域高度，请确认是否正确override此函数.")
+        print("当前回调的是默认滚动控制器的AfterContainerItemChanged，此方法什么都没实现，如果需要手动计算滚动区域高度，请确认师傅正确override此函数.")
     }
     
     var itemSize : CGSize {
@@ -80,7 +80,7 @@ class CollapsedViewController: FragmentViewController {
         let ctnView = ctn.view!
         ctnView.translatesAutoresizingMaskIntoConstraints = false
         ctnView.alpha = 1
-
+        
         rootView.addSubview(header)
         rootView.addSubview(ctnView)
     }
@@ -97,7 +97,7 @@ class CollapsedViewController: FragmentViewController {
         AddContentToContainer(content)
         LayoutItemInCollapsedMode(content, Contents.last)
     }
-
+    
     private func LayoutContent(_ content : CollapsedContent, lastContent : CollapsedContent?) {
         
         AddContentToContainer(content)
@@ -140,9 +140,9 @@ class CollapsedViewController: FragmentViewController {
         ContentsConstraints.append(consts)
         
         header.OnExpandedToggled = HandleComponentToggleExpand
-//        header.layoutIfNeeded()
-//        ctnView.layoutIfNeeded()
-//        rootView.layoutIfNeeded()
+        //        header.layoutIfNeeded()
+        //        ctnView.layoutIfNeeded()
+        //        rootView.layoutIfNeeded()
         AfterContainerItemChanged(IsExpanded)
     }
     
@@ -175,7 +175,7 @@ class CollapsedViewController: FragmentViewController {
         
     }
     
-
+    
     private func RecoverFromExpanded() {
         //去除当前正在展示的Item的全部约束。
         RemoveAllConstraintsForManagedItem(CurrentExpandedItemIndex, CurrentExpandItemConstraints)
@@ -185,11 +185,11 @@ class CollapsedViewController: FragmentViewController {
         self.CurrentExpandItemConstraints.HeaderConstraints.removeAll()
         //添加回原来的约束。
         if WithAnimation {
-
+            
             
             CollapseAnimation.AddAnimation(animation: ExecuteAnimation.init(Duration: 0.25, Delay: 0, Options: .curveEaseInOut, WhenComplete: {
                 _ in
-
+                
                 self.CurrentExpandedItemIndex = -1
                 self.CollapseAnimation.RemoveAllAnimation()
                 self.OnCollpased()
@@ -224,7 +224,7 @@ class CollapsedViewController: FragmentViewController {
     }
     
     private func HandleComponentToggleExpand(_ isExpand : Bool, _ collapsedView : CollapsedView) {
-
+        
         IsExpanded = isExpand
         
         if let root = rootView.superview as? UIScrollView {
@@ -283,7 +283,7 @@ class CollapsedViewController: FragmentViewController {
             LayoutItemInExpandedMode(Contents[index])
             OnExpanded()
         }
-        
+            
         else {
             RecoverFromExpanded()
         }
