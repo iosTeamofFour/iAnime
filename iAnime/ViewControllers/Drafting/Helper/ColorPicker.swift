@@ -10,7 +10,7 @@ import Foundation
 
 class ColorPickerHelper {
     
-    public static func GenerateColorPickerBarRGBItems(_ step : Float) {
+    public static func GenerateColorPickerBarRGBItems() -> [[Int]] {
         var BGR : [Int] = [0,0,255]
         
         var CurrentChange = 0
@@ -29,7 +29,6 @@ class ColorPickerHelper {
                     BGR[LastChange] -= 1
                     ColorItems.append(BGR.reversed())
                 }
-                
                 Down = false
                 LastChange = CurrentChange
                 CurrentChange += 1
@@ -43,8 +42,50 @@ class ColorPickerHelper {
             }
             LoopCount += 1
         }
-        
-        
-        print(ColorItems)
+        return ColorItems
+    }
+    
+    static func DifferentAt<T : Comparable>(_ left :[T],_ right: [T]) -> Int {
+        let ended = min(left.count,right.count)
+        for i in 0..<ended {
+            if left[i] != right[i] {
+                return i
+            }
+        }
+        return -1
+    }
+    
+    static func Interpolate(_ curr:Float, _ next:Float,_ slices:Int) -> [Float] {
+        if slices == 0 {
+            fatalError("Cannot use zero slices!")
+        }
+        let delta = next - curr
+        let step = delta / Float(slices)
+        var result : [Float] = [curr]
+        for i in 1...slices {
+            result.append(curr + step * Float(i))
+        }
+        return result
+    }
+    
+    public static func GetInterpolatedItems(_ original: [[Float]],_ slices: Int) -> [[Float]] {
+        var originalCopy = original
+        for i in 0..<original.count-1 {
+            let CurrentItem = original[i]
+            let NextItem = original[i+1]
+            let diffIndex = DifferentAt(CurrentItem, NextItem)
+            if diffIndex != -1 {
+                let CurrentElem = CurrentItem[diffIndex]
+                let NextElem = NextItem[diffIndex]
+                let interpolated = Interpolate(CurrentElem, NextElem, slices)
+                let NewElems = interpolated.map { value -> [Float] in
+                    var result = CurrentItem
+                    result[diffIndex] = value
+                    return result
+                }
+                originalCopy.insert(NewElems.flatMap{ it in it }, at: i)
+            }
+        }
+        return originalCopy
     }
 }
