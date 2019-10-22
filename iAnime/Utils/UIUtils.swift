@@ -133,6 +133,10 @@ public extension UIView {
         let coord =  convert(point, to: window)
         return coord
     }
+    
+    public func PointInside(_ point : CGPoint ) -> Bool {
+        return bounds.contains(point)
+    }
 }
 
 public extension UIStackView {

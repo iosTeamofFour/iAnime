@@ -20,7 +20,7 @@ class PinchImageViewController: ReturnArrowViewController {
     @IBOutlet weak var scroller: UIScrollView!
     
     
-    // 是否正在执行最大最小放大倍数限制操作(因为是自己模拟的缩放时间, 开了线程, 不应该被其他触摸事件打断)
+    // 是否正在执行最大最小放大倍数限制操作(因为是自己模拟的缩放事件, 开了线程, 不应该被其他触摸事件打断)
     private var IsDoingOverScale = false
     
     // 最后一次双指缩放的中心点, 给 Pinch .ended时的限制最大最小缩放比例的回缩函数用的
@@ -127,7 +127,7 @@ class PinchImageViewController: ReturnArrowViewController {
         // 计算缩放后新x, y的位置
         var offsetX : CGFloat = 0
         // 在缩放过程中如果缩放中心点比较靠左，不断缩小的时候会导致图片的左边界缩到屏幕的里面，这是不行的，需要进行计算跑进屏幕里面的Offset，还原回去进行贴边操作
-        // 注意这里不要使用translatedBy，矩阵操作更新速度不及时, b会导致当左边贴边的时候，如果再不断向右拉动图片会看到图片的左边不断的抖动，非常难看。
+        // 注意这里不要使用translatedBy，矩阵操作更新速度不及时, 会导致当左边贴边的时候，如果再不断向右拉动图片会看到图片的左边不断的抖动，非常难看。
         if iv.frame.minX > 0 && iv.frame.maxX >= view.frame.width {
             offsetX = -iv.frame.minX
         }
@@ -157,7 +157,6 @@ class PinchImageViewController: ReturnArrowViewController {
         // 应用Offset
         iv.frame.origin.x += offsetX
         iv.frame.origin.y += offsetY
-        
         iv.layoutIfNeeded()
     }
     
@@ -245,7 +244,6 @@ class PinchImageViewController: ReturnArrowViewController {
                     
                     let realTransX = trans.x * imageView.transform.a
                     
-
                     imageView.frame.origin.x += realTransX
                     nextImageView?.frame.origin.x += realTransX
                     

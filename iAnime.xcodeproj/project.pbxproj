@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,8 @@
 		A4203DB0234C88F8008C3632 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203DAF234C88F8008C3632 /* GridView.swift */; };
 		A43255942355DA6800C42429 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43255932355DA6800C42429 /* HomeTableViewController.swift */; };
 		A43255962355DF1000C42429 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43255952355DF1000C42429 /* SettingTableViewCell.swift */; };
+		A43EFE05235EA7B400706CF2 /* ColorPickerRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43EFE04235EA7B400706CF2 /* ColorPickerRectView.swift */; };
+		A43EFE07235EA84B00706CF2 /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43EFE06235EA84B00706CF2 /* RGB.swift */; };
 		A4683DF2234E02E800D50D04 /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DF1234E02E800D50D04 /* DiscoveryViewController.swift */; };
 		A4683DFB234E0D9300D50D04 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DFA234E0D9300D50D04 /* RankingViewController.swift */; };
 		A4683DFD234E0DA200D50D04 /* CollapsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DFC234E0DA200D50D04 /* CollapsedView.swift */; };
@@ -66,6 +68,8 @@
 		A4203DAF234C88F8008C3632 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		A43255932355DA6800C42429 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		A43255952355DF1000C42429 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		A43EFE04235EA7B400706CF2 /* ColorPickerRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerRectView.swift; sourceTree = "<group>"; };
+		A43EFE06235EA84B00706CF2 /* RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB.swift; sourceTree = "<group>"; };
 		A4683DF1234E02E800D50D04 /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
 		A4683DFA234E0D9300D50D04 /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		A4683DFC234E0DA200D50D04 /* CollapsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedView.swift; sourceTree = "<group>"; };
@@ -134,7 +138,6 @@
 				434EF55222971277A2712682 /* Pods-iAnime.debug.xcconfig */,
 				2FF29E09C5F5921B4C067763 /* Pods-iAnime.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -144,6 +147,14 @@
 				462B30642E4CBF4C01F1BE95 /* Pods_iAnime.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A43EFE03235EA79200706CF2 /* Drafting */ = {
+			isa = PBXGroup;
+			children = (
+				A43EFE04235EA7B400706CF2 /* ColorPickerRectView.swift */,
+			);
+			path = Drafting;
 			sourceTree = "<group>";
 		};
 		A4683DF3234E02F300D50D04 /* Discovery */ = {
@@ -285,6 +296,7 @@
 		DF2DC40A234AE65E009E52B0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A43EFE03235EA79200706CF2 /* Drafting */,
 				DFB40C7C235DB8B000FE3A6B /* Discovery */,
 				DFB40C7B235DB85900FE3A6B /* Welcome */,
 				DFB40C7A235DB85100FE3A6B /* Common */,
@@ -377,6 +389,7 @@
 				DF0A1A4D2353771C00CB6698 /* person.swift */,
 				DF7B8AB3235C18C4006C93EF /* Pair.swift */,
 				DF38BCB3235C69B40091A0A1 /* SettingCells.swift */,
+				A43EFE06235EA84B00706CF2 /* RGB.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -517,6 +530,7 @@
 				E6828ADA234BA20800BAFB31 /* Illustration.swift in Sources */,
 				A4CB24BD23580B6C00807BE8 /* SettingWithSwitchTableViewCell.swift in Sources */,
 				A4683DFD234E0DA200D50D04 /* CollapsedView.swift in Sources */,
+				A43EFE05235EA7B400706CF2 /* ColorPickerRectView.swift in Sources */,
 				DFFDE2EE23586071007F2ECB /* PinchImageViewController.swift in Sources */,
 				DF14EB96234CFFA50017D4E4 /* HomeViewController.swift in Sources */,
 				DF38BCB0235C52BF0091A0A1 /* MultistateButton.swift in Sources */,
@@ -527,6 +541,7 @@
 				DF7B8AB8235C4E21006C93EF /* DateUtils.swift in Sources */,
 				DFB40C80235DB98200FE3A6B /* ColorPicker.swift in Sources */,
 				DF7B8AB2235C0FEB006C93EF /* RoundCornerUIImageView.swift in Sources */,
+				A43EFE07235EA84B00706CF2 /* RGB.swift in Sources */,
 				A43255942355DA6800C42429 /* HomeTableViewController.swift in Sources */,
 				DF2DC408234AE4DB009E52B0 /* UIUtils.swift in Sources */,
 				DFA2C832234F156B00BFCB01 /* CollapsedViewController.swift in Sources */,

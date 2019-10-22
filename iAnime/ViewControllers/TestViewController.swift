@@ -10,21 +10,46 @@ import UIKit
 
 class TestViewController: UIViewController {
 
-    @IBOutlet weak var button: MultistateButton!
+    @IBOutlet weak var ColorPickerRect: ColorPickerRectView!
+    
+    @IBOutlet weak var RValue: UITextField!
+    @IBOutlet weak var GValue: UITextField!
+    @IBOutlet weak var BValue: UITextField!
+    
+    
+    @IBOutlet weak var ColorPickerBar: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+//        ColorPickerImage.image = UIImage(named: "ColorPickerBackground")
+        InitColorPickerBar()
+    }
+    
+    @IBAction func DynamicChangePanel(_ sender: UIButton) {
+        let r = CGFloat(Int(RValue.text!)!)
+        let g = CGFloat(Int(GValue.text!)!)
+        let b = CGFloat(Int(BValue.text!)!)
+        let rgb = RGB(R:r,G:g,B:b)
         
-        let states : [ButtonState] = [
-            ButtonState("关注", UIImage(named: "AddNoCircle"),nil,UIColor.init(red: 0, green: 118/255, blue: 1, alpha: 1), OnBtnClicked),
-            ButtonState("已关注",UIImage(named: "Checkmark"), nil, UIColor.gray, OnBtnClicked)
-        ]
+//        ColorPickerRect.BeginRGB = rgb
         
-        button.AddStates(states)
     }
     
     
-    private func OnBtnClicked(_ sender : MultistateButton) {
-        sender.NextState((sender.CurrentState + 1) % sender.ButtonState.count)
+    private func InitColorPickerBar() {
+
+        let gradients = CAGradientLayer()
+        gradients.frame = ColorPickerBar.bounds
+        ColorPickerBar.layer.addSublayer(gradients)
+        
+        gradients.colors = [UIColor.red.cgColor,
+                            UIColor.magenta.cgColor,
+                            UIColor.blue.cgColor,
+                            UIColor.cyan.cgColor,
+                            UIColor.green.cgColor,
+                            UIColor.yellow.cgColor,
+                            UIColor.red.cgColor]
+        gradients.startPoint = CGPoint(x: 0.5, y: 0)
+        gradients.endPoint = CGPoint(x: 0.5, y: 1)
     }
-    
 }
