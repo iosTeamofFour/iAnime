@@ -8,24 +8,25 @@
 
 import UIKit
 
-class TestViewController: UIViewController {
+class TestViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var ColorPickerRect: ColorPickerRectView!
     
     @IBOutlet weak var ColorPickerBar: ColorPickerBarView!
     
-    
-    @IBOutlet weak var RValue: UITextField!
-    
-    @IBOutlet weak var GValue: UITextField!
-    
-    @IBOutlet weak var BValue: UITextField!
-    
+    @IBOutlet weak var RValue: UILabel!
+    @IBOutlet weak var GValue: UILabel!
+    @IBOutlet weak var BValue: UILabel!
     
     @IBOutlet weak var RSlider: UISlider!
     @IBOutlet weak var GSlider: UISlider!
     @IBOutlet weak var BSlider: UISlider!
     
+    @IBOutlet weak var CurrentColor: RoundCornerUIImageView!
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class TestViewController: UIViewController {
             (rgb,pos) in
             self.ColorPickerRect.BeginRGB = rgb
             self.ColorPickerRect.ShouldPickColor()
-            self.UpdateSliderAndTextIndicator(rgb)
+            
         }
         
         ColorPickerRect.OnPickedColorRect = {
@@ -54,6 +55,7 @@ class TestViewController: UIViewController {
         self.RSlider.value = Float(rgb.R)
         self.GSlider.value = Float(rgb.G)
         self.BSlider.value = Float(rgb.B)
+        self.CurrentColor.backgroundColor = rgb.AsUIColor
     }
     
     func GetPickerRectPosition(_ rgb : RGB) {
@@ -97,7 +99,6 @@ class TestViewController: UIViewController {
         }
         ColorPickerBar.MoveIndicatorToPosition(yBarRate)
     }
-
     
     @objc private func OnSliderValueChanged(_ sender: UISlider) {
         let r = CGFloat(RSlider.value)

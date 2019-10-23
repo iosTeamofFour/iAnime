@@ -10,6 +10,7 @@ import UIKit
 
 class RoundCornerUIImageView: UIImageView {
 
+    @IBInspectable var radius : CGFloat = 4.0
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -21,6 +22,9 @@ class RoundCornerUIImageView: UIImageView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.layer.cornerRadius = radius
+        self.contentMode = .scaleAspectFill
+        self.clipsToBounds = true
     }
     
     override init(frame: CGRect) {

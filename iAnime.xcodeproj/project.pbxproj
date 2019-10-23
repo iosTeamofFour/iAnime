@@ -16,6 +16,8 @@
 		A4683DF2234E02E800D50D04 /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DF1234E02E800D50D04 /* DiscoveryViewController.swift */; };
 		A4683DFB234E0D9300D50D04 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DFA234E0D9300D50D04 /* RankingViewController.swift */; };
 		A4683DFD234E0DA200D50D04 /* CollapsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DFC234E0DA200D50D04 /* CollapsedView.swift */; };
+		A46C0A8C23605EB000A80DD7 /* OuterTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C0A8B23605EB000A80DD7 /* OuterTestViewController.swift */; };
+		A46C0A8E236088B800A80DD7 /* Drafting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A46C0A8D236088B800A80DD7 /* Drafting.storyboard */; };
 		A4CB24BD23580B6C00807BE8 /* SettingWithSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CB24BC23580B6C00807BE8 /* SettingWithSwitchTableViewCell.swift */; };
 		A4CB24BF23580DEA00807BE8 /* NightModeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CB24BE23580DEA00807BE8 /* NightModeTableViewCell.swift */; };
 		A4CB24C12358213800807BE8 /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CB24C02358213800807BE8 /* AppUtils.swift */; };
@@ -74,6 +76,8 @@
 		A4683DF1234E02E800D50D04 /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
 		A4683DFA234E0D9300D50D04 /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		A4683DFC234E0DA200D50D04 /* CollapsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedView.swift; sourceTree = "<group>"; };
+		A46C0A8B23605EB000A80DD7 /* OuterTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuterTestViewController.swift; sourceTree = "<group>"; };
+		A46C0A8D236088B800A80DD7 /* Drafting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Drafting.storyboard; sourceTree = "<group>"; };
 		A4CB24BC23580B6C00807BE8 /* SettingWithSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWithSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		A4CB24BE23580DEA00807BE8 /* NightModeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightModeTableViewCell.swift; sourceTree = "<group>"; };
 		A4CB24C02358213800807BE8 /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
@@ -292,6 +296,7 @@
 				A4CBA67D234DB08800308392 /* Settings */,
 				DF2DC415234B591A009E52B0 /* FragmentViewContainer.swift */,
 				DF7B8ABB235C5199006C93EF /* TestViewController.swift */,
+				A46C0A8B23605EB000A80DD7 /* OuterTestViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				DFA2C835234F17B800BFCB01 /* Discovery.storyboard */,
 				DF0A1A4823535C0E00CB6698 /* Person.storyboard */,
 				DF7B8AB9235C5136006C93EF /* Test.storyboard */,
+				A46C0A8D236088B800A80DD7 /* Drafting.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -459,6 +465,7 @@
 			files = (
 				DF2DC3FF234ADCE3009E52B0 /* LaunchScreen.storyboard in Resources */,
 				DF2DC3FC234ADCE3009E52B0 /* Assets.xcassets in Resources */,
+				A46C0A8E236088B800A80DD7 /* Drafting.storyboard in Resources */,
 				DF2DC3FA234ADCE2009E52B0 /* Welcome.storyboard in Resources */,
 				DF0A1A4923535C0E00CB6698 /* Person.storyboard in Resources */,
 				E60692E1234B7EE50012E534 /* Index.storyboard in Resources */,
@@ -549,6 +556,7 @@
 				A43255942355DA6800C42429 /* HomeTableViewController.swift in Sources */,
 				DF2DC408234AE4DB009E52B0 /* UIUtils.swift in Sources */,
 				DFA2C832234F156B00BFCB01 /* CollapsedViewController.swift in Sources */,
+				A46C0A8C23605EB000A80DD7 /* OuterTestViewController.swift in Sources */,
 				DF2DC3F7234ADCE2009E52B0 /* WelcomeViewController.swift in Sources */,
 				DFA2C834234F16DB00BFCB01 /* CollapsedContent.swift in Sources */,
 				DF2DC410234B429B009E52B0 /* InorderAnimation.swift in Sources */,
