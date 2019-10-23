@@ -15,6 +15,8 @@ class ColorPickerBarView: UIView {
     
     private(set) var indicator : UIView!
     
+    private(set) var CurrentYRate : CGFloat = 0.0
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         clipsToBounds = true
@@ -62,7 +64,17 @@ class ColorPickerBarView: UIView {
         indicator.transform = indicator.transform.translatedBy(x: 0, y: -barWidth/2)
         indicator.layer.addSublayer(layer)
     }
-    
+
+    func MoveIndicatorToPosition(_ yRate : CGFloat, _ firePickColor : Bool = false) {
+        MoveIndicatorFrameToPosition(yRate)
+        if firePickColor {
+            HandlePickColor(CGPoint(x: 0, y: yRate * bounds.height))
+        }
+    }
+    private func MoveIndicatorFrameToPosition(_ yRate : CGFloat) {
+        CurrentYRate = yRate
+        indicator.frame.origin.y = yRate * frame.height - (frame.width)/2
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touched = touches.first!.location(in: self)
@@ -126,7 +138,7 @@ class ColorPickerBarView: UIView {
         let yRate = position.y / bounds.height
         let n = Int(1530 * yRate)
         let rgb = GetRGBFromN(n)
-        indicator.frame.origin.y = yRate * frame.height - (frame.width)/2
+        MoveIndicatorFrameToPosition(yRate)
         OnPickedColorBar?(rgb,position)
     }
 }

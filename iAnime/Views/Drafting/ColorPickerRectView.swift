@@ -20,7 +20,6 @@ class ColorPickerRectView: UIView {
     var BeginRGB : RGB! = RGB(R:255.0,G:0,B:0) {
         didSet {
             imageView.backgroundColor = BeginRGB.AsUIColor
-            HandlePickColor(CurrentPickedPosition)
         }
     }
     
@@ -56,6 +55,21 @@ class ColorPickerRectView: UIView {
         indicator.layer.addSublayer(shape)
     }
     
+    func MoveIndicatorToPosition(_ xRate: CGFloat, _ yRate : CGFloat,_ firePickColor : Bool = false) {
+        let PickedPoint = CGPoint(x: bounds.width * xRate, y: bounds.height * yRate)
+        MoveFrameToPosition(PickedPoint)
+        CurrentPickedPosition = PickedPoint
+        
+        if firePickColor {
+            HandlePickColor(PickedPoint)
+        }
+    }
+    
+    private func MoveFrameToPosition(_ PickPoint : CGPoint) {
+        indicator.frame.origin.x = PickPoint.x - indicatorSize/2
+        indicator.frame.origin.y = PickPoint.y - indicatorSize/2
+    }
+    
     private func InitColorPickerImage() {
         imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -84,6 +98,10 @@ class ColorPickerRectView: UIView {
             HandlePickColor(touched)
         }
     }
+    
+    func ShouldPickColor() {
+        HandlePickColor(CurrentPickedPosition)
+    }
 
     private func HandlePickColor(_ PickPoint : CGPoint) {
         CurrentPickedPosition = PickPoint
@@ -99,8 +117,7 @@ class ColorPickerRectView: UIView {
         let PickedB = LeftEdge[2] - xRate * (LeftEdge[2] - RightEdge[2])
         
         let PickedRGB = RGB(R: PickedR, G: PickedG, B: PickedB)
-        indicator.frame.origin.x = PickPoint.x - indicatorSize/2
-        indicator.frame.origin.y = PickPoint.y - indicatorSize/2
+        MoveFrameToPosition(PickPoint)
         OnPickedColorRect?(PickedRGB,PickPoint)
     }
     
