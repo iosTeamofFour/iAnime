@@ -77,10 +77,7 @@ class ColorPickerBarView: UIView {
             HandlePickColor(touched)
         }
     }
-    
-    private func HandlePickColor(_ position : CGPoint) {
-        let yRate = position.y / bounds.height
-        let n = Int(1530 * yRate)
+    func GetRGBFromN(_ n : Int) -> RGB {
         let rangeIndex = n / 255
         var R = 0, G = 0, B = 0
         switch rangeIndex {
@@ -123,6 +120,12 @@ class ColorPickerBarView: UIView {
             break
         }
         let rgb = RGB(R: CGFloat(R), G: CGFloat(G), B: CGFloat(B))
+        return rgb
+    }
+    private func HandlePickColor(_ position : CGPoint) {
+        let yRate = position.y / bounds.height
+        let n = Int(1530 * yRate)
+        let rgb = GetRGBFromN(n)
         indicator.frame.origin.y = yRate * frame.height - (frame.width)/2
         OnPickedColorBar?(rgb,position)
     }

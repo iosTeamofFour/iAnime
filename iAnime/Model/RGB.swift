@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-struct RGB {
+struct RGB : Equatable {
     var R : CGFloat
     var G : CGFloat
     var B : CGFloat
@@ -29,5 +29,9 @@ struct RGB {
         get {
             return UIColor(red: R/255.0, green: G/255.0, blue: B/255.0, alpha: 1)
         }
+    }
+    
+    static func ==(_ lhs : RGB, _ rhs : RGB) -> Bool {
+        return lhs.R == rhs.R && lhs.G == rhs.G && lhs.B == rhs.B
     }
 }
