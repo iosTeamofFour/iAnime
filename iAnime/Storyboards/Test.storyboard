@@ -33,37 +33,7 @@
                                     <action selector="DynamicChangePanel:" destination="tmi-nx-Jmx" eventType="touchUpInside" id="54T-eW-eaw"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="UA9-EL-FQe">
-                                <rect key="frame" x="76.5" y="346" width="222" height="30"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="R" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RAM-zY-IBP">
-                                        <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="qhz-vE-Ahb"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="G" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FtY-18-C00">
-                                        <rect key="frame" x="81" y="0.0" width="60" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="B" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J2H-ks-ubq">
-                                        <rect key="frame" x="162" y="0.0" width="60" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="FtY-18-C00" firstAttribute="width" secondItem="RAM-zY-IBP" secondAttribute="width" id="fy2-70-ja9"/>
-                                    <constraint firstItem="J2H-ks-ubq" firstAttribute="width" secondItem="RAM-zY-IBP" secondAttribute="width" id="sba-Uo-erI"/>
-                                </constraints>
-                            </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYC-P0-zjM">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYC-P0-zjM" customClass="ColorPickerBarView" customModule="iAnime" customModuleProvider="target">
                                 <rect key="frame" x="295" y="56" width="25" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -77,8 +47,6 @@
                             <constraint firstItem="bYC-P0-zjM" firstAttribute="bottom" secondItem="eaG-gm-HPz" secondAttribute="bottom" id="HTd-Vz-N8c"/>
                             <constraint firstItem="bYC-P0-zjM" firstAttribute="leading" secondItem="eaG-gm-HPz" secondAttribute="trailing" constant="7.5" id="OW4-n6-Fv1"/>
                             <constraint firstItem="eaG-gm-HPz" firstAttribute="centerX" secondItem="c8N-KV-EHF" secondAttribute="centerX" id="Tzr-kQ-az1"/>
-                            <constraint firstItem="UA9-EL-FQe" firstAttribute="top" secondItem="Xi7-8n-fCm" secondAttribute="bottom" constant="36" id="YwL-E4-pCn"/>
-                            <constraint firstItem="UA9-EL-FQe" firstAttribute="centerX" secondItem="c8N-KV-EHF" secondAttribute="centerX" id="ZDe-8h-gqy"/>
                             <constraint firstItem="eaG-gm-HPz" firstAttribute="top" secondItem="Agv-jG-lom" secondAttribute="top" constant="36" id="eYo-zl-yrl"/>
                             <constraint firstItem="bYC-P0-zjM" firstAttribute="top" secondItem="eaG-gm-HPz" secondAttribute="top" id="oZT-RI-wIl"/>
                             <constraint firstItem="Xi7-8n-fCm" firstAttribute="centerX" secondItem="c8N-KV-EHF" secondAttribute="centerX" id="qb0-lL-0vy"/>
@@ -86,10 +54,8 @@
                         <viewLayoutGuide key="safeArea" id="Agv-jG-lom"/>
                     </view>
                     <connections>
-                        <outlet property="BValue" destination="J2H-ks-ubq" id="eZg-7E-xDu"/>
-                        <outlet property="ColorPickerBar" destination="bYC-P0-zjM" id="Pea-2d-S1B"/>
-                        <outlet property="GValue" destination="FtY-18-C00" id="2cQ-tv-fwV"/>
-                        <outlet property="RValue" destination="RAM-zY-IBP" id="q1Q-Md-lvk"/>
+                        <outlet property="ColorPickerBar" destination="bYC-P0-zjM" id="KSO-uS-SYb"/>
+                        <outlet property="ColorPickerRect" destination="eaG-gm-HPz" id="lnZ-CM-z5j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="abN-eF-E37" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,16 +11,49 @@ import SnapKit
 class ColorPickerRectView: UIView {
     
     var imageView : UIImageView!
+    var OnPickedColorRect : ((RGB,CGPoint) -> Void)?
+    var indicator : UIView!
+    var indicatorSize : CGFloat = 25
+    
+    var CurrentPickedPosition = CGPoint.zero
     
     var BeginRGB : RGB! = RGB(R:255.0,G:0,B:0) {
         didSet {
             imageView.backgroundColor = BeginRGB.AsUIColor
+            HandlePickColor(CurrentPickedPosition)
         }
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        CurrentPickedPosition = CGPoint(x: frame.width, y: 0)
         InitColorPickerImage()
+        InitPickerIndicator()
+    }
+    
+    private func InitPickerIndicator() {
+        indicator = UIView()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.isUserInteractionEnabled = false
+        addSubview(indicator)
+        
+        indicator.snp.makeConstraints {
+            make in
+            make.width.equalTo(indicatorSize)
+            make.height.equalTo(indicator.snp.width)
+        }
+        
+        let path = UIBezierPath(arcCenter: CGPoint(x: indicatorSize/2, y: indicatorSize/2), radius: indicatorSize/2 - 2, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
+        
+        
+        
+        let shape = CAShapeLayer(layer: indicator.layer)
+        shape.path = path.cgPath
+        shape.fillColor = UIColor.clear.cgColor
+        shape.strokeColor = UIColor.white.cgColor
+        shape.lineWidth = 2
+        indicator.transform = indicator.transform.translatedBy(x: frame.width - indicatorSize/2, y: -indicatorSize/2)
+        indicator.layer.addSublayer(shape)
     }
     
     private func InitColorPickerImage() {
@@ -28,7 +61,6 @@ class ColorPickerRectView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "ColorPickerBackground")!
-//        imageView.isUserInteractionEnabled = true
         addSubview(imageView)
         imageView.snp.makeConstraints {
             make in
@@ -52,14 +84,10 @@ class ColorPickerRectView: UIView {
             HandlePickColor(touched)
         }
     }
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touched = touches.first!.location(in: self)
-        if PointInside(touched) {
-            HandlePickColor(touched)
-        }
-    }
-    
+
     private func HandlePickColor(_ PickPoint : CGPoint) {
+        CurrentPickedPosition = PickPoint
+        
         let xRate = PickPoint.x / bounds.width
         let yRate = PickPoint.y / bounds.height
         
@@ -71,8 +99,9 @@ class ColorPickerRectView: UIView {
         let PickedB = LeftEdge[2] - xRate * (LeftEdge[2] - RightEdge[2])
         
         let PickedRGB = RGB(R: PickedR, G: PickedG, B: PickedB)
-        print(PickedRGB)
-        
+        indicator.frame.origin.x = PickPoint.x - indicatorSize/2
+        indicator.frame.origin.y = PickPoint.y - indicatorSize/2
+        OnPickedColorRect?(PickedRGB,PickPoint)
     }
     
     // Only override draw() if you perform custom drawing.

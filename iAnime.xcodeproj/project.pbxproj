@@ -59,6 +59,7 @@
 		E60692E3234B9F4F0012E534 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60692E2234B9F4F0012E534 /* IndexViewController.swift */; };
 		E6828ADA234BA20800BAFB31 /* Illustration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6828AD9234BA20800BAFB31 /* Illustration.swift */; };
 		E6828ADC234BA29A00BAFB31 /* IllustrationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6828ADB234BA29A00BAFB31 /* IllustrationItemView.swift */; };
+		E6F9395D235F639C00D1BE93 /* ColorPickerBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F9395C235F639C00D1BE93 /* ColorPickerBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,7 @@
 		E60692E2234B9F4F0012E534 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		E6828AD9234BA20800BAFB31 /* Illustration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Illustration.swift; sourceTree = "<group>"; };
 		E6828ADB234BA29A00BAFB31 /* IllustrationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IllustrationItemView.swift; sourceTree = "<group>"; };
+		E6F9395C235F639C00D1BE93 /* ColorPickerBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				A43EFE04235EA7B400706CF2 /* ColorPickerRectView.swift */,
+				E6F9395C235F639C00D1BE93 /* ColorPickerBarView.swift */,
 			);
 			path = Drafting;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				DFFDE2EE23586071007F2ECB /* PinchImageViewController.swift in Sources */,
 				DF14EB96234CFFA50017D4E4 /* HomeViewController.swift in Sources */,
 				DF38BCB0235C52BF0091A0A1 /* MultistateButton.swift in Sources */,
+				E6F9395D235F639C00D1BE93 /* ColorPickerBarView.swift in Sources */,
 				DF2DC40C234AE69F009E52B0 /* ScrollStackContainerView.swift in Sources */,
 				DF2DC41A234B5DED009E52B0 /* RegisterViewController.swift in Sources */,
 				DF38BCB6235C8DCA0091A0A1 /* ReturnArrowViewController.swift in Sources */,
