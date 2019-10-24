@@ -61,6 +61,8 @@
 		E60692E3234B9F4F0012E534 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60692E2234B9F4F0012E534 /* IndexViewController.swift */; };
 		E6828ADA234BA20800BAFB31 /* Illustration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6828AD9234BA20800BAFB31 /* Illustration.swift */; };
 		E6828ADC234BA29A00BAFB31 /* IllustrationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6828ADB234BA29A00BAFB31 /* IllustrationItemView.swift */; };
+		E6A27079236180F000E7C94B /* WorksDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6A27078236180F000E7C94B /* WorksDetails.storyboard */; };
+		E6A2707C23618B7B00E7C94B /* WorksDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2707B23618B7B00E7C94B /* WorksDetailsViewController.swift */; };
 		E6F9395D235F639C00D1BE93 /* ColorPickerBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F9395C235F639C00D1BE93 /* ColorPickerBarView.swift */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +125,8 @@
 		E60692E2234B9F4F0012E534 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		E6828AD9234BA20800BAFB31 /* Illustration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Illustration.swift; sourceTree = "<group>"; };
 		E6828ADB234BA29A00BAFB31 /* IllustrationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IllustrationItemView.swift; sourceTree = "<group>"; };
+		E6A27078236180F000E7C94B /* WorksDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WorksDetails.storyboard; sourceTree = "<group>"; };
+		E6A2707B23618B7B00E7C94B /* WorksDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksDetailsViewController.swift; sourceTree = "<group>"; };
 		E6F9395C235F639C00D1BE93 /* ColorPickerBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -286,6 +290,7 @@
 		DF2DC409234AE514009E52B0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E6A2707A23618ADB00E7C94B /* Works */,
 				DFB40C7D235DB8D800FE3A6B /* Drafting */,
 				DF0A1A4A23536C0E00CB6698 /* Person */,
 				DFA2C833234F157100BFCB01 /* VCExtensions */,
@@ -323,6 +328,7 @@
 				DF0A1A4823535C0E00CB6698 /* Person.storyboard */,
 				DF7B8AB9235C5136006C93EF /* Test.storyboard */,
 				A46C0A8D236088B800A80DD7 /* Drafting.storyboard */,
+				E6A27078236180F000E7C94B /* WorksDetails.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -403,6 +409,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		E6A2707A23618ADB00E7C94B /* Works */ = {
+			isa = PBXGroup;
+			children = (
+				E6A2707B23618B7B00E7C94B /* WorksDetailsViewController.swift */,
+			);
+			path = Works;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -471,6 +485,7 @@
 				E60692E1234B7EE50012E534 /* Index.storyboard in Resources */,
 				A4CBA67F234DB09600308392 /* Settings.storyboard in Resources */,
 				DF7B8ABA235C5136006C93EF /* Test.storyboard in Resources */,
+				E6A27079236180F000E7C94B /* WorksDetails.storyboard in Resources */,
 				DFA2C836234F17B800BFCB01 /* Discovery.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,6 +571,7 @@
 				A43255942355DA6800C42429 /* HomeTableViewController.swift in Sources */,
 				DF2DC408234AE4DB009E52B0 /* UIUtils.swift in Sources */,
 				DFA2C832234F156B00BFCB01 /* CollapsedViewController.swift in Sources */,
+				E6A2707C23618B7B00E7C94B /* WorksDetailsViewController.swift in Sources */,
 				A46C0A8C23605EB000A80DD7 /* OuterTestViewController.swift in Sources */,
 				DF2DC3F7234ADCE2009E52B0 /* WelcomeViewController.swift in Sources */,
 				DFA2C834234F16DB00BFCB01 /* CollapsedContent.swift in Sources */,
