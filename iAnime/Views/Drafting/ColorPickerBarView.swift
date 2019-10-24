@@ -17,11 +17,23 @@ class ColorPickerBarView: UIView {
     
     private(set) var CurrentYRate : CGFloat = 0.0
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         clipsToBounds = true
         InitPickerBar()
         InitSelectIndicator()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        clipsToBounds = true
+        InitPickerBar()
+        InitSelectIndicator()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        MoveIndicatorToPosition(CurrentYRate)
     }
     
     private func InitPickerBar() {

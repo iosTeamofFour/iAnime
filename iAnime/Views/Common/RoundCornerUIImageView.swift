@@ -22,6 +22,10 @@ class RoundCornerUIImageView: UIImageView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
         self.layer.cornerRadius = radius
         self.contentMode = .scaleAspectFill
         self.clipsToBounds = true
@@ -33,7 +37,8 @@ class RoundCornerUIImageView: UIImageView {
     
     convenience init(_ cornerRadius : CGFloat) {
         self.init(frame: CGRect.zero)
-        self.layer.cornerRadius = cornerRadius
+        radius = cornerRadius
+        self.layer.cornerRadius = radius
         self.contentMode = .scaleAspectFill
         self.clipsToBounds = true
     }

@@ -23,13 +23,23 @@ class ColorPickerRectView: UIView {
         }
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         CurrentPickedPosition = CGPoint(x: frame.width, y: 0)
         InitColorPickerImage()
         InitPickerIndicator()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        CurrentPickedPosition = CGPoint(x: frame.width, y: 0)
+        InitColorPickerImage()
+        InitPickerIndicator()
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        MoveFrameToPosition(CurrentPickedPosition)
+    }
     private func InitPickerIndicator() {
         indicator = UIView()
         indicator.translatesAutoresizingMaskIntoConstraints = false
