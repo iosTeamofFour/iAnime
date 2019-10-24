@@ -14,7 +14,6 @@ class OuterTestViewController: UIViewController {
         super.viewDidLoad()
     }
     private func ShowPopover(_ sender: UIButton) {
-        
         if let storyboard = self.storyboard, let vc = storyboard.instantiateViewController(withIdentifier: "TestColorPicker") as? TestViewController {
             vc.modalPresentationStyle = .popover
             vc.popoverPresentationController?.delegate = vc
@@ -25,5 +24,4 @@ class OuterTestViewController: UIViewController {
             present(vc, animated: true, completion: nil)
         }
     }
-    
 }

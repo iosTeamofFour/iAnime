@@ -43,6 +43,8 @@
 		DF38BCB6235C8DCA0091A0A1 /* ReturnArrowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF38BCB5235C8DCA0091A0A1 /* ReturnArrowViewController.swift */; };
 		DF3F617123577B1B00D4EBB3 /* SystemSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3F617023577B1B00D4EBB3 /* SystemSettingTableViewController.swift */; };
 		DF4776752350ABBA00D8A084 /* OverhitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4776742350ABBA00D8A084 /* OverhitView.swift */; };
+		DF5F1C362360A03700335964 /* DraftingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F1C352360A03700335964 /* DraftingViewController.swift */; };
+		DF5F1C382360C89800335964 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F1C372360C89800335964 /* DrawingView.swift */; };
 		DF7B8AB0235C0B0D006C93EF /* TimelineItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B8AAF235C0B0D006C93EF /* TimelineItemCell.swift */; };
 		DF7B8AB2235C0FEB006C93EF /* RoundCornerUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B8AB1235C0FEB006C93EF /* RoundCornerUIImageView.swift */; };
 		DF7B8AB4235C18C4006C93EF /* Pair.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B8AB3235C18C4006C93EF /* Pair.swift */; };
@@ -107,6 +109,8 @@
 		DF38BCB5235C8DCA0091A0A1 /* ReturnArrowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnArrowViewController.swift; sourceTree = "<group>"; };
 		DF3F617023577B1B00D4EBB3 /* SystemSettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingTableViewController.swift; sourceTree = "<group>"; };
 		DF4776742350ABBA00D8A084 /* OverhitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverhitView.swift; sourceTree = "<group>"; };
+		DF5F1C352360A03700335964 /* DraftingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftingViewController.swift; sourceTree = "<group>"; };
+		DF5F1C372360C89800335964 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		DF7B8AAF235C0B0D006C93EF /* TimelineItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineItemCell.swift; sourceTree = "<group>"; };
 		DF7B8AB1235C0FEB006C93EF /* RoundCornerUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCornerUIImageView.swift; sourceTree = "<group>"; };
 		DF7B8AB3235C18C4006C93EF /* Pair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pair.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 			children = (
 				A43EFE04235EA7B400706CF2 /* ColorPickerRectView.swift */,
 				E6F9395C235F639C00D1BE93 /* ColorPickerBarView.swift */,
+				DF5F1C372360C89800335964 /* DrawingView.swift */,
 			);
 			path = Drafting;
 			sourceTree = "<group>";
@@ -383,6 +388,7 @@
 		DFB40C7D235DB8D800FE3A6B /* Drafting */ = {
 			isa = PBXGroup;
 			children = (
+				DF5F1C352360A03700335964 /* DraftingViewController.swift */,
 				DFB40C7E235DB8F500FE3A6B /* Helper */,
 			);
 			path = Drafting;
@@ -563,6 +569,7 @@
 				DF2DC40C234AE69F009E52B0 /* ScrollStackContainerView.swift in Sources */,
 				DF2DC41A234B5DED009E52B0 /* RegisterViewController.swift in Sources */,
 				DF38BCB6235C8DCA0091A0A1 /* ReturnArrowViewController.swift in Sources */,
+				DF5F1C382360C89800335964 /* DrawingView.swift in Sources */,
 				DFA2C83A234F1BDA00BFCB01 /* SearchViewController.swift in Sources */,
 				DF7B8AB8235C4E21006C93EF /* DateUtils.swift in Sources */,
 				DFB40C80235DB98200FE3A6B /* ColorPicker.swift in Sources */,
@@ -579,6 +586,7 @@
 				DF0A1A4C23536C3200CB6698 /* PersonViewController.swift in Sources */,
 				E6828ADC234BA29A00BAFB31 /* IllustrationItemView.swift in Sources */,
 				DF7B8ABC235C5199006C93EF /* TestViewController.swift in Sources */,
+				DF5F1C362360A03700335964 /* DraftingViewController.swift in Sources */,
 				A4CB24C12358213800807BE8 /* AppUtils.swift in Sources */,
 				DF2DC3F5234ADCE2009E52B0 /* AppDelegate.swift in Sources */,
 				DF0A1A4E2353771C00CB6698 /* person.swift in Sources */,
