@@ -21,6 +21,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AhN-Dp-TT8" customClass="DrawingView" customModule="iAnime" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WMC-e1-m6w">
                                 <rect key="frame" x="32.5" y="20" width="310" height="45"/>
@@ -164,6 +165,7 @@
                     <connections>
                         <outlet property="PickedColorIndicator" destination="V59-Q5-Bk3" id="Ry9-G1-NaB"/>
                         <outlet property="Toolbar" destination="WMC-e1-m6w" id="G7z-wp-MiI"/>
+                        <outlet property="drawing" destination="AhN-Dp-TT8" id="cPw-Xm-URL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Kk-RB-f2b" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -14,6 +14,7 @@ class DraftingViewController: UIViewController {
     @IBOutlet weak var PickedColorIndicator: RoundCornerUIImageView!
     private var PickedColor = RGB(R:255,G:0,B:0)
 
+    @IBOutlet weak var drawing: DrawingView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,8 @@ class DraftingViewController: UIViewController {
     }
     
     @IBAction func HandleUndo(_ sender: UIButton) {
-        
+        drawing.layer.sublayers?.popLast()
+        drawing.layer.layoutSublayers()
     }
     
     @IBAction func HandleRedo(_ sender: UIButton) {

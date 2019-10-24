@@ -42,6 +42,8 @@
 		DF38BCB4235C69B40091A0A1 /* SettingCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF38BCB3235C69B40091A0A1 /* SettingCells.swift */; };
 		DF38BCB6235C8DCA0091A0A1 /* ReturnArrowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF38BCB5235C8DCA0091A0A1 /* ReturnArrowViewController.swift */; };
 		DF3F617123577B1B00D4EBB3 /* SystemSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3F617023577B1B00D4EBB3 /* SystemSettingTableViewController.swift */; };
+		DF44183723616C1D006E3506 /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF44183623616C1D006E3506 /* Vector2.swift */; };
+		DF441839236175F7006E3506 /* LinePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF441838236175F7006E3506 /* LinePoint.swift */; };
 		DF4776752350ABBA00D8A084 /* OverhitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4776742350ABBA00D8A084 /* OverhitView.swift */; };
 		DF5F1C362360A03700335964 /* DraftingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F1C352360A03700335964 /* DraftingViewController.swift */; };
 		DF5F1C382360C89800335964 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F1C372360C89800335964 /* DrawingView.swift */; };
@@ -106,6 +108,8 @@
 		DF38BCB3235C69B40091A0A1 /* SettingCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCells.swift; sourceTree = "<group>"; };
 		DF38BCB5235C8DCA0091A0A1 /* ReturnArrowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnArrowViewController.swift; sourceTree = "<group>"; };
 		DF3F617023577B1B00D4EBB3 /* SystemSettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingTableViewController.swift; sourceTree = "<group>"; };
+		DF44183623616C1D006E3506 /* Vector2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector2.swift; sourceTree = "<group>"; };
+		DF441838236175F7006E3506 /* LinePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinePoint.swift; sourceTree = "<group>"; };
 		DF4776742350ABBA00D8A084 /* OverhitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverhitView.swift; sourceTree = "<group>"; };
 		DF5F1C352360A03700335964 /* DraftingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftingViewController.swift; sourceTree = "<group>"; };
 		DF5F1C372360C89800335964 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
@@ -405,6 +409,8 @@
 				DF7B8AB3235C18C4006C93EF /* Pair.swift */,
 				DF38BCB3235C69B40091A0A1 /* SettingCells.swift */,
 				A43EFE06235EA84B00706CF2 /* RGB.swift */,
+				DF44183623616C1D006E3506 /* Vector2.swift */,
+				DF441838236175F7006E3506 /* LinePoint.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -543,6 +549,7 @@
 				DFA2C838234F1BBF00BFCB01 /* RecommendationViewController.swift in Sources */,
 				A4D5757B234DDC070013B68D /* ViewControllerHelper.swift in Sources */,
 				A4203DB0234C88F8008C3632 /* GridView.swift in Sources */,
+				DF44183723616C1D006E3506 /* Vector2.swift in Sources */,
 				E6828ADA234BA20800BAFB31 /* Illustration.swift in Sources */,
 				A4CB24BD23580B6C00807BE8 /* SettingWithSwitchTableViewCell.swift in Sources */,
 				A4683DFD234E0DA200D50D04 /* CollapsedView.swift in Sources */,
@@ -555,6 +562,7 @@
 				DF2DC41A234B5DED009E52B0 /* RegisterViewController.swift in Sources */,
 				DF38BCB6235C8DCA0091A0A1 /* ReturnArrowViewController.swift in Sources */,
 				DF5F1C382360C89800335964 /* DrawingView.swift in Sources */,
+				DF441839236175F7006E3506 /* LinePoint.swift in Sources */,
 				DFA2C83A234F1BDA00BFCB01 /* SearchViewController.swift in Sources */,
 				DF7B8AB8235C4E21006C93EF /* DateUtils.swift in Sources */,
 				DFB40C80235DB98200FE3A6B /* ColorPicker.swift in Sources */,
