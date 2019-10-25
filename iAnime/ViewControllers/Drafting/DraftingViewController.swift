@@ -32,8 +32,7 @@ class DraftingViewController: UIViewController {
     }
     
     @IBAction func HandleUndo(_ sender: UIButton) {
-        drawing.layer.sublayers?.popLast()
-        drawing.layer.layoutSublayers()
+        drawing.HandleUndo()
     }
     
     @IBAction func HandleRedo(_ sender: UIButton) {
