@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		42F18A4602F04AE6BDF7EF45 /* Pods_iAnime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462B30642E4CBF4C01F1BE95 /* Pods_iAnime.framework */; };
 		A4203DB0234C88F8008C3632 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203DAF234C88F8008C3632 /* GridView.swift */; };
+		A4264F4923627BFD00899622 /* SmoothedBIView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4264F4823627BFD00899622 /* SmoothedBIView.m */; };
 		A43255942355DA6800C42429 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43255932355DA6800C42429 /* HomeTableViewController.swift */; };
 		A43255962355DF1000C42429 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43255952355DF1000C42429 /* SettingTableViewCell.swift */; };
 		A43EFE05235EA7B400706CF2 /* ColorPickerRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43EFE04235EA7B400706CF2 /* ColorPickerRectView.swift */; };
@@ -73,6 +74,9 @@
 		434EF55222971277A2712682 /* Pods-iAnime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iAnime.debug.xcconfig"; path = "Target Support Files/Pods-iAnime/Pods-iAnime.debug.xcconfig"; sourceTree = "<group>"; };
 		462B30642E4CBF4C01F1BE95 /* Pods_iAnime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iAnime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4203DAF234C88F8008C3632 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		A4264F4623627BFD00899622 /* iAnime-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iAnime-Bridging-Header.h"; sourceTree = "<group>"; };
+		A4264F4723627BFD00899622 /* SmoothedBIView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmoothedBIView.h; sourceTree = "<group>"; };
+		A4264F4823627BFD00899622 /* SmoothedBIView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmoothedBIView.m; sourceTree = "<group>"; };
 		A43255932355DA6800C42429 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		A43255952355DF1000C42429 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		A43EFE04235EA7B400706CF2 /* ColorPickerRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerRectView.swift; sourceTree = "<group>"; };
@@ -169,6 +173,9 @@
 				A43EFE04235EA7B400706CF2 /* ColorPickerRectView.swift */,
 				E6F9395C235F639C00D1BE93 /* ColorPickerBarView.swift */,
 				DF5F1C372360C89800335964 /* DrawingView.swift */,
+				A4264F4723627BFD00899622 /* SmoothedBIView.h */,
+				A4264F4823627BFD00899622 /* SmoothedBIView.m */,
+				A4264F4623627BFD00899622 /* iAnime-Bridging-Header.h */,
 			);
 			path = Drafting;
 			sourceTree = "<group>";
@@ -449,6 +456,7 @@
 				TargetAttributes = {
 					DF2DC3F0234ADCE2009E52B0 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -564,6 +572,7 @@
 				DF5F1C382360C89800335964 /* DrawingView.swift in Sources */,
 				DF441839236175F7006E3506 /* LinePoint.swift in Sources */,
 				DFA2C83A234F1BDA00BFCB01 /* SearchViewController.swift in Sources */,
+				A4264F4923627BFD00899622 /* SmoothedBIView.m in Sources */,
 				DF7B8AB8235C4E21006C93EF /* DateUtils.swift in Sources */,
 				DFB40C80235DB98200FE3A6B /* ColorPicker.swift in Sources */,
 				DF7B8AB2235C0FEB006C93EF /* RoundCornerUIImageView.swift in Sources */,
@@ -731,6 +740,7 @@
 			baseConfigurationReference = 434EF55222971277A2712682 /* Pods-iAnime.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X63KRZ63Y2;
@@ -743,6 +753,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Nemesiss.Studio.iAnime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "iAnime/Views/Drafting/iAnime-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -753,6 +765,7 @@
 			baseConfigurationReference = 2FF29E09C5F5921B4C067763 /* Pods-iAnime.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X63KRZ63Y2;
@@ -765,6 +778,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Nemesiss.Studio.iAnime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "iAnime/Views/Drafting/iAnime-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

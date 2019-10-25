@@ -18,10 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AhN-Dp-TT8" customClass="DrawingView" customModule="iAnime" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q30-RT-DZo" customClass="DrawingView" customModule="iAnime" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <gestureRecognizers/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WMC-e1-m6w">
                                 <rect key="frame" x="32.5" y="20" width="310" height="45"/>
@@ -154,18 +153,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="WMC-e1-m6w" firstAttribute="top" secondItem="Njs-HL-azM" secondAttribute="top" id="3Kv-fv-DMm"/>
-                            <constraint firstItem="AhN-Dp-TT8" firstAttribute="trailing" secondItem="Njs-HL-azM" secondAttribute="trailing" id="9mE-Yi-xb5"/>
-                            <constraint firstItem="AhN-Dp-TT8" firstAttribute="leading" secondItem="Njs-HL-azM" secondAttribute="leading" id="DOW-Hx-MpP"/>
+                            <constraint firstAttribute="bottom" secondItem="Q30-RT-DZo" secondAttribute="bottom" id="6Ei-nc-pLt"/>
+                            <constraint firstItem="Q30-RT-DZo" firstAttribute="leading" secondItem="Q8D-T1-SFF" secondAttribute="leading" id="Sqo-7f-Sxo"/>
                             <constraint firstItem="WMC-e1-m6w" firstAttribute="centerX" secondItem="Q8D-T1-SFF" secondAttribute="centerX" id="WQL-Fa-0dh"/>
-                            <constraint firstItem="AhN-Dp-TT8" firstAttribute="bottom" secondItem="Njs-HL-azM" secondAttribute="bottom" id="a78-Ic-883"/>
-                            <constraint firstItem="AhN-Dp-TT8" firstAttribute="top" secondItem="Q8D-T1-SFF" secondAttribute="top" id="vOk-Vf-Bfi"/>
+                            <constraint firstAttribute="trailing" secondItem="Q30-RT-DZo" secondAttribute="trailing" id="bac-id-aWc"/>
+                            <constraint firstItem="Q30-RT-DZo" firstAttribute="top" secondItem="Q8D-T1-SFF" secondAttribute="top" id="dVO-Cd-ZAL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Njs-HL-azM"/>
                     </view>
                     <connections>
                         <outlet property="PickedColorIndicator" destination="V59-Q5-Bk3" id="Ry9-G1-NaB"/>
                         <outlet property="Toolbar" destination="WMC-e1-m6w" id="G7z-wp-MiI"/>
-                        <outlet property="drawing" destination="AhN-Dp-TT8" id="cPw-Xm-URL"/>
+                        <outlet property="drawing" destination="Q30-RT-DZo" id="OeB-jE-Fvx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Kk-RB-f2b" userLabel="First Responder" sceneMemberID="firstResponder"/>

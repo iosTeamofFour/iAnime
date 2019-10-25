@@ -63,6 +63,7 @@ class DraftingViewController: UIViewController {
     private func HandlePickColor(_ rgb : RGB) {
         PickedColor = rgb
         PickedColorIndicator.backgroundColor = rgb.AsUIColor
+        drawing.SetPaintingLineColor(rgb)
     }
     
     private func ShowPopover() {
