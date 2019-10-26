@@ -29,8 +29,6 @@ class DrawingView: UIImageView {
     private(set) var CurrentLineWidth : CGFloat = 2.5
     
     private var CurrentDrawingCtx : CGContext?
-    
-
     private var TouchingWithoutPen = true
     
     
@@ -73,32 +71,49 @@ class DrawingView: UIImageView {
     
     
     
-//    private func RestoreBackgroundImage() {
-//
-//        if InitialLayerContent != nil {
-//
-//            let size = GetCGSizeInAspectFit(superview!.frame.size, InitialLayerContent!)!
-//            let scale = transform.a
-//
-//            let sizeWidth = size.width * scale
-//            let sizeHeight = size.height * scale
-//            let offsetX = frame.minX
-//            let offsetY = frame.minY
-//
-//            let frameHeight = frame.height
-//            let X : CGFloat = 0 + offsetX
-//            let Y = (frameHeight - sizeHeight) / 2 + offsetY
-//
-//            InitialLayerContent?.draw(in: CGRect(x: X, y: Y,width: sizeWidth * 1, height: sizeHeight * 1))
-//        }
-//    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // ----------- 跟踪手指绘制相关函数 ---------------
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !IsPinchScaling {
             guard let touch = touches.first else { return }
-            
-//            TestPersistBackground()
             NotifyVCDisableRedo()
             
             ctr = 0
@@ -107,8 +122,6 @@ class DrawingView: UIImageView {
             UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
             CurrentDrawingCtx = UIGraphicsGetCurrentContext()
             CurrentLineColor.AsUIColor.setStroke()
-            
-//            RestoreBackgroundImage()
             let lm = image ?? UIImage()
             lm.draw(in: bounds)
         }
@@ -147,29 +160,17 @@ class DrawingView: UIImageView {
                     TrackTouch(c,c.location(in: self), c.force, c.maximumPossibleForce)
                     TryPlotLine()
                 }
-                image = UIGraphicsGetImageFromCurrentImageContext()
             }
-                
             else {
                 ctr += 1
                 TrackTouch(touch,touch.location(in: self), touch.force, touch.maximumPossibleForce)
                 TryPlotLine()
-                
-                image = UIGraphicsGetImageFromCurrentImageContext()
             }
+            image = UIGraphicsGetImageFromCurrentImageContext()
         }
     }
     
-    private func GetDrawingArea() -> CGRect {
-        let X = -frame.origin.x
-        let Y = -frame.origin.y
-        
-        var originBounds = bounds
-        originBounds.origin.x = X
-        originBounds.origin.y = Y
-        return originBounds
-    }
-    
+
     func HandleRedo() -> Bool {
         if popedHistories.count > 0 {
             let next = popedHistories.popLast()!
@@ -181,8 +182,7 @@ class DrawingView: UIImageView {
             CurrentDrawingCtx = UIGraphicsGetCurrentContext()
             
             lm.draw(in: bounds)
-            
-            
+
             let oneCtrGroup = next.ControlPoints
             let oneForceGroup = next.Forces
             let touchMode = next.TouchingMode
@@ -213,7 +213,6 @@ class DrawingView: UIImageView {
             
             UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
             CurrentDrawingCtx = UIGraphicsGetCurrentContext()
-//            RestoreBackgroundImage()
             
             for i in 0..<histories.count {
                 let oneCtrGroup = histories[i].ControlPoints
@@ -277,6 +276,8 @@ class DrawingView: UIImageView {
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !IsPinchScaling {
+            
+            print(bounds)
             ctr = 0
             UIGraphicsEndImageContext()
             

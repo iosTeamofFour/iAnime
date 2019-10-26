@@ -15,8 +15,9 @@ class DraftingViewController: DraftingPinchViewController {
     private var PickedColor = RGB(R:0,G:0,B:0)
     
     // 主绘制区域
-    @IBOutlet weak var drawing: DrawingView!
-    @IBOutlet weak var background: UIImageView!
+    @IBOutlet weak var drawing: DrawingView! // 绘制层
+    @IBOutlet weak var background: UIImageView!  // 背景图片层
+    private var OriginBounds : CGRect!
     
     // 工具条区域
     @IBOutlet weak var UndoBtn: UIButton!
@@ -41,6 +42,9 @@ class DraftingViewController: DraftingPinchViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         drawing.draftingController = self
+        background.image = UIImage(named: "Left-4")!
+        OriginBounds = CGRect(x: 0, y: 0, width: drawing.bounds.width, height: drawing.bounds.height)
+        AttachGestureRecognizerToImageView(imageView)
     }
     
     override func viewWillLayoutSubviews() {
@@ -51,8 +55,6 @@ class DraftingViewController: DraftingPinchViewController {
     @IBAction func HandleReturn(_ sender: UIButton) {
         
     }
-    
-
     
     func NotifyCanUndo () {
         UndoBtn.isEnabled = true
@@ -85,19 +87,24 @@ class DraftingViewController: DraftingPinchViewController {
         
     }
     
+    private func SyncTwoCanvas() {
+        background.frame = drawing.frame
+        drawing.bounds = OriginBounds
+        backgroundIv.bounds = OriginBounds
+    }
+    
     @IBAction func HandleUpload(_ sender: UIButton) {
         if drawing.IsPinchScaling {
             DisableGestureRecognizer()
             drawing.IsPinchScaling = false
-            print("关闭双指缩放")
+            
         }
         else {
             EnableGestrueRecognizer()
             drawing.IsPinchScaling = true
             print("开启双指缩放")
         }
-        
-        
+        SyncTwoCanvas()
     }
     
     @IBAction func HandleOpenColorPicker(_ sender: UITapGestureRecognizer) {

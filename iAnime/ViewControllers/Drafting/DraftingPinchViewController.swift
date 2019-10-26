@@ -39,8 +39,13 @@ class DraftingPinchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         InitGestureRecognizer()
-//        DisableGestureRecognizer()
-        LoadImage()
+        PlaceImageViews()
+    }
+    
+    private func PlaceImageViews() {
+        let (width, height) = UIUtils.GetScreenWHDP()
+        imageView.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        backgroundIv.frame = CGRect(x: 0, y: 0, width: width, height: height)
     }
     
     private func InitGestureRecognizer() {
@@ -58,24 +63,14 @@ class DraftingPinchViewController: UIViewController {
         PanGestureRecognizer.isEnabled = false
     }
     
-    private func LoadImage() {
-        backgroundIv.image = UIImage(named: "Left-1")
-        AttachGestureRecognizerToImageView(imageView)
-    }
-//
-//    private func PresentImage(_ iv: UIImageView, _ index :Int) {
-//        iv.frame.origin.x = 0
-//        imageView.layoutIfNeeded()
-//    }
-    
     // 为当前imageView添加/移除手势识别器
     
-    private func AttachGestureRecognizerToImageView(_ iv : UIImageView) {
+    func AttachGestureRecognizerToImageView(_ iv : UIImageView) {
         iv.addGestureRecognizer(PinchGestureRecognizer)
         iv.addGestureRecognizer(PanGestureRecognizer)
     }
     
-    private func DetachGestureRecognizerFromImageView(_ iv:UIImageView) {
+    func DetachGestureRecognizerFromImageView(_ iv:UIImageView) {
         iv.removeGestureRecognizer(PinchGestureRecognizer)
         iv.removeGestureRecognizer(PanGestureRecognizer)
     }
