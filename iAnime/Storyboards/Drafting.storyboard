@@ -38,7 +38,7 @@
                                                     <action selector="HandleReturn:" destination="cGr-yH-OCA" eventType="touchUpInside" id="qlW-tj-9KJ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ofe-9a-yov">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ofe-9a-yov">
                                                 <rect key="frame" x="37" y="0.0" width="32" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="QWm-Go-oNx"/>
@@ -115,7 +115,7 @@
                                                 <subviews>
                                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V59-Q5-Bk3" customClass="RoundCornerUIImageView" customModule="iAnime" customModuleProvider="target">
                                                         <rect key="frame" x="6" y="6" width="20" height="20"/>
-                                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <gestureRecognizers/>
                                                         <userDefinedRuntimeAttributes>
@@ -161,8 +161,13 @@
                         <viewLayoutGuide key="safeArea" id="Njs-HL-azM"/>
                     </view>
                     <connections>
+                        <outlet property="ColorAnchorBtn" destination="bj4-uT-drC" id="Vnh-VE-xwY"/>
+                        <outlet property="ColorHintBtn" destination="rXR-Kf-hVR" id="uUE-Gu-V9O"/>
+                        <outlet property="EraserBtn" destination="FUf-UI-TG8" id="RwY-N1-XDJ"/>
                         <outlet property="PickedColorIndicator" destination="V59-Q5-Bk3" id="Ry9-G1-NaB"/>
+                        <outlet property="RedoBtn" destination="1Qe-Sg-bia" id="mpF-Pe-b1Y"/>
                         <outlet property="Toolbar" destination="WMC-e1-m6w" id="G7z-wp-MiI"/>
+                        <outlet property="UndoBtn" destination="Ofe-9a-yov" id="Vmy-h2-OGS"/>
                         <outlet property="drawing" destination="qqg-Va-xJl" id="2z7-He-xdi"/>
                     </connections>
                 </viewController>

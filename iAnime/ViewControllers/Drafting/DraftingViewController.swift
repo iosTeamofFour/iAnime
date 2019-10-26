@@ -12,14 +12,23 @@ class DraftingViewController: UIViewController {
 
     @IBOutlet weak var Toolbar: UIView!
     @IBOutlet weak var PickedColorIndicator: RoundCornerUIImageView!
-    private var PickedColor = RGB(R:255,G:0,B:0)
-
+    private var PickedColor = RGB(R:0,G:0,B:0)
+    
+    // 主绘制区域
     @IBOutlet weak var drawing: DrawingView!
+    
+    
+    // 工具条区域
+    @IBOutlet weak var UndoBtn: UIButton!
+    @IBOutlet weak var RedoBtn: UIButton!
+    @IBOutlet weak var EraserBtn: UIButton!
+    @IBOutlet weak var ColorAnchorBtn: UIButton!
+    @IBOutlet weak var ColorHintBtn: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        drawing.draftingController = self
     }
     
     override func viewWillLayoutSubviews() {
@@ -31,12 +40,25 @@ class DraftingViewController: UIViewController {
         
     }
     
-    @IBAction func HandleUndo(_ sender: UIButton) {
-        drawing.HandleUndo()
+
+    
+    func NotifyCanUndo () {
+        UndoBtn.isEnabled = true
+    }
+    
+    func NotifyCanRedo() {
+        RedoBtn.isEnabled = true
+    }
+    
+    func NofityCanNotRedo() {
+        RedoBtn.isEnabled = false
     }
     
     @IBAction func HandleRedo(_ sender: UIButton) {
-        
+        sender.isEnabled = drawing.HandleRedo()
+    }
+    @IBAction func HandleUndo(_ sender: UIButton) {
+        sender.isEnabled = drawing.HandleUndo()
     }
     
     @IBAction func HandleErase(_ sender: Any) {
@@ -66,6 +88,8 @@ class DraftingViewController: UIViewController {
     }
     
     private func ShowPopover() {
+        // 显示出调色板
+        
         let storyboard = UIStoryboard(name: "Test", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "TestColorPicker") as? TestViewController {
             vc.modalPresentationStyle = .popover
@@ -81,14 +105,11 @@ class DraftingViewController: UIViewController {
     }
     
 
-    
-    
     private func DrawRoundCircile() {
+        // 为上面的工具条画上淡淡的阴影 + 圆角
         
         Toolbar.layer.cornerRadius = 10
         Toolbar.backgroundColor = UIColor.white
-        
-        // 描边
        
         let linePath = UIBezierPath(roundedRect: CGRect(x: -2 , y: 6,
                                     width: Toolbar.bounds.width + 4,

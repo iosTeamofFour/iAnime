@@ -25,8 +25,7 @@ class DrawingView: UIImageView {
     private var lastForce : CGFloat = 1.0
     
     
-    
-    private(set) var CurrentLineColor : RGB = RGB(R:255,G:0,B:0)
+    private(set) var CurrentLineColor : RGB = RGB(R:0,G:0,B:0)
     private(set) var CurrentLineWidth : CGFloat = 2.5
     
     private var CurrentDrawingCtx : CGContext?
@@ -38,10 +37,16 @@ class DrawingView: UIImageView {
     // ----------  历史记录回退相关变量 ------------
     
     private var histories : [DrawingHistory] = []
+    private var popedHistories : [DrawingHistory] = []
     
     private var ctrGroups : [CGPoint] = []
     private var forceGroups : [CGFloat] = []
     private var TouchingWithoutPenHistory : [Bool] = []
+    
+    
+    // ---------- 与父VC通信相关变量 ---------------
+    
+    var draftingController : DraftingViewController!
     
 
     func SetPaintingLineColor(_ rgb : RGB) {
@@ -52,14 +57,28 @@ class DrawingView: UIImageView {
         CurrentLineWidth = width
     }
     
+    private func NotifyVCEnableUndo() {
+        draftingController.NotifyCanUndo()
+    }
+    
+    private func NotifyVCEnableRedo() {
+        draftingController.NotifyCanRedo()
+    }
+    
+    private func NotifyVCDisableRedo() {
+        popedHistories.removeAll()
+        draftingController.NofityCanNotRedo()
+    }
+    
+    
+    // ----------- 跟踪手指绘制相关函数 ---------------
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         
+        NotifyVCDisableRedo()
         let lm = image ?? UIImage()
-        
         ctr = 0
-        
-        
         TrackTouch(touch, touch.location(in: self), touch.force, touch.maximumPossibleForce)
         
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
@@ -112,23 +131,23 @@ class DrawingView: UIImageView {
         }
     }
     
-    func HandleUndo() {
-        
-        // 重绘之前所有路径点
-        histories.popLast()
-        
-        pts = Array<CGPoint>(repeating: CGPoint.zero, count: 5)
-        forces = Array<CGFloat>(repeating: 1, count: 5)
-        
-        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
-        CurrentDrawingCtx = UIGraphicsGetCurrentContext()
-        
-        
-        for i in 0..<histories.count {
-            let oneCtrGroup = histories[i].ControlPoints
-            let oneForceGroup = histories[i].Forces
-            let touchMode = histories[i].TouchingMode
-            CurrentDrawingCtx?.setStrokeColor(histories[i].UsedColor.AsUIColor.cgColor)
+    
+    
+    func HandleRedo() -> Bool {
+        if popedHistories.count > 0 {
+            let next = popedHistories.popLast()!
+            histories.append(next)
+            let lm = image ?? UIImage()
+            
+            UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
+            CurrentDrawingCtx = UIGraphicsGetCurrentContext()
+            
+            lm.draw(in: bounds)
+            
+            let oneCtrGroup = next.ControlPoints
+            let oneForceGroup = next.Forces
+            let touchMode = next.TouchingMode
+            CurrentDrawingCtx?.setStrokeColor(next.UsedColor.AsUIColor.cgColor)
             ctr = 0
             pts[ctr] = oneCtrGroup[0]
             forces[ctr] = oneForceGroup[0]
@@ -139,10 +158,47 @@ class DrawingView: UIImageView {
                 forces[ctr] = oneForceGroup[j]
                 TryPlotLine()
             }
+            NotifyVCEnableUndo()
+            image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
         }
+        return popedHistories.count > 0
+    }
+    
+    func HandleUndo() -> Bool {
         
-        image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+        // 重绘之前所有路径点
+        if histories.count > 0 {
+            popedHistories.append(histories.popLast()!)
+            pts = Array<CGPoint>(repeating: CGPoint.zero, count: 5)
+            forces = Array<CGFloat>(repeating: 1, count: 5)
+            
+            UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
+            CurrentDrawingCtx = UIGraphicsGetCurrentContext()
+            
+            
+            for i in 0..<histories.count {
+                let oneCtrGroup = histories[i].ControlPoints
+                let oneForceGroup = histories[i].Forces
+                let touchMode = histories[i].TouchingMode
+                CurrentDrawingCtx?.setStrokeColor(histories[i].UsedColor.AsUIColor.cgColor)
+                ctr = 0
+                pts[ctr] = oneCtrGroup[0]
+                forces[ctr] = oneForceGroup[0]
+                for j in 1..<oneCtrGroup.count {
+                    ctr += 1
+                    TouchingWithoutPen = touchMode[j]
+                    pts[ctr] = oneCtrGroup[j]
+                    forces[ctr] = oneForceGroup[j]
+                    TryPlotLine()
+                }
+            }
+            
+            image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            NotifyVCEnableRedo()
+        }
+        return histories.count > 0
     }
     
     private func TryPlotLine() {
@@ -185,11 +241,6 @@ class DrawingView: UIImageView {
         ctr = 0
         UIGraphicsEndImageContext()
         
-//        historyCtr.append(ctrGroups)
-//        historyForces.append(forceGroups)
-//        historyColor.append(CurrentLineColor)
-        
-        
         histories.append(DrawingHistory(ControlPoints: ctrGroups, Forces: forceGroups, TouchingMode: TouchingWithoutPenHistory, UsedColor: CurrentLineColor))
         
         ctrGroups.removeAll()
@@ -199,5 +250,7 @@ class DrawingView: UIImageView {
         for i in 0..<5 {
             forces[i] = 0
         }
+        
+        NotifyVCEnableUndo()
     }
 }
