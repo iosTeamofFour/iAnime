@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DraftingViewController: UIViewController {
+class DraftingViewController: DraftingPinchViewController {
 
     @IBOutlet weak var Toolbar: UIView!
     @IBOutlet weak var PickedColorIndicator: RoundCornerUIImageView!
@@ -16,7 +16,7 @@ class DraftingViewController: UIViewController {
     
     // 主绘制区域
     @IBOutlet weak var drawing: DrawingView!
-    
+    @IBOutlet weak var background: UIImageView!
     
     // 工具条区域
     @IBOutlet weak var UndoBtn: UIButton!
@@ -25,6 +25,18 @@ class DraftingViewController: UIViewController {
     @IBOutlet weak var ColorAnchorBtn: UIButton!
     @IBOutlet weak var ColorHintBtn: UIButton!
     
+
+    override var imageView: UIImageView! {
+        get {
+            return drawing
+        }
+    }
+    
+    override var backgroundIv: UIImageView! {
+        get {
+            return background
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +86,17 @@ class DraftingViewController: UIViewController {
     }
     
     @IBAction func HandleUpload(_ sender: UIButton) {
+        if drawing.IsPinchScaling {
+            DisableGestureRecognizer()
+            drawing.IsPinchScaling = false
+            print("关闭双指缩放")
+        }
+        else {
+            EnableGestrueRecognizer()
+            drawing.IsPinchScaling = true
+            print("开启双指缩放")
+        }
+        
         
     }
     

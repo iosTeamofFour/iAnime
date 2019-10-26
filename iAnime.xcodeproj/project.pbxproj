@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		42F18A4602F04AE6BDF7EF45 /* Pods_iAnime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462B30642E4CBF4C01F1BE95 /* Pods_iAnime.framework */; };
 		A4203DB0234C88F8008C3632 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203DAF234C88F8008C3632 /* GridView.swift */; };
-		A4264F4923627BFD00899622 /* SmoothedBIView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4264F4823627BFD00899622 /* SmoothedBIView.m */; };
 		A43255942355DA6800C42429 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43255932355DA6800C42429 /* HomeTableViewController.swift */; };
 		A43255962355DF1000C42429 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43255952355DF1000C42429 /* SettingTableViewCell.swift */; };
 		A43EFE05235EA7B400706CF2 /* ColorPickerRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43EFE04235EA7B400706CF2 /* ColorPickerRectView.swift */; };
@@ -19,6 +18,7 @@
 		A4683DFD234E0DA200D50D04 /* CollapsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DFC234E0DA200D50D04 /* CollapsedView.swift */; };
 		A46C0A8C23605EB000A80DD7 /* OuterTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C0A8B23605EB000A80DD7 /* OuterTestViewController.swift */; };
 		A46C0A8E236088B800A80DD7 /* Drafting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A46C0A8D236088B800A80DD7 /* Drafting.storyboard */; };
+		A4C5FE2E2363E98600D4B11C /* DraftingPinchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C5FE2D2363E98600D4B11C /* DraftingPinchViewController.swift */; };
 		A4CB24BD23580B6C00807BE8 /* SettingWithSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CB24BC23580B6C00807BE8 /* SettingWithSwitchTableViewCell.swift */; };
 		A4CB24BF23580DEA00807BE8 /* NightModeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CB24BE23580DEA00807BE8 /* NightModeTableViewCell.swift */; };
 		A4CB24C12358213800807BE8 /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CB24C02358213800807BE8 /* AppUtils.swift */; };
@@ -74,9 +74,6 @@
 		434EF55222971277A2712682 /* Pods-iAnime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iAnime.debug.xcconfig"; path = "Target Support Files/Pods-iAnime/Pods-iAnime.debug.xcconfig"; sourceTree = "<group>"; };
 		462B30642E4CBF4C01F1BE95 /* Pods_iAnime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iAnime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4203DAF234C88F8008C3632 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
-		A4264F4623627BFD00899622 /* iAnime-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iAnime-Bridging-Header.h"; sourceTree = "<group>"; };
-		A4264F4723627BFD00899622 /* SmoothedBIView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmoothedBIView.h; sourceTree = "<group>"; };
-		A4264F4823627BFD00899622 /* SmoothedBIView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmoothedBIView.m; sourceTree = "<group>"; };
 		A43255932355DA6800C42429 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		A43255952355DF1000C42429 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		A43EFE04235EA7B400706CF2 /* ColorPickerRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerRectView.swift; sourceTree = "<group>"; };
@@ -86,6 +83,7 @@
 		A4683DFC234E0DA200D50D04 /* CollapsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedView.swift; sourceTree = "<group>"; };
 		A46C0A8B23605EB000A80DD7 /* OuterTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuterTestViewController.swift; sourceTree = "<group>"; };
 		A46C0A8D236088B800A80DD7 /* Drafting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Drafting.storyboard; sourceTree = "<group>"; };
+		A4C5FE2D2363E98600D4B11C /* DraftingPinchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftingPinchViewController.swift; sourceTree = "<group>"; };
 		A4CB24BC23580B6C00807BE8 /* SettingWithSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWithSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		A4CB24BE23580DEA00807BE8 /* NightModeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightModeTableViewCell.swift; sourceTree = "<group>"; };
 		A4CB24C02358213800807BE8 /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
@@ -173,9 +171,6 @@
 				A43EFE04235EA7B400706CF2 /* ColorPickerRectView.swift */,
 				E6F9395C235F639C00D1BE93 /* ColorPickerBarView.swift */,
 				DF5F1C372360C89800335964 /* DrawingView.swift */,
-				A4264F4723627BFD00899622 /* SmoothedBIView.h */,
-				A4264F4823627BFD00899622 /* SmoothedBIView.m */,
-				A4264F4623627BFD00899622 /* iAnime-Bridging-Header.h */,
 			);
 			path = Drafting;
 			sourceTree = "<group>";
@@ -395,6 +390,7 @@
 			children = (
 				DF5F1C352360A03700335964 /* DraftingViewController.swift */,
 				DFB40C7E235DB8F500FE3A6B /* Helper */,
+				A4C5FE2D2363E98600D4B11C /* DraftingPinchViewController.swift */,
 			);
 			path = Drafting;
 			sourceTree = "<group>";
@@ -572,7 +568,7 @@
 				DF5F1C382360C89800335964 /* DrawingView.swift in Sources */,
 				DF441839236175F7006E3506 /* LinePoint.swift in Sources */,
 				DFA2C83A234F1BDA00BFCB01 /* SearchViewController.swift in Sources */,
-				A4264F4923627BFD00899622 /* SmoothedBIView.m in Sources */,
+				A4C5FE2E2363E98600D4B11C /* DraftingPinchViewController.swift in Sources */,
 				DF7B8AB8235C4E21006C93EF /* DateUtils.swift in Sources */,
 				DFB40C80235DB98200FE3A6B /* ColorPicker.swift in Sources */,
 				DF7B8AB2235C0FEB006C93EF /* RoundCornerUIImageView.swift in Sources */,
@@ -753,7 +749,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Nemesiss.Studio.iAnime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "iAnime/Views/Drafting/iAnime-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -778,7 +773,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Nemesiss.Studio.iAnime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "iAnime/Views/Drafting/iAnime-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

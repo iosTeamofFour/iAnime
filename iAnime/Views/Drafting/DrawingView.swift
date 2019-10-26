@@ -48,6 +48,7 @@ class DrawingView: UIImageView {
     
     var draftingController : DraftingViewController!
     
+    var IsPinchScaling = true
 
     func SetPaintingLineColor(_ rgb : RGB) {
         CurrentLineColor = rgb
@@ -71,20 +72,46 @@ class DrawingView: UIImageView {
     }
     
     
+    
+//    private func RestoreBackgroundImage() {
+//
+//        if InitialLayerContent != nil {
+//
+//            let size = GetCGSizeInAspectFit(superview!.frame.size, InitialLayerContent!)!
+//            let scale = transform.a
+//
+//            let sizeWidth = size.width * scale
+//            let sizeHeight = size.height * scale
+//            let offsetX = frame.minX
+//            let offsetY = frame.minY
+//
+//            let frameHeight = frame.height
+//            let X : CGFloat = 0 + offsetX
+//            let Y = (frameHeight - sizeHeight) / 2 + offsetY
+//
+//            InitialLayerContent?.draw(in: CGRect(x: X, y: Y,width: sizeWidth * 1, height: sizeHeight * 1))
+//        }
+//    }
     // ----------- 跟踪手指绘制相关函数 ---------------
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        
-        NotifyVCDisableRedo()
-        let lm = image ?? UIImage()
-        ctr = 0
-        TrackTouch(touch, touch.location(in: self), touch.force, touch.maximumPossibleForce)
-        
-        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
-        CurrentDrawingCtx = UIGraphicsGetCurrentContext()
-        CurrentLineColor.AsUIColor.setStroke()
-        lm.draw(in: bounds)
+        if !IsPinchScaling {
+            guard let touch = touches.first else { return }
+            
+//            TestPersistBackground()
+            NotifyVCDisableRedo()
+            
+            ctr = 0
+            TrackTouch(touch, touch.location(in: self), touch.force, touch.maximumPossibleForce)
+            
+            UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
+            CurrentDrawingCtx = UIGraphicsGetCurrentContext()
+            CurrentLineColor.AsUIColor.setStroke()
+            
+//            RestoreBackgroundImage()
+            let lm = image ?? UIImage()
+            lm.draw(in: bounds)
+        }
     }
     
     private func TrackTouch(_ touchEv : UITouch,_ touchPoint : CGPoint, _ force : CGFloat, _ maxForce : CGFloat) {
@@ -110,39 +137,51 @@ class DrawingView: UIImageView {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        guard let touch = touches.first else { return }
-        
-        if let coal = event?.coalescedTouches(for: touch), coal.count > 0 {
-            for c in coal {
-                ctr += 1
-                TrackTouch(c,c.location(in: self), c.force, c.maximumPossibleForce)
-                TryPlotLine()
+        if !IsPinchScaling {
+            
+            guard let touch = touches.first else { return }
+            
+            if let coal = event?.coalescedTouches(for: touch), coal.count > 0 {
+                for c in coal {
+                    ctr += 1
+                    TrackTouch(c,c.location(in: self), c.force, c.maximumPossibleForce)
+                    TryPlotLine()
+                }
+                image = UIGraphicsGetImageFromCurrentImageContext()
             }
-            image = UIGraphicsGetImageFromCurrentImageContext()
-        }
-            
-        else {
-            ctr += 1
-            TrackTouch(touch,touch.location(in: self), touch.force, touch.maximumPossibleForce)
-            TryPlotLine()
-            
-            image = UIGraphicsGetImageFromCurrentImageContext()
+                
+            else {
+                ctr += 1
+                TrackTouch(touch,touch.location(in: self), touch.force, touch.maximumPossibleForce)
+                TryPlotLine()
+                
+                image = UIGraphicsGetImageFromCurrentImageContext()
+            }
         }
     }
     
-    
+    private func GetDrawingArea() -> CGRect {
+        let X = -frame.origin.x
+        let Y = -frame.origin.y
+        
+        var originBounds = bounds
+        originBounds.origin.x = X
+        originBounds.origin.y = Y
+        return originBounds
+    }
     
     func HandleRedo() -> Bool {
         if popedHistories.count > 0 {
             let next = popedHistories.popLast()!
             histories.append(next)
+            
             let lm = image ?? UIImage()
             
             UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
             CurrentDrawingCtx = UIGraphicsGetCurrentContext()
             
             lm.draw(in: bounds)
+            
             
             let oneCtrGroup = next.ControlPoints
             let oneForceGroup = next.Forces
@@ -166,7 +205,6 @@ class DrawingView: UIImageView {
     }
     
     func HandleUndo() -> Bool {
-        
         // 重绘之前所有路径点
         if histories.count > 0 {
             popedHistories.append(histories.popLast()!)
@@ -175,7 +213,7 @@ class DrawingView: UIImageView {
             
             UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
             CurrentDrawingCtx = UIGraphicsGetCurrentContext()
-            
+//            RestoreBackgroundImage()
             
             for i in 0..<histories.count {
                 let oneCtrGroup = histories[i].ControlPoints
@@ -238,19 +276,21 @@ class DrawingView: UIImageView {
         }
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        ctr = 0
-        UIGraphicsEndImageContext()
-        
-        histories.append(DrawingHistory(ControlPoints: ctrGroups, Forces: forceGroups, TouchingMode: TouchingWithoutPenHistory, UsedColor: CurrentLineColor))
-        
-        ctrGroups.removeAll()
-        forceGroups.removeAll()
-        TouchingWithoutPenHistory.removeAll()
-        
-        for i in 0..<5 {
-            forces[i] = 0
+        if !IsPinchScaling {
+            ctr = 0
+            UIGraphicsEndImageContext()
+            
+            histories.append(DrawingHistory(ControlPoints: ctrGroups, Forces: forceGroups, TouchingMode: TouchingWithoutPenHistory, UsedColor: CurrentLineColor))
+            
+            ctrGroups.removeAll()
+            forceGroups.removeAll()
+            TouchingWithoutPenHistory.removeAll()
+            
+            for i in 0..<5 {
+                forces[i] = 0
+            }
+            
+            NotifyVCEnableUndo()
         }
-        
-        NotifyVCEnableUndo()
     }
 }

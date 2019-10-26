@@ -18,8 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qqg-Va-xJl" customClass="DrawingView" customModule="iAnime" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ld-qW-Kan" userLabel="Background View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qqg-Va-xJl" customClass="DrawingView" customModule="iAnime" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WMC-e1-m6w">
                                 <rect key="frame" x="32.5" y="20" width="310" height="45"/>
@@ -153,10 +158,6 @@
                         <constraints>
                             <constraint firstItem="WMC-e1-m6w" firstAttribute="top" secondItem="Njs-HL-azM" secondAttribute="top" id="3Kv-fv-DMm"/>
                             <constraint firstItem="WMC-e1-m6w" firstAttribute="centerX" secondItem="Q8D-T1-SFF" secondAttribute="centerX" id="WQL-Fa-0dh"/>
-                            <constraint firstAttribute="trailing" secondItem="qqg-Va-xJl" secondAttribute="trailing" id="jQX-Ng-ex4"/>
-                            <constraint firstItem="qqg-Va-xJl" firstAttribute="leading" secondItem="Q8D-T1-SFF" secondAttribute="leading" id="oHg-uL-Cm4"/>
-                            <constraint firstAttribute="bottom" secondItem="qqg-Va-xJl" secondAttribute="bottom" id="ovO-uU-vGp"/>
-                            <constraint firstItem="qqg-Va-xJl" firstAttribute="top" secondItem="Q8D-T1-SFF" secondAttribute="top" id="wDJ-Ic-kSc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Njs-HL-azM"/>
                     </view>
@@ -168,6 +169,7 @@
                         <outlet property="RedoBtn" destination="1Qe-Sg-bia" id="mpF-Pe-b1Y"/>
                         <outlet property="Toolbar" destination="WMC-e1-m6w" id="G7z-wp-MiI"/>
                         <outlet property="UndoBtn" destination="Ofe-9a-yov" id="Vmy-h2-OGS"/>
+                        <outlet property="background" destination="4ld-qW-Kan" id="mfM-vn-jAP"/>
                         <outlet property="drawing" destination="qqg-Va-xJl" id="2z7-He-xdi"/>
                     </connections>
                 </viewController>
