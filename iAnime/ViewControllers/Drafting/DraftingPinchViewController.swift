@@ -147,6 +147,7 @@ class DraftingPinchViewController: UIViewController {
                 ComputeScaleOffsetMatrix(imageView)
                 imageView.transform = matrix
                 backgroundIv.transform = matrix
+                OnScaling(sender.scale)
             }
             
             if sender.state == .ended {
@@ -161,6 +162,10 @@ class DraftingPinchViewController: UIViewController {
             }
         }
         sender.scale = 1
+    }
+    
+    func OnScaling(_ currentScaling : CGFloat) {
+        // do nothing
     }
     
     private func ScaleImageView(_ last : CGFloat, _ currentScale : CGFloat, _ targetScale : CGFloat, _ ivToScale : UIImageView, _ centerPoint : CGPoint) {
@@ -183,6 +188,7 @@ class DraftingPinchViewController: UIViewController {
                     ivToScale.transform = transformMat
                     self.backgroundIv.transform = transformMat
                     self.ComputeScaleOffsetMatrix(ivToScale)
+                    self.OnScaling(CGFloat(stepLength))
                 }
                 usleep(useconds_t(sleepTime * 1000 * 1000))
             }

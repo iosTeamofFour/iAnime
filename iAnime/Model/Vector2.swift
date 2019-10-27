@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-public struct Vector2 {
+public struct Vector2 : Hashable {
     var x : CGFloat
     var y : CGFloat
     

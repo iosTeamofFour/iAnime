@@ -77,5 +77,9 @@ public extension CGPoint {
     public static func MidPoint(_ lhs : CGPoint, _ rhs : CGPoint) -> CGPoint {
         return CGPoint(x: (lhs.x + rhs.x)/2, y: (lhs.y + rhs.y)/2)
     }
+    
+    public func distance(_ with : CGPoint) -> CGFloat {
+        return CGFloat(sqrt(Double(pow(x * with.x, 2) + pow(y * with.y, 2))))
+    }
 }
 

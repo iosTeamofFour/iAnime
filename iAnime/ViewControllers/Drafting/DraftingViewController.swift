@@ -25,8 +25,10 @@ class DraftingViewController: DraftingPinchViewController {
     @IBOutlet weak var EraserBtn: UIButton!
     @IBOutlet weak var ColorAnchorBtn: UIButton!
     @IBOutlet weak var ColorHintBtn: UIButton!
+    @IBOutlet weak var MultifuncBtn: UIButton!
     
-
+    private var LastClieckedBtn : UIButton?
+    
     override var imageView: UIImageView! {
         get {
             return drawing
@@ -53,9 +55,19 @@ class DraftingViewController: DraftingPinchViewController {
     }
     
     @IBAction func HandleReturn(_ sender: UIButton) {
-        
+        if let naviController = navigationController {
+            naviController.popViewController(animated: true)
+        }
+        else {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
+    override func OnScaling(_ currentScaling : CGFloat) {
+        drawing.FixColorPointSize(currentScaling)
+    }
+    
+    // 与子View的通信函数
     func NotifyCanUndo () {
         UndoBtn.isEnabled = true
     }
@@ -75,16 +87,55 @@ class DraftingViewController: DraftingPinchViewController {
         sender.isEnabled = drawing.HandleUndo()
     }
     
-    @IBAction func HandleErase(_ sender: Any) {
+    private func BackToPinchMode(_ currentClick : UIButton) -> Bool {
+        if let lastBtn = LastClieckedBtn, currentClick == lastBtn {
+            lastBtn.isHighlighted = false
+            lastBtn.layer.borderWidth = 0
+            drawing.CurrentToolType = .Pinching
+            LastClieckedBtn = nil
+            EnableGestrueRecognizer()
+            return true
+        }
+        return false
+    }
+    
+    private func SwitchButtonHighlight(_ currentClick : UIButton) {
+        LastClieckedBtn?.isHighlighted = false
+        LastClieckedBtn?.layer.borderWidth = 0
         
+        currentClick.isHighlighted = true
+        currentClick.layer.borderWidth = 2.0
+        currentClick.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
+    @IBAction func HandleErase(_ sender: UIButton) {
+        if BackToPinchMode(sender) {
+            return
+        }
+        SwitchButtonHighlight(sender)
+        drawing.CurrentToolType = .Eraser
+        DisableGestureRecognizer()
+        LastClieckedBtn = sender
     }
     
     @IBAction func HandleAnchor(_ sender: UIButton) {
+        if BackToPinchMode(sender) {
+            return
+        }
+        SwitchButtonHighlight(sender)
+        drawing.CurrentToolType = .ColorAnchor
+        DisableGestureRecognizer()
+        LastClieckedBtn = sender
     }
     
-    
-    @IBAction func HandleColorHint(_ sender: Any) {
-        
+    @IBAction func HandleColorHint(_ sender: UIButton) {
+        if BackToPinchMode(sender) {
+            return
+        }
+        SwitchButtonHighlight(sender)
+        drawing.CurrentToolType = .ColorHint
+        DisableGestureRecognizer()
+        LastClieckedBtn = sender
     }
     
     private func SyncTwoCanvas() {
@@ -94,16 +145,23 @@ class DraftingViewController: DraftingPinchViewController {
     }
     
     @IBAction func HandleUpload(_ sender: UIButton) {
-        if drawing.IsPinchScaling {
-            DisableGestureRecognizer()
-            drawing.IsPinchScaling = false
-            
+//        if drawing.IsPinchScaling {
+//            DisableGestureRecognizer()
+//            drawing.IsPinchScaling = false
+//
+//        }
+//        else {
+//            EnableGestrueRecognizer()
+//            drawing.IsPinchScaling = true
+//            print("开启双指缩放")
+//        }
+        if BackToPinchMode(sender) {
+            return
         }
-        else {
-            EnableGestrueRecognizer()
-            drawing.IsPinchScaling = true
-            print("开启双指缩放")
-        }
+        SwitchButtonHighlight(sender)
+        drawing.CurrentToolType = .Drawing
+        DisableGestureRecognizer()
+        LastClieckedBtn = sender
         SyncTwoCanvas()
     }
     
@@ -133,8 +191,6 @@ class DraftingViewController: DraftingPinchViewController {
             present(vc, animated: true, completion: nil)
         }
     }
-    
-
     private func DrawRoundCircile() {
         // 为上面的工具条画上淡淡的阴影 + 圆角
         

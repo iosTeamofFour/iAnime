@@ -10,6 +10,34 @@ struct DrawingHistory {
     var UsedColor : RGB
 }
 
+struct ColorAnchor {
+    var color : RGB
+    var point : CGPoint
+    var path : UIBezierPath
+    var layer : CAShapeLayer
+}
+
+struct ColorHint {
+    var color : RGB
+    var point : CGPoint
+    var path : UIBezierPath
+    var layer : CAShapeLayer
+}
+
+
+enum ColorPointType {
+    case Anchor
+    case Hint
+}
+
+enum UsingToolType {
+    case Drawing
+    case ColorAnchor
+    case ColorHint
+    case Eraser
+    case Pinching
+}
+
 class DrawingView: UIImageView {
     
     // -------- 绘制相关变量 ---------
@@ -31,6 +59,8 @@ class DrawingView: UIImageView {
     private var CurrentDrawingCtx : CGContext?
     private var TouchingWithoutPen = true
     
+    var CurrentToolType = UsingToolType.Pinching
+    
     
     // ----------  历史记录回退相关变量 ------------
     
@@ -41,12 +71,24 @@ class DrawingView: UIImageView {
     private var forceGroups : [CGFloat] = []
     private var TouchingWithoutPenHistory : [Bool] = []
     
+    // ---------- 颜色锚点和颜色标记点相关变量 --------------
+    
+    private var OneAnchorPoint : UIBezierPath?
+    
+    private var anchors : Dictionary<Vector2,ColorAnchor> = [:]
+    private var hints : Dictionary<Vector2,ColorHint> = [:]
+    
+    private var anchorPath = UIBezierPath()
+    private var hintPath = UIBezierPath()
+    
+    private var anchorLayers : [CAShapeLayer] = []
+    private var hintLayers : [CAShapeLayer] = []
+    
     
     // ---------- 与父VC通信相关变量 ---------------
     
     var draftingController : DraftingViewController!
     
-    var IsPinchScaling = true
 
     func SetPaintingLineColor(_ rgb : RGB) {
         CurrentLineColor = rgb
@@ -70,26 +112,91 @@ class DrawingView: UIImageView {
     }
     
     
+    // ------- 颜色锚点和颜色提示点相关绘制函数 -------------
     
     
+    func DrawColorPoint( _ at : CGPoint,_ type : ColorPointType) {
+        // 绘制颜色锚点/颜色提示点
+        let up = CGPoint(x: at.x, y: at.y - 6), right = CGPoint(x: at.x + 6, y: at.y), down = CGPoint(x: at.x, y: at.y + 6), left = CGPoint(x: at.x - 6, y: at.y)
+
+        let anchorLayer = CAShapeLayer(layer: layer)
+        let currScaling = transform.a
+        anchorLayer.frame = bounds
+        anchorLayer.lineWidth = 3 * 1 / currScaling
+        anchorLayer.fillColor = CurrentLineColor.AsUIColor.cgColor
+        anchorLayer.strokeColor = UIColor.white.cgColor
+        
+        switch type {
+        case .Anchor:
+            OneAnchorPoint = UIBezierPath()
+            OneAnchorPoint?.move(to: up)
+            OneAnchorPoint?.addLine(to: right)
+            OneAnchorPoint?.addLine(to: down)
+            OneAnchorPoint?.addLine(to: left)
+            OneAnchorPoint?.close()
+            OneAnchorPoint?.apply(CGAffineTransform(translationX: -at.x, y: -at.y))
+            OneAnchorPoint?.apply(CGAffineTransform(scaleX: 1 / currScaling , y: 1 / currScaling))
+            OneAnchorPoint?.apply(CGAffineTransform(translationX: at.x, y: at.y))
+            anchorLayer.path = OneAnchorPoint?.cgPath
+            anchors[at.AsVector2()] = ColorAnchor(color: CurrentLineColor, point: at,path : OneAnchorPoint!, layer: anchorLayer)
+            break
+        case .Hint:
+            OneAnchorPoint = UIBezierPath()
+            OneAnchorPoint?.addArc(withCenter: at, radius: 5, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
+            OneAnchorPoint?.apply(CGAffineTransform(translationX: -at.x, y: -at.y))
+            OneAnchorPoint?.apply(CGAffineTransform(scaleX: 1 / currScaling , y: 1 / currScaling))
+            OneAnchorPoint?.apply(CGAffineTransform(translationX: at.x, y: at.y))
+            anchorLayer.path = OneAnchorPoint?.cgPath
+            hints[at.AsVector2()] = ColorHint(color: CurrentLineColor, point: at, path : OneAnchorPoint!, layer: anchorLayer)
+            break
+        }
+        layer.addSublayer(anchorLayer)
+    }
     
+    func FixColorPointSize(_ currentScaling : CGFloat) {
+        // 在画布进行伸缩的时候同步缩放颜色提示点和颜色锚点
+        for (_,an) in anchors {
+            let p = an.point
+            let path = an.path
+            path.apply(CGAffineTransform(translationX: -p.x, y: -p.y))
+            path.apply(CGAffineTransform(scaleX: 1 / currentScaling, y: 1 / currentScaling))
+            path.apply(CGAffineTransform(translationX: p.x, y: p.y))
+            an.layer.lineWidth = an.layer.lineWidth / currentScaling
+            an.layer.path = path.cgPath
+        }
+        
+        for (_,an) in hints {
+            let p = an.point
+            let path = an.path
+
+            path.apply(CGAffineTransform(translationX: -p.x, y: -p.y))
+            path.apply(CGAffineTransform(scaleX: 1 / currentScaling, y: 1 / currentScaling))
+            path.apply(CGAffineTransform(translationX: p.x, y: p.y))
+            an.layer.lineWidth = an.layer.lineWidth / currentScaling
+            an.layer.path = path.cgPath
+        }
+    }
     
+    private func TryEraseColorPoint(_ near : CGPoint) {
+        // 橡皮擦功能，尝试去除附近的锚点
+        let nearVec = near.AsVector2()
+        
+        for (point,anchor) in anchors {
+            if Vector2.distance(point, nearVec) < 5 {
+                anchor.layer.removeFromSuperlayer()
+                anchors.removeValue(forKey: point)
+            }
+        }
+        
+        for (point,hint) in hints {
+            if Vector2.distance(point, nearVec) < 5 {
+                hint.layer.removeFromSuperlayer()
+                hints.removeValue(forKey: point)
+            }
+        }
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     
     
@@ -112,19 +219,34 @@ class DrawingView: UIImageView {
     // ----------- 跟踪手指绘制相关函数 ---------------
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !IsPinchScaling {
+        
             guard let touch = touches.first else { return }
-            NotifyVCDisableRedo()
             
-            ctr = 0
-            TrackTouch(touch, touch.location(in: self), touch.force, touch.maximumPossibleForce)
-            
-            UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
-            CurrentDrawingCtx = UIGraphicsGetCurrentContext()
-            CurrentLineColor.AsUIColor.setStroke()
-            let lm = image ?? UIImage()
-            lm.draw(in: bounds)
-        }
+            switch CurrentToolType {
+            case .ColorAnchor:
+                DrawColorPoint(touch.location(in: self), .Anchor)
+                break
+            case .ColorHint:
+                DrawColorPoint(touch.location(in: self), .Hint)
+                break
+            case .Drawing:
+                NotifyVCDisableRedo()
+                
+                ctr = 0
+                TrackTouch(touch, touch.location(in: self), touch.force, touch.maximumPossibleForce)
+                
+                UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
+                CurrentDrawingCtx = UIGraphicsGetCurrentContext()
+                CurrentLineColor.AsUIColor.setStroke()
+                let lm = image ?? UIImage()
+                lm.draw(in: bounds)
+                break
+            case .Eraser:
+                break
+            case .Pinching:
+                break
+            }
+        
     }
     
     private func TrackTouch(_ touchEv : UITouch,_ touchPoint : CGPoint, _ force : CGFloat, _ maxForce : CGFloat) {
@@ -150,24 +272,32 @@ class DrawingView: UIImageView {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !IsPinchScaling {
-            
+       
             guard let touch = touches.first else { return }
             
-            if let coal = event?.coalescedTouches(for: touch), coal.count > 0 {
-                for c in coal {
+            switch CurrentToolType {
+            case .Eraser:
+                TryEraseColorPoint(touch.location(in: self))
+                break
+            case .Drawing:
+                if let coal = event?.coalescedTouches(for: touch), coal.count > 0 {
+                    for c in coal {
+                        ctr += 1
+                        TrackTouch(c,c.location(in: self), c.force, c.maximumPossibleForce)
+                        TryPlotLine()
+                    }
+                }
+                else {
                     ctr += 1
-                    TrackTouch(c,c.location(in: self), c.force, c.maximumPossibleForce)
+                    TrackTouch(touch,touch.location(in: self), touch.force, touch.maximumPossibleForce)
                     TryPlotLine()
                 }
+                image = UIGraphicsGetImageFromCurrentImageContext()
+                break
+            default:
+                break
             }
-            else {
-                ctr += 1
-                TrackTouch(touch,touch.location(in: self), touch.force, touch.maximumPossibleForce)
-                TryPlotLine()
-            }
-            image = UIGraphicsGetImageFromCurrentImageContext()
-        }
+        
     }
     
 
@@ -275,23 +405,29 @@ class DrawingView: UIImageView {
         }
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !IsPinchScaling {
+        
             
-            print(bounds)
-            ctr = 0
-            UIGraphicsEndImageContext()
-            
-            histories.append(DrawingHistory(ControlPoints: ctrGroups, Forces: forceGroups, TouchingMode: TouchingWithoutPenHistory, UsedColor: CurrentLineColor))
-            
-            ctrGroups.removeAll()
-            forceGroups.removeAll()
-            TouchingWithoutPenHistory.removeAll()
-            
-            for i in 0..<5 {
-                forces[i] = 0
+            switch CurrentToolType {
+            case .Drawing:
+//                print(bounds)
+                ctr = 0
+                UIGraphicsEndImageContext()
+                
+                histories.append(DrawingHistory(ControlPoints: ctrGroups, Forces: forceGroups, TouchingMode: TouchingWithoutPenHistory, UsedColor: CurrentLineColor))
+                
+                ctrGroups.removeAll()
+                forceGroups.removeAll()
+                TouchingWithoutPenHistory.removeAll()
+                
+                for i in 0..<5 {
+                    forces[i] = 0
+                }
+                
+                NotifyVCEnableUndo()
+                break
+            default:
+                break
             }
-            
-            NotifyVCEnableUndo()
-        }
+        
     }
 }

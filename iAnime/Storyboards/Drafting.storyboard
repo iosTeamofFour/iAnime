@@ -69,10 +69,12 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUf-UI-TG8">
                                                 <rect key="frame" x="111" y="0.0" width="32" height="32"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="32" id="LMG-Te-51M"/>
                                                     <constraint firstAttribute="height" constant="32" id="ooc-9z-3aa"/>
                                                 </constraints>
+                                                <color key="tintColor" red="1" green="0.60385331840000001" blue="0.55874890889999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <inset key="imageEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                                 <state key="normal" image="Eraser"/>
                                                 <connections>
@@ -153,10 +155,16 @@
                                     <constraint firstAttribute="height" constant="45" id="xNz-B5-2rB"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SN8-vK-Ym0">
+                                <rect key="frame" x="171.5" y="611" width="32" height="32"/>
+                                <state key="normal" image="MultiFunc"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="WMC-e1-m6w" firstAttribute="top" secondItem="Njs-HL-azM" secondAttribute="top" id="3Kv-fv-DMm"/>
+                            <constraint firstItem="Njs-HL-azM" firstAttribute="bottom" secondItem="SN8-vK-Ym0" secondAttribute="bottom" constant="24" id="H4c-O2-F8Z"/>
+                            <constraint firstItem="SN8-vK-Ym0" firstAttribute="centerX" secondItem="Q8D-T1-SFF" secondAttribute="centerX" id="HhQ-az-x6H"/>
                             <constraint firstItem="WMC-e1-m6w" firstAttribute="centerX" secondItem="Q8D-T1-SFF" secondAttribute="centerX" id="WQL-Fa-0dh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Njs-HL-azM"/>
@@ -165,6 +173,7 @@
                         <outlet property="ColorAnchorBtn" destination="bj4-uT-drC" id="Vnh-VE-xwY"/>
                         <outlet property="ColorHintBtn" destination="rXR-Kf-hVR" id="uUE-Gu-V9O"/>
                         <outlet property="EraserBtn" destination="FUf-UI-TG8" id="RwY-N1-XDJ"/>
+                        <outlet property="MultifuncBtn" destination="SN8-vK-Ym0" id="IN9-9g-7Re"/>
                         <outlet property="PickedColorIndicator" destination="V59-Q5-Bk3" id="Ry9-G1-NaB"/>
                         <outlet property="RedoBtn" destination="1Qe-Sg-bia" id="mpF-Pe-b1Y"/>
                         <outlet property="Toolbar" destination="WMC-e1-m6w" id="G7z-wp-MiI"/>
@@ -188,6 +197,7 @@
         <image name="Color Hint" width="32" height="32"/>
         <image name="Editor Return" width="32" height="32"/>
         <image name="Eraser" width="32" height="32"/>
+        <image name="MultiFunc" width="32" height="32"/>
         <image name="Redo" width="32" height="32"/>
         <image name="Undo" width="32" height="32"/>
         <image name="Uploading Spinner" width="32" height="32"/>
