@@ -191,6 +191,55 @@
             </objects>
             <point key="canvasLocation" x="295" y="-228"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="04g-cc-m4d">
+            <objects>
+                <viewController id="26d-MC-IR3" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Khg-dm-xU7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OoR-iW-3NP">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="3bI-TX-8WD"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="zrb-YS-ePj">
+                                <rect key="frame" x="132" y="374" width="111" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I7J-dS-DKe">
+                                        <rect key="frame" x="0.0" y="0.0" width="111" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="提交上色请求">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Eb-Hk-9iY">
+                                        <rect key="frame" x="18.5" y="46" width="74" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="发布作品">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.24705882352941178" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="zrb-YS-ePj" firstAttribute="top" secondItem="OoR-iW-3NP" secondAttribute="bottom" constant="24" id="BaD-sZ-8c3"/>
+                            <constraint firstItem="OoR-iW-3NP" firstAttribute="leading" secondItem="TzT-Sy-Tpm" secondAttribute="leading" id="HiI-gS-GSl"/>
+                            <constraint firstItem="TzT-Sy-Tpm" firstAttribute="trailing" secondItem="OoR-iW-3NP" secondAttribute="trailing" id="Jrf-Vj-y66"/>
+                            <constraint firstItem="zrb-YS-ePj" firstAttribute="centerX" secondItem="Khg-dm-xU7" secondAttribute="centerX" id="vzb-L6-8AM"/>
+                            <constraint firstItem="OoR-iW-3NP" firstAttribute="top" secondItem="Khg-dm-xU7" secondAttribute="top" id="zYN-oz-kOF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TzT-Sy-Tpm"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="urv-ao-Ijd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1279" y="-228"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Color Anchor" width="32" height="32"/>
