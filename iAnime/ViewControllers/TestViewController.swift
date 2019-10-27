@@ -18,13 +18,16 @@ class TestViewController: UIViewController, UIPopoverPresentationControllerDeleg
     @IBOutlet weak var GValue: UILabel!
     @IBOutlet weak var BValue: UILabel!
     
+    @IBOutlet weak var PenLineWidthValue: UILabel!
     @IBOutlet weak var RSlider: UISlider!
     @IBOutlet weak var GSlider: UISlider!
     @IBOutlet weak var BSlider: UISlider!
     
+    @IBOutlet weak var PenLineWidthSlider: UISlider!
     @IBOutlet weak var CurrentColor: RoundCornerUIImageView!
     
     var OnPickedRGBColor : ((RGB)->Void)?
+    var OnPickedPenLine : ((CGFloat)->Void)?
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
@@ -44,10 +47,10 @@ class TestViewController: UIViewController, UIPopoverPresentationControllerDeleg
             self.UpdateSliderAndTextIndicator(rgb)
             self.OnPickedRGBColor?(rgb)
         }
-        RSlider.addTarget(self, action: #selector(OnSliderValueChanged), for: .valueChanged)
-        GSlider.addTarget(self, action: #selector(OnSliderValueChanged), for: .valueChanged)
-        BSlider.addTarget(self, action: #selector(OnSliderValueChanged), for: .valueChanged)
-//        GetPickerRectPosition(RGB(R:41,G:31,B:177))
+        RSlider.addTarget(self, action: #selector(OnRGBSliderValueChanged), for: .valueChanged)
+        GSlider.addTarget(self, action: #selector(OnRGBSliderValueChanged), for: .valueChanged)
+        BSlider.addTarget(self, action: #selector(OnRGBSliderValueChanged), for: .valueChanged)
+        PenLineWidthSlider.addTarget(self, action: #selector(OnPenLineWidthSliderChanged), for: .valueChanged)
     }
     
     
@@ -104,11 +107,23 @@ class TestViewController: UIViewController, UIPopoverPresentationControllerDeleg
         ColorPickerBar.MoveIndicatorToPosition(yBarRate)
     }
     
-    @objc private func OnSliderValueChanged(_ sender: UISlider) {
+    @objc private func OnRGBSliderValueChanged(_ sender: UISlider) {
         let r = CGFloat(RSlider.value)
         let g = CGFloat(GSlider.value)
         let b = CGFloat(BSlider.value)
         let rgb = RGB(R:r,G:g,B:b)
         GetPickerRectPosition(rgb)
+    }
+    
+    @objc private func OnPenLineWidthSliderChanged(_ sender : UISlider) {
+        let currValue = sender.value
+        
+        SetCurrentPenLineWidth(CGFloat(currValue))
+        OnPickedPenLine?(CGFloat(currValue))
+    }
+    
+    func SetCurrentPenLineWidth(_ width : CGFloat) {
+        PenLineWidthValue.text = String(format: "%.2f", Float(width))
+        PenLineWidthSlider.setValue(Float(width), animated: false)
     }
 }

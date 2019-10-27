@@ -26,8 +26,13 @@ class DraftingViewController: DraftingPinchViewController {
     @IBOutlet weak var ColorAnchorBtn: UIButton!
     @IBOutlet weak var ColorHintBtn: UIButton!
     @IBOutlet weak var MultifuncBtn: UIButton!
-    
     private var LastClieckedBtn : UIButton?
+    
+    // --------------- 提示类信息 -----------------
+    private var HadShownEditingTypeHint = false
+    
+    // ------------- 重写提供给父类的变量 -------------------
+    
     
     override var imageView: UIImageView! {
         get {
@@ -108,6 +113,8 @@ class DraftingViewController: DraftingPinchViewController {
         currentClick.layer.borderColor = UIColor.lightGray.cgColor
     }
     
+    // ----------- 工具栏点击响应函数 --------------
+    
     @IBAction func HandleErase(_ sender: UIButton) {
         if BackToPinchMode(sender) {
             return
@@ -144,17 +151,19 @@ class DraftingViewController: DraftingPinchViewController {
         backgroundIv.bounds = OriginBounds
     }
     
-    @IBAction func HandleUpload(_ sender: UIButton) {
-//        if drawing.IsPinchScaling {
-//            DisableGestureRecognizer()
-//            drawing.IsPinchScaling = false
-//
-//        }
-//        else {
-//            EnableGestrueRecognizer()
-//            drawing.IsPinchScaling = true
-//            print("开启双指缩放")
-//        }
+    @IBAction func HandleEditing(_ sender: UIButton) {
+        
+        if !HadShownEditingTypeHint {
+            ShowShouldNotUseDrawingModeAlert(sender)
+            
+        }
+        else {
+            ActualHandleEditing(sender)
+        }
+        
+    }
+    
+    private func ActualHandleEditing(_ sender : UIButton) {
         if BackToPinchMode(sender) {
             return
         }
@@ -164,6 +173,7 @@ class DraftingViewController: DraftingPinchViewController {
         LastClieckedBtn = sender
         SyncTwoCanvas()
     }
+    // ---------- 连接颜色Picker和当前VC的相关函数 ----------------
     
     @IBAction func HandleOpenColorPicker(_ sender: UITapGestureRecognizer) {
         ShowPopover()
@@ -174,6 +184,24 @@ class DraftingViewController: DraftingPinchViewController {
         PickedColorIndicator.backgroundColor = rgb.AsUIColor
         drawing.SetPaintingLineColor(rgb)
     }
+    private func HandlePickPenLineWidth(_ width : CGFloat) {
+        drawing.SetPaintingLineWidth(width)
+    }
+    
+    private func ShowShouldNotUseDrawingModeAlert(_ sender : UIButton) {
+        let alerts = UIAlertController.MakeAlertDialog("即将进入绘图模式", "本软件是线稿上色软件，并非专业的画图软件。因此本软件对于绘图模式仅提供了有限的支持，与市面上常见的绘画软件相比有较大差距，不推荐您使用本软件的绘图模式开始您的创作。iAnime推荐使用Autodesk SketchBook软件完成您的创作后再将作品导入到本软件上色。是否仍然进入绘图模式？", [
+                UIAlertAction(title: "前往Autodesk SketchBook下载", style: .default, handler: nil),
+                UIAlertAction(title: "仍然进入绘图模式", style: .default, handler: {
+                    _ in
+                    self.ActualHandleEditing(sender)
+                    self.HadShownEditingTypeHint = true
+                }),
+                UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            ])
+        present(alerts, animated: true, completion: nil)
+    }
+    
+    // ------------- 帮助类函数 ---------------
     
     private func ShowPopover() {
         // 显示出调色板
@@ -185,9 +213,11 @@ class DraftingViewController: DraftingPinchViewController {
             vc.popoverPresentationController?.sourceView = PickedColorIndicator
             vc.popoverPresentationController?.sourceRect = PickedColorIndicator.bounds
             vc.popoverPresentationController?.backgroundColor = vc.view.backgroundColor
-            vc.preferredContentSize = CGSize(width: 320, height: 460)
+            vc.preferredContentSize = CGSize(width: 320, height: 520)
             vc.GetPickerRectPosition(PickedColor)
             vc.OnPickedRGBColor = HandlePickColor(_:)
+            vc.OnPickedPenLine = HandlePickPenLineWidth(_:)
+            vc.SetCurrentPenLineWidth(drawing.CurrentLineWidth)
             present(vc, animated: true, completion: nil)
         }
     }

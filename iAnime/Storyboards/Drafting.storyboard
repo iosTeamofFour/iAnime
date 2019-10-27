@@ -114,7 +114,7 @@
                                                 <inset key="imageEdgeInsets" minX="6" minY="6" maxX="6" maxY="6"/>
                                                 <state key="normal" image="Uploading Spinner"/>
                                                 <connections>
-                                                    <action selector="HandleUpload:" destination="cGr-yH-OCA" eventType="touchUpInside" id="2QH-Df-2xq"/>
+                                                    <action selector="HandleEditing:" destination="cGr-yH-OCA" eventType="touchUpInside" id="2QH-Df-2xq"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iO7-qp-OYh">
