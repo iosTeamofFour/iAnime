@@ -61,6 +61,8 @@
 		DFFDE2EE23586071007F2ECB /* PinchImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFDE2ED23586071007F2ECB /* PinchImageViewController.swift */; };
 		E60692E1234B7EE50012E534 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E60692E0234B7EE50012E534 /* Index.storyboard */; };
 		E60692E3234B9F4F0012E534 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60692E2234B9F4F0012E534 /* IndexViewController.swift */; };
+		E64B115C2361F11400CF739C /* LabelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64B115B2361F11400CF739C /* LabelItem.swift */; };
+		E64B115E2361F22E00CF739C /* DivideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64B115D2361F22E00CF739C /* DivideBar.swift */; };
 		E6828ADA234BA20800BAFB31 /* Illustration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6828AD9234BA20800BAFB31 /* Illustration.swift */; };
 		E6828ADC234BA29A00BAFB31 /* IllustrationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6828ADB234BA29A00BAFB31 /* IllustrationItemView.swift */; };
 		E6A27079236180F000E7C94B /* WorksDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6A27078236180F000E7C94B /* WorksDetails.storyboard */; };
@@ -127,6 +129,8 @@
 		DFFDE2ED23586071007F2ECB /* PinchImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchImageViewController.swift; sourceTree = "<group>"; };
 		E60692E0234B7EE50012E534 /* Index.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Index.storyboard; sourceTree = "<group>"; };
 		E60692E2234B9F4F0012E534 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
+		E64B115B2361F11400CF739C /* LabelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelItem.swift; sourceTree = "<group>"; };
+		E64B115D2361F22E00CF739C /* DivideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivideBar.swift; sourceTree = "<group>"; };
 		E6828AD9234BA20800BAFB31 /* Illustration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Illustration.swift; sourceTree = "<group>"; };
 		E6828ADB234BA29A00BAFB31 /* IllustrationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IllustrationItemView.swift; sourceTree = "<group>"; };
 		E6A27078236180F000E7C94B /* WorksDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WorksDetails.storyboard; sourceTree = "<group>"; };
@@ -343,6 +347,8 @@
 			children = (
 				DF7B8AAF235C0B0D006C93EF /* TimelineItemCell.swift */,
 				DF7B8AB5235C2722006C93EF /* TimelineHeader.swift */,
+				E64B115B2361F11400CF739C /* LabelItem.swift */,
+				E64B115D2361F22E00CF739C /* DivideBar.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -545,6 +551,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E64B115E2361F22E00CF739C /* DivideBar.swift in Sources */,
 				DF7B8AB6235C2722006C93EF /* TimelineHeader.swift in Sources */,
 				DF4776752350ABBA00D8A084 /* OverhitView.swift in Sources */,
 				A4CB24BF23580DEA00807BE8 /* NightModeTableViewCell.swift in Sources */,
@@ -575,6 +582,7 @@
 				DFB40C80235DB98200FE3A6B /* ColorPicker.swift in Sources */,
 				DF7B8AB2235C0FEB006C93EF /* RoundCornerUIImageView.swift in Sources */,
 				A43EFE07235EA84B00706CF2 /* RGB.swift in Sources */,
+				E64B115C2361F11400CF739C /* LabelItem.swift in Sources */,
 				A43255942355DA6800C42429 /* HomeTableViewController.swift in Sources */,
 				DF2DC408234AE4DB009E52B0 /* UIUtils.swift in Sources */,
 				DFA2C832234F156B00BFCB01 /* CollapsedViewController.swift in Sources */,
