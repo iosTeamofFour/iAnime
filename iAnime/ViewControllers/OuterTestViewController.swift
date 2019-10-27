@@ -12,6 +12,10 @@ class OuterTestViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let button = UIButton(type: .system)
+        button.setTitle("xxx", for: .normal)
+        button.frame = CGRect(x: 50, y: 50, width: 60, height: 30)
+        view.addSubview(button)
     }
     private func ShowPopover(_ sender: UIButton) {
         if let storyboard = self.storyboard, let vc = storyboard.instantiateViewController(withIdentifier: "TestColorPicker") as? TestViewController {

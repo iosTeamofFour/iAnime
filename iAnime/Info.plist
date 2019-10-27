@@ -23,11 +23,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-<<<<<<< HEAD
 	<string>WorksDetails</string>
-=======
-	<string>Drafting</string>
->>>>>>> a555de72d8721d6674158589c9eac026e07417af
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
