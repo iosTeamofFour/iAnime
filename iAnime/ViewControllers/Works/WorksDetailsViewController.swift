@@ -42,15 +42,26 @@ class WorksDetailsViewController: ReturnArrowViewController,UICollectionViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(tapDetected))
+        Image.isUserInteractionEnabled = true
+        Image.addGestureRecognizer(singleTap)
+        
         if #available(iOS 11.0, *) {
             ScrollView.contentInsetAdjustmentBehavior = .never
         }
         automaticallyAdjustsScrollViewInsets = false
-        
         initView()
         InitLabelCollectionView()
+        
     }
 
+    //Action
+    @objc func tapDetected() {
+        let sb = UIStoryboard(name: "Index", bundle: nil)
+        let imageViewer = sb.instantiateViewController(withIdentifier: "ImageViewer") as! PinchImageViewController
+        imageViewer.Images.append(Image.image!)
+        present(imageViewer, animated: true, completion: nil)
+    }
 
     func initView()
     {
