@@ -103,7 +103,6 @@ class WorksDetailsViewController: ReturnArrowViewController,UICollectionViewDele
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let height = LabelCollectionView.collectionViewLayout.collectionViewContentSize.height
-        print(height)
         if height > 0 {
             LabelCollectionViewHeightConstraint?.update(offset: (height) + 30)
         }
