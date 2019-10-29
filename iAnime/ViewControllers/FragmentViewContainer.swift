@@ -15,8 +15,10 @@ enum PresentNewFragmentAnimationType {
 open class FragmentViewController : UIViewController {
     private(set) var FirstInsertedToContainer = true
     private(set) var fragmentContainer : FragmentViewContainer?
-    func OnRegistered(_ fragmentContainer : FragmentViewContainer) -> Void {
+    private(set) var rootVC : UIViewController?
+    func OnRegistered(_ fragmentContainer : FragmentViewContainer, _ rootViewController : UIViewController?) -> Void {
         self.fragmentContainer = fragmentContainer
+        self.rootVC = rootViewController
     }
     
     func OnLoadFrameInfoFromContainer() {
@@ -37,7 +39,8 @@ class FragmentViewContainer: UIView {
     
     func AddViewController(_ controller : FragmentViewController) {
         fragments.append(controller)
-        controller.OnRegistered(self)
+        let rootVC = UIApplication.shared.keyWindow?.rootViewController
+        controller.OnRegistered(self,rootVC)
     }
     
     func RemoveViewControllerAt(_ index : Int) {

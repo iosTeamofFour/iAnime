@@ -24,7 +24,6 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if let storyboard = self.storyboard {
             LoginAndRegisterContainer.AddViewController(storyboard.instantiateViewController(withIdentifier: "Login") as! FragmentViewController)
             LoginAndRegisterContainer.AddViewController(storyboard.instantiateViewController(withIdentifier: "Register") as! FragmentViewController)

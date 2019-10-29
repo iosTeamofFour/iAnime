@@ -18,6 +18,7 @@ class DraftingViewController: DraftingPinchViewController {
     @IBOutlet weak var drawing: DrawingView! // 绘制层
     @IBOutlet weak var background: UIImageView!  // 背景图片层
     private var OriginBounds : CGRect!
+    var shouldLoadBackground : UIImage?
     
     // 工具条区域
     @IBOutlet weak var UndoBtn: UIButton!
@@ -44,7 +45,7 @@ class DraftingViewController: DraftingPinchViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         drawing.draftingController = self
-        background.image = UIImage(named: "Left-4")!
+        background.image = shouldLoadBackground
         OriginBounds = CGRect(x: 0, y: 0, width: drawing.bounds.width, height: drawing.bounds.height)
         AttachGestureRecognizerToImageView(imageView)
     }
