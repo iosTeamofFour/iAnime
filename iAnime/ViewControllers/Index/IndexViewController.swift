@@ -79,7 +79,6 @@ class IndexViewController: UIViewController, UIImagePickerControllerDelegate, UI
         let sb = UIStoryboard(name: "Drafting", bundle: nil)
         if let vc = sb.instantiateViewController(withIdentifier: "DrawingView") as? DraftingViewController {
             vc.shouldLoadBackground	 = withBackground
-//            let rootVC = UIApplication.shared.keyWindow?
             self.present(vc, animated: true, completion: nil)
         }
     }

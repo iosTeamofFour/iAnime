@@ -43,5 +43,7 @@
 	<string>从相册中选择初始线稿</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>从相册中选择初始线稿</string>
+	<key>NSCameraUsageDescription</key>
+	<string>拍摄照片以获得初始线稿</string>
 </dict>
 </plist>
