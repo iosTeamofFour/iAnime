@@ -22,9 +22,14 @@ class TestViewController: UIViewController, UIPopoverPresentationControllerDeleg
     @IBOutlet weak var GSlider: UISlider!
     @IBOutlet weak var BSlider: UISlider!
     
+    @IBOutlet weak var PenLineWidthSlider: UISlider!
+    
+    @IBOutlet weak var PenLineWidthValue: UILabel!
+    
     @IBOutlet weak var CurrentColor: RoundCornerUIImageView!
     
     var OnPickedRGBColor : ((RGB)->Void)?
+    var OnPenLineWidthChanged : ((CGFloat)->Void)?
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
@@ -44,13 +49,17 @@ class TestViewController: UIViewController, UIPopoverPresentationControllerDeleg
             self.UpdateSliderAndTextIndicator(rgb)
             self.OnPickedRGBColor?(rgb)
         }
-        RSlider.addTarget(self, action: #selector(OnSliderValueChanged), for: .valueChanged)
-        GSlider.addTarget(self, action: #selector(OnSliderValueChanged), for: .valueChanged)
-        BSlider.addTarget(self, action: #selector(OnSliderValueChanged), for: .valueChanged)
-//        GetPickerRectPosition(RGB(R:41,G:31,B:177))
+        RSlider.addTarget(self, action: #selector(OnColorSliderValueChanged), for: .valueChanged)
+        GSlider.addTarget(self, action: #selector(OnColorSliderValueChanged), for: .valueChanged)
+        BSlider.addTarget(self, action: #selector(OnColorSliderValueChanged), for: .valueChanged)
+        PenLineWidthSlider.addTarget(self, action: #selector(OnPenLineWidthSliderChanged), for: .valueChanged)
     }
     
-    
+    @objc private func OnPenLineWidthSliderChanged(_ sender : UISlider) {
+        let currValue = CGFloat(sender.value)
+        PenLineWidthValue.text = String(format: "%.2f", currValue)
+        OnPenLineWidthChanged?(currValue)
+    }
     private func UpdateSliderAndTextIndicator(_ rgb : RGB) {
         self.RValue.text = String(Int(rgb.R))
         self.GValue.text = String(Int(rgb.G))
@@ -104,7 +113,7 @@ class TestViewController: UIViewController, UIPopoverPresentationControllerDeleg
         ColorPickerBar.MoveIndicatorToPosition(yBarRate)
     }
     
-    @objc private func OnSliderValueChanged(_ sender: UISlider) {
+    @objc private func OnColorSliderValueChanged(_ sender: UISlider) {
         let r = CGFloat(RSlider.value)
         let g = CGFloat(GSlider.value)
         let b = CGFloat(BSlider.value)

@@ -175,6 +175,10 @@ class DraftingViewController: DraftingPinchViewController {
         drawing.SetPaintingLineColor(rgb)
     }
     
+    private func HandleChangePenLineWidth(_ width : CGFloat) {
+        drawing.SetPaintingLineWidth(width)
+    }
+    
     private func ShowPopover() {
         // 显示出调色板
         
@@ -185,9 +189,10 @@ class DraftingViewController: DraftingPinchViewController {
             vc.popoverPresentationController?.sourceView = PickedColorIndicator
             vc.popoverPresentationController?.sourceRect = PickedColorIndicator.bounds
             vc.popoverPresentationController?.backgroundColor = vc.view.backgroundColor
-            vc.preferredContentSize = CGSize(width: 320, height: 460)
+            vc.preferredContentSize = CGSize(width: 320, height: 540)
             vc.GetPickerRectPosition(PickedColor)
             vc.OnPickedRGBColor = HandlePickColor(_:)
+            vc.OnPenLineWidthChanged = HandleChangePenLineWidth(_:)
             present(vc, animated: true, completion: nil)
         }
     }

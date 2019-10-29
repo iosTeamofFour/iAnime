@@ -8,6 +8,7 @@ struct DrawingHistory {
     var Forces : [CGFloat]
     var TouchingMode : [Bool]
     var UsedColor : RGB
+    var UsedPenLineWidth : CGFloat
 }
 
 struct ColorAnchor {
@@ -51,7 +52,6 @@ class DrawingView: UIImageView {
     private var forces = Array<CGFloat>(repeating: 0, count: 5)
     
     private var lastForce : CGFloat = 1.0
-    
     
     private(set) var CurrentLineColor : RGB = RGB(R:0,G:0,B:0)
     private(set) var CurrentLineWidth : CGFloat = 2.5
@@ -312,7 +312,9 @@ class DrawingView: UIImageView {
             CurrentDrawingCtx = UIGraphicsGetCurrentContext()
             
             lm.draw(in: bounds)
-
+            let lastWidth = CurrentLineWidth
+            
+            CurrentLineWidth = next.UsedPenLineWidth
             let oneCtrGroup = next.ControlPoints
             let oneForceGroup = next.Forces
             let touchMode = next.TouchingMode
@@ -327,6 +329,7 @@ class DrawingView: UIImageView {
                 forces[ctr] = oneForceGroup[j]
                 TryPlotLine()
             }
+            CurrentLineWidth = lastWidth
             NotifyVCEnableUndo()
             image = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
@@ -344,10 +347,13 @@ class DrawingView: UIImageView {
             UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
             CurrentDrawingCtx = UIGraphicsGetCurrentContext()
             
+            let lastWidth = CurrentLineWidth
+            
             for i in 0..<histories.count {
                 let oneCtrGroup = histories[i].ControlPoints
                 let oneForceGroup = histories[i].Forces
                 let touchMode = histories[i].TouchingMode
+                CurrentLineWidth = histories[i].UsedPenLineWidth
                 CurrentDrawingCtx?.setStrokeColor(histories[i].UsedColor.AsUIColor.cgColor)
                 ctr = 0
                 pts[ctr] = oneCtrGroup[0]
@@ -360,7 +366,7 @@ class DrawingView: UIImageView {
                     TryPlotLine()
                 }
             }
-            
+            CurrentLineWidth = lastWidth
             image = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             NotifyVCEnableRedo()
@@ -413,7 +419,7 @@ class DrawingView: UIImageView {
                 ctr = 0
                 UIGraphicsEndImageContext()
                 
-                histories.append(DrawingHistory(ControlPoints: ctrGroups, Forces: forceGroups, TouchingMode: TouchingWithoutPenHistory, UsedColor: CurrentLineColor))
+                histories.append(DrawingHistory(ControlPoints: ctrGroups, Forces: forceGroups, TouchingMode: TouchingWithoutPenHistory, UsedColor: CurrentLineColor, UsedPenLineWidth : CurrentLineWidth))
                 
                 ctrGroups.removeAll()
                 forceGroups.removeAll()

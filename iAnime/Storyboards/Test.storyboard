@@ -145,7 +145,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="my3-pU-6N2">
-                                <rect key="frame" x="47.5" y="464" width="280" height="62.5"/>
+                                <rect key="frame" x="43.5" y="464" width="288" height="62.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="笔画粗细设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ke-pc-ZTo">
                                         <rect key="frame" x="0.0" y="0.0" width="104" height="20.5"/>
@@ -154,9 +154,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hQm-BP-0Xa">
-                                        <rect key="frame" x="0.0" y="32.5" width="280" height="30"/>
+                                        <rect key="frame" x="0.0" y="32.5" width="288" height="30"/>
                                         <subviews>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="1" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="bsg-25-Kha">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="1" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="bsg-25-Kha">
                                                 <rect key="frame" x="-2" y="0.0" width="236" height="31"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -164,8 +164,11 @@
                                                     <constraint firstAttribute="height" constant="30" id="ngr-gg-Uq5"/>
                                                 </constraints>
                                             </slider>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7V6-6a-iba">
-                                                <rect key="frame" x="240" y="0.0" width="40" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7V6-6a-iba">
+                                                <rect key="frame" x="240" y="0.0" width="48" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="48" id="woK-EE-Zuv"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -184,7 +187,6 @@
                             <constraint firstItem="zMQ-7W-64c" firstAttribute="centerX" secondItem="c8N-KV-EHF" secondAttribute="centerX" id="WT8-Zu-9FU"/>
                             <constraint firstItem="hTG-YC-ZbL" firstAttribute="centerX" secondItem="c8N-KV-EHF" secondAttribute="centerX" id="X74-r5-Mt1"/>
                             <constraint firstItem="igz-hD-hUF" firstAttribute="top" secondItem="Agv-jG-lom" secondAttribute="top" constant="24" id="ch0-wj-iJJ"/>
-                            <constraint firstItem="7V6-6a-iba" firstAttribute="width" secondItem="2xh-d6-N6o" secondAttribute="width" id="hm2-sm-emB"/>
                             <constraint firstItem="hTG-YC-ZbL" firstAttribute="top" secondItem="igz-hD-hUF" secondAttribute="bottom" constant="24" id="z4L-a5-78G"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Agv-jG-lom"/>
@@ -197,6 +199,8 @@
                         <outlet property="CurrentColor" destination="zMQ-7W-64c" id="4XW-oK-qRL"/>
                         <outlet property="GSlider" destination="JhF-Bu-FFy" id="ZPG-Vj-Kz3"/>
                         <outlet property="GValue" destination="TB4-a9-KXW" id="TRB-dg-SOf"/>
+                        <outlet property="PenLineWidthSlider" destination="bsg-25-Kha" id="JVG-34-bn5"/>
+                        <outlet property="PenLineWidthValue" destination="7V6-6a-iba" id="eb0-JB-J25"/>
                         <outlet property="RSlider" destination="t9b-VZ-BFc" id="Lvm-Ul-LFe"/>
                         <outlet property="RValue" destination="2xh-d6-N6o" id="fKH-e1-QUm"/>
                     </connections>
