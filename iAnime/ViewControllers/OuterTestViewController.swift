@@ -16,6 +16,10 @@ class OuterTestViewController: UIViewController {
     @IBOutlet weak var TestBorderButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let button = UIButton(type: .system)
+        button.setTitle("xxx", for: .normal)
+        button.frame = CGRect(x: 50, y: 50, width: 60, height: 30)
+        view.addSubview(button)
     }
     
     

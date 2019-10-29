@@ -97,8 +97,6 @@ class PersonViewController: ReturnArrowViewController, UICollectionViewDelegate,
     
     
     
-    
-    
     // 控制时间线CollectionView显示
     
     

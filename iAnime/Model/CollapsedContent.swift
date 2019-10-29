@@ -20,4 +20,3 @@ struct CollapsedContentConstraints {
     var HeaderConstraints : [NSLayoutConstraint]
     var ContentConstraints: [NSLayoutConstraint]
 }
-

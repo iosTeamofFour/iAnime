@@ -58,37 +58,37 @@ class RankingViewController: CollapsedViewController {
             let content1 = CollapsedContent(CollapsedViewHeader: content1View, CollapsedViewContent: content1Controller)
             
             
-            if let grid = content1Controller.view.subviews[0] as? GridView {
-                
-                // 立刻修正从故事版new出来的Controller的frame异常
-                grid.frame.size = itemSize
-                let illu1 = Illustration(Image: UIImage(named: "Left-2")!, Name: "Zhengzeming", UploadDate: Date())
-                let item1 = IllustrationItemView()
-                item1.illustration = illu1
-                
-                
-                let illu2 = Illustration(Image: UIImage(named: "Left-3")!, Name: "Huangpixuan", UploadDate: Date())
-                let item2 = IllustrationItemView()
-                item2.illustration = illu2
-                
-                
-                let illu3 = Illustration(Image: UIImage(named: "Left-0")!, Name: "郑泽帅明", UploadDate: Date())
-                let item3 = IllustrationItemView()
-                item3.illustration = illu3
-                
-                
-                
-                let illu4 = Illustration(Image: UIImage(named: "Left-1")!, Name: "屁明屁东西", UploadDate: Date())
-                let item4 = IllustrationItemView()
-                item4.illustration = illu4
-                
-                grid.layoutSubviews()
-                
-                grid.AddItem(item1)
-                grid.AddItem(item2)
-                grid.AddItem(item3)
-                grid.AddItem(item4)
-            }
+//            if let grid = content1Controller.view.subviews[0] as? GridView {
+//
+//                // 立刻修正从故事版new出来的Controller的frame异常
+//                grid.frame.size = itemSize
+//                let illu1 = Illustration(Image: UIImage(named: "Left-2")!, Name: "Zhengzeming", UploadDate: Date())
+//                let item1 = IllustrationItemView()
+//                item1.illustration = illu1
+//
+//
+//                let illu2 = Illustration(Image: UIImage(named: "Left-3")!, Name: "Huangpixuan", UploadDate: Date())
+//                let item2 = IllustrationItemView()
+//                item2.illustration = illu2
+//
+//
+//                let illu3 = Illustration(Image: UIImage(named: "Left-0")!, Name: "郑泽帅明", UploadDate: Date())
+//                let item3 = IllustrationItemView()
+//                item3.illustration = illu3
+//
+//
+//
+//                let illu4 = Illustration(Image: UIImage(named: "Left-1")!, Name: "屁明屁东西", UploadDate: Date())
+//                let item4 = IllustrationItemView()
+//                item4.illustration = illu4
+//
+//                grid.layoutSubviews()
+//
+//                grid.AddItem(item1)
+//                grid.AddItem(item2)
+//                grid.AddItem(item3)
+//                grid.AddItem(item4)
+//            }
             
             AddContent(content1)
             
@@ -103,16 +103,16 @@ class RankingViewController: CollapsedViewController {
                 grid.frame.size = itemSize
                 grid.layoutSubviews()
                 
-                let illu1 = Illustration(Image: UIImage(named: "Left-0")!, Name: "郑泽帅明", UploadDate: Date())
-                
-                let item1 = IllustrationItemView()
-                item1.illustration = illu1
-                let illu2 = Illustration(Image: UIImage(named: "Left-1")!, Name: "屁明屁东西", UploadDate: Date())
-                let item2 = IllustrationItemView()
-                item2.illustration = illu2
-                
-                grid.AddItem(item1)
-                grid.AddItem(item2)
+//                let illu1 = Illustration(Image: UIImage(named: "Left-0")!, Name: "郑泽帅明", UploadDate: Date())
+//
+//                let item1 = IllustrationItemView()
+//                item1.illustration = illu1
+//                let illu2 = Illustration(Image: UIImage(named: "Left-1")!, Name: "屁明屁东西", UploadDate: Date())
+//                let item2 = IllustrationItemView()
+//                item2.illustration = illu2
+//
+//                grid.AddItem(item1)
+//                grid.AddItem(item2)
             }
             
             AddContent(content2)

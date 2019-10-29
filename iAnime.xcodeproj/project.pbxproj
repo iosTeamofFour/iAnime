@@ -61,11 +61,18 @@
 		DFA2C838234F1BBF00BFCB01 /* RecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA2C837234F1BBF00BFCB01 /* RecommendationViewController.swift */; };
 		DFA2C83A234F1BDA00BFCB01 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA2C839234F1BDA00BFCB01 /* SearchViewController.swift */; };
 		DFB40C80235DB98200FE3A6B /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB40C7F235DB98200FE3A6B /* ColorPicker.swift */; };
+		DFE4749C2365B39E00427165 /* LabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE4749B2365B39E00427165 /* LabelButton.swift */; };
+		DFE4749F2365B3E400427165 /* WorkLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE4749E2365B3E400427165 /* WorkLabelCell.swift */; };
+		DFE474A12365B86F00427165 /* WorkLabelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE474A02365B86F00427165 /* WorkLabelItem.swift */; };
 		DFFDE2EE23586071007F2ECB /* PinchImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFDE2ED23586071007F2ECB /* PinchImageViewController.swift */; };
 		E60692E1234B7EE50012E534 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E60692E0234B7EE50012E534 /* Index.storyboard */; };
 		E60692E3234B9F4F0012E534 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60692E2234B9F4F0012E534 /* IndexViewController.swift */; };
+		E64B115C2361F11400CF739C /* LabelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64B115B2361F11400CF739C /* LabelItem.swift */; };
+		E64B115E2361F22E00CF739C /* DivideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64B115D2361F22E00CF739C /* DivideBar.swift */; };
 		E6828ADA234BA20800BAFB31 /* Illustration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6828AD9234BA20800BAFB31 /* Illustration.swift */; };
 		E6828ADC234BA29A00BAFB31 /* IllustrationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6828ADB234BA29A00BAFB31 /* IllustrationItemView.swift */; };
+		E6A27079236180F000E7C94B /* WorksDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6A27078236180F000E7C94B /* WorksDetails.storyboard */; };
+		E6A2707C23618B7B00E7C94B /* WorksDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2707B23618B7B00E7C94B /* WorksDetailsViewController.swift */; };
 		E6F9395D235F639C00D1BE93 /* ColorPickerBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F9395C235F639C00D1BE93 /* ColorPickerBarView.swift */; };
 /* End PBXBuildFile section */
 
@@ -128,11 +135,18 @@
 		DFA2C837234F1BBF00BFCB01 /* RecommendationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewController.swift; sourceTree = "<group>"; };
 		DFA2C839234F1BDA00BFCB01 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		DFB40C7F235DB98200FE3A6B /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		DFE4749B2365B39E00427165 /* LabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelButton.swift; sourceTree = "<group>"; };
+		DFE4749E2365B3E400427165 /* WorkLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkLabelCell.swift; sourceTree = "<group>"; };
+		DFE474A02365B86F00427165 /* WorkLabelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkLabelItem.swift; sourceTree = "<group>"; };
 		DFFDE2ED23586071007F2ECB /* PinchImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchImageViewController.swift; sourceTree = "<group>"; };
 		E60692E0234B7EE50012E534 /* Index.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Index.storyboard; sourceTree = "<group>"; };
 		E60692E2234B9F4F0012E534 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
+		E64B115B2361F11400CF739C /* LabelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelItem.swift; sourceTree = "<group>"; };
+		E64B115D2361F22E00CF739C /* DivideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivideBar.swift; sourceTree = "<group>"; };
 		E6828AD9234BA20800BAFB31 /* Illustration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Illustration.swift; sourceTree = "<group>"; };
 		E6828ADB234BA29A00BAFB31 /* IllustrationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IllustrationItemView.swift; sourceTree = "<group>"; };
+		E6A27078236180F000E7C94B /* WorksDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WorksDetails.storyboard; sourceTree = "<group>"; };
+		E6A2707B23618B7B00E7C94B /* WorksDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksDetailsViewController.swift; sourceTree = "<group>"; };
 		E6F9395C235F639C00D1BE93 /* ColorPickerBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -297,6 +311,7 @@
 		DF2DC409234AE514009E52B0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E6A2707A23618ADB00E7C94B /* Works */,
 				DFB40C7D235DB8D800FE3A6B /* Drafting */,
 				DF0A1A4A23536C0E00CB6698 /* Person */,
 				DFA2C833234F157100BFCB01 /* VCExtensions */,
@@ -315,6 +330,7 @@
 		DF2DC40A234AE65E009E52B0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DFE4749A2365B37D00427165 /* Works */,
 				A43EFE03235EA79200706CF2 /* Drafting */,
 				DFB40C7C235DB8B000FE3A6B /* Discovery */,
 				DFB40C7B235DB85900FE3A6B /* Welcome */,
@@ -334,6 +350,7 @@
 				DF0A1A4823535C0E00CB6698 /* Person.storyboard */,
 				DF7B8AB9235C5136006C93EF /* Test.storyboard */,
 				A46C0A8D236088B800A80DD7 /* Drafting.storyboard */,
+				E6A27078236180F000E7C94B /* WorksDetails.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -343,6 +360,8 @@
 			children = (
 				DF7B8AAF235C0B0D006C93EF /* TimelineItemCell.swift */,
 				DF7B8AB5235C2722006C93EF /* TimelineHeader.swift */,
+				E64B115B2361F11400CF739C /* LabelItem.swift */,
+				E64B115D2361F22E00CF739C /* DivideBar.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -403,6 +422,23 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		DFE4749A2365B37D00427165 /* Works */ = {
+			isa = PBXGroup;
+			children = (
+				DFE4749D2365B3A900427165 /* Cells */,
+				DFE4749B2365B39E00427165 /* LabelButton.swift */,
+			);
+			path = Works;
+			sourceTree = "<group>";
+		};
+		DFE4749D2365B3A900427165 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DFE4749E2365B3E400427165 /* WorkLabelCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		E6828AD8234BA1F300BAFB31 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,10 +448,22 @@
 				DF7B8AB3235C18C4006C93EF /* Pair.swift */,
 				DF38BCB3235C69B40091A0A1 /* SettingCells.swift */,
 				A43EFE06235EA84B00706CF2 /* RGB.swift */,
+<<<<<<< HEAD
 				DF44183623616C1D006E3506 /* Vector2.swift */,
 				DF441838236175F7006E3506 /* LinePoint.swift */,
+=======
+				DFE474A02365B86F00427165 /* WorkLabelItem.swift */,
+>>>>>>> picker
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E6A2707A23618ADB00E7C94B /* Works */ = {
+			isa = PBXGroup;
+			children = (
+				E6A2707B23618B7B00E7C94B /* WorksDetailsViewController.swift */,
+			);
+			path = Works;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -487,6 +535,7 @@
 				E60692E1234B7EE50012E534 /* Index.storyboard in Resources */,
 				A4CBA67F234DB09600308392 /* Settings.storyboard in Resources */,
 				DF7B8ABA235C5136006C93EF /* Test.storyboard in Resources */,
+				E6A27079236180F000E7C94B /* WorksDetails.storyboard in Resources */,
 				DFA2C836234F17B800BFCB01 /* Discovery.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -540,9 +589,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E64B115E2361F22E00CF739C /* DivideBar.swift in Sources */,
 				DF7B8AB6235C2722006C93EF /* TimelineHeader.swift in Sources */,
 				DF4776752350ABBA00D8A084 /* OverhitView.swift in Sources */,
 				A4CB24BF23580DEA00807BE8 /* NightModeTableViewCell.swift in Sources */,
+				DFE474A12365B86F00427165 /* WorkLabelItem.swift in Sources */,
 				DF38BCB4235C69B40091A0A1 /* SettingCells.swift in Sources */,
 				DF2DC418234B5DE6009E52B0 /* LoginViewController.swift in Sources */,
 				A43255962355DF1000C42429 /* SettingTableViewCell.swift in Sources */,
@@ -565,6 +616,7 @@
 				DF2DC40C234AE69F009E52B0 /* ScrollStackContainerView.swift in Sources */,
 				DF2DC41A234B5DED009E52B0 /* RegisterViewController.swift in Sources */,
 				DF38BCB6235C8DCA0091A0A1 /* ReturnArrowViewController.swift in Sources */,
+				DFE4749F2365B3E400427165 /* WorkLabelCell.swift in Sources */,
 				DF5F1C382360C89800335964 /* DrawingView.swift in Sources */,
 				DF441839236175F7006E3506 /* LinePoint.swift in Sources */,
 				DFA2C83A234F1BDA00BFCB01 /* SearchViewController.swift in Sources */,
@@ -573,10 +625,13 @@
 				DFB40C80235DB98200FE3A6B /* ColorPicker.swift in Sources */,
 				DF7B8AB2235C0FEB006C93EF /* RoundCornerUIImageView.swift in Sources */,
 				A43EFE07235EA84B00706CF2 /* RGB.swift in Sources */,
+				E64B115C2361F11400CF739C /* LabelItem.swift in Sources */,
 				A43255942355DA6800C42429 /* HomeTableViewController.swift in Sources */,
 				DF2DC408234AE4DB009E52B0 /* UIUtils.swift in Sources */,
 				DFA2C832234F156B00BFCB01 /* CollapsedViewController.swift in Sources */,
+				E6A2707C23618B7B00E7C94B /* WorksDetailsViewController.swift in Sources */,
 				A46C0A8C23605EB000A80DD7 /* OuterTestViewController.swift in Sources */,
+				DFE4749C2365B39E00427165 /* LabelButton.swift in Sources */,
 				DF2DC3F7234ADCE2009E52B0 /* WelcomeViewController.swift in Sources */,
 				DFA2C834234F16DB00BFCB01 /* CollapsedContent.swift in Sources */,
 				DF2DC410234B429B009E52B0 /* InorderAnimation.swift in Sources */,

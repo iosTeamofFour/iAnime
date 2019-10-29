@@ -11,9 +11,11 @@ import UIKit
 
 struct Illustration {
     var Image : UIImage
-//    var AuthorName : String
+    var Avatar: UIImage
+    var AuthorName : String
     var Name : String
-//    var AuthorId : String
-//    var Id : String
+    var AuthorId : String
+    var Id : String
     var UploadDate : Date
+    var Description:String
 }

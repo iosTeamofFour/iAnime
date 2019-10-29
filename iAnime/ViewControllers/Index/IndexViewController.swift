@@ -17,13 +17,13 @@ class IndexViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        CreateDrawButton.AddCircleShadow()
-        MyIlluGrid.OnPlacedGrid = {
-            grid in
-            self.LoadFakeIllustration()
-            self.LoadFakeIllustration()
-            self.LoadFakeIllustration()
-        }
+//        CreateDrawButton.AddCircleShadow()
+//        MyIlluGrid.OnPlacedGrid = {
+//            grid in
+//            self.LoadFakeIllustration()
+//            self.LoadFakeIllustration()
+//            self.LoadFakeIllustration()
+// }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -31,19 +31,19 @@ class IndexViewController: UIViewController {
         view.endEditing(true)
     }
     
-    private func LoadFakeIllustration() {
-        let illu1 = Illustration(Image: UIImage(named: "Left-2")!, Name: "Zhengzeming", UploadDate: Date())
-        
-        let illu2 = Illustration(Image: UIImage(named: "Left-3")!, Name: "Huangpixuan", UploadDate: Date())
-        let item2 = IllustrationItemView()
-        item2.illustration = illu2
-        
-        let item1 = IllustrationItemView()
-        item1.illustration = illu1
-        
-       
-        MyIlluGrid.AddItem(item1)
-        MyIlluGrid.AddItem(item2)
-    }
-
+//    private func LoadFakeIllustration() {
+//        let illu1 = Illustration(Image: UIImage(named: "Left-2")!, Name: "Zhengzeming", UploadDate: Date())
+//
+//        let illu2 = Illustration(Image: UIImage(named: "Left-3")!, Name: "Huangpixuan", UploadDate: Date())
+//        let item2 = IllustrationItemView()
+//        item2.illustration = illu2
+//
+//        let item1 = IllustrationItemView()
+//        item1.illustration = illu1
+//
+//
+//        MyIlluGrid.AddItem(item1)
+//        MyIlluGrid.AddItem(item2)
+//    }
 }
+
