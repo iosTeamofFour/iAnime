@@ -26,14 +26,16 @@ class DraftingViewController: DraftingPinchViewController {
     @IBOutlet weak var EraserBtn: UIButton!
     @IBOutlet weak var ColorAnchorBtn: UIButton!
     @IBOutlet weak var ColorHintBtn: UIButton!
-    @IBOutlet weak var MultifuncBtn: UIButton!
+
     private var LastClieckedBtn : UIButton?
+    
+    // 下方多功能按键呼出
+    @IBOutlet weak var MultifuncBtn: UIButton!
     
     // --------------- 提示类信息 -----------------
     private var HadShownEditingTypeHint = false
     
     // ------------- 重写提供给父类的变量 -------------------
-    
     
     override var imageView: UIImageView! {
         get {
@@ -174,6 +176,9 @@ class DraftingViewController: DraftingPinchViewController {
         LastClieckedBtn = sender
         SyncTwoCanvas()
     }
+    @IBAction func HandleMultifuncButton(_ sender: UIButton) {
+        ShowMultifunc()
+    }
     // ---------- 连接颜色Picker和当前VC的相关函数 ----------------
     
     @IBAction func HandleOpenColorPicker(_ sender: UITapGestureRecognizer) {
@@ -210,7 +215,6 @@ class DraftingViewController: DraftingPinchViewController {
     
     private func ShowPopover() {
         // 显示出调色板
-        
         let storyboard = UIStoryboard(name: "Test", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "TestColorPicker") as? TestViewController {
             vc.modalPresentationStyle = .popover
@@ -221,11 +225,48 @@ class DraftingViewController: DraftingPinchViewController {
             vc.preferredContentSize = CGSize(width: 320, height: 520)
             vc.GetPickerRectPosition(PickedColor)
             vc.OnPickedRGBColor = HandlePickColor(_:)
-            vc.OnPickedPenLine = HandlePickPenLineWidth(_:)
+            vc.OnPenLineWidthChanged = HandlePickPenLineWidth(_:)
             vc.SetCurrentPenLineWidth(drawing.CurrentLineWidth)
             present(vc, animated: true, completion: nil)
         }
     }
+    
+    private func ShowMultifunc() {
+        if let sb = storyboard {
+            if let MultiVC = sb.instantiateViewController(withIdentifier: "Multifunc") as? MultifuncViewController {
+                MultiVC.modalPresentationStyle = .popover
+                MultiVC.popoverPresentationController?.delegate = MultiVC
+                MultiVC.popoverPresentationController?.sourceView = MultifuncBtn
+                MultiVC.popoverPresentationController?.sourceRect = MultifuncBtn.bounds
+                MultiVC.preferredContentSize = CGSize(width: 320, height: 520)
+                // 告知列表状态
+                
+                
+                present(MultiVC, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     private func DrawRoundCircile() {
         // 为上面的工具条画上淡淡的阴影 + 圆角
         

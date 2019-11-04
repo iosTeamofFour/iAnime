@@ -20,10 +20,16 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>拍摄照片以获得初始线稿</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>从相册中选择初始线稿</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>从相册中选择初始线稿</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Welcome</string>
+	<string>Drafting</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -39,11 +45,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>从相册中选择初始线稿</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>从相册中选择初始线稿</string>
-	<key>NSCameraUsageDescription</key>
-	<string>拍摄照片以获得初始线稿</string>
 </dict>
 </plist>

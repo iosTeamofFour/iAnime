@@ -55,6 +55,14 @@
 		DF7B8AB8235C4E21006C93EF /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B8AB7235C4E21006C93EF /* DateUtils.swift */; };
 		DF7B8ABA235C5136006C93EF /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF7B8AB9235C5136006C93EF /* Test.storyboard */; };
 		DF7B8ABC235C5199006C93EF /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B8ABB235C5199006C93EF /* TestViewController.swift */; };
+		DF8B41B82370721C00A1A193 /* MultifuncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B41B72370721C00A1A193 /* MultifuncViewController.swift */; };
+		DF8B41BA2370723C00A1A193 /* ColorizeRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B41B92370723C00A1A193 /* ColorizeRequestCell.swift */; };
+		DF8B41BC23708B9C00A1A193 /* PublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B41BB23708B9C00A1A193 /* PublishViewController.swift */; };
+		DF8B41BE23708C1A00A1A193 /* WorkTagManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B41BD23708C1A00A1A193 /* WorkTagManager.swift */; };
+		DF8B41C023708C4C00A1A193 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B41BF23708C4C00A1A193 /* TagCell.swift */; };
+		DF8B41C223708E9B00A1A193 /* InputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B41C123708E9B00A1A193 /* InputCell.swift */; };
+		DF8B41C623708EB400A1A193 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B41C523708EB400A1A193 /* SwitchCell.swift */; };
+		DF8B41C823708F0400A1A193 /* EnterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B41C723708F0400A1A193 /* EnterCell.swift */; };
 		DFA2C832234F156B00BFCB01 /* CollapsedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA2C831234F156B00BFCB01 /* CollapsedViewController.swift */; };
 		DFA2C834234F16DB00BFCB01 /* CollapsedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA2C82F234E2EDF00BFCB01 /* CollapsedContent.swift */; };
 		DFA2C836234F17B800BFCB01 /* Discovery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA2C835234F17B800BFCB01 /* Discovery.storyboard */; };
@@ -129,6 +137,14 @@
 		DF7B8AB7235C4E21006C93EF /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		DF7B8AB9235C5136006C93EF /* Test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
 		DF7B8ABB235C5199006C93EF /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		DF8B41B72370721C00A1A193 /* MultifuncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultifuncViewController.swift; sourceTree = "<group>"; };
+		DF8B41B92370723C00A1A193 /* ColorizeRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorizeRequestCell.swift; sourceTree = "<group>"; };
+		DF8B41BB23708B9C00A1A193 /* PublishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishViewController.swift; sourceTree = "<group>"; };
+		DF8B41BD23708C1A00A1A193 /* WorkTagManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTagManager.swift; sourceTree = "<group>"; };
+		DF8B41BF23708C4C00A1A193 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		DF8B41C123708E9B00A1A193 /* InputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCell.swift; sourceTree = "<group>"; };
+		DF8B41C523708EB400A1A193 /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
+		DF8B41C723708F0400A1A193 /* EnterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCell.swift; sourceTree = "<group>"; };
 		DFA2C82F234E2EDF00BFCB01 /* CollapsedContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedContent.swift; sourceTree = "<group>"; };
 		DFA2C831234F156B00BFCB01 /* CollapsedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedViewController.swift; sourceTree = "<group>"; };
 		DFA2C835234F17B800BFCB01 /* Discovery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discovery.storyboard; sourceTree = "<group>"; };
@@ -366,6 +382,29 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		DF8B41B5237071F000A1A193 /* Multifunc */ = {
+			isa = PBXGroup;
+			children = (
+				DF8B41B6237071FB00A1A193 /* Cells */,
+				DF8B41B72370721C00A1A193 /* MultifuncViewController.swift */,
+				DF8B41BB23708B9C00A1A193 /* PublishViewController.swift */,
+				DF8B41BD23708C1A00A1A193 /* WorkTagManager.swift */,
+			);
+			path = Multifunc;
+			sourceTree = "<group>";
+		};
+		DF8B41B6237071FB00A1A193 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DF8B41B92370723C00A1A193 /* ColorizeRequestCell.swift */,
+				DF8B41BF23708C4C00A1A193 /* TagCell.swift */,
+				DF8B41C123708E9B00A1A193 /* InputCell.swift */,
+				DF8B41C523708EB400A1A193 /* SwitchCell.swift */,
+				DF8B41C723708F0400A1A193 /* EnterCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		DFA2C833234F157100BFCB01 /* VCExtensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,6 +446,7 @@
 		DFB40C7D235DB8D800FE3A6B /* Drafting */ = {
 			isa = PBXGroup;
 			children = (
+				DF8B41B5237071F000A1A193 /* Multifunc */,
 				DF5F1C352360A03700335964 /* DraftingViewController.swift */,
 				DFB40C7E235DB8F500FE3A6B /* Helper */,
 				A4C5FE2D2363E98600D4B11C /* DraftingPinchViewController.swift */,
@@ -602,6 +642,7 @@
 				A4D5757B234DDC070013B68D /* ViewControllerHelper.swift in Sources */,
 				A4203DB0234C88F8008C3632 /* GridView.swift in Sources */,
 				DF44183723616C1D006E3506 /* Vector2.swift in Sources */,
+				DF8B41BC23708B9C00A1A193 /* PublishViewController.swift in Sources */,
 				E6828ADA234BA20800BAFB31 /* Illustration.swift in Sources */,
 				A4CB24BD23580B6C00807BE8 /* SettingWithSwitchTableViewCell.swift in Sources */,
 				A4683DFD234E0DA200D50D04 /* CollapsedView.swift in Sources */,
@@ -612,22 +653,28 @@
 				E6F9395D235F639C00D1BE93 /* ColorPickerBarView.swift in Sources */,
 				DF2DC40C234AE69F009E52B0 /* ScrollStackContainerView.swift in Sources */,
 				DF2DC41A234B5DED009E52B0 /* RegisterViewController.swift in Sources */,
+				DF8B41B82370721C00A1A193 /* MultifuncViewController.swift in Sources */,
 				DF38BCB6235C8DCA0091A0A1 /* ReturnArrowViewController.swift in Sources */,
+				DF8B41C623708EB400A1A193 /* SwitchCell.swift in Sources */,
 				DFE4749F2365B3E400427165 /* WorkLabelCell.swift in Sources */,
 				DF5F1C382360C89800335964 /* DrawingView.swift in Sources */,
 				DF441839236175F7006E3506 /* LinePoint.swift in Sources */,
 				DFA2C83A234F1BDA00BFCB01 /* SearchViewController.swift in Sources */,
 				A4C5FE2E2363E98600D4B11C /* DraftingPinchViewController.swift in Sources */,
 				DF7B8AB8235C4E21006C93EF /* DateUtils.swift in Sources */,
+				DF8B41C023708C4C00A1A193 /* TagCell.swift in Sources */,
 				DFB40C80235DB98200FE3A6B /* ColorPicker.swift in Sources */,
 				DF7B8AB2235C0FEB006C93EF /* RoundCornerUIImageView.swift in Sources */,
 				A43EFE07235EA84B00706CF2 /* RGB.swift in Sources */,
+				DF8B41C823708F0400A1A193 /* EnterCell.swift in Sources */,
 				E64B115C2361F11400CF739C /* LabelItem.swift in Sources */,
 				A43255942355DA6800C42429 /* HomeTableViewController.swift in Sources */,
 				DF2DC408234AE4DB009E52B0 /* UIUtils.swift in Sources */,
 				DFA2C832234F156B00BFCB01 /* CollapsedViewController.swift in Sources */,
 				E6A2707C23618B7B00E7C94B /* WorksDetailsViewController.swift in Sources */,
+				DF8B41BA2370723C00A1A193 /* ColorizeRequestCell.swift in Sources */,
 				A46C0A8C23605EB000A80DD7 /* OuterTestViewController.swift in Sources */,
+				DF8B41BE23708C1A00A1A193 /* WorkTagManager.swift in Sources */,
 				DFE4749C2365B39E00427165 /* LabelButton.swift in Sources */,
 				DF2DC3F7234ADCE2009E52B0 /* WelcomeViewController.swift in Sources */,
 				DFA2C834234F16DB00BFCB01 /* CollapsedContent.swift in Sources */,
@@ -641,6 +688,7 @@
 				DF0A1A4E2353771C00CB6698 /* person.swift in Sources */,
 				A4683DFB234E0D9300D50D04 /* RankingViewController.swift in Sources */,
 				DF3F617123577B1B00D4EBB3 /* SystemSettingTableViewController.swift in Sources */,
+				DF8B41C223708E9B00A1A193 /* InputCell.swift in Sources */,
 				DF7B8AB0235C0B0D006C93EF /* TimelineItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

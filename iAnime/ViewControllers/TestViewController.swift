@@ -25,7 +25,6 @@ class TestViewController: UIViewController, UIPopoverPresentationControllerDeleg
     
     @IBOutlet weak var PenLineWidthSlider: UISlider!
     
-    @IBOutlet weak var PenLineWidthValue: UILabel!
     
     @IBOutlet weak var CurrentColor: RoundCornerUIImageView!
     
@@ -122,12 +121,6 @@ class TestViewController: UIViewController, UIPopoverPresentationControllerDeleg
         GetPickerRectPosition(rgb)
     }
     
-    @objc private func OnPenLineWidthSliderChanged(_ sender : UISlider) {
-        let currValue = sender.value
-        
-        SetCurrentPenLineWidth(CGFloat(currValue))
-        OnPickedPenLine?(CGFloat(currValue))
-    }
     
     func SetCurrentPenLineWidth(_ width : CGFloat) {
         PenLineWidthValue.text = String(format: "%.2f", Float(width))

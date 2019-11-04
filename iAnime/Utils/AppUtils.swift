@@ -83,3 +83,10 @@ public extension CGPoint {
     }
 }
 
+public extension String {
+    public func Join(_ strings:[String]) -> String {
+        return strings.enumerated().reduce("", { (a,b) in
+            return a + (b.offset == strings.count - 1 ? b.element : b.element + self)
+        })
+    }
+}
