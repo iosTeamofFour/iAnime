@@ -307,7 +307,7 @@ class DrawingView: UIImageView {
             histories.append(next)
             
             let lm = image ?? UIImage()
-            
+            let lastLineWidth = CurrentLineWidth
             UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
             CurrentDrawingCtx = UIGraphicsGetCurrentContext()
             
@@ -319,6 +319,7 @@ class DrawingView: UIImageView {
             let oneForceGroup = next.Forces
             let touchMode = next.TouchingMode
             CurrentDrawingCtx?.setStrokeColor(next.UsedColor.AsUIColor.cgColor)
+            CurrentLineWidth = next.UsedPenLineWidth
             ctr = 0
             pts[ctr] = oneCtrGroup[0]
             forces[ctr] = oneForceGroup[0]
@@ -346,6 +347,7 @@ class DrawingView: UIImageView {
             
             UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
             CurrentDrawingCtx = UIGraphicsGetCurrentContext()
+            let lastLineWidth = CurrentLineWidth
             
             let lastWidth = CurrentLineWidth
             
@@ -355,6 +357,7 @@ class DrawingView: UIImageView {
                 let touchMode = histories[i].TouchingMode
                 CurrentLineWidth = histories[i].UsedPenLineWidth
                 CurrentDrawingCtx?.setStrokeColor(histories[i].UsedColor.AsUIColor.cgColor)
+                CurrentLineWidth = histories[i].UsedPenLineWidth
                 ctr = 0
                 pts[ctr] = oneCtrGroup[0]
                 forces[ctr] = oneForceGroup[0]
@@ -415,7 +418,6 @@ class DrawingView: UIImageView {
             
             switch CurrentToolType {
             case .Drawing:
-//                print(bounds)
                 ctr = 0
                 UIGraphicsEndImageContext()
                 

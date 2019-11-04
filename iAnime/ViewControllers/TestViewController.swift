@@ -18,6 +18,7 @@ class TestViewController: UIViewController, UIPopoverPresentationControllerDeleg
     @IBOutlet weak var GValue: UILabel!
     @IBOutlet weak var BValue: UILabel!
     
+    @IBOutlet weak var PenLineWidthValue: UILabel!
     @IBOutlet weak var RSlider: UISlider!
     @IBOutlet weak var GSlider: UISlider!
     @IBOutlet weak var BSlider: UISlider!
@@ -119,5 +120,17 @@ class TestViewController: UIViewController, UIPopoverPresentationControllerDeleg
         let b = CGFloat(BSlider.value)
         let rgb = RGB(R:r,G:g,B:b)
         GetPickerRectPosition(rgb)
+    }
+    
+    @objc private func OnPenLineWidthSliderChanged(_ sender : UISlider) {
+        let currValue = sender.value
+        
+        SetCurrentPenLineWidth(CGFloat(currValue))
+        OnPickedPenLine?(CGFloat(currValue))
+    }
+    
+    func SetCurrentPenLineWidth(_ width : CGFloat) {
+        PenLineWidthValue.text = String(format: "%.2f", Float(width))
+        PenLineWidthSlider.setValue(Float(width), animated: false)
     }
 }
