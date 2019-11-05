@@ -24,9 +24,11 @@
 		A4CB24C12358213800807BE8 /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CB24C02358213800807BE8 /* AppUtils.swift */; };
 		A4CBA67F234DB09600308392 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4CBA67E234DB09600308392 /* Settings.storyboard */; };
 		A4D5757B234DDC070013B68D /* ViewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D5757A234DDC070013B68D /* ViewControllerHelper.swift */; };
+		A4FE715823714BC000325B5C /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FE715723714BC000325B5C /* PersistenceManager.swift */; };
+		A4FE715E2371662B00325B5C /* DrawingHistories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FE715D2371662B00325B5C /* DrawingHistories.swift */; };
 		DF0A1A4923535C0E00CB6698 /* Person.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF0A1A4823535C0E00CB6698 /* Person.storyboard */; };
 		DF0A1A4C23536C3200CB6698 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0A1A4B23536C3200CB6698 /* PersonViewController.swift */; };
-		DF0A1A4E2353771C00CB6698 /* person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0A1A4D2353771C00CB6698 /* person.swift */; };
+		DF0A1A4E2353771C00CB6698 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0A1A4D2353771C00CB6698 /* Person.swift */; };
 		DF14EB96234CFFA50017D4E4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF14EB95234CFFA50017D4E4 /* HomeViewController.swift */; };
 		DF2DC3F5234ADCE2009E52B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2DC3F4234ADCE2009E52B0 /* AppDelegate.swift */; };
 		DF2DC3F7234ADCE2009E52B0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2DC3F6234ADCE2009E52B0 /* WelcomeViewController.swift */; };
@@ -104,9 +106,11 @@
 		A4CB24C02358213800807BE8 /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
 		A4CBA67E234DB09600308392 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		A4D5757A234DDC070013B68D /* ViewControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerHelper.swift; sourceTree = "<group>"; };
+		A4FE715723714BC000325B5C /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		A4FE715D2371662B00325B5C /* DrawingHistories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingHistories.swift; sourceTree = "<group>"; };
 		DF0A1A4823535C0E00CB6698 /* Person.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Person.storyboard; sourceTree = "<group>"; };
 		DF0A1A4B23536C3200CB6698 /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
-		DF0A1A4D2353771C00CB6698 /* person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = person.swift; sourceTree = "<group>"; };
+		DF0A1A4D2353771C00CB6698 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		DF14EB95234CFFA50017D4E4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DF2DC3F1234ADCE2009E52B0 /* iAnime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iAnime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2DC3F4234ADCE2009E52B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -270,6 +274,56 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		A4FE715623714BA900325B5C /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				A4FE715723714BC000325B5C /* PersistenceManager.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		A4FE715923714BCE00325B5C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A4FE715623714BA900325B5C /* Persistence */,
+				A4FE715B23714BF300325B5C /* PublishWork */,
+				A4FE715A23714BE900325B5C /* Networking */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		A4FE715A23714BE900325B5C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A4FE715B23714BF300325B5C /* PublishWork */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PublishWork;
+			sourceTree = "<group>";
+		};
+		A4FE715C2371661B00325B5C /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				A4FE715D2371662B00325B5C /* DrawingHistories.swift */,
+			);
+			path = Drawing;
+			sourceTree = "<group>";
+		};
+		A4FE715F237166AE00325B5C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DF7B8AB3235C18C4006C93EF /* Pair.swift */,
+				A43EFE06235EA84B00706CF2 /* RGB.swift */,
+				DF44183623616C1D006E3506 /* Vector2.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		DF0A1A4A23536C0E00CB6698 /* Person */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +354,7 @@
 		DF2DC3F3234ADCE2009E52B0 /* iAnime */ = {
 			isa = PBXGroup;
 			children = (
+				A4FE715923714BCE00325B5C /* Service */,
 				E6828AD8234BA1F300BAFB31 /* Model */,
 				DF2DC40D234AEB5D009E52B0 /* Storyboards */,
 				DF2DC40A234AE65E009E52B0 /* Views */,
@@ -482,13 +537,12 @@
 		E6828AD8234BA1F300BAFB31 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A4FE715F237166AE00325B5C /* Common */,
+				A4FE715C2371661B00325B5C /* Drawing */,
 				E6828AD9234BA20800BAFB31 /* Illustration.swift */,
 				DFA2C82F234E2EDF00BFCB01 /* CollapsedContent.swift */,
-				DF0A1A4D2353771C00CB6698 /* person.swift */,
-				DF7B8AB3235C18C4006C93EF /* Pair.swift */,
+				DF0A1A4D2353771C00CB6698 /* Person.swift */,
 				DF38BCB3235C69B40091A0A1 /* SettingCells.swift */,
-				A43EFE06235EA84B00706CF2 /* RGB.swift */,
-				DF44183623616C1D006E3506 /* Vector2.swift */,
 				DF441838236175F7006E3506 /* LinePoint.swift */,
 				DFE474A02365B86F00427165 /* WorkLabelItem.swift */,
 			);
@@ -657,6 +711,7 @@
 				DF38BCB6235C8DCA0091A0A1 /* ReturnArrowViewController.swift in Sources */,
 				DF8B41C623708EB400A1A193 /* SwitchCell.swift in Sources */,
 				DFE4749F2365B3E400427165 /* WorkLabelCell.swift in Sources */,
+				A4FE715823714BC000325B5C /* PersistenceManager.swift in Sources */,
 				DF5F1C382360C89800335964 /* DrawingView.swift in Sources */,
 				DF441839236175F7006E3506 /* LinePoint.swift in Sources */,
 				DFA2C83A234F1BDA00BFCB01 /* SearchViewController.swift in Sources */,
@@ -674,6 +729,7 @@
 				E6A2707C23618B7B00E7C94B /* WorksDetailsViewController.swift in Sources */,
 				DF8B41BA2370723C00A1A193 /* ColorizeRequestCell.swift in Sources */,
 				A46C0A8C23605EB000A80DD7 /* OuterTestViewController.swift in Sources */,
+				A4FE715E2371662B00325B5C /* DrawingHistories.swift in Sources */,
 				DF8B41BE23708C1A00A1A193 /* WorkTagManager.swift in Sources */,
 				DFE4749C2365B39E00427165 /* LabelButton.swift in Sources */,
 				DF2DC3F7234ADCE2009E52B0 /* WelcomeViewController.swift in Sources */,
@@ -685,7 +741,7 @@
 				DF5F1C362360A03700335964 /* DraftingViewController.swift in Sources */,
 				A4CB24C12358213800807BE8 /* AppUtils.swift in Sources */,
 				DF2DC3F5234ADCE2009E52B0 /* AppDelegate.swift in Sources */,
-				DF0A1A4E2353771C00CB6698 /* person.swift in Sources */,
+				DF0A1A4E2353771C00CB6698 /* Person.swift in Sources */,
 				A4683DFB234E0D9300D50D04 /* RankingViewController.swift in Sources */,
 				DF3F617123577B1B00D4EBB3 /* SystemSettingTableViewController.swift in Sources */,
 				DF8B41C223708E9B00A1A193 /* InputCell.swift in Sources */,

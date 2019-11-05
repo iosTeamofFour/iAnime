@@ -253,10 +253,13 @@ class DraftingViewController: DraftingPinchViewController {
         let context = UIGraphicsGetCurrentContext()
         context?.setFillColor(UIColor.white.cgColor)
         context?.fill(drawing.bounds)
-        let imageSize = background.GetCGSizeInAspectFit(drawing.bounds.size)!
         
-        let imageRect = CGRect(x: 0, y: (drawing.bounds.height-imageSize.height)/2, width: imageSize.width, height: imageSize.height)
-        background.image?.draw(in: imageRect)
+        if background.image != nil {
+            let imageSize = background.GetCGSizeInAspectFit(drawing.bounds.size)!
+            
+            let imageRect = CGRect(x: 0, y: (drawing.bounds.height-imageSize.height)/2, width: imageSize.width, height: imageSize.height)
+            background.image?.draw(in: imageRect)
+        }
         
         drawing.image?.draw(in: drawing.bounds)
         
@@ -276,6 +279,10 @@ class DraftingViewController: DraftingPinchViewController {
         catch  {
             print("写入失败")
         }
+    }
+    
+    private func ExportColorPointsDataToFile() {
+        
     }
     
     

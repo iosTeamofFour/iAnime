@@ -3,49 +3,12 @@ import UIKit
 import Foundation
 
 
-struct DrawingHistory {
-    var ControlPoints : [CGPoint]
-    var Forces : [CGFloat]
-    var TouchingMode : [Bool]
-    var UsedColor : RGB
-    var UsedPenLineWidth : CGFloat
-}
-
-struct ColorAnchor {
-    var color : RGB
-    var point : CGPoint
-    var path : UIBezierPath
-    var layer : CAShapeLayer
-}
-
-struct ColorHint {
-    var color : RGB
-    var point : CGPoint
-    var path : UIBezierPath
-    var layer : CAShapeLayer
-}
-
-
-enum ColorPointType {
-    case Anchor
-    case Hint
-}
-
-enum UsingToolType {
-    case Drawing
-    case ColorAnchor
-    case ColorHint
-    case Eraser
-    case Pinching
-}
-
 class DrawingView: UIImageView {
     
     // -------- 绘制相关变量 ---------
     
     
     private var IsDrawing = false
-    private var ShouldDrawPoints : [LinePoint]?
     
     private var ctr : Int = 0
     private var pts = Array<CGPoint>(repeating: CGPoint.zero, count: 5)
@@ -58,6 +21,7 @@ class DrawingView: UIImageView {
     
     private var CurrentDrawingCtx : CGContext?
     private var TouchingWithoutPen = true
+    
     
     var CurrentToolType = UsingToolType.Pinching
     
@@ -78,11 +42,6 @@ class DrawingView: UIImageView {
     private var anchors : Dictionary<Vector2,ColorAnchor> = [:]
     private var hints : Dictionary<Vector2,ColorHint> = [:]
     
-    private var anchorPath = UIBezierPath()
-    private var hintPath = UIBezierPath()
-    
-    private var anchorLayers : [CAShapeLayer] = []
-    private var hintLayers : [CAShapeLayer] = []
     
     
     // ---------- 与父VC通信相关变量 ---------------
@@ -143,6 +102,7 @@ class DrawingView: UIImageView {
             OneAnchorPoint?.apply(CGAffineTransform(translationX: at.x, y: at.y))
             anchorLayer.path = OneAnchorPoint?.cgPath
             anchors[at.AsVector2()] = ColorAnchor(color: CurrentLineColor, point: at,path : OneAnchorPoint!, layer: anchorLayer)
+            
             break
         case .Hint:
             OneAnchorPoint = UIBezierPath()
@@ -350,7 +310,6 @@ class DrawingView: UIImageView {
             
             UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
             CurrentDrawingCtx = UIGraphicsGetCurrentContext()
-            let lastLineWidth = CurrentLineWidth
             
             let lastWidth = CurrentLineWidth
             
@@ -412,7 +371,6 @@ class DrawingView: UIImageView {
             // replace points and get ready to handle the next segment
             pts[0] = pts[3] // 起始点 0
             pts[1] = pts[4] // 第一个控制点 1  第二个控制点2  3结束点 4下一轮的第一个控制点
-            
             ctr = 1
         }
     }

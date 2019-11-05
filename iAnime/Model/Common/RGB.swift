@@ -10,10 +10,39 @@ import Foundation
 import UIKit
 
 
-struct RGB : Equatable {
+class RGB : NSObject, NSCoding {
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(R, forKey: "R")
+        aCoder.encode(G, forKey: "G")
+        aCoder.encode(B, forKey: "B")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        guard let r = aDecoder.decodeObject(forKey: "R") as? CGFloat else {
+            return nil
+        }
+        guard let g = aDecoder.decodeObject(forKey: "g") as? CGFloat else {
+            return nil
+        }
+        guard let b = aDecoder.decodeObject(forKey: "b") as? CGFloat else {
+            return nil
+        }
+        
+        R = r
+        G = g
+        B = b
+    }
+    
+    
     var R : CGFloat
     var G : CGFloat
     var B : CGFloat
+
+    init(R:CGFloat,G:CGFloat,B:CGFloat) {
+        self.R = R
+        self.G = G
+        self.B = B
+    }
     
     public func RankedRGB() -> [(offset: Int, element: CGFloat)] {
         return [R,G,B].enumerated().sorted(by: {(a,b) in a.element > b.element })
