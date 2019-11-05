@@ -10,9 +10,24 @@ import Foundation
 import UIKit
 
 
-public struct Vector2 : Hashable {
+public class Vector2 : NSObject,NSCoding {
     var x : CGFloat
     var y : CGFloat
+    
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(Float(x), forKey: "x")
+        aCoder.encode(Float(y), forKey: "y")
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        x = CGFloat(aDecoder.decodeFloat(forKey: "x"))
+        y = CGFloat(aDecoder.decodeFloat(forKey: "y"))
+    }
+    
+    public init(x : CGFloat, y: CGFloat) {
+        self.x = x
+        self.y = y
+    }
     
     var length : CGFloat {
         get {

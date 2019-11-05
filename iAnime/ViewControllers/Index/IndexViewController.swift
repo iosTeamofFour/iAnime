@@ -31,9 +31,33 @@ class IndexViewController: UIViewController, UIImagePickerControllerDelegate, UI
         view.endEditing(true)
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // ============== 加号按钮的功能 ================
+    
     @IBAction func OnEnterDrawingMode(_ sender: UIButton) {
-        
-        let sheet = UIAlertController.MakeAlertSheet("开始创作", "选择线稿来源", [
+        var actions = [
             UIAlertAction(title: "从图库中选择", style: .default, handler: {
                 _ in
                 self.BeginPickImageFromLibrary(.photoLibrary)
@@ -46,7 +70,21 @@ class IndexViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 _ in self.GoToDrawingView(nil)
             }),
             UIAlertAction(title: "取消", style: .cancel, handler: nil)
-            ])
+        ]
+        
+        if PersistenceManager.CheckIfDraftExists() {
+            actions.append(UIAlertAction(title: "读取保存的草稿", style: .default, handler: {
+                _ in
+                if let draft = PersistenceManager.LoadDraftData() {
+                    self.GoToDrawingView(draft)
+                }
+                else {
+                    self.GoToDrawingView(nil)
+                }
+            }))
+        }
+        
+        let sheet = UIAlertController.MakeAlertSheet("开始创作", "选择线稿来源", actions)
         present(sheet, animated: true, completion: nil)
     }
     
@@ -79,6 +117,16 @@ class IndexViewController: UIViewController, UIImagePickerControllerDelegate, UI
         let sb = UIStoryboard(name: "Drafting", bundle: nil)
         if let vc = sb.instantiateViewController(withIdentifier: "DrawingView") as? DraftingViewController {
             vc.shouldLoadBackground	 = withBackground
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    private func GoToDrawingView(_ withRestoreData : DraftData) {
+        let sb = UIStoryboard(name: "Drafting", bundle: nil)
+        if let vc = sb.instantiateViewController(withIdentifier: "DrawingView") as? DraftingViewController {
+            
+            vc.shouldRestoreData = withRestoreData
+            
             self.present(vc, animated: true, completion: nil)
         }
     }

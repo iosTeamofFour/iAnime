@@ -20,6 +20,8 @@ class DraftingViewController: DraftingPinchViewController {
     private var OriginBounds : CGRect!
     var shouldLoadBackground : UIImage?
     
+    var shouldRestoreData : DraftData?
+    
     // 工具条区域
     @IBOutlet weak var UndoBtn: UIButton!
     @IBOutlet weak var RedoBtn: UIButton!
@@ -49,12 +51,37 @@ class DraftingViewController: DraftingPinchViewController {
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         drawing.draftingController = self
-        background.image = shouldLoadBackground
+        
+        if shouldRestoreData != nil {
+            // 在此进行现场恢复工作
+            ProcessRestoreDrawingView()
+        }
+        else {
+            background.image = shouldLoadBackground
+        }
+        
         OriginBounds = CGRect(x: 0, y: 0, width: drawing.bounds.width, height: drawing.bounds.height)
         AttachGestureRecognizerToImageView(imageView)
+    }
+    
+    private func ProcessRestoreDrawingView() {
+        let data = shouldRestoreData!
+        background.image = data.Background
+        drawing.image = data.Foreground
+        drawing.ReplayDrawingHistories(data.Lines)
+        
+        
+        for anchor in data.Anchors {
+            drawing.DrawColorPoint(anchor.vector.AsCGPoint(), .Anchor, anchor.anchor.color)
+        }
+        
+        for hint in data.Hints {
+            drawing.DrawColorPoint(hint.vector.AsCGPoint(), .Hint, hint.hint.color)
+        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -63,7 +90,16 @@ class DraftingViewController: DraftingPinchViewController {
     }
     
     @IBAction func HandleReturn(_ sender: UIButton) {
-        ExportDrawingViewToImageFile()
+        if drawing.image != nil {
+            // 探测一下是否需要保存草稿
+            AskIfPersistDraft()
+        }
+        else {
+            ActualReturn()
+        }
+    }
+    
+    private func ActualReturn() {
         if let naviController = navigationController {
             naviController.popViewController(animated: true)
         }
@@ -72,6 +108,23 @@ class DraftingViewController: DraftingPinchViewController {
         }
     }
     
+    private func AskIfPersistDraft() {
+        let alertController = UIAlertController.MakeAlertDialog("是否保存草稿", nil, [
+            UIAlertAction(title: "好", style: .default, handler: { _ in
+                self.ExportDraftingData()
+                self.ActualReturn()
+            }),
+            UIAlertAction(title: "取消", style: .cancel, handler: {
+                _ in
+                PersistenceManager.DeteleDraftData()
+                self.ActualReturn()
+            })
+            ])
+        
+        present(alertController, animated: true, completion:nil)
+    }
+
+
     override func OnScaling(_ currentScaling : CGFloat) {
         drawing.FixColorPointSize(currentScaling)
     }
@@ -120,31 +173,23 @@ class DraftingViewController: DraftingPinchViewController {
     // ----------- 工具栏点击响应函数 --------------
     
     @IBAction func HandleErase(_ sender: UIButton) {
-        if BackToPinchMode(sender) {
-            return
-        }
-        SwitchButtonHighlight(sender)
-        drawing.CurrentToolType = .Eraser
-        DisableGestureRecognizer()
-        LastClieckedBtn = sender
+        HandleUsingTools(sender, .Eraser)
     }
     
     @IBAction func HandleAnchor(_ sender: UIButton) {
-        if BackToPinchMode(sender) {
-            return
-        }
-        SwitchButtonHighlight(sender)
-        drawing.CurrentToolType = .ColorAnchor
-        DisableGestureRecognizer()
-        LastClieckedBtn = sender
+        HandleUsingTools(sender, .ColorAnchor)
     }
     
     @IBAction func HandleColorHint(_ sender: UIButton) {
+        HandleUsingTools(sender, .ColorHint)
+    }
+    
+    private func HandleUsingTools(_ sender: UIButton, _ toolType : UsingToolType) {
         if BackToPinchMode(sender) {
             return
         }
         SwitchButtonHighlight(sender)
-        drawing.CurrentToolType = .ColorHint
+        drawing.CurrentToolType = toolType
         DisableGestureRecognizer()
         LastClieckedBtn = sender
     }
@@ -156,7 +201,6 @@ class DraftingViewController: DraftingPinchViewController {
     }
     
     @IBAction func HandleEditing(_ sender: UIButton) {
-        
         if !HadShownEditingTypeHint {
             ShowShouldNotUseDrawingModeAlert(sender)
             
@@ -164,7 +208,6 @@ class DraftingViewController: DraftingPinchViewController {
         else {
             ActualHandleEditing(sender)
         }
-        
     }
     
     private func ActualHandleEditing(_ sender : UIButton) {
@@ -208,6 +251,8 @@ class DraftingViewController: DraftingPinchViewController {
         present(alerts, animated: true, completion: nil)
     }
     
+    
+    
     // ------------- 帮助类函数 ---------------
     
     private func HandleChangePenLineWidth(_ width : CGFloat) {
@@ -248,15 +293,20 @@ class DraftingViewController: DraftingPinchViewController {
         }
     }
     
+    // ========= 持久化相关函数 ==========
+    
     private func ExportDrawingViewToImageFile() {
         UIGraphicsBeginImageContextWithOptions(drawing.bounds.size,false,0)
         let context = UIGraphicsGetCurrentContext()
         context?.setFillColor(UIColor.white.cgColor)
         context?.fill(drawing.bounds)
-        let imageSize = background.GetCGSizeInAspectFit(drawing.bounds.size)!
         
-        let imageRect = CGRect(x: 0, y: (drawing.bounds.height-imageSize.height)/2, width: imageSize.width, height: imageSize.height)
-        background.image?.draw(in: imageRect)
+        if background.image != nil {
+            let imageSize = background.GetCGSizeInAspectFit(drawing.bounds.size)!
+            
+            let imageRect = CGRect(x: 0, y: (drawing.bounds.height-imageSize.height)/2, width: imageSize.width, height: imageSize.height)
+            background.image?.draw(in: imageRect)
+        }
         
         drawing.image?.draw(in: drawing.bounds)
         
@@ -278,7 +328,25 @@ class DraftingViewController: DraftingPinchViewController {
         }
     }
     
-    
+    func ExportDraftingData() {
+        // Collecting drafting data...
+        
+        let bgImg = background.image
+        guard let foreImg = drawing.image else {
+            return
+        }
+        let lines = drawing.histories
+        let anchors = ColorAnchorPair.ConvertDicToPair(drawing.anchors)
+        let hints = ColorHintPair.ConvertDicToPair(drawing.hints)
+        
+        let draftData = DraftData(background: bgImg, foreground: foreImg, lines: lines, anchors: anchors, hints: hints)
+        
+        let persisted = PersistenceManager.PersistDraftData(draftData)
+        if persisted {
+            print("已成功保存草稿.")
+        }
+    }
+
     
     
     
