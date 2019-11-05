@@ -117,7 +117,11 @@ class DrawingView: UIImageView {
     
     func DrawColorPoint( _ at : CGPoint,_ type : ColorPointType) {
         // 绘制颜色锚点/颜色提示点
-        let up = CGPoint(x: at.x, y: at.y - 6), right = CGPoint(x: at.x + 6, y: at.y), down = CGPoint(x: at.x, y: at.y + 6), left = CGPoint(x: at.x - 6, y: at.y)
+        let
+        up = CGPoint(x: at.x, y: at.y - 6),
+        right = CGPoint(x: at.x + 6, y: at.y),
+        down = CGPoint(x: at.x, y: at.y + 6),
+        left = CGPoint(x: at.x - 6, y: at.y)
 
         let anchorLayer = CAShapeLayer(layer: layer)
         let currScaling = transform.a
@@ -307,7 +311,6 @@ class DrawingView: UIImageView {
             histories.append(next)
             
             let lm = image ?? UIImage()
-            let lastLineWidth = CurrentLineWidth
             UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
             CurrentDrawingCtx = UIGraphicsGetCurrentContext()
             

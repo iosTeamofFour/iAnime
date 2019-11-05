@@ -63,6 +63,7 @@ class DraftingViewController: DraftingPinchViewController {
     }
     
     @IBAction func HandleReturn(_ sender: UIButton) {
+        ExportDrawingViewToImageFile()
         if let naviController = navigationController {
             naviController.popViewController(animated: true)
         }
@@ -248,11 +249,33 @@ class DraftingViewController: DraftingPinchViewController {
     }
     
     private func ExportDrawingViewToImageFile() {
-        UIGraphicsBeginImageContextWithOptions(drawing.bounds.size, false, 0)
+        UIGraphicsBeginImageContextWithOptions(drawing.bounds.size,false,0)
         let context = UIGraphicsGetCurrentContext()
+        context?.setFillColor(UIColor.white.cgColor)
+        context?.fill(drawing.bounds)
+        let imageSize = background.GetCGSizeInAspectFit(drawing.bounds.size)!
         
+        let imageRect = CGRect(x: 0, y: (drawing.bounds.height-imageSize.height)/2, width: imageSize.width, height: imageSize.height)
+        background.image?.draw(in: imageRect)
         
+        drawing.image?.draw(in: drawing.bounds)
+        
+        let driedSketch = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        
+        let pngResult = driedSketch?.pngData()
+        
+        var persistUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        persistUrl.appendPathComponent("draft.png")
+        
+        print(persistUrl.absoluteString)
+        do {
+            try pngResult?.write(to: persistUrl)
+            print("成功写入")
+        }
+        catch  {
+            print("写入失败")
+        }
     }
     
     
