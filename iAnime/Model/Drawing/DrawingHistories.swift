@@ -10,6 +10,63 @@ import Foundation
 import UIKit
 
 
+
+class ColorHintPair : NSObject, NSCoding {
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(vector, forKey: "vector")
+        aCoder.encode(hint, forKey: "hint")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        guard let _vec = aDecoder.decodeObject(forKey: "vector") as? Vector2 else {
+            return nil
+        }
+        
+        guard let _hint = aDecoder.decodeObject(forKey: "hint") as? ColorHint else {
+            return nil
+        }
+        
+        vector = _vec
+        hint = _hint
+    }
+    
+    static func ConvertDicToPair(_ dic : Dictionary<Vector2, ColorHint>) -> [ColorHintPair] {
+        return dic.map { (k,v) in ColorHintPair(vector: k, hint: v)}
+    }
+    
+    var vector : Vector2
+    var hint : ColorHint
+    
+    init(vector : Vector2, hint : ColorHint) {
+        self.vector = vector
+        self.hint = hint
+    }
+}
+
+
+class ColorAnchorPair : NSObject, NSCoding {
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(vector, forKey: "vector")
+        aCoder.encode(anchor, forKey: "anchor")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        guard let _vec = aDecoder.decodeObject(forKey: "vector") as? Vector2 else {
+            return nil
+        }
+        
+        guard let _anchor = aDecoder.decodeObject(forKey: "anchor") as? ColorAnchor else {
+            return nil
+        }
+        
+        vector = _vec
+        anchor = _anchor
+    }
+    
+    var vector : Vector2
+    var anchor : ColorAnchor
+}
+
 class DrawingHistory : NSObject, NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(ControlPoints, forKey: "ControlPoints")

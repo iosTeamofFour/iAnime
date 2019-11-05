@@ -28,7 +28,7 @@ class DrawingView: UIImageView {
     
     // ----------  历史记录回退相关变量 ------------
     
-    private var histories : [DrawingHistory] = []
+    private(set) var histories : [DrawingHistory] = []
     private var popedHistories : [DrawingHistory] = []
     
     private var ctrGroups : [CGPoint] = []
@@ -39,8 +39,8 @@ class DrawingView: UIImageView {
     
     private var OneAnchorPoint : UIBezierPath?
     
-    private var anchors : Dictionary<Vector2,ColorAnchor> = [:]
-    private var hints : Dictionary<Vector2,ColorHint> = [:]
+    private(set) var anchors : Dictionary<Vector2,ColorAnchor> = [:]
+    private(set) var hints : Dictionary<Vector2,ColorHint> = [:]
     
     
     

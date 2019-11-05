@@ -49,12 +49,14 @@ class DraftingViewController: DraftingPinchViewController {
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         drawing.draftingController = self
         background.image = shouldLoadBackground
         OriginBounds = CGRect(x: 0, y: 0, width: drawing.bounds.width, height: drawing.bounds.height)
         AttachGestureRecognizerToImageView(imageView)
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -63,7 +65,8 @@ class DraftingViewController: DraftingPinchViewController {
     }
     
     @IBAction func HandleReturn(_ sender: UIButton) {
-        ExportDrawingViewToImageFile()
+//        ExportDrawingViewToImageFile()
+        ExportDraftingData()
         if let naviController = navigationController {
             naviController.popViewController(animated: true)
         }
@@ -120,31 +123,23 @@ class DraftingViewController: DraftingPinchViewController {
     // ----------- 工具栏点击响应函数 --------------
     
     @IBAction func HandleErase(_ sender: UIButton) {
-        if BackToPinchMode(sender) {
-            return
-        }
-        SwitchButtonHighlight(sender)
-        drawing.CurrentToolType = .Eraser
-        DisableGestureRecognizer()
-        LastClieckedBtn = sender
+        HandleUsingTools(sender, .Eraser)
     }
     
     @IBAction func HandleAnchor(_ sender: UIButton) {
-        if BackToPinchMode(sender) {
-            return
-        }
-        SwitchButtonHighlight(sender)
-        drawing.CurrentToolType = .ColorAnchor
-        DisableGestureRecognizer()
-        LastClieckedBtn = sender
+        HandleUsingTools(sender, .ColorAnchor)
     }
     
     @IBAction func HandleColorHint(_ sender: UIButton) {
+        HandleUsingTools(sender, .ColorHint)
+    }
+    
+    private func HandleUsingTools(_ sender: UIButton, _ toolType : UsingToolType) {
         if BackToPinchMode(sender) {
             return
         }
         SwitchButtonHighlight(sender)
-        drawing.CurrentToolType = .ColorHint
+        drawing.CurrentToolType = toolType
         DisableGestureRecognizer()
         LastClieckedBtn = sender
     }
@@ -156,7 +151,6 @@ class DraftingViewController: DraftingPinchViewController {
     }
     
     @IBAction func HandleEditing(_ sender: UIButton) {
-        
         if !HadShownEditingTypeHint {
             ShowShouldNotUseDrawingModeAlert(sender)
             
@@ -164,7 +158,6 @@ class DraftingViewController: DraftingPinchViewController {
         else {
             ActualHandleEditing(sender)
         }
-        
     }
     
     private func ActualHandleEditing(_ sender : UIButton) {
@@ -281,10 +274,30 @@ class DraftingViewController: DraftingPinchViewController {
         }
     }
     
-    private func ExportColorPointsDataToFile() {
+    func ExportDraftingData() {
+        // Collecting drafting data...
+        
+        let bgImg = background.image
+        guard let foreImg = drawing.image else {
+            return
+        }
+        let lines = drawing.histories
+        let anchors = drawing.anchors
+        let hints = drawing.hints
+        
+//        let draftData = DraftData(background: bgImg, foreground: foreImg, lines: lines, anchors: anchors, hints: hints)
+//          尝试将这个draft data保存到本地
+        
+//        let pair = Pair(Vector2(x: 123, y: 456), anchors.first!.value)
+        
+//        let data = NSKeyedArchiver.archivedData(withRootObject: pair)
+//        let reloadData = NSKeyedUnarchiver.unarchiveObject(with: data)
+//
+//        print(data)
+//        print(reloadData)
+        
         
     }
-    
     
     
     

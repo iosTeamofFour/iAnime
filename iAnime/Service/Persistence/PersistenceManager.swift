@@ -14,7 +14,7 @@ struct DraftFilesURLCollection {
     var Lines : URL
     var Anchors : URL
     var Hints : URL
-    
+    var AllDataBlocks : URL
     private(set) var UrlsArray : [URL]?
     init(urls : [URL]) {
         Background = urls[0]
@@ -22,8 +22,13 @@ struct DraftFilesURLCollection {
         Lines = urls[2]
         Anchors = urls[3]
         Hints = urls[4]
+        AllDataBlocks = urls[5]
         UrlsArray = urls
     }
+}
+
+enum PersistenceException : Error {
+    case NotSerializationException
 }
 
 class PersistenceManager {
@@ -38,21 +43,26 @@ class PersistenceManager {
     
     
     public static func CheckIfDraftExists() -> Bool {
-        
-        let foreground = FileManager.default.fileExists(atPath: GetDraftFilesURLs().Foreground.absoluteString)
-        let lines = FileManager.default.fileExists(atPath: GetDraftFilesURLs().Lines.absoluteString)
-        
-        return foreground && lines
+        return FileManager.default.fileExists(atPath: GetDraftFilesURLs().AllDataBlocks.path)
     }
     
     
     
-    public static func PersistDraftData() {
-        
+    public static func PersistDraftData(_ data : DraftData) -> Bool {
+        return NSKeyedArchiver.archiveRootObject(data, toFile: GetDraftFilesURLs().AllDataBlocks.path)
     }
     
-    public static func LoadDraftData() {
-        
+    public static func LoadDraftData() -> DraftData? {
+        do {
+            let data = try Data(contentsOf: GetDraftFilesURLs().AllDataBlocks)
+            if let draftData = NSKeyedUnarchiver.unarchiveObject(with: data) as? DraftData {
+                return draftData
+            }
+        }
+        catch {
+            print("从文件加载失败.")
+        }
+        return nil
     }
     
     public static func DeteleDraftData() {
@@ -70,10 +80,9 @@ class PersistenceManager {
     }
     
     static func ConstructDraftFilesUrls() -> DraftFilesURLCollection {
-        let subpaths = ["background","foreground","lines","anchors","hints"]
+        let subpaths = ["background","foreground","lines","anchors","hints","data"]
         let combinedUrls = subpaths.map { path -> URL in
             var url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            url.appendPathComponent("draft")
             url.appendPathComponent(path)
             return url
         }

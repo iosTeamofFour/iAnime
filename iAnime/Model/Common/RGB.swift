@@ -12,25 +12,19 @@ import UIKit
 
 class RGB : NSObject, NSCoding {
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(R, forKey: "R")
-        aCoder.encode(G, forKey: "G")
-        aCoder.encode(B, forKey: "B")
+        aCoder.encode(Int(R), forKey: "R")
+        aCoder.encode(Int(G), forKey: "G")
+        aCoder.encode(Int(B), forKey: "B")
     }
     
     required init?(coder aDecoder: NSCoder) {
-        guard let r = aDecoder.decodeObject(forKey: "R") as? CGFloat else {
-            return nil
-        }
-        guard let g = aDecoder.decodeObject(forKey: "g") as? CGFloat else {
-            return nil
-        }
-        guard let b = aDecoder.decodeObject(forKey: "b") as? CGFloat else {
-            return nil
-        }
+        let r = aDecoder.decodeInteger(forKey: "R")
+        let g = aDecoder.decodeInteger(forKey: "G")
+        let b = aDecoder.decodeInteger(forKey: "B")
         
-        R = r
-        G = g
-        B = b
+        R = CGFloat(r)
+        G = CGFloat(g)
+        B = CGFloat(b)
     }
     
     
