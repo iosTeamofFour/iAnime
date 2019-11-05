@@ -71,10 +71,11 @@ class DrawingView: UIImageView {
     }
     
     
+    
     // ------- 颜色锚点和颜色提示点相关绘制函数 -------------
     
     
-    func DrawColorPoint( _ at : CGPoint,_ type : ColorPointType) {
+    func DrawColorPoint( _ at : CGPoint,_ type : ColorPointType, _ color : RGB) {
         // 绘制颜色锚点/颜色提示点
         let
         up = CGPoint(x: at.x, y: at.y - 6),
@@ -86,7 +87,7 @@ class DrawingView: UIImageView {
         let currScaling = transform.a
         anchorLayer.frame = bounds
         anchorLayer.lineWidth = 3 * 1 / currScaling
-        anchorLayer.fillColor = CurrentLineColor.AsUIColor.cgColor
+        anchorLayer.fillColor = color.AsUIColor.cgColor
         anchorLayer.strokeColor = UIColor.white.cgColor
         
         switch type {
@@ -101,7 +102,7 @@ class DrawingView: UIImageView {
             OneAnchorPoint?.apply(CGAffineTransform(scaleX: 1 / currScaling , y: 1 / currScaling))
             OneAnchorPoint?.apply(CGAffineTransform(translationX: at.x, y: at.y))
             anchorLayer.path = OneAnchorPoint?.cgPath
-            anchors[at.AsVector2()] = ColorAnchor(color: CurrentLineColor, point: at,path : OneAnchorPoint!, layer: anchorLayer)
+            anchors[at.AsVector2()] = ColorAnchor(color: color, point: at,path : OneAnchorPoint!, layer: anchorLayer)
             
             break
         case .Hint:
@@ -111,7 +112,7 @@ class DrawingView: UIImageView {
             OneAnchorPoint?.apply(CGAffineTransform(scaleX: 1 / currScaling , y: 1 / currScaling))
             OneAnchorPoint?.apply(CGAffineTransform(translationX: at.x, y: at.y))
             anchorLayer.path = OneAnchorPoint?.cgPath
-            hints[at.AsVector2()] = ColorHint(color: CurrentLineColor, point: at, path : OneAnchorPoint!, layer: anchorLayer)
+            hints[at.AsVector2()] = ColorHint(color: color, point: at, path : OneAnchorPoint!, layer: anchorLayer)
             break
         }
         layer.addSublayer(anchorLayer)
@@ -188,10 +189,10 @@ class DrawingView: UIImageView {
             
             switch CurrentToolType {
             case .ColorAnchor:
-                DrawColorPoint(touch.location(in: self), .Anchor)
+                DrawColorPoint(touch.location(in: self), .Anchor, CurrentLineColor)
                 break
             case .ColorHint:
-                DrawColorPoint(touch.location(in: self), .Hint)
+                DrawColorPoint(touch.location(in: self), .Hint, CurrentLineColor)
                 break
             case .Drawing:
                 NotifyVCDisableRedo()
@@ -305,38 +306,44 @@ class DrawingView: UIImageView {
         // 重绘之前所有路径点
         if histories.count > 0 {
             popedHistories.append(histories.popLast()!)
-            pts = Array<CGPoint>(repeating: CGPoint.zero, count: 5)
-            forces = Array<CGFloat>(repeating: 1, count: 5)
-            
-            UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
-            CurrentDrawingCtx = UIGraphicsGetCurrentContext()
-            
-            let lastWidth = CurrentLineWidth
-            
-            for i in 0..<histories.count {
-                let oneCtrGroup = histories[i].ControlPoints
-                let oneForceGroup = histories[i].Forces
-                let touchMode = histories[i].TouchingMode
-                CurrentLineWidth = histories[i].UsedPenLineWidth
-                CurrentDrawingCtx?.setStrokeColor(histories[i].UsedColor.AsUIColor.cgColor)
-                CurrentLineWidth = histories[i].UsedPenLineWidth
-                ctr = 0
-                pts[ctr] = oneCtrGroup[0]
-                forces[ctr] = oneForceGroup[0]
-                for j in 1..<oneCtrGroup.count {
-                    ctr += 1
-                    TouchingWithoutPen = touchMode[j]
-                    pts[ctr] = oneCtrGroup[j]
-                    forces[ctr] = oneForceGroup[j]
-                    TryPlotLine()
-                }
-            }
-            CurrentLineWidth = lastWidth
-            image = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            NotifyVCEnableRedo()
+            ReplayDrawingHistories(histories)
         }
         return histories.count > 0
+    }
+    
+    func ReplayDrawingHistories(_ histories : [DrawingHistory]) {
+        self.histories = histories
+        
+        pts = Array<CGPoint>(repeating: CGPoint.zero, count: 5)
+        forces = Array<CGFloat>(repeating: 1, count: 5)
+        
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
+        CurrentDrawingCtx = UIGraphicsGetCurrentContext()
+        
+        let lastWidth = CurrentLineWidth
+        
+        for i in 0..<histories.count {
+            let oneCtrGroup = histories[i].ControlPoints
+            let oneForceGroup = histories[i].Forces
+            let touchMode = histories[i].TouchingMode
+            CurrentLineWidth = histories[i].UsedPenLineWidth
+            CurrentDrawingCtx?.setStrokeColor(histories[i].UsedColor.AsUIColor.cgColor)
+            CurrentLineWidth = histories[i].UsedPenLineWidth
+            ctr = 0
+            pts[ctr] = oneCtrGroup[0]
+            forces[ctr] = oneForceGroup[0]
+            for j in 1..<oneCtrGroup.count {
+                ctr += 1
+                TouchingWithoutPen = touchMode[j]
+                pts[ctr] = oneCtrGroup[j]
+                forces[ctr] = oneForceGroup[j]
+                TryPlotLine()
+            }
+        }
+        CurrentLineWidth = lastWidth
+        image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        NotifyVCEnableRedo()
     }
     
     private func TryPlotLine() {

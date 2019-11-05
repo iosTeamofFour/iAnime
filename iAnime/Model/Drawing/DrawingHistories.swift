@@ -25,13 +25,20 @@ class ColorHintPair : NSObject, NSCoding {
         guard let _hint = aDecoder.decodeObject(forKey: "hint") as? ColorHint else {
             return nil
         }
-        
         vector = _vec
         hint = _hint
     }
     
     static func ConvertDicToPair(_ dic : Dictionary<Vector2, ColorHint>) -> [ColorHintPair] {
         return dic.map { (k,v) in ColorHintPair(vector: k, hint: v)}
+    }
+    
+    static func ConvertPairToDic(_ pair : [ColorHintPair]) -> Dictionary<Vector2,ColorHint> {
+        var dic : Dictionary<Vector2,ColorHint> = [:]
+        pair.forEach { p in
+            dic[p.vector] = p.hint
+        }
+        return dic
     }
     
     var vector : Vector2
@@ -61,6 +68,22 @@ class ColorAnchorPair : NSObject, NSCoding {
         
         vector = _vec
         anchor = _anchor
+    }
+    
+    static func ConvertDicToPair(_ dic : Dictionary<Vector2, ColorAnchor>) -> [ColorAnchorPair] {
+        return dic.map { (k,v) in ColorAnchorPair(vector: k, anchor: v)}
+    }
+    static func ConvertPairToDic(_ pair : [ColorAnchorPair]) -> Dictionary<Vector2,ColorAnchor> {
+        var dic : Dictionary<Vector2,ColorAnchor> = [:]
+        pair.forEach { p in
+            dic[p.vector] = p.anchor
+        }
+        return dic
+    }
+    
+    init(vector : Vector2, anchor : ColorAnchor) {
+        self.vector = vector
+        self.anchor = anchor
     }
     
     var vector : Vector2
@@ -116,6 +139,7 @@ class DrawingHistory : NSObject, NSCoding {
         self.TouchingMode = TouchingMode
         self.UsedColor = UsedColor
         self.UsedPenLineWidth = UsedPenLineWidth
+
     }
     
 }

@@ -28,10 +28,10 @@ class DraftData : NSObject, NSCoding {
         guard let lines = aDecoder.decodeObject(forKey: "Lines") as? [DrawingHistory] else {
             return nil
         }
-        guard let anchors = aDecoder.decodeObject(forKey: "Anchors") as? Dictionary<Vector2,ColorAnchor>? else {
+        guard let anchors = aDecoder.decodeObject(forKey: "Anchors") as? [ColorAnchorPair] else {
             return nil
         }
-        guard let hints = aDecoder.decodeObject(forKey: "Hints") as? Dictionary<Vector2,ColorHint>? else {
+        guard let hints = aDecoder.decodeObject(forKey: "Hints") as? [ColorHintPair] else {
             return nil
         }
         
@@ -46,10 +46,10 @@ class DraftData : NSObject, NSCoding {
     var Background : UIImage?
     var Foreground : UIImage
     var Lines : [DrawingHistory]
-    var Anchors : Dictionary<Vector2,ColorAnchor>?
-    var Hints : Dictionary<Vector2,ColorHint>?
+    var Anchors : [ColorAnchorPair]
+    var Hints : [ColorHintPair]
     
-    init(background : UIImage?, foreground : UIImage, lines : [DrawingHistory], anchors : Dictionary<Vector2, ColorAnchor>?, hints : Dictionary<Vector2,ColorHint>?) {
+    init(background : UIImage?, foreground : UIImage, lines : [DrawingHistory], anchors : [ColorAnchorPair], hints : [ColorHintPair]) {
         
         Foreground = foreground
         Lines = lines

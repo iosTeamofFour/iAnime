@@ -53,14 +53,18 @@ class PersistenceManager {
     }
     
     public static func LoadDraftData() -> DraftData? {
-        do {
-            let data = try Data(contentsOf: GetDraftFilesURLs().AllDataBlocks)
-            if let draftData = NSKeyedUnarchiver.unarchiveObject(with: data) as? DraftData {
-                return draftData
-            }
-        }
-        catch {
-            print("从文件加载失败.")
+//        do {
+//            let data = try Data(contentsOf: GetDraftFilesURLs().AllDataBlocks)
+//            if let draftData = NSKeyedUnarchiver.unarchiveObject(with: data) as? DraftData {
+//                return draftData
+//            }
+//        }
+//        catch {
+//            print("从文件加载失败.")
+//        }
+//        return nil
+        if let data = NSKeyedUnarchiver.unarchiveObject(withFile: GetDraftFilesURLs().AllDataBlocks.path) as? DraftData {
+            return data
         }
         return nil
     }
