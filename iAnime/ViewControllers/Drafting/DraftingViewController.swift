@@ -247,7 +247,13 @@ class DraftingViewController: DraftingPinchViewController {
         }
     }
     
-    
+    private func ExportDrawingViewToImageFile() {
+        UIGraphicsBeginImageContextWithOptions(drawing.bounds.size, false, 0)
+        let context = UIGraphicsGetCurrentContext()
+        
+        
+        UIGraphicsEndImageContext()
+    }
     
     
     

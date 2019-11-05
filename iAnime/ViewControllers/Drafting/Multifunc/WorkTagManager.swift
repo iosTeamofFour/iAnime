@@ -31,6 +31,7 @@ class WorkTagManager: UITableViewController {
         super.viewWillDisappear(animated)
         
         if self.isMovingFromParent {
+            // 向上一个VC（PublishViewController回传数据）
             let vcParent = navigationController?.viewControllers.last
             if let publish = vcParent as? PublishViewController {
                 publish.SelectedTag = Tags
@@ -63,6 +64,8 @@ class WorkTagManager: UITableViewController {
     
 
     @IBAction func AddTag(_ sender: UIBarButtonItem) {
+        
+        // 显示添加标签的对话框
         let alertController = UIAlertController(title: "添加标签", message: "", preferredStyle: .alert)
         
         alertController.addTextField { textField in
@@ -89,16 +92,6 @@ class WorkTagManager: UITableViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-
-    
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
     
     // Override to support editing the table view.
