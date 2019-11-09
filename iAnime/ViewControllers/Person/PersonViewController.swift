@@ -173,7 +173,7 @@ class PersonViewController: ReturnArrowViewController, UICollectionViewDelegate,
 //    如果需要特判Header的高度, 就需要override这个函数了。
     
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: TimelineContainer.frame.width - 20, height: 45)
+//        return CGSize(width: Illu.frame.width - 20, height: 45)
 //    }
     
     func collectionView(_ collectionView: UICollectionView,

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VgR-Da-jhs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VgR-Da-jhs">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -241,7 +241,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="459.33333333333337"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="BRc-uo-xQb">
+                        <view key="tableFooterView" contentMode="scaleToFill" id="BRc-uo-xQb">
                             <rect key="frame" x="0.0" y="120" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -319,7 +319,16 @@
         <!--My Illustration-->
         <scene sceneID="FHM-xz-tdx">
             <objects>
-                <viewController id="B1C-NG-No2" userLabel="My Illustration" customClass="IndexViewController" customModule="iAnime" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oPJ-l1-8of" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="GGB-f6-7Jj">
+                    <connections>
+                        <outlet property="delegate" destination="B1C-NG-No2" id="huD-1b-UZA"/>
+                        <outlet property="searchContentsController" destination="B1C-NG-No2" id="cch-dj-D6X"/>
+                        <outlet property="searchResultsDataSource" destination="B1C-NG-No2" id="xZG-Te-3BZ"/>
+                        <outlet property="searchResultsDelegate" destination="B1C-NG-No2" id="aJs-NT-WUR"/>
+                    </connections>
+                </searchDisplayController>
+                <viewController id="B1C-NG-No2" userLabel="My Illustration" customClass="IndexIlluGridViewController" customModule="iAnime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="88I-nc-czd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -338,23 +347,17 @@
                                     <string>Title</string>
                                 </scopeButtonTitles>
                             </searchBar>
-                            <scrollView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sn-qz-liY" customClass="GridView" customModule="iAnime" customModuleProvider="target">
-                                <rect key="frame" x="32" y="181" width="350" height="506"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="rowSpacing">
-                                        <real key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="columnSpacing">
-                                        <real key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="columnCount">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="ignoreIBWidth">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </scrollView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" delaysContentTouches="NO" keyboardDismissMode="interactive" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YF4-MT-Ud8">
+                                <rect key="frame" x="24" y="175" width="366" height="512"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bHP-ja-lGE">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hid-h1-Rfe">
                                 <rect key="frame" x="334" y="607" width="64" height="64"/>
                                 <constraints>
@@ -369,36 +372,28 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="FIe-9E-e7F" firstAttribute="trailing" secondItem="6sn-qz-liY" secondAttribute="trailing" constant="32" id="G74-fN-lQW"/>
+                            <constraint firstItem="FIe-9E-e7F" firstAttribute="trailing" secondItem="YF4-MT-Ud8" secondAttribute="trailing" constant="24" id="6Np-mI-jS3"/>
+                            <constraint firstItem="YF4-MT-Ud8" firstAttribute="leading" secondItem="FIe-9E-e7F" secondAttribute="leading" constant="24" id="GYJ-yp-ygS"/>
                             <constraint firstAttribute="trailing" secondItem="2eE-qT-yFL" secondAttribute="trailing" constant="24" id="Hu2-xW-kaI"/>
                             <constraint firstItem="FIe-9E-e7F" firstAttribute="trailing" secondItem="hid-h1-Rfe" secondAttribute="trailing" constant="16" id="Mfk-kF-rtk"/>
-                            <constraint firstItem="6sn-qz-liY" firstAttribute="top" secondItem="2eE-qT-yFL" secondAttribute="bottom" constant="16" id="ShS-CU-Ran"/>
                             <constraint firstItem="2eE-qT-yFL" firstAttribute="leading" secondItem="88I-nc-czd" secondAttribute="leading" constant="24" id="bAy-Om-4Te"/>
-                            <constraint firstItem="6sn-qz-liY" firstAttribute="leading" secondItem="FIe-9E-e7F" secondAttribute="leading" constant="32" id="dcC-kk-uuv"/>
+                            <constraint firstItem="FIe-9E-e7F" firstAttribute="bottom" secondItem="YF4-MT-Ud8" secondAttribute="bottom" id="eaz-fL-zW5"/>
+                            <constraint firstItem="YF4-MT-Ud8" firstAttribute="top" secondItem="2eE-qT-yFL" secondAttribute="bottom" constant="10" id="ljB-Sw-tEg"/>
                             <constraint firstItem="9nn-UM-xma" firstAttribute="top" secondItem="FIe-9E-e7F" secondAttribute="top" constant="30" id="pQp-O4-lrF"/>
                             <constraint firstItem="9nn-UM-xma" firstAttribute="leading" secondItem="FIe-9E-e7F" secondAttribute="leading" constant="30" id="q2n-ap-rJv"/>
                             <constraint firstItem="FIe-9E-e7F" firstAttribute="bottom" secondItem="hid-h1-Rfe" secondAttribute="bottom" constant="16" id="qE1-V0-4ru"/>
                             <constraint firstItem="2eE-qT-yFL" firstAttribute="top" secondItem="9nn-UM-xma" secondAttribute="bottom" constant="16" id="uGM-3s-qFk"/>
-                            <constraint firstItem="6sn-qz-liY" firstAttribute="bottom" secondItem="FIe-9E-e7F" secondAttribute="bottom" id="xeh-7n-Pwu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FIe-9E-e7F"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="我的作品" image="mywork" id="Q6H-tP-yBu"/>
                     <connections>
                         <outlet property="CreateDrawButton" destination="hid-h1-Rfe" id="drg-F8-gB2"/>
-                        <outlet property="MyIlluGrid" destination="6sn-qz-liY" id="m8n-n5-Xp2"/>
+                        <outlet property="IlluGridView" destination="YF4-MT-Ud8" id="0Io-cG-i1M"/>
+                        <outlet property="Searcher" destination="2eE-qT-yFL" id="ema-CI-T9H"/>
                         <outlet property="searchDisplayController" destination="GGB-f6-7Jj" id="0lB-qJ-Xwi"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oPJ-l1-8of" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="GGB-f6-7Jj">
-                    <connections>
-                        <outlet property="delegate" destination="B1C-NG-No2" id="huD-1b-UZA"/>
-                        <outlet property="searchContentsController" destination="B1C-NG-No2" id="cch-dj-D6X"/>
-                        <outlet property="searchResultsDataSource" destination="B1C-NG-No2" id="xZG-Te-3BZ"/>
-                        <outlet property="searchResultsDelegate" destination="B1C-NG-No2" id="aJs-NT-WUR"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="513" y="-834"/>
         </scene>

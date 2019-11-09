@@ -64,7 +64,6 @@ class IllustrationItemView: UIStackView {
         if image == nil {
             InitSubViews()
         }
-        
         if let illu = illustration {
             image.image = illu.Image
             name.text = illu.Name
