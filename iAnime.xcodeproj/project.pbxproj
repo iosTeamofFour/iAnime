@@ -30,6 +30,7 @@
 		DF0A1A4923535C0E00CB6698 /* Person.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF0A1A4823535C0E00CB6698 /* Person.storyboard */; };
 		DF0A1A4C23536C3200CB6698 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0A1A4B23536C3200CB6698 /* PersonViewController.swift */; };
 		DF0A1A4E2353771C00CB6698 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0A1A4D2353771C00CB6698 /* Person.swift */; };
+		DF0F776623767D9A00E10A7C /* PersonGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0F776523767D9A00E10A7C /* PersonGridViewController.swift */; };
 		DF14EB96234CFFA50017D4E4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF14EB95234CFFA50017D4E4 /* HomeViewController.swift */; };
 		DF28E4C4237647CE0037A1AC /* IndexIlluGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28E4C3237647CE0037A1AC /* IndexIlluGridViewController.swift */; };
 		DF28E4C723764B790037A1AC /* IlluItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28E4C623764B790037A1AC /* IlluItemCell.swift */; };
@@ -117,6 +118,7 @@
 		DF0A1A4823535C0E00CB6698 /* Person.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Person.storyboard; sourceTree = "<group>"; };
 		DF0A1A4B23536C3200CB6698 /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
 		DF0A1A4D2353771C00CB6698 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		DF0F776523767D9A00E10A7C /* PersonGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonGridViewController.swift; sourceTree = "<group>"; };
 		DF14EB95234CFFA50017D4E4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DF28E4C3237647CE0037A1AC /* IndexIlluGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexIlluGridViewController.swift; sourceTree = "<group>"; };
 		DF28E4C623764B790037A1AC /* IlluItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IlluItemCell.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 			children = (
 				DF7B8AAE235C0AF8006C93EF /* Cells */,
 				DF0A1A4B23536C3200CB6698 /* PersonViewController.swift */,
+				DF0F776523767D9A00E10A7C /* PersonGridViewController.swift */,
 			);
 			path = Person;
 			sourceTree = "<group>";
@@ -724,6 +727,7 @@
 				E60692E3234B9F4F0012E534 /* IndexViewController.swift in Sources */,
 				A400F91923717D7E007AD6E7 /* DraftData.swift in Sources */,
 				A4683DF2234E02E800D50D04 /* DiscoveryViewController.swift in Sources */,
+				DF0F776623767D9A00E10A7C /* PersonGridViewController.swift in Sources */,
 				DFA2C838234F1BBF00BFCB01 /* RecommendationViewController.swift in Sources */,
 				A4D5757B234DDC070013B68D /* ViewControllerHelper.swift in Sources */,
 				A4203DB0234C88F8008C3632 /* GridView.swift in Sources */,

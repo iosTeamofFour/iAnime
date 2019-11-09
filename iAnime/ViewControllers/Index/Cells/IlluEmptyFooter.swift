@@ -25,24 +25,56 @@ class IlluEmptyFooter: UICollectionReusableView {
         super.init(coder: aDecoder)
     }
     var label : UILabel!
+    var imageView : UIImageView!
+    var verticalContainer : UIStackView!
     
     func InitSubView(_ emptyType : IlluEmptyType) {
         if label == nil {
-            label = UILabel()
-            label.textAlignment = .center
             
-            label.font = label.font.withSize(22)
-            addSubview(label)
-            
-            label.snp.makeConstraints {
-                
+            verticalContainer = UIStackView()
+            verticalContainer.axis = .vertical
+            verticalContainer.autoresizesSubviews = false
+            verticalContainer.spacing = 16
+            addSubview(verticalContainer)
+            verticalContainer.snp.makeConstraints {
                 make in
-                make.leading.equalToSuperview()
-                make.trailing.equalToSuperview()
-                make.top.equalToSuperview()
-                make.bottom.equalToSuperview()
-                
+                make.centerX.equalToSuperview()
+                make.centerY.equalToSuperview()
+                make.width.equalTo(200)
             }
+            
+            
+            
+            let paddingView = UIView()
+            
+            paddingView.snp.makeConstraints {
+                make in
+                make.height.equalTo(100)
+            }
+            
+            verticalContainer.addArrangedSubview(paddingView)
+            
+            label = UILabel()
+            imageView = UIImageView()
+            imageView.image = UIImage(named: "EmptyBox")
+            
+            paddingView.addSubview(imageView)
+            
+            imageView.snp.makeConstraints {
+                make in
+                make.centerX.equalToSuperview()
+                make.centerY.equalToSuperview()
+                make.width.equalTo(96)
+                make.height.equalTo(imageView.snp.width)
+            }
+            
+            label.textAlignment = .center
+            label.font = label.font.withSize(22)
+            label.textColor = UIColor(red: 138/255, green: 138/255, blue: 138/255, alpha: 1)
+            
+            
+            verticalContainer.addArrangedSubview(label)
+            
         }
         switch emptyType {
         case .LocalEmpty:

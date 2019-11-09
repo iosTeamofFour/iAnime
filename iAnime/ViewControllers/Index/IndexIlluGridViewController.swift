@@ -182,7 +182,7 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         if FakeData[section].count == 0 {
-            return CGSize(width: IlluGridView.frame.width, height: 100)
+            return CGSize(width: IlluGridView.frame.width, height: 150)
         }
         return CGSize(width: 0, height: 0)
     }
