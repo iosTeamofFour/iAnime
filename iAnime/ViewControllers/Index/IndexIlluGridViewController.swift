@@ -25,9 +25,9 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
     private let DEQUEUE_EMPTY_IDENTIFIER = "IlluEmptyFooter"
     
     
-    private var FakeData : [[Illustration]] = []
+    private var FakeData : [[(DrawingInfo, Data)]] = []
     
-    private var AllData : [[Illustration]] = []
+    private var AllData : [[(DrawingInfo, Data)]] = []
     
     private var ShouldInitIlluGridView = true
     
@@ -36,7 +36,9 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
         
         InitSearcherListener()
         
-        LoadFakeData()
+//        LoadFakeData()
+        
+        LoadDataFromLocal()
     }
     
     private func LoadDataFromServer() {
@@ -45,6 +47,15 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
     
     private func LoadDataFromLocal() {
         // TODO -- Should Return [Illustration]
+        
+
+        DispatchQueue.global().async {
+            let allWorksURL = PersistenceManager.ListAllLocalWork()
+            let worksData = PersistenceManager.LoadAllLocalWorkDrawingInfo(allWorksURL).map { (info, png) in (info!,png!)}
+            FakeData += [worksData,[]]
+            AllData += [worksData,[]]
+            
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -61,35 +72,33 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        if let searchedText = searchBar.text, (searchedText as NSString).length > 0 {
-            
-            print("开始搜索")
-            
-            var localSearched : [Illustration] = []
-            var networkSearched : [Illustration] = []
-            
-            for item in AllData[0] {
-                if item.Name.contains(searchedText) {
-                    localSearched.append(item)
-                }
-            }
-            
-            for item in AllData[1] {
-                
-                if item.Name.contains(searchedText) {
-                    networkSearched.append(item)
-                }
-            }
-            
-            FakeData.removeAll()
-            FakeData += [localSearched,networkSearched]
-            
-        }
-        else {
-            FakeData.removeAll()
-            FakeData += AllData
-        }
-        IlluGridView.reloadData()
+//        if let searchedText = searchBar.text, (searchedText as NSString).length > 0 {
+//
+//            var localSearched : [Illustration] = []
+//            var networkSearched : [Illustration] = []
+//
+//            for item in AllData[0] {
+//                if item.Name.contains(searchedText) {
+//                    localSearched.append(item)
+//                }
+//            }
+//
+//            for item in AllData[1] {
+//
+//                if item.Name.contains(searchedText) {
+//                    networkSearched.append(item)
+//                }
+//            }
+//
+//            FakeData.removeAll()
+//            FakeData += [localSearched,networkSearched]
+//
+//        }
+//        else {
+//            FakeData.removeAll()
+//            FakeData += AllData
+//        }
+//        IlluGridView.reloadData()
     }
     
     private func InitIlluGridView() {
@@ -132,9 +141,9 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
         
         let RemoteIllu2 = Illustration(Image: UIImage(named: "Left-3")!, Avatar: UIImage(named: "SampleAvatar")!, AuthorName: "Huang Shuxuan", Name: "我是个体面的人", AuthorId: "hsxhsx", Id: "456789", UploadDate: Date(), Description: "郑泽明也是一个体面的人")
         
-        FakeData += [[LocalIllu1,LocalIllu2,LocalIllu3],[RemoteIllu1,RemoteIllu2]]
+//        FakeData += [[LocalIllu1,LocalIllu2,LocalIllu3],[RemoteIllu1,RemoteIllu2]]
         
-        AllData += [[LocalIllu1,LocalIllu2,LocalIllu3],[RemoteIllu1,RemoteIllu2]]
+//        AllData += [[LocalIllu1,LocalIllu2,LocalIllu3],[RemoteIllu1,RemoteIllu2]]
         
     }
 

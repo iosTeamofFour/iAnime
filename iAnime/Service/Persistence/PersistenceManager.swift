@@ -33,6 +33,7 @@ enum FolderType : String {
 enum FileType : String {
     case DrawingHistory = "draftData"
     case DrawingInfo = "drawingInfo"
+    case PreviewImage = "image.png"
 }
 
 class PersistenceManager {
@@ -71,7 +72,7 @@ class PersistenceManager {
         return folder
     }
     
-    public static func PersistLocalWorkDataWithDrawingInfo(_ data : DraftData?, _ info : DrawingInfo) -> Bool {
+    public static func PersistLocalWorkDataWithDrawingInfo(_ data : DraftData?, _ info : DrawingInfo, _ preview : Data) -> Bool {
         // 检测对应的文件夹是否存在
         
         var folder = GetFolderURL(.LocalWork, info.DrawingID)
@@ -80,6 +81,7 @@ class PersistenceManager {
             return false
         }
         
+        // 保存draft数据
         if let draftData = data {
             folder.appendPathComponent(FileType.DrawingHistory.rawValue)
             
@@ -89,6 +91,18 @@ class PersistenceManager {
                 return false
             }
             folder.deleteLastPathComponent()
+        }
+        
+        // 保存预览图
+        
+        folder.appendPathComponent(FileType.PreviewImage.rawValue)
+        
+        do {
+            try preview.write(to: folder)
+            folder.deleteLastPathComponent()
+        }
+        catch {
+            return false
         }
         
         folder.appendPathComponent(FileType.DrawingInfo.rawValue)
@@ -114,14 +128,31 @@ class PersistenceManager {
         return LoadObject(url) as? DrawingInfo
     }
     
+    public static func LoadLocalWorkDrawingInfo(_ folderURL : URL) -> DrawingInfo? {
+        var folder = folderURL
+        folder.appendPathComponent(FileType.DrawingInfo.rawValue)
+        return LoadObject(folder) as? DrawingInfo
+    }
+    
+    public static func LoadLocalWorkPreview(_ folderURL : URL) -> Data? {
+        var folder = folderURL
+        folder.appendPathComponent(FileType.PreviewImage.rawValue)
+        return FileManager.default.contents(atPath: folder.path)
+    }
+    
+    public static func LoadLocalWorkPreview(_ id : String) -> Data? {
+        let url = GetFileURL(.LocalWork, .PreviewImage, id)
+        return FileManager.default.contents(atPath: url.path)
+    }
+    
     public static func LoadObject(_ url : URL) -> Any? {
         return NSKeyedUnarchiver.unarchiveObject(withFile: url.path)
     }
     
-    public static func ListAllLocalWork() -> [String] {
+    public static func ListAllLocalWork() -> [URL] {
         let folder = GetFolderURL(.LocalWork, nil)
         do {
-            return try FileManager.default.contentsOfDirectory(atPath: folder.path)
+            return try FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
         }
         catch {
             print("Error - 无法加载全部的本地数据")
@@ -129,11 +160,14 @@ class PersistenceManager {
         }
     }
     
-    public static func LoadAllLocalWorkDrawingInfo(_ works : [String]) -> [DrawingInfo?] {
+    
+    
+    public static func LoadAllLocalWorkDrawingInfo(_ works : [URL]) -> [(DrawingInfo?, Data?)] {
         return works
-            .map { work in LoadLocalWorkDrawingInfo(work) }
-            .filter { info in info != nil }
+            .map { work in (LoadLocalWorkDrawingInfo(work), LoadLocalWorkPreview(work)) }
+            .filter { (info, preview) in info != nil && preview != nil }
     }
+    
     
     public static func IfFolderExists(_ directoryURL : URL) -> Bool {
         var isDirectory = ObjCBool(true)
@@ -161,16 +195,16 @@ class PersistenceManager {
     }
     
 //    public static func LoadDraftData(_ folderType : FolderType, _ id : String) -> DraftData? {
-////        do {
-////            let data = try Data(contentsOf: GetDraftFilesURLs().AllDataBlocks)
-////            if let draftData = NSKeyedUnarchiver.unarchiveObject(with: data) as? DraftData {
-////                return draftData
-////            }
-////        }
-////        catch {
-////            print("从文件加载失败.")
-////        }
-////        return nil
+//        do {
+//            let data = try Data(contentsOf: GetDraftFilesURLs().AllDataBlocks)
+//            if let draftData = NSKeyedUnarchiver.unarchiveObject(with: data) as? DraftData {
+//                return draftData
+//            }
+//        }
+//        catch {
+//            print("从文件加载失败.")
+//        }
+//        return nil
 //
 //        if let data = NSKeyedUnarchiver.unarchiveObject(withFile: GetDraftFilesURLs().AllDataBlocks.path) as? DraftData {
 //            return data

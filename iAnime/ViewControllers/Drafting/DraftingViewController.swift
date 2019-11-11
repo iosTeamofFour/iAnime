@@ -309,7 +309,7 @@ class DraftingViewController: DraftingPinchViewController {
     // ========= 持久化相关函数 ==========
     
     // 将当前画板导出到文件
-    private func ExportDrawingViewToImageFile() {
+    func ExportDrawingViewToImageFile() -> Data? {
         UIGraphicsBeginImageContextWithOptions(drawing.bounds.size,false,0)
         let context = UIGraphicsGetCurrentContext()
         context?.setFillColor(UIColor.white.cgColor)
@@ -327,19 +327,19 @@ class DraftingViewController: DraftingPinchViewController {
         let driedSketch = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        let pngResult = driedSketch?.pngData()
+        return driedSketch?.pngData()
         
-        var persistUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        persistUrl.appendPathComponent("draft.png")
-        
-        print(persistUrl.absoluteString)
-        do {
-            try pngResult?.write(to: persistUrl)
-            print("成功写入")
-        }
-        catch  {
-            print("写入失败")
-        }
+//        var persistUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+//        persistUrl.appendPathComponent("draft.png")
+//
+//        print(persistUrl.absoluteString)
+//        do {
+//            try pngResult?.write(to: persistUrl)
+//            print("成功写入")
+//        }
+//        catch  {
+//            print("写入失败")
+//        }
     }
     
     // 将当前画板导出到草稿
@@ -360,14 +360,14 @@ class DraftingViewController: DraftingPinchViewController {
     
     func ExportDraftingData() {
         // Collecting drafting data...
-        if let draftData = CollectDraftData() {
-            let persisted = PersistenceManager.PersistDraftData(draftData)
-            if persisted {
-                print("已成功保存草稿.")
-                return
-            }
-        }
-        print("草稿保存失败.")
+//        if let draftData = CollectDraftData() {
+//            let persisted = PersistenceManager.PersistDraftData(draftData)
+//            if persisted {
+//                print("已成功保存草稿.")
+//                return
+//            }
+//        }
+//        print("草稿保存失败.")
     }
 
     
