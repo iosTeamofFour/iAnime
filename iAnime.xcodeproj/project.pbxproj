@@ -31,6 +31,8 @@
 		DF0A1A4C23536C3200CB6698 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0A1A4B23536C3200CB6698 /* PersonViewController.swift */; };
 		DF0A1A4E2353771C00CB6698 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0A1A4D2353771C00CB6698 /* Person.swift */; };
 		DF0F776623767D9A00E10A7C /* PersonGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0F776523767D9A00E10A7C /* PersonGridViewController.swift */; };
+		DF0F77682377F75700E10A7C /* DrawingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0F77672377F75700E10A7C /* DrawingInfo.swift */; };
+		DF0F776A2378020E00E10A7C /* MultifuncTaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0F77692378020E00E10A7C /* MultifuncTaskList.swift */; };
 		DF14EB96234CFFA50017D4E4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF14EB95234CFFA50017D4E4 /* HomeViewController.swift */; };
 		DF28E4C4237647CE0037A1AC /* IndexIlluGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28E4C3237647CE0037A1AC /* IndexIlluGridViewController.swift */; };
 		DF28E4C723764B790037A1AC /* IlluItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28E4C623764B790037A1AC /* IlluItemCell.swift */; };
@@ -119,6 +121,8 @@
 		DF0A1A4B23536C3200CB6698 /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
 		DF0A1A4D2353771C00CB6698 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		DF0F776523767D9A00E10A7C /* PersonGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonGridViewController.swift; sourceTree = "<group>"; };
+		DF0F77672377F75700E10A7C /* DrawingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingInfo.swift; sourceTree = "<group>"; };
+		DF0F77692378020E00E10A7C /* MultifuncTaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultifuncTaskList.swift; sourceTree = "<group>"; };
 		DF14EB95234CFFA50017D4E4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DF28E4C3237647CE0037A1AC /* IndexIlluGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexIlluGridViewController.swift; sourceTree = "<group>"; };
 		DF28E4C623764B790037A1AC /* IlluItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IlluItemCell.swift; sourceTree = "<group>"; };
@@ -332,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				A4FE715D2371662B00325B5C /* DrawingHistories.swift */,
+				DF0F77672377F75700E10A7C /* DrawingInfo.swift */,
 			);
 			path = Drawing;
 			sourceTree = "<group>";
@@ -477,6 +482,7 @@
 				DF8B41B72370721C00A1A193 /* MultifuncViewController.swift */,
 				DF8B41BB23708B9C00A1A193 /* PublishViewController.swift */,
 				DF8B41BD23708C1A00A1A193 /* WorkTagManager.swift */,
+				DF0F77692378020E00E10A7C /* MultifuncTaskList.swift */,
 			);
 			path = Multifunc;
 			sourceTree = "<group>";
@@ -724,6 +730,7 @@
 				A43255962355DF1000C42429 /* SettingTableViewCell.swift in Sources */,
 				DF2DC416234B591A009E52B0 /* FragmentViewContainer.swift in Sources */,
 				DF7B8AB4235C18C4006C93EF /* Pair.swift in Sources */,
+				DF0F776A2378020E00E10A7C /* MultifuncTaskList.swift in Sources */,
 				E60692E3234B9F4F0012E534 /* IndexViewController.swift in Sources */,
 				A400F91923717D7E007AD6E7 /* DraftData.swift in Sources */,
 				A4683DF2234E02E800D50D04 /* DiscoveryViewController.swift in Sources */,
@@ -742,6 +749,7 @@
 				DF38BCB0235C52BF0091A0A1 /* MultistateButton.swift in Sources */,
 				DF28E4C923764BBB0037A1AC /* IlluItemHeader.swift in Sources */,
 				E6F9395D235F639C00D1BE93 /* ColorPickerBarView.swift in Sources */,
+				DF0F77682377F75700E10A7C /* DrawingInfo.swift in Sources */,
 				DF2DC40C234AE69F009E52B0 /* ScrollStackContainerView.swift in Sources */,
 				DF2DC41A234B5DED009E52B0 /* RegisterViewController.swift in Sources */,
 				DF8B41B82370721C00A1A193 /* MultifuncViewController.swift in Sources */,

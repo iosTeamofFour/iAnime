@@ -21,6 +21,7 @@ class DraftingViewController: DraftingPinchViewController {
     var shouldLoadBackground : UIImage?
     
     var shouldRestoreData : DraftData?
+    var drawingInfo : DrawingInfo?
     
     // 工具条区域
     @IBOutlet weak var UndoBtn: UIButton!
@@ -36,6 +37,7 @@ class DraftingViewController: DraftingPinchViewController {
     
     // --------------- 提示类信息 -----------------
     private var HadShownEditingTypeHint = false
+    
     
     // ------------- 重写提供给父类的变量 -------------------
     
@@ -61,13 +63,26 @@ class DraftingViewController: DraftingPinchViewController {
             ProcessRestoreDrawingView()
         }
         else {
-            background.image = shouldLoadBackground
+            ProcessCreateNewDrawingView()
         }
         
         OriginBounds = CGRect(x: 0, y: 0, width: drawing.bounds.width, height: drawing.bounds.height)
         AttachGestureRecognizerToImageView(imageView)
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        DrawRoundCircile()
+    }
+    
+    // 执行创建新绘图工作区域的必要流程
+    
+    private func ProcessCreateNewDrawingView() {
+        background.image = shouldLoadBackground
+        drawingInfo = DrawingInfo(DrawingID: UUID().uuidString, Name: "新建绘画", Description: "暂无描述", Tags: [], AllowSaveToLocal: true, AllowFork: true)
+    }
+    
+    // 将草稿数据重新还原到画板上面
     private func ProcessRestoreDrawingView() {
         let data = shouldRestoreData!
         background.image = data.Background
@@ -84,10 +99,7 @@ class DraftingViewController: DraftingPinchViewController {
         }
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        DrawRoundCircile()
-    }
+    // ========= 界面逻辑功能函数 ============
     
     @IBAction func HandleReturn(_ sender: UIButton) {
         if drawing.image != nil {
@@ -223,6 +235,7 @@ class DraftingViewController: DraftingPinchViewController {
     @IBAction func HandleMultifuncButton(_ sender: UIButton) {
         ShowMultifunc()
     }
+    
     // ---------- 连接颜色Picker和当前VC的相关函数 ----------------
     
     @IBAction func HandleOpenColorPicker(_ sender: UITapGestureRecognizer) {
@@ -253,7 +266,7 @@ class DraftingViewController: DraftingPinchViewController {
     
     
     
-    // ------------- 帮助类函数 ---------------
+    // ------------- 进入额外功能Popover的触发函数 ---------------
     
     private func HandleChangePenLineWidth(_ width : CGFloat) {
         drawing.SetPaintingLineWidth(width)
@@ -278,23 +291,24 @@ class DraftingViewController: DraftingPinchViewController {
     }
     
     private func ShowMultifunc() {
-        if let sb = storyboard {
-            if let MultiVC = sb.instantiateViewController(withIdentifier: "Multifunc") as? MultifuncViewController {
-                MultiVC.modalPresentationStyle = .popover
-                MultiVC.popoverPresentationController?.delegate = MultiVC
-                MultiVC.popoverPresentationController?.sourceView = MultifuncBtn
-                MultiVC.popoverPresentationController?.sourceRect = MultifuncBtn.bounds
-                MultiVC.preferredContentSize = CGSize(width: 320, height: 520)
-                // 告知列表状态
-                
-                
-                present(MultiVC, animated: true, completion: nil)
-            }
+        if let sb = storyboard, let MultiVC = sb.instantiateViewController(withIdentifier: "Multifunc") as? MultifuncViewController {
+            
+            MultiVC.modalPresentationStyle = .popover
+            MultiVC.popoverPresentationController?.delegate = MultiVC
+            MultiVC.popoverPresentationController?.sourceView = MultifuncBtn
+            MultiVC.popoverPresentationController?.sourceRect = MultifuncBtn.bounds
+            MultiVC.preferredContentSize = CGSize(width: 320, height: 520)
+            MultiVC.drawingInfo = drawingInfo
+            MultiVC.draftData = CollectDraftData()
+            // 告知列表状态
+            
+            present(MultiVC, animated: true, completion: nil)
         }
     }
     
     // ========= 持久化相关函数 ==========
     
+    // 将当前画板导出到文件
     private func ExportDrawingViewToImageFile() {
         UIGraphicsBeginImageContextWithOptions(drawing.bounds.size,false,0)
         let context = UIGraphicsGetCurrentContext()
@@ -328,12 +342,12 @@ class DraftingViewController: DraftingPinchViewController {
         }
     }
     
-    func ExportDraftingData() {
-        // Collecting drafting data...
-        
+    // 将当前画板导出到草稿
+    
+    func CollectDraftData() -> DraftData? {
         let bgImg = background.image
         guard let foreImg = drawing.image else {
-            return
+            return nil
         }
         let lines = drawing.histories
         let anchors = ColorAnchorPair.ConvertDicToPair(drawing.anchors)
@@ -341,10 +355,19 @@ class DraftingViewController: DraftingPinchViewController {
         
         let draftData = DraftData(background: bgImg, foreground: foreImg, lines: lines, anchors: anchors, hints: hints)
         
-        let persisted = PersistenceManager.PersistDraftData(draftData)
-        if persisted {
-            print("已成功保存草稿.")
+        return draftData
+    }
+    
+    func ExportDraftingData() {
+        // Collecting drafting data...
+        if let draftData = CollectDraftData() {
+            let persisted = PersistenceManager.PersistDraftData(draftData)
+            if persisted {
+                print("已成功保存草稿.")
+                return
+            }
         }
+        print("草稿保存失败.")
     }
 
     
@@ -363,6 +386,8 @@ class DraftingViewController: DraftingPinchViewController {
     
     
     
+    
+    // ========== 界面美化的绘图相关函数 =============
     
     private func DrawRoundCircile() {
         // 为上面的工具条画上淡淡的阴影 + 圆角

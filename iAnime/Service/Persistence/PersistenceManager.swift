@@ -9,26 +9,25 @@
 import Foundation
 
 struct DraftFilesURLCollection {
-    var Background : URL
-    var Foreground : URL
-    var Lines : URL
-    var Anchors : URL
-    var Hints : URL
-    var AllDataBlocks : URL
+    var DraftFolderURL: URL
+    var LocalWorkURL : URL
+    
     private(set) var UrlsArray : [URL]?
+    
     init(urls : [URL]) {
-        Background = urls[0]
-        Foreground = urls[1]
-        Lines = urls[2]
-        Anchors = urls[3]
-        Hints = urls[4]
-        AllDataBlocks = urls[5]
+        DraftFolderURL = urls[0]
+        LocalWorkURL = urls[1]
         UrlsArray = urls
     }
 }
 
 enum PersistenceException : Error {
     case NotSerializationException
+}
+
+enum FolderType : String {
+    case Draft = "draft"
+    case LocalWork = "local"
 }
 
 class PersistenceManager {
@@ -48,11 +47,64 @@ class PersistenceManager {
     
     
     
-    public static func PersistDraftData(_ data : DraftData) -> Bool {
-        return NSKeyedArchiver.archiveRootObject(data, toFile: GetDraftFilesURLs().AllDataBlocks.path)
+//    public static func PersistDraftData(_ data : DraftData) -> Bool {
+//        return NSKeyedArchiver.archiveRootObject(data, toFile: GetDraftFilesURLs().AllDataBlocks.path)
+//    }
+//
+    
+    public static func GetFolderURL(_ folderType : FolderType, _ id : String) -> URL {
+        var url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        url.appendPathComponent(folderType.rawValue)
+        url.appendPathComponent(id)
+        return url
     }
     
-    public static func LoadDraftData() -> DraftData? {
+    public static func PersistDraftDataWithDrawingInfo(_ data : DraftData?, _ info : DrawingInfo) -> Bool {
+        // 检测对应的文件夹是否存在
+        
+        var folder = GetFolderURL(.Draft, info.DrawingID)
+        if !IfFolderExists(folder) && !TryCreateFolder(folder) {
+            // 文件夹不存在且不能创建对应的文件夹，返回持久化失败。
+            return false
+        }
+        
+        if let draftData = data {
+            folder.appendPathComponent("draftData")
+            
+            let PersistDraftResult = NSKeyedArchiver.archiveRootObject(draftData, toFile: folder.path)
+            
+            if !PersistDraftResult {
+                return false
+            }
+            folder.deleteLastPathComponent()
+        }
+        
+        folder.appendPathComponent("drawingInfo")
+        return NSKeyedArchiver.archiveRootObject(info, toFile: folder.path)
+    }
+    
+    public static func IfFolderExists(_ directoryURL : URL) -> Bool {
+        var isDirectory = ObjCBool(true)
+        return FileManager.default.fileExists(atPath: directoryURL.path, isDirectory: &isDirectory)
+    }
+    
+    public static func TryCreateFolder(_ folderURL : URL) -> Bool {
+        
+        //        var url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        //        url.appendPathComponent(folderType.rawValue)
+        
+        do {
+            try FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
+            print("创建\(folderURL)目录成功")
+            return true
+        }
+        catch {
+            print("创建\(folderURL)目录失败")
+            return false
+        }
+    }
+    
+    public static func LoadDraftData(_ folderType : FolderType, _ id : String) -> DraftData? {
 //        do {
 //            let data = try Data(contentsOf: GetDraftFilesURLs().AllDataBlocks)
 //            if let draftData = NSKeyedUnarchiver.unarchiveObject(with: data) as? DraftData {
@@ -84,7 +136,7 @@ class PersistenceManager {
     }
     
     static func ConstructDraftFilesUrls() -> DraftFilesURLCollection {
-        let subpaths = ["background","foreground","lines","anchors","hints","data"]
+        let subpaths = [FolderType.Draft.rawValue, FolderType.LocalWork.rawValue]
         let combinedUrls = subpaths.map { path -> URL in
             var url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             url.appendPathComponent(path)

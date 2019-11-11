@@ -43,8 +43,6 @@ class IlluEmptyFooter: UICollectionReusableView {
                 make.width.equalTo(200)
             }
             
-            
-            
             let paddingView = UIView()
             
             paddingView.snp.makeConstraints {

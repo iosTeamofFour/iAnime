@@ -11,12 +11,7 @@ import UIKit
 class WorkTagManager: UITableViewController {
 
     
-    var Tags : [String] = [
-        "标签1",
-        "标签2",
-        "标签3",
-        "标签4"
-    ]
+    var Tags : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +26,9 @@ class WorkTagManager: UITableViewController {
         super.viewWillDisappear(animated)
         
         if self.isMovingFromParent {
-            // 向上一个VC（PublishViewController回传数据）
+            // 使用NNavigationController默认的带左箭头的返回键
+            // 向上一个VC（PublishViewController回传数据
+            
             let vcParent = navigationController?.viewControllers.last
             if let publish = vcParent as? PublishViewController {
                 publish.SelectedTag = Tags

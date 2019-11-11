@@ -14,19 +14,20 @@ enum WorkInfoCellType : String {
     case Switch = "SwitchCell"
 }
 
-struct PublishWorkInfo {
-    var Name : String
-    var Description : String
-    var LabelList : [String]
-    var AllowSaveToLocal : Bool
-    var AllowFork : Bool
-}
 
 class PublishViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 
     @IBOutlet weak var WorkInfo: UITableView!
-    var SelectedTag : [String] = ["简单的一个"]
+    
+    var SelectedTag : [String] = [] {
+        didSet {
+            drawingInfo?.Tags = SelectedTag
+        }
+    }
+    
+    var drawingInfo : DrawingInfo?
+    var draftData : DraftData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +35,18 @@ class PublishViewController: UIViewController, UITableViewDelegate, UITableViewD
         WorkInfo.dataSource = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+     override func viewWillAppear(_ animated: Bool) {
         UpdateTagsList()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        SyncAllDataToDrawingInfoInstance()
+    }
+    
     private func UpdateTagsList() {
+        
+        SelectedTag = drawingInfo?.Tags ?? []
+        
         let path = IndexPath(row: 2, section: 0)
         if let tagsCell = WorkInfo.cellForRow(at: path) as? EnterCell {
             tagsCell.subTitle.text = " ".Join(SelectedTag)
@@ -68,18 +76,42 @@ class PublishViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     @IBAction func BeginPublishWork(_ sender: UIBarButtonItem) {
+        
     }
     
-    
+    private func SyncAllDataToDrawingInfoInstance() {
+        
+        // 同步作品名称和作品描述
+        
+        var namePath = IndexPath(row: 0, section: 0)
+        drawingInfo?.Name = (WorkInfo.cellForRow(at: namePath) as! InputCell).input.text ?? ""
+        namePath.row = 1
+        drawingInfo?.Description = (WorkInfo.cellForRow(at: namePath) as! InputCell).input.text ?? ""
+        
+    }
 
     
-    // =============== 作品相关属性TableViewz控制
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // =============== 作品相关属性TableView控制 ==============
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CellsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 将drawingInfo中的数据加载到Cell中
         let target = CellsList[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: target.value.rawValue, for: indexPath)
         switch target.value {
@@ -88,13 +120,12 @@ class PublishViewController: UIViewController, UITableViewDelegate, UITableViewD
             inputCell.title.text = target.key
             if indexPath.row == 0 {
                 // 作品名称
-                inputCell.input.text = "假装作品名称"
+                inputCell.input.text = drawingInfo?.Name
             }
             else {
                 // 作品描述
-                inputCell.input.text = "假装作品描述"
+                inputCell.input.text = drawingInfo?.Description
             }
-            
             break
         case .Jump:
             let jumpCell = cell as! EnterCell
@@ -106,16 +137,28 @@ class PublishViewController: UIViewController, UITableViewDelegate, UITableViewD
             switchCell.title.text = target.key
             // Other one must be Switch
             if indexPath.row == 4 {
-                // 允许保存到本地
-                switchCell.toggle.isOn = false
+                 // 允许二次创作
+                switchCell.toggle.addTarget(self, action: #selector(HandleChangeAllowFork(_:)), for: .valueChanged)
+                switchCell.toggle.isOn = drawingInfo?.AllowFork ?? true
             }
             else {
-                // 允许二次创作
-                switchCell.toggle.isOn = true
+               // 允许保存到本地
+                switchCell.toggle.addTarget(self, action: #selector(HandleChangeAllowSaveToLocal(_:)), for: .valueChanged)
+                switchCell.toggle.isOn = drawingInfo?.AllowSaveToLocal ?? true
             }
             break
         }
         return cell
+    }
+    
+    @objc private func HandleChangeAllowSaveToLocal(_ sender: UISwitch) {
+        // 同步是否允许保存到本地的设置
+        drawingInfo?.AllowSaveToLocal = sender.isOn
+    }
+    
+    @objc private func HandleChangeAllowFork(_ sender : UISwitch) {
+        // 同步是否允许将此作品进行二次创作的设置
+        drawingInfo?.AllowFork = sender.isOn
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
