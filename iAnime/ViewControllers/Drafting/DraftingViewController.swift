@@ -79,7 +79,7 @@ class DraftingViewController: DraftingPinchViewController {
     
     private func ProcessCreateNewDrawingView() {
         background.image = shouldLoadBackground
-        drawingInfo = DrawingInfo(DrawingID: UUID().uuidString, Name: "新建绘画", Description: "暂无描述", Tags: [], AllowSaveToLocal: true, AllowFork: true)
+        drawingInfo = DrawingInfo(DrawingID: UUID().uuidString, Name: "新建绘画", Description: "暂无描述", Tags: [], AllowSaveToLocal: true, AllowFork: true, CreatedTime: Date2Unix(Date()))
     }
     
     // 将草稿数据重新还原到画板上面
@@ -88,7 +88,6 @@ class DraftingViewController: DraftingPinchViewController {
         background.image = data.Background
         drawing.image = data.Foreground
         drawing.ReplayDrawingHistories(data.Lines)
-        
         
         for anchor in data.Anchors {
             drawing.DrawColorPoint(anchor.vector.AsCGPoint(), .Anchor, anchor.anchor.color)
@@ -112,6 +111,16 @@ class DraftingViewController: DraftingPinchViewController {
     }
     
     private func ActualReturn() {
+        
+        // 释放内存, 避免读大图时内存泄漏
+        
+        background.removeFromSuperview()
+        drawing.removeFromSuperview()
+        
+        background = nil
+        drawing = nil
+        
+        
         if let naviController = navigationController {
             naviController.popViewController(animated: true)
         }
@@ -128,11 +137,9 @@ class DraftingViewController: DraftingPinchViewController {
             }),
             UIAlertAction(title: "取消", style: .cancel, handler: {
                 _ in
-                PersistenceManager.DeteleDraftData()
                 self.ActualReturn()
             })
             ])
-        
         present(alertController, animated: true, completion:nil)
     }
 

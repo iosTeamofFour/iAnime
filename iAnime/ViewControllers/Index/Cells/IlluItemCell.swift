@@ -11,11 +11,10 @@ import SnapKit
 
 class IlluItemCell: UICollectionViewCell {
     
-    var illustration : IllustrationItemView? {
+    var illustrationView : IllustrationItemView? {
         didSet {
-            if let illu = illustration {
+            if let illu = illustrationView {
                 oldValue?.removeFromSuperview()
-                
                 UpdateIllustration(illu)
             }
         }

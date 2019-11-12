@@ -40,6 +40,8 @@ class DraftData : NSObject, NSCoding {
         Lines = lines
         Anchors = anchors
         Hints = hints
+        
+        
     }
     
     

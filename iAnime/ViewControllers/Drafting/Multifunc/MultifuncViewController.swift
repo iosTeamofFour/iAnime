@@ -62,8 +62,8 @@ class MultifuncViewController: UIViewController, UIPopoverPresentationController
     
     @objc func HandleSaveToLocalWork(_ sender: UIButton) {
         if let info = drawingInfo, let png = drawingVC.ExportDrawingViewToImageFile() {
-            
-            // 接下来将持久化当前画板内容、历史记录信息以及h作品信息
+            info.CreatedTime = Date2Unix(Date())
+            // 接下来将持久化当前画板内容、历史记录信息以及作品信息
             let persistResult = PersistenceManager.PersistLocalWorkDataWithDrawingInfo(draftData, info, png)
             print(persistResult)
         }

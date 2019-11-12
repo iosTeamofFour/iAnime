@@ -36,9 +36,10 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
         
         InitSearcherListener()
         
-//        LoadFakeData()
-        
-        LoadDataFromLocal()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+         LoadDataFromLocal()
     }
     
     private func LoadDataFromServer() {
@@ -47,14 +48,19 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
     
     private func LoadDataFromLocal() {
         // TODO -- Should Return [Illustration]
-        
 
         DispatchQueue.global().async {
             let allWorksURL = PersistenceManager.ListAllLocalWork()
-            let worksData = PersistenceManager.LoadAllLocalWorkDrawingInfo(allWorksURL).map { (info, png) in (info!,png!)}
-            FakeData += [worksData,[]]
-            AllData += [worksData,[]]
+            let worksData = PersistenceManager
+                                .LoadAllLocalWorkDrawingInfo(allWorksURL)
+                                .map { (info, png) in (info!,png!) }
+                                .sorted(by: {(a,b) in a.0.CreatedTime > b.0.CreatedTime })
             
+            self.FakeData = [worksData,[]]
+            self.AllData = [worksData,[]]
+            DispatchQueue.main.async {
+                self.IlluGridView.reloadData()
+            }
         }
     }
     
@@ -129,23 +135,6 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
         IlluGridView.register(IlluEmptyFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: DEQUEUE_EMPTY_IDENTIFIER)
     }
     
-    
-    private func LoadFakeData() {
-        let LocalIllu1 = Illustration(Image: UIImage(named: "Left-2")!, Avatar: UIImage(named: "SampleAvatar")!, AuthorName: "Zheng Timian", Name: "Timian Miku", AuthorId: "123456", Id: "abcdef", UploadDate: Date(), Description: "我是郑泽明，我活的非常的体面.")
-        
-        let LocalIllu2 = Illustration(Image: UIImage(named: "Left-3")!, Avatar: UIImage(named: "SampleAvatar")!, AuthorName: "Huang Shuxuan", Name: "我是个体面的人", AuthorId: "hsxhsx", Id: "456789", UploadDate: Date(), Description: "郑泽明也是一个体面的人")
-        
-        let LocalIllu3 = Illustration(Image: UIImage(named: "Left-3")!, Avatar: UIImage(named: "SampleAvatar")!, AuthorName: "Huang Shuxuan", Name: "我是个体面的人", AuthorId: "hsxhsx", Id: "456789", UploadDate: Date(), Description: "郑泽明也是一个体面的人")
-        
-        let RemoteIllu1 = Illustration(Image: UIImage(named: "Left-2")!, Avatar: UIImage(named: "SampleAvatar")!, AuthorName: "Zheng Timian", Name: "Timian Miku", AuthorId: "123456", Id: "abcdef", UploadDate: Date(), Description: "我是郑泽明，我活的非常的体面.")
-        
-        let RemoteIllu2 = Illustration(Image: UIImage(named: "Left-3")!, Avatar: UIImage(named: "SampleAvatar")!, AuthorName: "Huang Shuxuan", Name: "我是个体面的人", AuthorId: "hsxhsx", Id: "456789", UploadDate: Date(), Description: "郑泽明也是一个体面的人")
-        
-//        FakeData += [[LocalIllu1,LocalIllu2,LocalIllu3],[RemoteIllu1,RemoteIllu2]]
-        
-//        AllData += [[LocalIllu1,LocalIllu2,LocalIllu3],[RemoteIllu1,RemoteIllu2]]
-        
-    }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return IlluType.count
@@ -159,10 +148,12 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DEQUEUE_ITEM_IDENTIFIER, for: indexPath)
         if let itemCell = cell as? IlluItemCell {
             
-            let illuItem = FakeData[indexPath.section][indexPath.row]
+            let (info,data) = FakeData[indexPath.section][indexPath.row]
             let illuView = IllustrationItemView()
-            illuView.illustration = illuItem
-            itemCell.illustration = illuView
+            
+            // 恢复截取下来的屏幕快照
+            illuView.SetDrawingInfo(info, UIImage(data: data)!)
+            itemCell.illustrationView = illuView
         }
         return cell
     }
@@ -200,6 +191,13 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO - 处理点击事件，进入作品详情页面或者是重新编辑
+        let (info, _) = FakeData[indexPath.section][indexPath.row]
+        let id = info.DrawingID
+        let historyURL = PersistenceManager.GetFileURL(.LocalWork, .DrawingHistory, id)
+        let hasHistory = PersistenceManager.IfFileExists(historyURL)
         
+        if hasHistory, let draftData = PersistenceManager.LoadLocalWorkDraftData(historyURL) {
+            self.GoToDrawingView(draftData, info)
+        }
     }
 }

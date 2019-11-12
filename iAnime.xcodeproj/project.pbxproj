@@ -215,14 +215,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A400F91A23717E26007AD6E7 /* Persistence */ = {
-			isa = PBXGroup;
-			children = (
-				A400F91823717D7E007AD6E7 /* DraftData.swift */,
-			);
-			path = Persistence;
-			sourceTree = "<group>";
-		};
 		A43EFE03235EA79200706CF2 /* Drafting */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +327,7 @@
 		A4FE715C2371661B00325B5C /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
+				A400F91823717D7E007AD6E7 /* DraftData.swift */,
 				A4FE715D2371662B00325B5C /* DrawingHistories.swift */,
 				DF0F77672377F75700E10A7C /* DrawingInfo.swift */,
 			);
@@ -576,7 +569,6 @@
 		E6828AD8234BA1F300BAFB31 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A400F91A23717E26007AD6E7 /* Persistence */,
 				A4FE715F237166AE00325B5C /* Common */,
 				A4FE715C2371661B00325B5C /* Drawing */,
 				E6828AD9234BA20800BAFB31 /* Illustration.swift */,

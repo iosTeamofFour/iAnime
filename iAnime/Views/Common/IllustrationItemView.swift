@@ -9,24 +9,13 @@
 import UIKit
 
 class IllustrationItemView: UIStackView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
     
-    private var image : UIImageView!
-    private var name : UILabel!
-    private var dateStr : UILabel!
+    var image : UIImageView!
+    var name : UILabel!
+    var dateStr : UILabel!
+    var drawingInfo : DrawingInfo?
     
-    var illustration : Illustration? {
-        didSet {
-            UpdateIllustrationView()
-        }
-    }
+    var shouldLoadImage : UIImage?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,7 +29,13 @@ class IllustrationItemView: UIStackView {
         spacing = 8
     }
     
-    private func InitSubViews() {
+    func SetDrawingInfo(_ drawingInfo : DrawingInfo, _ previewImage : UIImage) {
+        self.drawingInfo = drawingInfo
+        shouldLoadImage = previewImage
+        UpdateIllustrationView()
+    }
+    
+    func InitSubViews() {
         image = UIImageView()
         image.addConstraint(NSLayoutConstraint(item: image, attribute: .width, relatedBy: .equal, toItem: image, attribute: .height, multiplier: 9/16, constant: 0))
         
@@ -50,9 +45,7 @@ class IllustrationItemView: UIStackView {
         
         
         name = UILabel()
-        
         dateStr = UILabel()
-        
         dateStr.font.withSize(12.0)
         dateStr.textColor = UIColor(red: 140/255, green: 140/255, blue: 140/255, alpha: 1.0)
         
@@ -60,19 +53,18 @@ class IllustrationItemView: UIStackView {
         addArrangedSubview(name)
         addArrangedSubview(dateStr)
     }
-    private func UpdateIllustrationView() {
+    func UpdateIllustrationView() {
         if image == nil {
             InitSubViews()
         }
-        if let illu = illustration {
-            image.image = illu.Image
+        
+        if let illu = drawingInfo {
             name.text = illu.Name
-            
+            image.image = shouldLoadImage
             // TODO - Change this formatter to a singleton.
             let fmt = DateFormatter()
             fmt.dateFormat = "yyyy-M-d"
-            dateStr.text = fmt.string(from: illu.UploadDate)
+            dateStr.text = fmt.string(from: Unix2Date(illu.CreatedTime))
         }
     }
-    
 }

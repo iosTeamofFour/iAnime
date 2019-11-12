@@ -16,7 +16,7 @@ class DrawingInfo: NSObject, NSCoding {
     var Tags : [String]
     var AllowSaveToLocal : Bool
     var AllowFork : Bool
-    
+    var CreatedTime : Int
     func encode(with aCoder: NSCoder) {
         aCoder.encode(DrawingID, forKey: "DrawingID")
         aCoder.encode(Name, forKey: "Name")
@@ -24,9 +24,10 @@ class DrawingInfo: NSObject, NSCoding {
         aCoder.encode(Tags, forKey: "Tags")
         aCoder.encode(AllowSaveToLocal, forKey: "AllowSaveToLocal")
         aCoder.encode(AllowFork, forKey: "AllowFork")
+        aCoder.encode(CreatedTime, forKey: "CreatedTime")
     }
     
-    init(DrawingID : String,Name : String, Description : String, Tags : [String], AllowSaveToLocal : Bool, AllowFork : Bool) {
+    init(DrawingID : String,Name : String, Description : String, Tags : [String], AllowSaveToLocal : Bool, AllowFork : Bool, CreatedTime : Int) {
         
         self.DrawingID = DrawingID
         self.Name = Name
@@ -34,6 +35,7 @@ class DrawingInfo: NSObject, NSCoding {
         self.Tags = Tags
         self.AllowSaveToLocal = AllowSaveToLocal
         self.AllowFork = AllowFork
+        self.CreatedTime = CreatedTime
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -59,5 +61,6 @@ class DrawingInfo: NSObject, NSCoding {
         Tags = tags
         AllowSaveToLocal = aDecoder.decodeBool(forKey: "AllowSaveToLocal")
         AllowFork = aDecoder.decodeBool(forKey: "AllowFork")
+        CreatedTime = aDecoder.decodeInteger(forKey: "CreatedTime")
     }
 }

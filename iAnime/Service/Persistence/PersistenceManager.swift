@@ -134,6 +134,10 @@ class PersistenceManager {
         return LoadObject(folder) as? DrawingInfo
     }
     
+    public static func LoadLocalWorkDraftData(_ draftDataURL : URL) -> DraftData? {
+        return LoadObject(draftDataURL) as? DraftData
+    }
+    
     public static func LoadLocalWorkPreview(_ folderURL : URL) -> Data? {
         var folder = folderURL
         folder.appendPathComponent(FileType.PreviewImage.rawValue)

@@ -105,7 +105,7 @@ class IndexViewController: UIViewController, UIImagePickerControllerDelegate, UI
         present(picker, animated: true, completion: nil)
     }
     
-    private func GoToDrawingView(_ withBackground : UIImage?) {
+    func GoToDrawingView(_ withBackground : UIImage?) {
         let sb = UIStoryboard(name: "Drafting", bundle: nil)
         if let vc = sb.instantiateViewController(withIdentifier: "DrawingView") as? DraftingViewController {
             vc.shouldLoadBackground	 = withBackground
@@ -113,11 +113,12 @@ class IndexViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
-    private func GoToDrawingView(_ withRestoreData : DraftData) {
+    func GoToDrawingView(_ withRestoreData : DraftData, _ withRestoreDrawingInfo : DrawingInfo) {
         let sb = UIStoryboard(name: "Drafting", bundle: nil)
         if let vc = sb.instantiateViewController(withIdentifier: "DrawingView") as? DraftingViewController {
             
             vc.shouldRestoreData = withRestoreData
+            vc.drawingInfo = withRestoreDrawingInfo
             
             self.present(vc, animated: true, completion: nil)
         }
