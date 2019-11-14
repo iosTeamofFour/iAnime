@@ -75,18 +75,20 @@ class PinchImageViewController: ReturnArrowViewController {
             iv = _iv
         }
         
-        let ivSize = iv.GetCGSizeInAspectFit(view.frame.size)
+        let ivSize = iv.GetCGSizeInAspectFit(view.bounds.size)
         let y = (view.frame.size.height - ivSize!.height)/2
-        iv.frame = CGRect(x: view.frame.width + 10, y: y, width: ivSize!.width, height: ivSize!.height)
+        let x = (view.frame.size.width - ivSize!.width) / 2
         scroller.addSubview(iv)
+        iv.frame = CGRect(x: x, y: y, width: ivSize!.width, height: ivSize!.height)
         return iv
     }
     
     private func PresentImage(_ iv: UIImageView, _ index :Int) {
         CurrentPresentImageIndex = index
-        iv.frame.origin.x = 0
+//        iv.frame.origin.x = 0
         imageView = iv
-        imageView.layoutIfNeeded()
+//        imageView.layoutIfNeeded()
+        print(imageView.frame)
         AttachGestureRecognizerToImageView(iv)
     }
     
