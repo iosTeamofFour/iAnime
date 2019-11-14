@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class IllustrationItemView: UIStackView {
     
@@ -37,7 +38,7 @@ class IllustrationItemView: UIStackView {
     
     func InitSubViews() {
         image = UIImageView()
-        image.addConstraint(NSLayoutConstraint(item: image, attribute: .width, relatedBy: .equal, toItem: image, attribute: .height, multiplier: 9/16, constant: 0))
+        image.translatesAutoresizingMaskIntoConstraints = false
         
         image.layer.cornerRadius = 4
         image.contentMode = .scaleAspectFill
@@ -45,13 +46,24 @@ class IllustrationItemView: UIStackView {
         
         
         name = UILabel()
+        name.translatesAutoresizingMaskIntoConstraints = false
         dateStr = UILabel()
-        dateStr.font.withSize(12.0)
+        dateStr.translatesAutoresizingMaskIntoConstraints = false
+        
+        name.font = name.font.withSize(18.0)
+        dateStr.font = dateStr.font.withSize(16.0)
         dateStr.textColor = UIColor(red: 140/255, green: 140/255, blue: 140/255, alpha: 1.0)
         
         addArrangedSubview(image)
         addArrangedSubview(name)
         addArrangedSubview(dateStr)
+        
+        image.addConstraint(NSLayoutConstraint(item: image, attribute: .width, relatedBy: .equal, toItem: image, attribute: .height, multiplier: 9/16, constant: 0))
+        name.snp.makeConstraints {
+            make in
+            make.height.equalTo(20.0)
+        }
+        
     }
     func UpdateIllustrationView() {
         if image == nil {

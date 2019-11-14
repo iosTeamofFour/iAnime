@@ -213,7 +213,7 @@ public extension UIImageView {
         let r = Int((pixel >> 0) & 0xff)
         let g = Int((pixel >> 8) & 0xff)
         let b = Int((pixel >> 16) & 0xff)
-        let a = Int((pixel >> 24) & 0xff)
+//        let a = Int((pixel >> 24) & 0xff)
         return [r,g,b]
     }
 }

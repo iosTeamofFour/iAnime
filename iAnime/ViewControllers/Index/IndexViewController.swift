@@ -49,7 +49,7 @@ class IndexViewController: UIViewController, UIImagePickerControllerDelegate, UI
     // ============== 加号按钮的功能 ================
     
     @IBAction func OnEnterDrawingMode(_ sender: UIButton) {
-        var actions = [
+        let actions = [
             UIAlertAction(title: "从图库中选择", style: .default, handler: {
                 _ in
                 self.BeginPickImageFromLibrary(.photoLibrary)
@@ -64,20 +64,14 @@ class IndexViewController: UIViewController, UIImagePickerControllerDelegate, UI
             UIAlertAction(title: "取消", style: .cancel, handler: nil)
         ]
         
-//        if PersistenceManager.CheckIfDraftExists() {
-//            actions.append(UIAlertAction(title: "读取保存的草稿", style: .default, handler: {
-//                _ in
-//                if let draft = PersistenceManager.LoadDraftData() {
-//                    self.GoToDrawingView(draft)
-//                }
-//                else {
-//                    self.GoToDrawingView(nil)
-//                }
-//            }))
-//        }
-        
-        let sheet = UIAlertController.MakeAlertSheet("开始创作", "选择线稿来源", actions)
-        present(sheet, animated: true, completion: nil)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let sheet = UIAlertController.MakeAlertSheetPopover("开始创作", "选择线稿来源", actions, sender)
+            present(sheet, animated: true, completion: nil)
+        }
+        else {
+            let sheet = UIAlertController.MakeAlertSheet("开始创作", "选择线稿来源", actions)
+            present(sheet, animated: true, completion: nil)
+        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

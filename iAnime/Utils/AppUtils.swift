@@ -23,6 +23,16 @@ public extension UIAlertController {
         actions.forEach { action in alertController.addAction(action) }
         return alertController
     }
+    
+    public static func MakeAlertSheetPopover(_ controllerTitle : String, _ controllerMsg : String?,_ actions : [UIAlertAction], _ sourceView : UIView) -> UIAlertController {
+        let alertController = UIAlertController(title: controllerTitle, message: controllerMsg, preferredStyle: .actionSheet)
+        alertController.modalPresentationStyle = .popover
+        alertController.popoverPresentationController?.sourceView = sourceView;
+        alertController.popoverPresentationController?.sourceRect = sourceView.bounds
+        actions.forEach { action in alertController.addAction(action) }
+        return alertController
+    }
+    
 }
 
 public extension UIImageView {

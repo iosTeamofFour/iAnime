@@ -25,9 +25,9 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
     private let DEQUEUE_EMPTY_IDENTIFIER = "IlluEmptyFooter"
     
     
-    private var FakeData : [[(DrawingInfo, Data)]] = []
+    private var FakeData : [[(DrawingInfo, Data)]] = [[],[]]
     
-    private var AllData : [[(DrawingInfo, Data)]] = []
+    private var AllData : [[(DrawingInfo, Data)]] = [[],[]]
     
     private var ShouldInitIlluGridView = true
     
@@ -78,33 +78,32 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-//        if let searchedText = searchBar.text, (searchedText as NSString).length > 0 {
-//
-//            var localSearched : [Illustration] = []
-//            var networkSearched : [Illustration] = []
-//
-//            for item in AllData[0] {
-//                if item.Name.contains(searchedText) {
-//                    localSearched.append(item)
-//                }
-//            }
-//
-//            for item in AllData[1] {
-//
-//                if item.Name.contains(searchedText) {
-//                    networkSearched.append(item)
-//                }
-//            }
-//
-//            FakeData.removeAll()
-//            FakeData += [localSearched,networkSearched]
-//
-//        }
-//        else {
-//            FakeData.removeAll()
-//            FakeData += AllData
-//        }
-//        IlluGridView.reloadData()
+        if let searchedText = searchBar.text, (searchedText as NSString).length > 0 {
+
+            var localSearched : [(DrawingInfo, Data)] = []
+            var networkSearched : [(DrawingInfo, Data)] = []
+
+            for (info,data) in AllData[0] {
+                if info.Name.contains(searchedText) {
+                    localSearched.append((info,data))
+                }
+            }
+
+            for (info,data) in AllData[1] {
+
+                if info.Name.contains(searchedText) {
+                    networkSearched.append((info,data))
+                }
+            }
+
+            FakeData.removeAll()
+            FakeData = [localSearched,networkSearched]
+        }
+        else {
+            FakeData.removeAll()
+            FakeData = AllData
+        }
+        IlluGridView.reloadData()
     }
     
     private func InitIlluGridView() {
@@ -122,10 +121,7 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
         
         IlluGridFlowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         IlluGridFlowLayout.headerReferenceSize = CGSize(width: IlluGridView.frame.width - 20, height: 60)
-        let ItemWidth = (IlluGridView.frame.width - 20) / 2
-        
-        IlluGridFlowLayout.itemSize = CGSize(width: ItemWidth, height: 2.1 * ItemWidth)
-        
+
         IlluGridView.collectionViewLayout = IlluGridFlowLayout
         IlluGridView.backgroundColor = UIColor.white
         IlluGridView.register(IlluItemCell.self, forCellWithReuseIdentifier: DEQUEUE_ITEM_IDENTIFIER)
@@ -178,8 +174,6 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
         return UICollectionReusableView()
     }
     
-
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         if FakeData[section].count == 0 {
             return CGSize(width: IlluGridView.frame.width, height: 150)
@@ -187,7 +181,22 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
         return CGSize(width: 0, height: 0)
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return EstimateItemSize()
+        
+    }
+    private func EstimateItemSize() -> CGSize {
+        var ItemWidth : CGFloat = 0
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            ItemWidth = (IlluGridView.frame.width - 50) / 3
+        }
+        else {
+            ItemWidth = (IlluGridView.frame.width - 20) / 2
+        }
+        let ItemHeight = 1.8 * ItemWidth + 50
+        return CGSize(width: ItemWidth, height: ItemHeight)
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO - 处理点击事件，进入作品详情页面或者是重新编辑
