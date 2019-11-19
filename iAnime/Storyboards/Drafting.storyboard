@@ -264,10 +264,10 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="zrb-YS-ePj">
-                                <rect key="frame" x="123" y="374" width="129" height="126"/>
+                                <rect key="frame" x="132" y="374" width="111" height="126"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I7J-dS-DKe">
-                                        <rect key="frame" x="9" y="0.0" width="111" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="111" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="提交上色请求"/>
                                         <connections>
@@ -275,7 +275,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Eb-Hk-9iY">
-                                        <rect key="frame" x="27.5" y="46" width="74" height="34"/>
+                                        <rect key="frame" x="18.5" y="46" width="74" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="发布作品"/>
                                         <connections>
@@ -284,9 +284,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9S-1H-JEt">
-                                        <rect key="frame" x="0.0" y="92" width="129" height="34"/>
+                                        <rect key="frame" x="9.5" y="92" width="92" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="保存到本地作品"/>
+                                        <state key="normal" title="保存到本地"/>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -318,7 +318,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RSI-bk-ccr">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RSI-bk-ccr">
                                 <rect key="frame" x="107.5" y="88" width="160" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="QDd-aS-jAH"/>
@@ -464,6 +464,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="WorkInfo" destination="6o3-qZ-wFe" id="E5D-I1-pD1"/>
+                        <outlet property="WorkPreview" destination="RSI-bk-ccr" id="0a8-o8-xqR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E8V-eU-w2D" userLabel="First Responder" sceneMemberID="firstResponder"/>

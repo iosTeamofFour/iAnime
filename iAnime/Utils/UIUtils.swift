@@ -137,6 +137,32 @@ public extension UIView {
     public func PointInside(_ point : CGPoint ) -> Bool {
         return bounds.contains(point)
     }
+    
+    public func ShowLoadingIndicator() -> (UIView,UIActivityIndicatorView) {
+        let uiView = self
+        let container = UIView()
+        container.frame = uiView.frame
+        container.center = uiView.center
+        container.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)
+        
+        let loadingView = UIView()
+        loadingView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        loadingView.center = uiView.center
+        loadingView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+        
+        let actInd = UIActivityIndicatorView()
+        actInd.frame = CGRect(x:0.0, y:0.0, width: 40.0,height: 40.0);
+        actInd.style = UIActivityIndicatorView.Style.whiteLarge
+        actInd.center = CGPoint(x:loadingView.frame.size.width / 2,
+                                y: loadingView.frame.size.height / 2);
+        loadingView.addSubview(actInd)
+        container.addSubview(loadingView)
+        uiView.addSubview(container)
+        actInd.startAnimating()
+        return (container, actInd)
+    }
 }
 
 public extension UIStackView {

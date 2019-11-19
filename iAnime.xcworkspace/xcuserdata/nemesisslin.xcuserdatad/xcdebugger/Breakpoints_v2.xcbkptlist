@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iAnime/ViewControllers/Drafting/DraftingViewController.swift"
-            timestampString = "594656467.375526"
+            timestampString = "595842775.831849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "293"
-            endingLineNumber = "293"
-            landmarkName = "ExportDraftingData()"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
+            landmarkName = "ShowPopover()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

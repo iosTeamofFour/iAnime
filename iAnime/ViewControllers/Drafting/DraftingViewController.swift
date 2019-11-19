@@ -89,6 +89,11 @@ class DraftingViewController: DraftingPinchViewController {
         drawing.image = data.Foreground
         drawing.ReplayDrawingHistories(data.Lines)
         
+        if data.Lines.count > 0 {
+            NotifyCanUndo()
+        }
+        // 从本地文件加载的记录，不应该启动Redo
+        NofityCanNotRedo()
         for anchor in data.Anchors {
             drawing.DrawColorPoint(anchor.vector.AsCGPoint(), .Anchor, anchor.anchor.color)
         }

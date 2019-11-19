@@ -64,4 +64,17 @@ public extension UIViewController {
         }
         return vc
     }
+    
+    public func PreventDismissWhenClickOutside() {
+        isModalInPopover = true
+    }
+    
+    public func AllowDismissWhenClickOutside() {
+        isModalInPopover = false
+    }
+    
+    public func ShowLoadingIndicator() -> (UIView, UIActivityIndicatorView) {
+        PreventDismissWhenClickOutside()
+        return view.ShowLoadingIndicator()
+    }
 }

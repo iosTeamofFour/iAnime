@@ -20,6 +20,8 @@ class PublishViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var WorkInfo: UITableView!
     
+    @IBOutlet weak var WorkPreview: UIImageView!
+    
     var SelectedTag : [String] = [] {
         didSet {
             drawingInfo?.Tags = SelectedTag
@@ -28,9 +30,14 @@ class PublishViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var drawingInfo : DrawingInfo?
     var draftData : DraftData?
+    var previewImagePNG : Data?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let previewData = previewImagePNG {
+            WorkPreview.image = UIImage(data: previewData)
+        }
         WorkInfo.delegate = self
         WorkInfo.dataSource = self
     }

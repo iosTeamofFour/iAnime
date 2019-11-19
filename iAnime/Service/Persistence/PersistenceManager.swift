@@ -184,9 +184,6 @@ class PersistenceManager {
     
     public static func TryCreateFolder(_ folderURL : URL) -> Bool {
         
-        //        var url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        //        url.appendPathComponent(folderType.rawValue)
-        
         do {
             try FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
             print("创建\(folderURL)目录成功")
