@@ -51,7 +51,6 @@ class MultifuncViewController: UIViewController, UIPopoverPresentationController
         }
     }
     
-    
     @IBAction func SendRequestColorize(_ sender: UIButton) {
         
     }
@@ -70,6 +69,7 @@ class MultifuncViewController: UIViewController, UIPopoverPresentationController
                 let persistResult = PersistenceManager.PersistLocalWorkDataWithDrawingInfo(self.draftData, info, png)
                 DispatchQueue.main.async {
                     container.removeFromSuperview()
+                    self.AllowDismissWhenClickOutside()
                     let hint = UIAlertController.MakeAlertDialog("保存到本地作品", persistResult ? "保存成功" : "保存失败", [UIAlertAction(title: "好", style: .cancel, handler: nil)])
                     self.present(hint, animated: true, completion: nil)
                 }

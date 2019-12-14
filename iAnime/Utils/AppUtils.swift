@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+func GetAppDelegate() -> AppDelegate {
+    return UIApplication.shared.delegate as! AppDelegate
+}
 
 public extension UIAlertController {
     

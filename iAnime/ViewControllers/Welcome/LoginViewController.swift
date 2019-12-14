@@ -13,10 +13,12 @@ class LoginViewController: FragmentViewController, UITextFieldDelegate {
     
     @IBOutlet weak var UserNameField: UITextField!
     @IBOutlet weak var PasswordField: UITextField!
-
     
+    private var userServices : UserServices!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        userServices = GetAppDelegate().userServices
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,6 +38,32 @@ class LoginViewController: FragmentViewController, UITextFieldDelegate {
         return true
     }
     
+    
+    @IBAction func Login(_ sender: UIButton) {
+        let Phone = UserNameField.text ?? ""
+        let Passwd = PasswordField.text ?? ""
+        userServices.Login(Phone: Phone, Password: Passwd, HandleSuccess: {
+            code in
+            switch code {
+            case 0:
+                self.performSegue(withIdentifier: "GoToIndex", sender: nil)
+            case -1:
+                print("用户名或密码错误.")
+            default:
+                print("未知错误")
+            }
+        }, HandleFailed: {
+            print("目前暂时不允许登录.")
+        })
+    }
+    
+    
+    
+    
+    
+    
+    // ===== 美化输入框界面 ======
+    
     private func ChangeTextFieldStyle() {
         [UserNameField,PasswordField].forEach {
             view in
@@ -51,20 +79,7 @@ class LoginViewController: FragmentViewController, UITextFieldDelegate {
             field in field?.delegate = self
         }
     }
-    
-    
     @IBAction func JumpToRegister(_ sender: UIButton) {
         fragmentContainer?.PresentNewViewControllerWithAnimation(1)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

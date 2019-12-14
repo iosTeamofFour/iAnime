@@ -309,6 +309,7 @@ class DraftingViewController: DraftingPinchViewController {
             MultiVC.popoverPresentationController?.delegate = MultiVC
             MultiVC.popoverPresentationController?.sourceView = MultifuncBtn
             MultiVC.popoverPresentationController?.sourceRect = MultifuncBtn.bounds
+            MultiVC.popoverPresentationController?.backgroundColor = MultiVC.view.backgroundColor
             MultiVC.preferredContentSize = CGSize(width: 320, height: 520)
             MultiVC.drawingInfo = drawingInfo
             MultiVC.draftData = CollectDraftData()

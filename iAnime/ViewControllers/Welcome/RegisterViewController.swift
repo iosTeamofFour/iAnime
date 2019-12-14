@@ -9,24 +9,25 @@
 import UIKit
 
 class RegisterViewController: FragmentViewController,UITextFieldDelegate {
-
+    
     @IBOutlet weak var account: UITextField!
     
     @IBOutlet weak var password: UITextField!
     
     @IBOutlet weak var passwordAgain: UITextField!
+
+    private var userServices : UserServices!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        userServices = GetAppDelegate().userServices
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ChangeTextFieldStyle()
         BindTextFieldDelegate()
     }
-   
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -38,6 +39,39 @@ class RegisterViewController: FragmentViewController,UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true
     }
+    
+    
+    @IBAction func Register(_ sender: UIButton) {
+        let Phone = (account.text ?? "").trimmingCharacters(in: [" "])
+        let Password = password.text ?? "", PasswordAgain = passwordAgain.text ?? ""
+        if Password.elementsEqual(PasswordAgain) {
+            userServices.Register(Phone: Phone, Password: Password)
+        }
+        else {
+            // Make a hint that two password are not equal.
+            let ac = UIAlertController.MakeAlertDialog("提示", "两次密码输入不一致", [
+                UIAlertAction(title: "好", style: .cancel, handler: nil)
+                ])
+            present(ac, animated: true, completion: {
+                // Help the user to clear the fucking wrong password.
+                self.password.text = ""
+                self.passwordAgain.text = ""
+            })
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     private func ChangeTextFieldStyle() {
         [account,password,passwordAgain].forEach {
@@ -57,14 +91,4 @@ class RegisterViewController: FragmentViewController,UITextFieldDelegate {
     @IBAction func BackToLogin(_ sender: UIButton) {
         fragmentContainer?.PresentNewViewControllerWithAnimation(0)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
