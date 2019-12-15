@@ -1,11 +1,14 @@
 PODS:
   - Alamofire (4.9.1)
+  - AlamofireImage (3.6.0):
+    - Alamofire (~> 4.9)
   - CryptoSwift (0.15.0)
   - SnapKit (4.2.0)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
+  - AlamofireImage (~> 3.5)
   - CryptoSwift (~> 0.15.0)
   - SnapKit (~> 4.0)
   - SwiftyJSON (~> 4.0)
@@ -13,16 +16,18 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AlamofireImage
     - CryptoSwift
     - SnapKit
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
   CryptoSwift: 769f58a9e89f64e8796c2e59ce5f002dc81a2438
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: c262136e5cefb4d66d90cc5b3684eb8c1aa1ada4
+PODFILE CHECKSUM: 9cd8d8b4c3d31fbd55642d073f4b310fc98d102e
 
 COCOAPODS: 1.8.4

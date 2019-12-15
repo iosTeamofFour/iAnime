@@ -13,20 +13,7 @@ class HomeTableViewController: UITableViewController {
     @IBInspectable var TargetStoryboard : String = "Settings"
     @IBInspectable var ReuseCellIdentifier : String = "SettingTableViewCell"
     
-//    open var SettingItems : [(String, [[String]])] = [
-//        ("个人信息",[
-//            ["个人资料","PersonalInfo"]
-//        ]),
-//        ("社交",[
-//            ["我喜欢的作品","MyFavIllu"],
-//            ["我关注的人","Following"],
-//            ["关注我的人","Follower"]
-//        ]),
-//        ("系统",[
-//            ["夜间模式","","NightModeTableViewCell"],
-//            ["设置","SystemSettings"]
-//        ])
-//    ]
+    
     var SettingItems : [SettingGroup]!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,13 +93,8 @@ class HomeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Do onclick action
-//        let (_,mapping) = SettingItems[indexPath.section]
-//        let cellInfo = mapping[indexPath.row]
-//
-//        if (cellInfo[1] as NSString).length > 0 {
-//             GoToExternalStoryboardWithVCSpecified(TargetStoryboard, vcIdentifier: cellInfo[1], nil)
-//        }
+        
+        // Act as onclick
         
         let cellItem = SettingItems[indexPath.section].GroupItems[indexPath.row]
         if let typedCellItem = cellItem as? SegueSettingCell<String> {

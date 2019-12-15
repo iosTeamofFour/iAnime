@@ -182,8 +182,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l91-mz-Xrq">
-                                <rect key="frame" x="10" y="227" width="414" height="459.33333333333337"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l91-mz-Xrq">
+                                <rect key="frame" x="0.0" y="227.66666666666666" width="414" height="459.33333333333337"/>
                                 <connections>
                                     <segue destination="39o-Er-VHh" kind="embed" identifier="Settings" id="akN-jj-ykh"/>
                                 </connections>
@@ -241,7 +241,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="459.33333333333337"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="BRc-uo-xQb">
+                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="BRc-uo-xQb">
                             <rect key="frame" x="0.0" y="120" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -319,15 +319,6 @@
         <!--My Illustration-->
         <scene sceneID="FHM-xz-tdx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oPJ-l1-8of" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="GGB-f6-7Jj">
-                    <connections>
-                        <outlet property="delegate" destination="B1C-NG-No2" id="huD-1b-UZA"/>
-                        <outlet property="searchContentsController" destination="B1C-NG-No2" id="cch-dj-D6X"/>
-                        <outlet property="searchResultsDataSource" destination="B1C-NG-No2" id="xZG-Te-3BZ"/>
-                        <outlet property="searchResultsDelegate" destination="B1C-NG-No2" id="aJs-NT-WUR"/>
-                    </connections>
-                </searchDisplayController>
                 <viewController id="B1C-NG-No2" userLabel="My Illustration" customClass="IndexIlluGridViewController" customModule="iAnime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="88I-nc-czd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
@@ -394,13 +385,22 @@
                         <outlet property="searchDisplayController" destination="GGB-f6-7Jj" id="0lB-qJ-Xwi"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oPJ-l1-8of" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="GGB-f6-7Jj">
+                    <connections>
+                        <outlet property="delegate" destination="B1C-NG-No2" id="huD-1b-UZA"/>
+                        <outlet property="searchContentsController" destination="B1C-NG-No2" id="cch-dj-D6X"/>
+                        <outlet property="searchResultsDataSource" destination="B1C-NG-No2" id="xZG-Te-3BZ"/>
+                        <outlet property="searchResultsDelegate" destination="B1C-NG-No2" id="aJs-NT-WUR"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="513" y="-834"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Add" width="64" height="64"/>
-        <image name="Left-2" width="1000" height="1699"/>
+        <image name="Add" width="32" height="32"/>
+        <image name="Left-2" width="240" height="407.760009765625"/>
         <image name="SampleAvatar" width="700" height="700"/>
         <image name="find" width="24" height="24"/>
         <image name="infocenter26" width="26" height="26"/>

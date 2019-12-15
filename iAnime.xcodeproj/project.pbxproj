@@ -17,6 +17,8 @@
 		A43EFE05235EA7B400706CF2 /* ColorPickerRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43EFE04235EA7B400706CF2 /* ColorPickerRectView.swift */; };
 		A43EFE07235EA84B00706CF2 /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43EFE06235EA84B00706CF2 /* RGB.swift */; };
 		A45211FC23A5111300DD7617 /* HMACSHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45211FB23A5111300DD7617 /* HMACSHA256.swift */; };
+		A455536423A61D0500BB6044 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A455536323A61D0500BB6044 /* UserProfile.swift */; };
+		A4569ECC23A54197001C9011 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569ECB23A54197001C9011 /* Auth.swift */; };
 		A4683DF2234E02E800D50D04 /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DF1234E02E800D50D04 /* DiscoveryViewController.swift */; };
 		A4683DFB234E0D9300D50D04 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DFA234E0D9300D50D04 /* RankingViewController.swift */; };
 		A4683DFD234E0DA200D50D04 /* CollapsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DFC234E0DA200D50D04 /* CollapsedView.swift */; };
@@ -110,6 +112,8 @@
 		A43EFE04235EA7B400706CF2 /* ColorPickerRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerRectView.swift; sourceTree = "<group>"; };
 		A43EFE06235EA84B00706CF2 /* RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB.swift; sourceTree = "<group>"; };
 		A45211FB23A5111300DD7617 /* HMACSHA256.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMACSHA256.swift; sourceTree = "<group>"; };
+		A455536323A61D0500BB6044 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		A4569ECB23A54197001C9011 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		A4683DF1234E02E800D50D04 /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
 		A4683DFA234E0D9300D50D04 /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		A4683DFC234E0DA200D50D04 /* CollapsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedView.swift; sourceTree = "<group>"; };
@@ -225,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				A43289B823A51F5400045B39 /* ApiCollection.swift */,
+				A4569ECB23A54197001C9011 /* Auth.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 		A43289BA23A51FD100045B39 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				A455536223A61CF000BB6044 /* User */,
 				A43289BD23A51FED00045B39 /* Response */,
 				A43289BB23A51FE400045B39 /* Request */,
 			);
@@ -276,6 +282,14 @@
 				A45211FB23A5111300DD7617 /* HMACSHA256.swift */,
 			);
 			path = Crypto;
+			sourceTree = "<group>";
+		};
+		A455536223A61CF000BB6044 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				A455536323A61D0500BB6044 /* UserProfile.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		A4683DF3234E02F300D50D04 /* Discovery */ = {
@@ -770,6 +784,7 @@
 				DF0F776623767D9A00E10A7C /* PersonGridViewController.swift in Sources */,
 				DFA2C838234F1BBF00BFCB01 /* RecommendationViewController.swift in Sources */,
 				A4D5757B234DDC070013B68D /* ViewControllerHelper.swift in Sources */,
+				A455536423A61D0500BB6044 /* UserProfile.swift in Sources */,
 				A4203DB0234C88F8008C3632 /* GridView.swift in Sources */,
 				DF44183723616C1D006E3506 /* Vector2.swift in Sources */,
 				DF8B41BC23708B9C00A1A193 /* PublishViewController.swift in Sources */,
@@ -818,6 +833,7 @@
 				DFE4749C2365B39E00427165 /* LabelButton.swift in Sources */,
 				DF2DC3F7234ADCE2009E52B0 /* WelcomeViewController.swift in Sources */,
 				DFA2C834234F16DB00BFCB01 /* CollapsedContent.swift in Sources */,
+				A4569ECC23A54197001C9011 /* Auth.swift in Sources */,
 				DF2DC410234B429B009E52B0 /* InorderAnimation.swift in Sources */,
 				DF0A1A4C23536C3200CB6698 /* PersonViewController.swift in Sources */,
 				E6828ADC234BA29A00BAFB31 /* IllustrationItemView.swift in Sources */,

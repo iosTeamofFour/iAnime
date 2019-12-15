@@ -13,6 +13,11 @@ public class ApiCollection {
     public static let Prefix = "http://192.168.88.126:3000"
     public static let Login = Prefix + "/user/login"
     public static let Register = Prefix + "/user/register"
-    
+    public static let Profile = Prefix + "/user/profile"
+    public static let Avatar = Prefix + "/user/avatar"
+    public static let BackgroundPhoto = Prefix + "/user/background"
+    public static let Follower = Prefix + "/user/follower"
+    public static let Following = Prefix + "/user/following"
+    public static let FollowOperation = Prefix + "/user/follow"
     
 }

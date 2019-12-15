@@ -77,4 +77,8 @@ public extension UIViewController {
         PreventDismissWhenClickOutside()
         return view.ShowLoadingIndicator()
     }
+    
+    public func ClearInputFields(_ items : UITextField...) {
+        items.forEach({ tf in tf.text = "" })
+    }
 }

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class HomeViewController: UIViewController, UITextFieldDelegate {
     
@@ -17,10 +19,13 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var UserNickName: UILabel!
     @IBOutlet weak var UserLevel: UILabel!
 
+    private var userServices : UserServices!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         SignTextField.delegate = self
-        // Do any additional setup after loading the view.
+        userServices = GetAppDelegate()._UserServices
+        LoadUserProfile()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -42,13 +47,41 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        ToggleVisibleForNavigationItem(true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ToggleVisibleForNavigationItem(false)
     }
+    private func LoadUserProfile() {
+        userServices.LoadSelfProfile({
+            json in
+            self.UserNickName.text = self.userServices.CurrentUserProfile?.NickName
+            self.SignTextField.text = self.userServices.CurrentUserProfile?.Signature
+        }, { err in
+            self.present(UIAlertController.MakeSingleSelectionAlertDialog(
+                        "提示",
+                        ControllerMsg: "获取个人信息失败, 检查网络连接",
+                        SingleAction: UIAlertAction.Well(nil)),
+                        animated: true,
+                        completion: nil)
+        })
+        
+        request(ApiCollection.Avatar, method: .get, parameters: nil, encoding: URLEncoding.default, headers: Auth.AuthHeader).responseImage(completionHandler: {
+            resp in
+            self.UserAvatarImage.image = resp.result.value
+        })
+        
+        request(ApiCollection.BackgroundPhoto, method: .get, parameters: nil, encoding: URLEncoding.default, headers: Auth.AuthHeader).responseImage(completionHandler: {
+            resp in
+            self.HomeBackgroundImage.image = resp.result.value
+        })
+    }
+    
+    
+    
+    
+    
     
     @IBAction func ChangeBackgroundImage(_ sender: UITapGestureRecognizer) {
         let alert = UIAlertController.MakeAlertSheet("主页背景", nil, [

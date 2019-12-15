@@ -22,8 +22,14 @@ class WelcomeViewController: UIViewController {
         return .lightContent
     }
     
+    private var userServices : UserServices!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userServices = GetAppDelegate()._UserServices
+        
         if let storyboard = self.storyboard {
             LoginAndRegisterContainer.AddViewController(storyboard.instantiateViewController(withIdentifier: "Login") as! FragmentViewController)
             LoginAndRegisterContainer.AddViewController(storyboard.instantiateViewController(withIdentifier: "Register") as! FragmentViewController)
@@ -57,14 +63,24 @@ class WelcomeViewController: UIViewController {
                     }
                 }
             }
-            
-            self.BeginScrollImages()
+            self.TryAutoLogin()
         }
     }
     
+    private func TryAutoLogin() {
+        // Call UserService For Auto Login
+        userServices.TryAutoLogin( { logined in
+            if logined {
+                self.performSegue(withIdentifier: "GoToIndexAutoLogin", sender: nil)
+            }
+            else {
+                // 自动登陆不成功，重新显示登陆密码输入框
+                self.BeginShowLoginInputFields()
+            }
+        })
+    }
     
-    
-    private func BeginScrollImages() {
+    private func BeginShowLoginInputFields() {
         let animationList = InorderAnimation()
         animationList.AddAnimation(animation: ExecuteAnimation(Duration: 0.8, Delay:0, Options: .curveEaseInOut, WhenComplete: { _ in
             self.performSelector(inBackground: #selector(self.MoveStackViews), with: self)

@@ -13,6 +13,13 @@ func GetAppDelegate() -> AppDelegate {
     return UIApplication.shared.delegate as! AppDelegate
 }
 
+public extension UIAlertAction {
+    
+    public static func Well(_ handler : ((UIAlertAction)->Void)?) -> UIAlertAction {
+        return UIAlertAction(title: "好", style: .cancel, handler: handler)
+    }
+}
+
 public extension UIAlertController {
     
     public static func MakeAlertDialog(_ controllerTitle : String, _ controllerMsg : String?,_ actions : [UIAlertAction]) -> UIAlertController {
@@ -25,6 +32,11 @@ public extension UIAlertController {
         let alertController = UIAlertController(title: controllerTitle, message: controllerMsg, preferredStyle: .actionSheet)
         actions.forEach { action in alertController.addAction(action) }
         return alertController
+    }
+    
+    public static func MakeSingleSelectionAlertDialog(_ ControllerTitle : String, ControllerMsg : String?, SingleAction : UIAlertAction) -> UIAlertController {
+        
+        return UIAlertController.MakeAlertDialog(ControllerTitle, ControllerMsg, [SingleAction])
     }
     
     public static func MakeAlertSheetPopover(_ controllerTitle : String, _ controllerMsg : String?,_ actions : [UIAlertAction], _ sourceView : UIView) -> UIAlertController {
