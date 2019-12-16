@@ -10,6 +10,7 @@ import Foundation
 
 public class ApiCollection {
     
+    // User
     public static let Prefix = "http://192.168.88.126:3000"
     public static let Login = Prefix + "/user/login"
     public static let Register = Prefix + "/user/register"
@@ -19,5 +20,10 @@ public class ApiCollection {
     public static let Follower = Prefix + "/user/follower"
     public static let Following = Prefix + "/user/following"
     public static let FollowOperation = Prefix + "/user/follow"
+    
+    // Illustration
+    public static let ColorizeRequest = Prefix + "/illustration/colorization"
+    public static let ColorizeStatus = Prefix + "/illustration/colorization/status"
+    public static let ColorizeResult = Prefix + "/illustration/colorization/result"
     
 }

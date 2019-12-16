@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 enum ColorizeRequestStatus : String {
-    case Pending = "等待上传"
-    case Uploading = "正在上传"
-    case Processing = "正在处理"
-    case Finished = "完成上色"
+    case Pending = "等待"
+    case Uploading = "上传"
+    case Processing = "处理"
+    case Finished = "完成"
 }
 
 struct ColorizeRequest {
@@ -20,6 +21,7 @@ struct ColorizeRequest {
     var timestamp : String
     var percentage: Int
     var status : ColorizeRequestStatus
+    var receipt : String
 }
 
 class MultifuncViewController: UIViewController, UIPopoverPresentationControllerDelegate {
@@ -37,31 +39,21 @@ class MultifuncViewController: UIViewController, UIPopoverPresentationController
     override func viewDidLoad() {
         super.viewDidLoad()
         // 拿到 DraftingViewController 的实例
-        drawingVC = presentingViewController as? DraftingViewController
-        
+
+        print(drawingVC)
         SaveToLocalBtn.addTarget(self, action: #selector(HandleSaveToLocalWork(_:)), for: .touchUpInside)
         SaveToLocalBtn.isEnabled = draftData != nil
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if let drawingVC = presentingViewController as? DraftingViewController {
-            print("向DrafingVC回传数据")
-            drawingVC.drawingInfo = drawingInfo
-        }
-    }
-    
-    @IBAction func SendRequestColorize(_ sender: UIButton) {
-        
-    }
-    
-    @IBAction func PublishColorization(_ sender: UIButton) {
-        
-    }
-    
+
+
+//    
+//    @IBAction func PublishColorization(_ sender: UIButton) {
+//        
+//    }
+//    
     
     @objc func HandleSaveToLocalWork(_ sender: UIButton) {
-        let (container, indicator) = ShowLoadingIndicator()
+        let (container, _) = ShowLoadingIndicator()
         DispatchQueue.global().async {
             if let info = self.drawingInfo, let png = self.drawingVC.ExportDrawingViewToImageFile() {
                 info.CreatedTime = Date2Unix(Date())

@@ -70,7 +70,7 @@
                         <outlet property="dimBackgroundView" destination="B6V-gQ-gp1" id="wZ9-GR-1e8"/>
                         <outlet property="iAnimeLogo" destination="7js-hq-GkY" id="r6o-Kz-0OV"/>
                         <outlet property="stackViewsContainer" destination="Yhu-rj-jEQ" id="j2o-tO-IU9"/>
-                        <segue destination="vwK-Bd-uvT" kind="showDetail" identifier="GoToIndexAutoLogin" id="KiU-7N-0Fj"/>
+                        <segue destination="vwK-Bd-uvT" kind="show" identifier="GoToIndexAutoLogin" id="KiU-7N-0Fj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -231,7 +231,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="vwK-Bd-uvT" kind="showDetail" identifier="GoToIndex" id="XsC-49-a68"/>
+                                            <segue destination="vwK-Bd-uvT" kind="show" identifier="GoToIndex" id="XsC-49-a68"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="请输入用户名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P0y-oY-T4d">
@@ -319,6 +319,6 @@
         <image name="arrowWhite" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KiU-7N-0Fj"/>
+        <segue reference="XsC-49-a68"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -36,7 +36,7 @@ func String2Date(_ dateString : String,_ format : String = DateStringDefaultForm
 
 
 public extension Date {
-    public func ToString(_ format : String = "yyyy-M-d") -> String {
+    public func ToString(_ format : String = "yyyy-M-d H:mm:ss") -> String {
         return Date2String(self, format)
     }
     

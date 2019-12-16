@@ -271,7 +271,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="提交上色请求"/>
                                         <connections>
-                                            <action selector="SendRequestColorize:" destination="26d-MC-IR3" eventType="touchUpInside" id="6vh-st-Lto"/>
+                                            <action selector="SendColorizeRequest:" destination="26d-MC-IR3" eventType="touchUpInside" id="0EU-cm-jzt"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Eb-Hk-9iY">
@@ -279,7 +279,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="发布作品"/>
                                         <connections>
-                                            <action selector="PublishColorization:" destination="26d-MC-IR3" eventType="touchUpInside" id="t2i-aH-Xwt"/>
                                             <segue destination="ggI-1d-Vt3" kind="presentation" identifier="PublishDrawing" id="0JI-wl-bhy"/>
                                         </connections>
                                     </button>

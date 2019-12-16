@@ -82,7 +82,31 @@ class UIUtils {
 }
 
 public extension UIImage {
+    
+    
+    public func Resize(_ NewSize : CGSize) -> UIImage {
+        var newSize = NewSize
+        let CurrWidth = self.size.width
+        let CurrHeight = self.size.height
+        
+        let CurrRatio = CurrWidth / CurrHeight
+        
+        if CurrRatio < 1 {
+            newSize.height = NewSize.width / CurrRatio
+        }
+        else {
+            newSize.width = NewSize.height * CurrRatio
+        }
+        
+        UIGraphicsBeginImageContext(NewSize)
+        self.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage ?? UIImage()
+    }
+    
 
+    
     public func extraPixels(in size: CGSize) -> [UInt32]? {
         
         guard let cgImage = cgImage else {

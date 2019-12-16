@@ -18,6 +18,8 @@
 		A43EFE07235EA84B00706CF2 /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43EFE06235EA84B00706CF2 /* RGB.swift */; };
 		A45211FC23A5111300DD7617 /* HMACSHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45211FB23A5111300DD7617 /* HMACSHA256.swift */; };
 		A455536423A61D0500BB6044 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A455536323A61D0500BB6044 /* UserProfile.swift */; };
+		A455536723A6557D00BB6044 /* ColorizeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = A455536623A6557D00BB6044 /* ColorizeServices.swift */; };
+		A455536923A6589C00BB6044 /* CommonResponseHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A455536823A6589C00BB6044 /* CommonResponseHandle.swift */; };
 		A4569ECC23A54197001C9011 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569ECB23A54197001C9011 /* Auth.swift */; };
 		A4683DF2234E02E800D50D04 /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DF1234E02E800D50D04 /* DiscoveryViewController.swift */; };
 		A4683DFB234E0D9300D50D04 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4683DFA234E0D9300D50D04 /* RankingViewController.swift */; };
@@ -113,6 +115,8 @@
 		A43EFE06235EA84B00706CF2 /* RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB.swift; sourceTree = "<group>"; };
 		A45211FB23A5111300DD7617 /* HMACSHA256.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMACSHA256.swift; sourceTree = "<group>"; };
 		A455536323A61D0500BB6044 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		A455536623A6557D00BB6044 /* ColorizeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorizeServices.swift; sourceTree = "<group>"; };
+		A455536823A6589C00BB6044 /* CommonResponseHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonResponseHandle.swift; sourceTree = "<group>"; };
 		A4569ECB23A54197001C9011 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		A4683DF1234E02E800D50D04 /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
 		A4683DFA234E0D9300D50D04 /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 			children = (
 				A43289B823A51F5400045B39 /* ApiCollection.swift */,
 				A4569ECB23A54197001C9011 /* Auth.swift */,
+				A455536823A6589C00BB6044 /* CommonResponseHandle.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -290,6 +295,14 @@
 				A455536323A61D0500BB6044 /* UserProfile.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		A455536523A6556100BB6044 /* Colorization */ = {
+			isa = PBXGroup;
+			children = (
+				A455536623A6557D00BB6044 /* ColorizeServices.swift */,
+			);
+			path = Colorization;
 			sourceTree = "<group>";
 		};
 		A4683DF3234E02F300D50D04 /* Discovery */ = {
@@ -370,6 +383,7 @@
 		A4FE715923714BCE00325B5C /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				A455536523A6556100BB6044 /* Colorization */,
 				A43289B523A51DEE00045B39 /* User */,
 				A43289B423A51DE600045B39 /* Networking */,
 				A4FE715623714BA900325B5C /* Persistence */,
@@ -827,6 +841,7 @@
 				DF8B41BA2370723C00A1A193 /* ColorizeRequestCell.swift in Sources */,
 				A43289B723A51E7200045B39 /* UserServices.swift in Sources */,
 				DF28E4C4237647CE0037A1AC /* IndexIlluGridViewController.swift in Sources */,
+				A455536723A6557D00BB6044 /* ColorizeServices.swift in Sources */,
 				A46C0A8C23605EB000A80DD7 /* OuterTestViewController.swift in Sources */,
 				A4FE715E2371662B00325B5C /* DrawingHistories.swift in Sources */,
 				DF8B41BE23708C1A00A1A193 /* WorkTagManager.swift in Sources */,
@@ -845,6 +860,7 @@
 				A4683DFB234E0D9300D50D04 /* RankingViewController.swift in Sources */,
 				DF3F617123577B1B00D4EBB3 /* SystemSettingTableViewController.swift in Sources */,
 				DF8B41C223708E9B00A1A193 /* InputCell.swift in Sources */,
+				A455536923A6589C00BB6044 /* CommonResponseHandle.swift in Sources */,
 				DF7B8AB0235C0B0D006C93EF /* TimelineItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class DraftingViewController: DraftingPinchViewController {
 
@@ -18,8 +19,9 @@ class DraftingViewController: DraftingPinchViewController {
     @IBOutlet weak var drawing: DrawingView! // 绘制层
     @IBOutlet weak var background: UIImageView!  // 背景图片层
     private var OriginBounds : CGRect!
-    var shouldLoadBackground : UIImage?
     
+    
+    var shouldLoadBackground : UIImage?
     var shouldRestoreData : DraftData?
     var drawingInfo : DrawingInfo?
     
@@ -34,6 +36,8 @@ class DraftingViewController: DraftingPinchViewController {
     
     // 下方多功能按键呼出
     @IBOutlet weak var MultifuncBtn: UIButton!
+    var ColorizeRequests : [ColorizeRequest] = []
+    var ColorizedResult : Dictionary<String,Image> = [:]
     
     // --------------- 提示类信息 -----------------
     private var HadShownEditingTypeHint = false
@@ -248,6 +252,15 @@ class DraftingViewController: DraftingPinchViewController {
         ShowMultifunc()
     }
     
+    
+    func LoadColorizedImage(_ ColorizedImage : Image) {
+        let sb = UIStoryboard(name: "Index", bundle: nil)
+        let imageViewer = sb.instantiateViewController(withIdentifier: "ImageViewer") as! PinchImageViewController
+        
+        imageViewer.Images.append(ColorizedImage)
+        present(imageViewer, animated: true, completion: nil)
+    }
+    
     // ---------- 连接颜色Picker和当前VC的相关函数 ----------------
     
     @IBAction func HandleOpenColorPicker(_ sender: UITapGestureRecognizer) {
@@ -303,18 +316,22 @@ class DraftingViewController: DraftingPinchViewController {
     }
     
     private func ShowMultifunc() {
-        if let sb = storyboard, let MultiVC = sb.instantiateViewController(withIdentifier: "Multifunc") as? MultifuncViewController {
+        if let sb = storyboard, let MultiVC = sb.instantiateViewController(withIdentifier: "Multifunc") as? MultifuncTaskList {
             
+            MultiVC.drawingVC = self
             MultiVC.modalPresentationStyle = .popover
             MultiVC.popoverPresentationController?.delegate = MultiVC
             MultiVC.popoverPresentationController?.sourceView = MultifuncBtn
             MultiVC.popoverPresentationController?.sourceRect = MultifuncBtn.bounds
             MultiVC.popoverPresentationController?.backgroundColor = MultiVC.view.backgroundColor
             MultiVC.preferredContentSize = CGSize(width: 320, height: 520)
-            MultiVC.drawingInfo = drawingInfo
-            MultiVC.draftData = CollectDraftData()
-            // 告知列表状态
             
+            MultiVC.datas = ColorizeRequests
+            MultiVC.results = ColorizedResult
+            
+            MultiVC.drawingInfo = drawingInfo // 作品简介信息
+            MultiVC.draftData = CollectDraftData() // 作品绘制画板记录
+            // 告知列表状态
             present(MultiVC, animated: true, completion: nil)
         }
     }
@@ -359,9 +376,7 @@ class DraftingViewController: DraftingPinchViewController {
     
     func CollectDraftData() -> DraftData? {
         let bgImg = background.image
-        guard let foreImg = drawing.image else {
-            return nil
-        }
+        let foreImg = drawing.image ?? UIImage()
         let lines = drawing.histories
         let anchors = ColorAnchorPair.ConvertDicToPair(drawing.anchors)
         let hints = ColorHintPair.ConvertDicToPair(drawing.hints)
