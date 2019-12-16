@@ -74,8 +74,8 @@ class PersistenceManager {
     
     public static func PersistLocalWorkDataWithDrawingInfo(_ data : DraftData?, _ info : DrawingInfo, _ preview : Data) -> Bool {
         // 检测对应的文件夹是否存在
-        
         var folder = GetFolderURL(.LocalWork, info.DrawingID)
+        print("打印储存位置: \(folder.path)")
         if !IfFolderExists(folder) && !TryCreateFolder(folder) {
             // 文件夹不存在且不能创建对应的文件夹，返回持久化失败。
             return false

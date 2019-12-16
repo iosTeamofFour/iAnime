@@ -39,10 +39,9 @@ class MultifuncViewController: UIViewController, UIPopoverPresentationController
     override func viewDidLoad() {
         super.viewDidLoad()
         // 拿到 DraftingViewController 的实例
-
-        print(drawingVC)
+//        print(drawingVC)
         SaveToLocalBtn.addTarget(self, action: #selector(HandleSaveToLocalWork(_:)), for: .touchUpInside)
-        SaveToLocalBtn.isEnabled = draftData != nil
+//        SaveToLocalBtn.isEnabled = draftData != nil
     }
 
 

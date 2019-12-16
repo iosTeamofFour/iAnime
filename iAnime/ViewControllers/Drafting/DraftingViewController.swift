@@ -144,10 +144,11 @@ class DraftingViewController: DraftingPinchViewController {
                 self.ExportDraftingData()
                 self.ActualReturn()
             }),
-            UIAlertAction(title: "取消", style: .cancel, handler: {
+            UIAlertAction(title: "不保存草稿并退出", style: .default, handler: {
                 _ in
                 self.ActualReturn()
-            })
+            }),
+            UIAlertAction(title: "取消", style: .cancel, handler: nil)
             ])
         present(alertController, animated: true, completion:nil)
     }

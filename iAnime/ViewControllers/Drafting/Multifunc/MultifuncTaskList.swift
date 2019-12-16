@@ -85,12 +85,13 @@ class MultifuncTaskList: MultifuncViewController, UITableViewDataSource, UITable
     }
     
     private func BeginRefreshColorizeTaskList() {
-        print("开启新的一轮刷新...")
-        performSelector(inBackground: #selector(RefreshColorizeTaskList), with: nil)
+        if let MultiTaskVC = drawingVC.presentedViewController, MultiTaskVC == self {
+            print("开启新的一轮刷新...")
+            performSelector(inBackground: #selector(RefreshColorizeTaskList), with: self)
+        }
     }
     
     @objc private func RefreshColorizeTaskList() {
-        var count = datas.count
         for (index,req) in datas.enumerated() {
             if req.status == .Pending {
                 ColorizeServices.QueryColorizeRequestStatus(req.receipt, {
@@ -104,30 +105,19 @@ class MultifuncTaskList: MultifuncViewController, UITableViewDataSource, UITable
                             self.ColorizeRequestList.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
                         }
                     }
-                    count -= 1
-                    if count == 0 {
-                        usleep(5 * 1000 * 1000)
-                        self.BeginRefreshColorizeTaskList()
-                    }
                 }, {
                     (code,err) in
                     print("查询\(req.status)的状态失败, 原因为: \(code)  \(err)")
-                    count -= 1
-                    if count == 0 {
-                        usleep(5 * 1000 * 1000)
-                        self.BeginRefreshColorizeTaskList()
-                    }
                 })
             }
         }
+        usleep(5 * 1000 * 1000)
+        BeginRefreshColorizeTaskList()
     }
     
     private func AppendRequestToTaskList(_ request : ColorizeRequest) {
         datas.append(request)
         ColorizeRequestList.insertRows(at: [IndexPath(row: datas.count - 1, section: 0)], with: .automatic)
-        if datas.count == 1 {
-            BeginRefreshColorizeTaskList()
-        }
     }
     
     
