@@ -29,26 +29,61 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
     
     private var AllData : [[(DrawingInfo, Data)]] = [[],[]]
     
+    private var NetworkWorks : [DrawingInfo] = []
+    
     private var ShouldInitIlluGridView = true
+    
+    private var userServices : UserServices!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        userServices = GetAppDelegate()._UserServices
         InitSearcherListener()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-         LoadDataFromLocal()
+        LoadDataFromLocal()
+        LoadDataFromServer()
     }
     
     private func LoadDataFromServer() {
         // TODO -- Should Return [Illustration]
+        userServices.FetchUserWork(UserID: Auth.GetUserIDFromToken(), {
+            json in
+            let works = json.arrayValue
+            for work in works {
+                
+                let Id = String(work["Id"].intValue)
+                let Name = work["Name"].stringValue
+                let Description = work["Description"].stringValue
+                let Tags : [String] = []
+                let AllowSaveToLocal = work["AllowDownload"].boolValue
+                let AllowFork = work["AllowFork"].boolValue
+                let CreatedAt = work["CreatedAt"].intValue
+                let info = DrawingInfo.init(DrawingID: Id, Name: Name, Description: Description, Tags: Tags, AllowSaveToLocal: AllowSaveToLocal, AllowFork: AllowFork, CreatedTime: CreatedAt)
+                
+                self.NetworkWorks.append(info)
+            }
+            self.LoadImageFromServer()
+        }, {
+            err in print(err)
+        })
     }
     
+    private func LoadImageFromServer() {
+        NetworkWorks.forEach {
+            info in
+            self.userServices.FetchWorkImage(WorkID: Int(info.DrawingID)!, {
+                image in
+                self.FakeData[1].append((info,image.pngData()!))
+                self.IlluGridView.reloadSections(IndexSet(integer: 1))
+            }, { err in print(err) })
+        }
+    }
+    
+    
     private func LoadDataFromLocal() {
-        // TODO -- Should Return [Illustration]
-
         DispatchQueue.global().async {
             let allWorksURL = PersistenceManager.ListAllLocalWork()
             let worksData = PersistenceManager
@@ -56,8 +91,8 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
                                 .map { (info, png) in (info!,png!) }
                                 .sorted(by: {(a,b) in a.0.CreatedTime > b.0.CreatedTime })
             
-            self.FakeData = [worksData,[]]
-            self.AllData = [worksData,[]]
+            self.FakeData[0] = worksData
+            self.AllData[0] = worksData
             DispatchQueue.main.async {
                 self.IlluGridView.reloadData()
             }
@@ -105,6 +140,34 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
         }
         IlluGridView.reloadData()
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     private func InitIlluGridView() {
         // 设定delegate and datasource

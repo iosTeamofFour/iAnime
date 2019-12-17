@@ -66,7 +66,7 @@ class PersistenceManager {
         return url
     }
     
-    public static func GetFileURL(_ folderType : FolderType, _ fileType : FileType, _ id : String) -> URL {
+    public static func GetFileURL(_ folderType : FolderType, _ fileType : FileType, _ id : String?) -> URL {
         var folder = GetFolderURL(folderType, id)
         folder.appendPathComponent(fileType.rawValue)
         return folder
@@ -75,12 +75,10 @@ class PersistenceManager {
     public static func PersistLocalWorkDataWithDrawingInfo(_ data : DraftData?, _ info : DrawingInfo, _ preview : Data) -> Bool {
         // 检测对应的文件夹是否存在
         var folder = GetFolderURL(.LocalWork, info.DrawingID)
-        print("打印储存位置: \(folder.path)")
         if !IfFolderExists(folder) && !TryCreateFolder(folder) {
             // 文件夹不存在且不能创建对应的文件夹，返回持久化失败。
             return false
         }
-        
         // 保存draft数据
         if let draftData = data {
             folder.appendPathComponent(FileType.DrawingHistory.rawValue)
@@ -92,11 +90,8 @@ class PersistenceManager {
             }
             folder.deleteLastPathComponent()
         }
-        
         // 保存预览图
-        
         folder.appendPathComponent(FileType.PreviewImage.rawValue)
-        
         do {
             try preview.write(to: folder)
             folder.deleteLastPathComponent()
@@ -110,17 +105,48 @@ class PersistenceManager {
         return NSKeyedArchiver.archiveRootObject(info, toFile: folder.path)
     }
     
+    public static func PersistDraftWorkDataWithDrawingInfo(_ data : DraftData, _ info : DrawingInfo) -> Bool {
+        var folder = GetFolderURL(.Draft)
+        if !IfFolderExists(folder) && !TryCreateFolder(folder) {
+            return false
+        }
+        folder.appendPathComponent(FileType.DrawingHistory.rawValue)
+        if !NSKeyedArchiver.archiveRootObject(data, toFile: folder.path) {
+            return false
+        }
+        folder.deleteLastPathComponent()
+        folder.appendPathComponent(FileType.DrawingInfo.rawValue)
+        return NSKeyedArchiver.archiveRootObject(info, toFile: folder.path)
+    }
+    
+    public static func IfHaveSuchDraft() -> Bool {
+        let DraftDrawingInfoURL = GetFileURL(.Draft, .DrawingInfo, nil)
+        return IfFileExists(DraftDrawingInfoURL)
+    }
+    
     public static func LoadLocalWorkDataWithDrawingInfo(_ id : String) -> (DrawingInfo?, DraftData?) {
         let infoURL = GetFileURL(.LocalWork, .DrawingInfo, id)
         let dataURL = GetFileURL(.LocalWork, .DrawingHistory, id)
-        if !IfFileExists(infoURL) {
-            return (nil,nil)
+        
+        return LoadWorkDataWithDrawingInfo(infoURL, dataURL)
+        
+    }
+    public static func LoadDraftWorkDataWithDrawingInfo() -> (DrawingInfo?, DraftData?) {
+        let infoURL = GetFileURL(.Draft, .DrawingInfo, nil)
+        let dataURL = GetFileURL(.Draft, .DrawingHistory, nil)
+        
+        return LoadWorkDataWithDrawingInfo(infoURL, dataURL)
+    }
+    
+    public static func LoadWorkDataWithDrawingInfo(_ DrawingInfoURL : URL, _ DraftDataURL : URL) -> (DrawingInfo?, DraftData?) {
+        
+        if !IfFileExists(DrawingInfoURL) {
+            return (nil, nil)
         }
-        let drawingInfo = LoadObject(infoURL) as? DrawingInfo
-        let draftData = LoadObject(dataURL) as? DraftData
         
-        return (drawingInfo, draftData)
-        
+        let info = LoadObject(DrawingInfoURL) as? DrawingInfo
+        let data = LoadObject(DraftDataURL) as? DraftData
+        return (info, data)
     }
     
     public static func LoadLocalWorkDrawingInfo(_ id : String) -> DrawingInfo? {
@@ -165,7 +191,6 @@ class PersistenceManager {
     }
     
     
-    
     public static func LoadAllLocalWorkDrawingInfo(_ works : [URL]) -> [(DrawingInfo?, Data?)] {
         return works
             .map { work in (LoadLocalWorkDrawingInfo(work), LoadLocalWorkPreview(work)) }
@@ -195,28 +220,18 @@ class PersistenceManager {
         }
     }
     
-//    public static func LoadDraftData(_ folderType : FolderType, _ id : String) -> DraftData? {
-//        do {
-//            let data = try Data(contentsOf: GetDraftFilesURLs().AllDataBlocks)
-//            if let draftData = NSKeyedUnarchiver.unarchiveObject(with: data) as? DraftData {
-//                return draftData
-//            }
-//        }
-//        catch {
-//            print("从文件加载失败.")
-//        }
-//        return nil
-//
-//        if let data = NSKeyedUnarchiver.unarchiveObject(withFile: GetDraftFilesURLs().AllDataBlocks.path) as? DraftData {
-//            return data
-//        }
-//        return nil
-//    }
-    
-    public static func DeteleDraftData() {
-        GetDraftFilesURLs().UrlsArray?.forEach { url in
-            try? FileManager.default.removeItem(at: url)
+    public static func DeleteDraftData() -> Bool {
+        let DraftDrawingInfoURL = GetFileURL(.Draft, .DrawingInfo, nil)
+        let DraftDrawingDataURL = GetFileURL(.Draft, .DrawingHistory, nil)
+        do {
+            try FileManager.default.removeItem(at: DraftDrawingInfoURL)
+            try FileManager.default.removeItem(at: DraftDrawingDataURL)
         }
+        catch {
+            print(error)
+            return false
+        }
+        return true
     }
     
     public static func DeleteRecord(_ folderType : FolderType, _ id : String) -> Bool {

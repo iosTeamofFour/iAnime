@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import AlamofireImage
 
 class UserServices {
     
@@ -96,6 +97,35 @@ class UserServices {
                 HandleFailed?(err)
             }
         })
+    }
+    
+    public func FetchUserWork(UserID : Int, _ HandleLoaded : ((JSON)->Void)?, _ HandleFailed : ((Error)->Void)?) {
+        let param = ["userid" : UserID, "type" : "detail"] as [String : Any]
+        request(ApiCollection.UserWork, method: .get, parameters: param, encoding: URLEncoding.default, headers: Auth.AuthHeader)
+        .validate()
+            .responseJSON(completionHandler: {
+                resp in
+                switch resp.result {
+                case .success(let value):
+                    HandleLoaded?(JSON(value))
+                case .failure(let err):
+                    HandleFailed?(err)
+                }
+            })
+    }
+    public func FetchWorkImage(WorkID : Int, _ HandleLoaded : ((Image)->Void)?, _ HandleFailed : ((Error)->Void)?) {
+        let param = ["id" : WorkID, "type" : "colorization"] as [String : Any]
+        request(ApiCollection.WorkImage, method: .get, parameters: param, encoding: URLEncoding.default, headers: Auth.AuthHeader)
+            .validate()
+            .responseImage(completionHandler: {
+                resp in
+                switch resp.result {
+                case .success(let value):
+                    HandleLoaded?(value)
+                case .failure(let err):
+                    HandleFailed?(err)
+                }
+            })
     }
     
     public func TryAutoLogin(_ HandleAutoLogin : @escaping ((Bool)->Void)) {

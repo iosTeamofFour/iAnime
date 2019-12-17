@@ -171,21 +171,66 @@ class MultifuncTaskList: MultifuncViewController, UITableViewDataSource, UITable
         }
     }
     
+    
+    @available(iOS 11.0, *)
+    func SelectAsFinalUploadColorizationResult(_ indexPath : IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .normal, title: "选择") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+            // 3
+            let CellCount = self.datas.count
+            
+            for i in 0..<CellCount {
+                if let RequestCell = self.ColorizeRequestList.cellForRow(at: IndexPath(row: i, section: 0)) as? ColorizeRequestCell {
+                    RequestCell.DeselectAsUploadImags()
+                }
+            }
+            
+            if let CurrentSelectedCell = self.ColorizeRequestList.cellForRow(at: indexPath) as? ColorizeRequestCell {
+                CurrentSelectedCell.SelectedAsUploadImage()
+                self.SelectedColorizationImageReceipt = self.datas[indexPath.row].receipt
+                print("成功选择 Receipt: \(self.datas[indexPath.row].receipt) 作为最终上色作品Receipt。")
+                completionHandler(true)
+            }
+            else {
+                completionHandler(false)
+            }
+        }
+        action.backgroundColor = UIColor.orange
+        return action
+    }
+
+    @available(iOS 11.0, *)
+    func SelectAsDeleteFinishedResult(_ indexPath : IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "移除") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+            completionHandler(self.PerformDeleteColorizeRequest(self.ColorizeRequestList, indexPath))
+        }
+        action.backgroundColor = UIColor.red
+        return action
+    }
+    
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return UISwipeActionsConfiguration(actions: [SelectAsDeleteFinishedResult(indexPath), SelectAsFinalUploadColorizationResult(indexPath)])
+    }
+    
+    
+    
+    private func PerformDeleteColorizeRequest(_ tableView : UITableView, _ indexPath : IndexPath) -> Bool {
+        let target = indexPath.row
+        let data = datas[target]
+        // 只有Finished状态的可以被删除
+        if data.status == .Finished {
+            datas.remove(at: target)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            return true
+        }
+        return false
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         switch editingStyle {
         case .delete:
-            let target = indexPath.row
-            let data = datas[target]
-            // 只有Finished状态的可以被删除
-            if data.status == .Finished {
-                datas.remove(at: target)
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
-//            else if data.status == .Pending {
-//                print("取消一个还没发给服务器的任务")
-//                datas.remove(at: target)
-//                tableView.deleteRows(at: [indexPath], with: .automatic)
-//            }
+            PerformDeleteColorizeRequest(tableView, indexPath)
             break
         default:
             break

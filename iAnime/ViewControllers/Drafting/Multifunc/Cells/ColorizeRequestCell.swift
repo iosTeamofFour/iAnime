@@ -22,4 +22,12 @@ class ColorizeRequestCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    func SelectedAsUploadImage() {
+        RequestDate.textColor = UIColor.purple
+        ProcessPercentage.textColor = UIColor.purple
+    }
+    func DeselectAsUploadImags() {
+        RequestDate.textColor = UIColor.darkText
+        ProcessPercentage.textColor = UIColor.darkText
+    }
 }

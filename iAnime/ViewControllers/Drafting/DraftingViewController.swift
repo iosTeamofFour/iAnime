@@ -36,6 +36,7 @@ class DraftingViewController: DraftingPinchViewController {
     
     // 下方多功能按键呼出
     @IBOutlet weak var MultifuncBtn: UIButton!
+    
     var ColorizeRequests : [ColorizeRequest] = []
     var ColorizedResult : Dictionary<String,Image> = [:]
     
@@ -383,20 +384,17 @@ class DraftingViewController: DraftingPinchViewController {
         let hints = ColorHintPair.ConvertDicToPair(drawing.hints)
         
         let draftData = DraftData(background: bgImg, foreground: foreImg, lines: lines, anchors: anchors, hints: hints)
-        
         return draftData
     }
     
     func ExportDraftingData() {
         // Collecting drafting data...
-//        if let draftData = CollectDraftData() {
-//            let persisted = PersistenceManager.PersistDraftData(draftData)
-//            if persisted {
-//                print("已成功保存草稿.")
-//                return
-//            }
-//        }
-//        print("草稿保存失败.")
+        if let draftData = CollectDraftData(), PersistenceManager.PersistDraftWorkDataWithDrawingInfo(draftData, drawingInfo!) {
+            return
+        }
+        else {
+            present(UIAlertController.MakeSingleSelectionAlertDialog("提示", ControllerMsg: "发生了未知错误, 草稿保存失败。", SingleAction: UIAlertAction.Well(nil)),animated: true, completion: nil)
+        }
     }
 
     

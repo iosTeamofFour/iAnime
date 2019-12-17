@@ -67,4 +67,32 @@ class ColorizeServices {
             }
         })
     }
+    
+    static func PublishWork(_ Info : DrawingInfo, _ Receipt : String, _ HandleSuccess : ((Int)->Void)?, _ HandleFailed : ((Int)->Void)?) {
+        let param = ["name": Info.Name,
+                     "description" : Info.Description,
+                     "tags" : Info.Tags,
+                     "allow_download" : Info.AllowSaveToLocal,
+                     "allow_sketch" : true,
+                     "allow_fork" : Info.AllowFork,
+                     "receipt" : Receipt ] as [String : Any]
+        request(ApiCollection.PublishWork, method: .post, parameters: param, encoding: JSONEncoding.default, headers: Auth.AuthHeader)
+            .validate()
+            .responseJSON(completionHandler: {
+                resp in
+                switch resp.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    if Successful(json) {
+                        HandleSuccess?(json["Id"].intValue)
+                    }
+                    else {
+                        HandleFailed?(json["StatusCode"].intValue)
+                    }
+                case .failure(let err):
+                    print(err)
+                    HandleFailed?(-3)
+                }
+            })
+    }
 }
