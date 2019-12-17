@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class UIUtils {
     
@@ -140,12 +141,21 @@ public extension UIImage {
 
 public extension UIView {
     public func pin(to view: UIView) {
-        NSLayoutConstraint.activate([
-            leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topAnchor.constraint(equalTo: view.topAnchor),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            ])
+//        NSLayoutConstraint.activate([
+//            leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            topAnchor.constraint(equalTo: view.topAnchor),
+//            bottomAnchor.constraint(equalTo: view.bottomAnchor)
+//            ])
+        
+        self.snp.makeConstraints {
+            make in
+            make.leading.equalTo(view.snp.leading)
+            make.trailing.equalTo(view.snp.trailing)
+            make.top.equalTo(view.snp.top)
+            make.bottom.equalTo(view.snp.bottom)
+        }
+        
     }
     
     public func SubviewsContentSize() -> CGRect {
