@@ -49,6 +49,7 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
     
     private func LoadDataFromServer() {
         // TODO -- Should Return [Illustration]
+        self.NetworkWorks.removeAll()
         userServices.FetchUserWork(UserID: Auth.GetUserIDFromToken(), {
             json in
             let works = json.arrayValue
@@ -72,6 +73,8 @@ class IndexIlluGridViewController: IndexViewController, UICollectionViewDelegate
     }
     
     private func LoadImageFromServer() {
+        self.FakeData[1].removeAll()
+        
         NetworkWorks.forEach {
             info in
             self.userServices.FetchWorkImage(WorkID: Int(info.DrawingID)!, {

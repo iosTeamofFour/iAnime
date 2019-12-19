@@ -155,11 +155,10 @@ public extension UIView {
             make.top.equalTo(view.snp.top)
             make.bottom.equalTo(view.snp.bottom)
         }
-        
     }
     
     public func SubviewsContentSize() -> CGRect {
-        return subviews.map { v in v.frame }.reduce(CGRect.zero, { a, b in a.union(b)} )
+        return subviews.map { v in v.frame }.reduce(CGRect.zero, { a, b in a.union(b)})
     }
     
     public func ConvertPointToWindowCoord(_ point: CGPoint) -> CGPoint {
