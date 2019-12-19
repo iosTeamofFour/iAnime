@@ -263,8 +263,8 @@
                                     <constraint firstItem="4me-AO-3vh" firstAttribute="leading" secondItem="OoR-iW-3NP" secondAttribute="leading" id="ggT-sQ-vF1"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="zrb-YS-ePj">
-                                <rect key="frame" x="132" y="374" width="111" height="126"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="zrb-YS-ePj">
+                                <rect key="frame" x="132" y="358" width="111" height="148"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I7J-dS-DKe">
                                         <rect key="frame" x="0.0" y="0.0" width="111" height="34"/>
@@ -275,15 +275,23 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Eb-Hk-9iY">
-                                        <rect key="frame" x="18.5" y="46" width="74" height="34"/>
+                                        <rect key="frame" x="0.0" y="38" width="111" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="发布作品"/>
+                                        <state key="normal" title="编辑作品属性"/>
                                         <connections>
                                             <segue destination="ggI-1d-Vt3" kind="presentation" identifier="PublishDrawing" id="0JI-wl-bhy"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fce-5R-9mz">
+                                        <rect key="frame" x="18.5" y="76" width="74" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="发布作品"/>
+                                        <connections>
+                                            <action selector="PublishColorizedWork:" destination="26d-MC-IR3" eventType="touchUpInside" id="mD7-H9-pVj"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9S-1H-JEt">
-                                        <rect key="frame" x="9.5" y="92" width="92" height="34"/>
+                                        <rect key="frame" x="9.5" y="114" width="92" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="保存到本地"/>
                                     </button>
@@ -292,7 +300,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="zrb-YS-ePj" firstAttribute="top" secondItem="OoR-iW-3NP" secondAttribute="bottom" constant="24" id="BaD-sZ-8c3"/>
+                            <constraint firstItem="zrb-YS-ePj" firstAttribute="top" secondItem="OoR-iW-3NP" secondAttribute="bottom" constant="8" id="BaD-sZ-8c3"/>
                             <constraint firstItem="OoR-iW-3NP" firstAttribute="leading" secondItem="TzT-Sy-Tpm" secondAttribute="leading" id="HiI-gS-GSl"/>
                             <constraint firstItem="TzT-Sy-Tpm" firstAttribute="trailing" secondItem="OoR-iW-3NP" secondAttribute="trailing" id="Jrf-Vj-y66"/>
                             <constraint firstItem="zrb-YS-ePj" firstAttribute="centerX" secondItem="Khg-dm-xU7" secondAttribute="centerX" id="vzb-L6-8AM"/>
@@ -309,7 +317,7 @@
             </objects>
             <point key="canvasLocation" x="1103" y="-228"/>
         </scene>
-        <!--发布作品-->
+        <!--编辑作品属性-->
         <scene sceneID="PrV-K1-91Q">
             <objects>
                 <viewController id="BSc-fg-iZO" customClass="PublishViewController" customModule="iAnime" customModuleProvider="target" sceneMemberID="viewController">
@@ -449,15 +457,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ERw-XT-iZ9"/>
                     </view>
-                    <navigationItem key="navigationItem" title="发布作品" id="j9H-Lv-v0l">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Zfb-BW-ygR">
+                    <navigationItem key="navigationItem" title="编辑作品属性" id="j9H-Lv-v0l">
+                        <barButtonItem key="leftBarButtonItem" title="返回" id="Zfb-BW-ygR">
                             <connections>
                                 <action selector="CancelToDrawing:" destination="BSc-fg-iZO" id="S8y-bS-jFm"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="qV1-c3-QS5">
-                            <connections>
-                                <action selector="BeginPublishWork:" destination="BSc-fg-iZO" id="DLZ-Vn-Vzd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

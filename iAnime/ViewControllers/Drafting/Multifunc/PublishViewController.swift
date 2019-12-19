@@ -50,10 +50,12 @@ class PublishViewController: UIViewController, UITableViewDelegate, UITableViewD
         SyncAllDataToDrawingInfoInstance()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     private func UpdateTagsList() {
-        
         SelectedTag = drawingInfo?.Tags ?? []
-        
         let path = IndexPath(row: 2, section: 0)
         if let tagsCell = WorkInfo.cellForRow(at: path) as? EnterCell {
             tagsCell.subTitle.text = " ".Join(SelectedTag)
@@ -82,10 +84,6 @@ class PublishViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
-    @IBAction func BeginPublishWork(_ sender: UIBarButtonItem) {
-        
-    }
-    
     private func SyncAllDataToDrawingInfoInstance() {
         
         // 同步作品名称和作品描述
@@ -96,13 +94,6 @@ class PublishViewController: UIViewController, UITableViewDelegate, UITableViewD
         drawingInfo?.Description = (WorkInfo.cellForRow(at: namePath) as! InputCell).input.text ?? ""
         
     }
-
-    
-    
-    
-    
-    
-    
     
     
     

@@ -196,6 +196,6 @@
     </scenes>
     <resources>
         <image name="fork" width="32" height="32"/>
-        <image name="love_red" width="8" height="8"/>
+        <image name="love_red" width="24" height="24"/>
     </resources>
 </document>

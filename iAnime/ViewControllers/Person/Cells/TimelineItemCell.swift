@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class TimelineItemCell: UICollectionViewCell {
     
@@ -28,7 +29,13 @@ class TimelineItemCell: UICollectionViewCell {
         imageView = RoundCornerUIImageView(6)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(imageView)
-        imageView.widthAnchor.constraint(equalTo: widthAnchor).Activate()
-        imageView.heightAnchor.constraint(equalTo: heightAnchor).Activate()
+//        imageView.widthAnchor.constraint(equalTo: widthAnchor).Activate()
+//        imageView.heightAnchor.constraint(equalTo: heightAnchor).Activate()
+        
+        imageView.snp.makeConstraints {
+            make in
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
+        }
     }
 }

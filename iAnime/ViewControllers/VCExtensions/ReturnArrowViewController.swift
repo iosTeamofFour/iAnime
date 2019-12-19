@@ -30,7 +30,12 @@ class ReturnArrowViewController: UIViewController {
         view.addSubview(ArrowImage)
         ArrowImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 4).Activate()
         
-        ArrowImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).Activate()
+        if #available(iOS 11.0, *) {
+            ArrowImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).Activate()
+        }
+        else {
+            ArrowImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).Activate()
+        }
         ArrowImage.widthAnchor.constraint(equalToConstant: 36).Activate()
         ArrowImage.heightAnchor.constraint(equalToConstant: 36).Activate()
         

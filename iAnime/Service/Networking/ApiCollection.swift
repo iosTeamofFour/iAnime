@@ -26,4 +26,8 @@ public class ApiCollection {
     public static let ColorizeStatus = Prefix + "/illustration/colorization/status"
     public static let ColorizeResult = Prefix + "/illustration/colorization/result"
     
+    
+    public static let PublishWork = Prefix + "/illustration/upload"
+    public static let UserWork = Prefix + "/illustration/mywork"
+    public static let WorkImage = Prefix + "/illustration/image"
 }
